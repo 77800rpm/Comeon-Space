@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zay Shop - Product Listing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+	
+</head>
+<style>
+	.myP-main{
+		padding-bottom: 10px;
+		text-align: center; 
+	}
+	.list-text{
+		font-size: 13px !important;
+	}
+
+	
+	.hh-content{
+    	line-height:110px;
+    }
+    
+    .hh-content2{
+    	line-height:60px;
+    }
+    
+    .mytable-color{
+    	background-color: #EAEAEA !important;
+    }
+	
+	.intro-font {
+		font-weight:bold;
+		font-size: 115%;
+		position: relative;
+		top: 10px;
+	}
+	
+	
+	.intro-font1 {
+		font-weight:bold;
+		font-size: 115%;
+	}
+	
+	.intro-font2 {
+		position: relative;
+		top: 10px;
+	}
+	
+	.intro-font-count{
+		font-size: 170%;
+		color: #0f6756;
+	}
+	
+	.checkbox-select{
+		zoom: 2;
+		
+	}
+	
+	#select-delete{
+		position: relative;
+		bottom: 10px;
+	}
+	
+</style>
+<body>
+
+    <!-- Start Content -->
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="h3 pb-4">마이페이지</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	개인정보수정
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	나의 문의내역
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	판매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;작성된 후기</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;결제내역</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	구매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;후기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="myP-main h2">
+					<div class="container">
+						<br>
+						<hr><br>
+						    <div class="row">
+						        <div class="intro-name col-sm-5"><span style="color:#0f6756; font-weight:bold; font-size:200%; ">김냠냠</span><span class="intro-font1"> 님<br>안녕하세요!</span></div>
+						        <div class="intro-before col-sm-2"><span class="intro-font">이용 전</span><br><span class="intro-font intro-font-count">1</span><span class="intro-font2"> 개</span></div>
+						        <div class="intro-after col-sm-2"><span class="intro-font">이용 완료</span><br><span class="intro-font intro-font-count">3</span><span class="intro-font2"> 개</span></div>
+						        <div class="intro-review col-sm-2"><span class="intro-font">구매 후기</span><br><span class="intro-font intro-font-count">4</span><span class="intro-font2"> 개</span></div>
+						    </div>
+						<br><hr>
+						<br><br><br>
+						<h5>예약 현황 전체 보기 </h5>
+					</div>
+                </div>
+                
+                
+					<div class="container">
+						<form name="체크박스" action="#">
+						<button type="button" class="btn btn-success btn-sm" id="select-delete">선택 삭제</button>
+						  <table class="table box">
+						    <thead class="thead-light mytable-color">
+						      <tr>
+						        <th><input type="checkbox" class="checkbox-select" value="something"></th>
+						        <th>구매 일자</th>
+						        <th>구매 상품 정보</th>
+						        <th>결제 금액</th>
+						        <th>진행 상태</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      <tr>
+						        <td class="hh-content"><input type="checkbox" class="checkbox-select" value="something"></td>
+						        <td class="hh-content">2021.05.18</td>
+						        <td style="width:400px;">
+						        	<p style="color: #0f6756; font-size: 105%; font-weight: bold">위례 자연광 스튜디오</p>
+									<p>ROOM A</p>
+						            <p>2021.05.20 (목)</p>
+						        </td>
+						        <td class="hh-content">75,000</td>
+						        <td class="hh-content">       
+						        이용 전
+						        </td>
+						      </tr>
+						      <tr>
+						        <td class="hh-content"><input type="checkbox" class="checkbox-select" value="something"></td>
+						        <td class="hh-content">2021.04.29</td>
+						        <td>
+						        	<p style="color: #0f6756; font-size: 105%; font-weight: bold">서울 어쩌구</p>
+									<p>ROOM B</p>
+						            <p>2021.05.01(토)</p>
+						        </td>
+						        <td class="hh-content">63,000</td>
+						        <td class="hh-content2">       
+						        이용 완료<br><button type="button" class="btn btn-success btn-sm">후기 쓰기</button>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td class="hh-content"><input type="checkbox" class="checkbox-select" value="something"></td>
+						        <td class="hh-content">2020.02.02</td>
+						        <td>
+						        	<p style="color: #0f6756; font-size: 105%; font-weight: bold">부산 저쩌구</p>
+									<p>ROOM C</p>
+						            <p>2021.02.05 (금)</p>
+						        </td>
+						        <td class="hh-content">80,000</td>
+						        <td class="hh-content2">       
+						        이용 완료<br><button type="button" class="btn btn-secondary btn-sm">후기 작성 완료</button>
+						        </td>
+						      </tr>
+						    </tbody>
+						  </table>
+						 </form>
+					<br>
+			  		<button type="button" class="btn btn-outline-dark" style="position: relative; left: 400px;">더 보기 +</button>
+					</div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
+</body>
+
+</html>

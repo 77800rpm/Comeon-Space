@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zay Shop - Product Listing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+	
+</head>
+<style>
+	.myP-main{
+		border-bottom: 3px solid green;
+		text-align: center;
+		padding-bottom: 10px; 
+	}
+	.list-text{
+		font-size: 13px !important;
+	}
+
+	.review-title{
+		text-align: center;
+	}
+	
+	.hr-height{
+		height: 3px solid;
+	}
+
+	
+	
+	.td-menu{
+    	background-color: #EAEAEA !important;
+        font-weight: bold;
+        text-align: center;
+        width: 170px;
+        height: 80px;
+    }
+    
+    .td-content{
+    	width: 800px;
+    }
+    
+    .td-content-detail{
+    	height: 150px;
+    }
+    
+    .review-submit{
+    	position: relative;
+    	left: 450px;
+    }
+    
+    td, th{
+	    border: 1px solid lightgray;    
+	    padding: 20px;	
+    }
+    
+    table{
+	    border: 2px solid lightgray;
+	    border-collapse: collapse;
+	    margin-left: auto;
+   		margin-right: auto;
+    }
+
+
+	.td-pay{
+		font-weight: 30px !important;
+	}
+	
+</style>
+<body>
+
+    <!-- Start Content -->
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="h3 pb-4">마이페이지</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	개인정보수정
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	나의 문의내역
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	판매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;작성된 후기</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;결제내역</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	구매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;후기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="myP-main h2">
+                    	마이페이지
+                </div>
+                <div>
+                	
+                	<br><br><hr><br>
+                	<h3 class="review-title">구매 상세 내역</h3>
+                	<br><hr><br>	
+	            
+	            <form action="#">
+	                	
+					  <table class="table2">
+					    
+					    <tbody>
+							<tr>
+					        	<td class="td-menu">상품 명</td>
+					            <td class="td-content">백그라운드 세미나 룸(1+2)</td>
+					        </tr>
+					        <tr>
+					        	<td class="td-menu" >상세 내용</td>
+					            <td class="td-content td-content-detail">
+					            		날짜　:　2021.05.20. (수)<br>
+					            		인원　:　5 명			            			            
+					            </td>
+					        </tr>
+					        <tr>
+					        	<td class="td-menu" >최종 결제 금액</td>
+					            <td class="td-content">
+					            										  
+									<span>총 </span> <span style="color: #0f6756; font-size: 150%; font-weight: bold">40,000</span>
+									<span> 원</span>
+									 									
+					            </td>
+					        </tr>
+					        <tr>
+					        	<td class="td-menu" >결제 일시</td>
+					        	<td>2021.05.17. (일) 15:32</td>
+					        </tr>
+					        <tr>
+					        	<td class="td-menu" >결제 수단</td>
+					        	<td>카드 결제</td>
+					        </tr>
+					    </tbody>
+					    
+					  </table>
+					  
+					  <br><br>
+					  
+  	
+               </form> 	
+                	
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
+</body>
+
+</html>

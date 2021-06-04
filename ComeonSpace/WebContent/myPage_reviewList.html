@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zay Shop - Product Listing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+	
+</head>
+<style>
+
+	*{
+		font-family: 'Nanum Gothic', sans-serif;
+	}
+	
+	.myP-main{
+		border-bottom: 3px solid green;
+		text-align: center;
+		padding-bottom: 10px; 
+	}
+	.list-text{
+		font-size: 13px !important;
+	}
+
+	.review-title{
+		text-align: center;
+	}
+	
+	.hr-height{
+		height: 3px solid;
+	}
+
+	.reviewList-title{
+		font-size: 25px !important;
+		font-weight: bold;
+	}
+    
+    .reviewList-date{
+    	color: gray;
+    }
+
+	.reviewLsit-content{
+		padding: 20px 30px 30px 0;
+	}
+	
+	.btn-position{
+		position: relative;
+		bottom: 4px;
+		zoom: 0.8;
+	}
+	
+</style>
+<body>
+
+    <!-- Start Content -->
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="h3 pb-4">마이페이지</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	개인정보수정
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	나의 문의내역
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	판매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;작성된 후기</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;결제내역</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	구매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;후기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="myP-main h2">
+                    	마이페이지
+                </div>
+                <div>
+                	
+                	<br><br><hr><br>
+                	<h3 class="review-title">나의 리뷰 관리</h3>
+                	<br><hr><br><br>	
+	            
+						<div class="container">
+						    <div class="row review-list">
+						        <div class="review-desc col-md-offset-2 col-md-8">
+						        	<span class="reviewList-title">신촌 스터디룸[주야장천]</span><span>　<button type="button" class="btn btn-secondary btn-sm btn-position">삭제하기</button></span><br>
+						        	<span class="">
+						        		<i class="fa fa-star text-warning"></i>
+		                                <i class="fa fa-star text-warning"></i>
+		                                <i class="fa fa-star text-warning"></i>
+		                                <i class="fa fa-star-half text-warning"></i>
+		                                <i class="fa fa-star text-secondary"></i>	
+						        	</span>
+						        	<span class="reviewList-date">2021-05-21</span> <span class="reviewList-date">작성됨</span>
+						        	<div class="reviewLsit-content">
+										처음 이용해 봤는데 나쁘지 않아용. 어쩌구저쩌구 살라살라 저쩌구 좋아요. 어쩌구저쩌구 살라살라 처음 이용해 봤는데 나쁘지 않아용. 어쩌구저쩌구 처음 이용해 봤는데 나쁘지 않아용. 어쩌구저쩌구 살라살라 저쩌구 좋아요
+						        	</div>
+						        </div>
+						        <div class="review-pic col-md-4"><img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail"></div>
+						    </div>
+						</div>
+						
+						<br><br><br>
+						
+						<div class="container">
+						    <div class="row review-list">
+						        <div class="review-desc col-md-offset-2 col-md-8">
+						        	<span class="reviewList-title">부산 스터디룸[주구장창]</span><span>　<button type="button" class="btn btn-secondary btn-sm btn-position">삭제하기</button></span><br>
+						        	<span class="">
+						        		<i class="fa fa-star text-warning"></i>
+		                                <i class="fa fa-star text-warning"></i>
+		                                <i class="fa fa-star text-secondary"></i>	
+		                                <i class="fa fa-star text-secondary"></i>
+		                                <i class="fa fa-star text-secondary"></i>
+						        	</span>
+						        	<span class="reviewList-date">2021-04-17</span> <span class="reviewList-date">작성됨</span>
+						        	<div class="reviewLsit-content">
+										알바생이 굉장히 불친절합니다. 흥
+						        	</div>
+						        </div>
+						        <div class="review-pic col-md-4"><img class="card-img img-fluid" src="assets/img/product_single_03.jpg" alt="Card image cap" id="product-detail"></div>
+						    </div>
+						</div>
+						
+						<br><br><br>
+						
+						<div class="container">
+						    <div class="row review-list">
+						        <div class="review-desc col-md-offset-2 col-md-8">
+						        	<span class="reviewList-title">수원 스터디룸[우하하하]</span><span>　<button type="button" class="btn btn-secondary btn-sm btn-position">삭제하기</button></span><br>
+						        	<span class="">
+						        		<i class="fa fa-star text-warning"></i>
+		                                <i class="fa fa-star text-warning"></i>
+		                                <i class="fa fa-star text-secondary"></i>	
+		                                <i class="fa fa-star text-secondary"></i>
+		                                <i class="fa fa-star text-secondary"></i>
+						        	</span>
+						        	<span class="reviewList-date">2021-03-10</span> <span class="reviewList-date">작성됨</span>
+						        	<div class="reviewLsit-content">
+										칼국수가 맛있어요.
+						        	</div>
+						        </div>
+						        <div class="review-pic col-md-4"><img class="card-img img-fluid" src="assets/img/product_single_02.jpg" alt="Card image cap" id="product-detail"></div>
+						    </div>
+						</div>
+						
+						<br><br><br>
+						
+						<button type="button" class="btn btn-outline-dark" style="position: relative; left: 400px;">더 보기 +</button>
+						
+						<br><br>
+                	
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
+</body>
+
+</html>
