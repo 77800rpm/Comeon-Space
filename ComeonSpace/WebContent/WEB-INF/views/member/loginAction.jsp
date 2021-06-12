@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <% String msg = (String)request.getAttribute("msg"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="WEB-INF/views/member/loginForm.jsp" %>
+	<script>
+		alert("<%= msg %>");
+		history.back();
+	</script>
 </body>
 </html>

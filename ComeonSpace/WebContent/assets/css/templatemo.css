@@ -29,11 +29,7 @@ Table of contents
 
 
 /* Typography */
-body, label, input, ul, li, p, div {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-}
+
 
 b {
   font-family: 'Nanum Gothic', sans-serif;
@@ -69,20 +65,6 @@ b {
   color: #0f6756;	
 }
 
-.h1 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 48px !important;
-  font-weight: 200 !important;
-}
-.h2 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 30px !important;
-  font-weight: 300;
-}
-.h3 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 22px !important;
-}
 
 
 /* General */
