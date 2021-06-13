@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="member.model.vo.Member"%>
+<% Member loginUser = (Member)session.getAttribute("loginUser"); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -250,9 +251,13 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="shop.html">고객센터 |</a>
-                        </li>
+                        </li>                       
                         <li class="nav-item">
+                       <% if(loginUser == null){ %> 
                             <a class="nav-link main-login" id="login">로그인</a>
+                       <% } else { %>
+                       		<a class="nav-link main-login" id="logout">로그아웃</a>
+                       <% } %>     
                         </li>
                     </ul>
                 </div>
@@ -278,6 +283,7 @@ https://templatemo.com/tm-559-zay-shop
            메뉴바는 자바스크립트 사용해야 할 것 같아 보류하려다가
            일단 css만 이용해서 만들었습니다.
     -->
+ 
     <ul id="menu">
     <p>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -804,6 +810,10 @@ https://templatemo.com/tm-559-zay-shop
 	<script>
 		$('#login').on('click', function(){
 			location.href="<%= request.getContextPath() %>/loginForm.me";
+		});
+		
+		$('#logout').on('click', function(){
+			location.href="<%= request.getContextPath() %>/logout.me";
 		});
 	</script>
 	
