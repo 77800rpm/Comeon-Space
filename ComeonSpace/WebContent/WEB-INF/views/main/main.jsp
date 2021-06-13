@@ -803,7 +803,7 @@ https://templatemo.com/tm-559-zay-shop
 	
 	<script>
 		$('#login').on('click', function(){
-			location.href="<%= request.getContextPath() %>/loginForm.jsp";
+			location.href="<%= request.getContextPath() %>/loginForm.me";
 		});
 	</script>
 	

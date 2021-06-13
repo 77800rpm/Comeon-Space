@@ -176,7 +176,7 @@
  		</form>	
  		
  			 <div class="btn-area" id="btn-area2">
- 				<button id="joinBtn" type="submit">회원가입</button>
+ 				<button id="joinBtn" type="button">회원가입</button>
  			</div>
 <!--	 			
  			<br>
@@ -219,7 +219,7 @@
  		});
  		
 		$('#joinBtn').on('click', function(){
-			location.href='<%= request.getContextPath() %>/signUp.do';	
+			location.href='<%= request.getContextPath() %>/signUp.me';	
 		});
  		
  	</script>
