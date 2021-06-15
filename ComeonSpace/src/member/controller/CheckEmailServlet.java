@@ -29,15 +29,26 @@ public class CheckEmailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		//inputId
 		String inputEmail = request.getParameter("inputEmail");
-		
+		System.out.println(inputEmail);
 		int result = new MemberService().checkEmail(inputEmail);
 		
-		request.setAttribute("result", result);
-		request.setAttribute("checkedEmail", inputEmail);
+//		request.setAttribute("result", result);
+//		request.setAttribute("checkedEmail", inputEmail);
+//		
+//		request.getRequestDispatcher("WEB-INF/views/member/checkEmailForm.jsp").forward(request, response);
+		System.out.println(result);
+		String msg = "";
+		if(result > 0) {
+			msg="사용 불가능한 이메일 입니다.";
+		} else {
+			msg="사용 가능한 이메일 입니다.";
+		}
 		
-		request.getRequestDispatcher("WEB-INF/views/member/checkEmailForm.jsp").forward(request, response);
+		response.setContentType("application/json; charset=UTF-8");
+		response.getWriter().println(result);
 	}
 
 	/**

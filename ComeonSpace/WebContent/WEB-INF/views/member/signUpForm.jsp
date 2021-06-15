@@ -31,9 +31,7 @@
 	.h2-div{color: rgb(15, 103, 86);}
  	#hostEnroll{display: none;}
 	.fileBtn{width: 60%; margin-bottom: 7px;}
-	#userNic{width: 78%; display: inline-block; margin-right: 6px;}
 	#errLast{display: inline-block;}
-	#userEmail{width: 78%; display: inline-block; margin-right: 6px;}
 	
 	
 </style>
@@ -48,7 +46,7 @@
             <div class="form-group">
             <label for="email"><span class="req">* </span> 이메일 : </label><br>
                     <input required type= "email" name="userEmail" id="userEmail" class="form-control" placeholder="이메일을 입력해주세요"/>
-                    <input type="button" value="중복확인" id="checkEmail">
+                    <div id="resultMsg3"></div>
             </div>
 
             <div class="form-group">
@@ -70,7 +68,7 @@
             <div class="form-group">
                 <label for="lastname"><span class="req">* </span> 닉네임 : </label><br>
                     <input class="form-control" type="text" name="userNic" id = "userNic" required />  
-                        <div id="errLast"><input type="button" value="중복확인" id="checkNick"></div>
+                        <div id="resultMsg4"></div>
             </div>
 
             <div class="form-group">
@@ -131,15 +129,53 @@
 			$("input:button[name=cancel]").click(function(){
 				location.href="<%= request.getContextPath() %>";
 			});
-			
-			$("#checkEmail").on("click",function(){
-				window.open("checkEmailForm.me", "emailCheckForm", "width=300, height=200");
-				checkEmail=true;
+			// 이메일 중복체크
+			$("#userEmail").blur(function(){
+				var check = $("#userEmail").val();
+				$.ajax({
+					url:"checkEmail.me",
+					data:{inputEmail: check},
+					success: function(data){
+							var result = '';
+							if(data == 0){
+								result = "<sub>사용 불가능한 이메일입니다.</sub>";
+								$("#resultMsg3").css("color", "blue");
+								checkEmail=true;
+							} else {
+								result = "<sub>사용 불가능한 이메일입니다.</sub>";
+								$("#resultMsg3").css("color", "red");
+							}
+							$("#resultMsg3").html(result);
+					},
+					error: function(data){
+						console.log("실패");
+					}
+					
+				});
 			});
-			
-			$("#checkNick").on("click", function(){
-				window.open("checkNickForm.me", "nickCheckFrom", "width=300, height=200");
-				checkNick=true;
+			// 닉네임 중복체크
+			$("#userNic").blur(function(){
+				var check = $("#userNic").val();
+				$.ajax({
+					url:"checkNick.me",
+					data:{inputNick: check},
+					success: function(data){
+							var result = '';
+							if(data == 0){
+								result = "<sub>사용 불가능한 닉네임입니다.</sub>";
+								$("#resultMsg4").css("color", "blue");
+								checkNick=true;
+							} else {
+								result = "<sub>사용 불가능한 닉네임입니다.</sub>";
+								$("#resultMsg4").css("color", "red");
+							}
+							$("#resultMsg4").html(result);
+					},
+					error: function(data){
+						console.log("실패");
+					}
+					
+				});
 			});
 			
 		})
