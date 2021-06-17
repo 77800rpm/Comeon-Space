@@ -13,13 +13,13 @@
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.ico">
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/templatemo.css">
-    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
     
     
         <!-- Load map styles -->
@@ -111,7 +111,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <a href=""><img class="img-fluid" src="../assets/img/banner_img_01.jpg" alt="" height=400px;></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+                            <a href=""><img class="img-fluid" src="assets/img/banner_img_01.jpg" alt="" height=400px;></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -132,7 +132,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="../assets/img/banner_img_02.jpg" alt="">
+                            <img class="img-fluid" src="assets/img/banner_img_02.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -152,7 +152,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="../assets/img/banner_img_03.jpg" alt="">	<!-- 이미지에 해당 공지사항 경로 링크 적용 -->
+                            <img class="img-fluid" src="assets/img/banner_img_03.jpg" alt="">	<!-- 이미지에 해당 공지사항 경로 링크 적용 -->
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
@@ -193,17 +193,17 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="../assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+                <a href="#"><img src="assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
                 <h5 class="text-center mt-3 mb-3">서교 레트로스페이스</h5>
                 
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="../assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+                <a href="#"><img src="assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
                 <h2 class="h5 text-center mt-3 mb-3">신도림 레오의 스튜디오</h2>
                 
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="../assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+                <a href="#"><img src="assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
                 <h2 class="h5 text-center mt-3 mb-3">성수 원데이노마드</h2>
             </div>
         </div>
@@ -414,7 +414,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="../assets/img/recommend_prod_01.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="assets/img/recommend_prod_01.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -441,7 +441,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="../assets/img/recommend_prod_02.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="assets/img/recommend_prod_02.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -466,7 +466,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="../assets/img/recommend_prod_03.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="assets/img/recommend_prod_03.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -511,10 +511,10 @@ https://templatemo.com/tm-559-zay-shop
         <!-- 슬라이드 쇼 -->
         <div class="carousel-item active">
         <!--가로-->
-        <img class="d-block w-100" height=300px; src="../assets/img/reviewofthemonth1.jpg" alt="First slide">
+        <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth1.jpg" alt="First slide">
         <div class="carousel-caption d-none d-md-block"> <h5>후암주방</h5> <p>후암동 공유주방</p> </div> </div>
-        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="../assets/img/reviewofthemonth2.jpg" alt="Second slide"> </div>
-        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="../assets/img/reviewofthemonth3.jpg" alt="Third slide"> </div>
+        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth2.jpg" alt="Second slide"> </div>
+        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth3.jpg" alt="Third slide"> </div>
         <!-- / 슬라이드 쇼 끝 -->
         
         <!-- 왼쪽 오른쪽 화살표 버튼 -->
