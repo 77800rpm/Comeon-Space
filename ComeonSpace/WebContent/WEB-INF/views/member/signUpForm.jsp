@@ -39,7 +39,7 @@
     <div class="container ">
 	<div class="row ">
         <div class="col-md-6 center-block">
-            <form onsubmit="return signUp();" action="<%=request.getContextPath() %>/signUp.do" method="post" id="signUpForm" name="signUpForm" role="form">
+            <form onsubmit="return signUp();" action="<%=request.getContextPath() %>/signUp.do" method="post" id="signUpForm" name="signUpForm" role="form" encType="multipart/form-data">
             <h2 class="text-center h2-div font-div">Comeon Space</h2><br>
             <fieldset><legend class="text-center font-div">회원가입<span class="req"></span></legend>
 
@@ -51,7 +51,7 @@
 
             <div class="form-group">
                 <label for="password"><span class="req">* </span> 비밀번호: </label>
-                    <input required name="userPwd" type="password" class="form-control inputpass" id="pass1" placeholder="8~12자 숫자,영문,조합" onblur="pwd();"/>
+                    <input required name="userPwd" type="password" class="form-control inputpass" id="pass1" placeholder="8~12자 영문, 숫자나 대문자 1개 이상 조합" onblur="pwd();"/>
                     	<div id="resultMsg"></div>
 
                 <label for="password"><span class="req">* </span> 비밀번호 확인: </label>
@@ -83,7 +83,7 @@
 			
 			<div class="form-group host-enroll" id="hostEnroll">
 				<label>* 통장 사본 :</label>&nbsp;&nbsp;<input type="file" name="bankCopy" class="d-inline fileBtn" id="bankCopy" multiple><br><br>
-				<label>*사업자 등록증 :</label>&nbsp;&nbsp;<input type="file" class="d-inline fileBtn" id="enrollImg" name="hostEnroll" multiple>
+				<label>*사업자 등록증 :</label>&nbsp;&nbsp;<input type="file" name="hostEnroll" class="d-inline fileBtn" id="enrollImg"  multiple>
 			</div>
 			
             <div class="form-group">
@@ -144,6 +144,7 @@
 							} else {
 								result = "<sub>사용 불가능한 이메일입니다.</sub>";
 								$("#resultMsg3").css("color", "red");
+								checkEmail=false;
 							}
 							$("#resultMsg3").html(result);
 					},
@@ -162,12 +163,13 @@
 					success: function(data){
 							var result = '';
 							if(data == 0){
-								result = "<sub>사용 불가능한 닉네임입니다.</sub>";
+								result = "<sub>사용 가능한 닉네임입니다.</sub>";
 								$("#resultMsg4").css("color", "blue");
 								checkNick=true;
 							} else {
 								result = "<sub>사용 불가능한 닉네임입니다.</sub>";
 								$("#resultMsg4").css("color", "red");
+								checkNick=false;
 							}
 							$("#resultMsg4").html(result);
 					},
@@ -179,9 +181,10 @@
 			});
 			
 		})
-		
+		// 비밀번호 입력
 		function pwd(){
-			var regExp = /^[a-zA-Z0-9]{8,12}$/;
+			var regExp = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,12}$/;
+
 			var pwd1 = document.getElementById("pass1");
 			var result = document.getElementById("resultMsg");
 			
@@ -190,6 +193,7 @@
 			if(!check){
 				result.innerHTML = "<sub>사용할 수 없는 비밀번호입니다.</sub><br>";
 				result.style.color="red";
+				checkPwd1 = false;
 			} else {
 				result.innerHTML = "<sub>사용 가능한 비밀번호입니다.</sub><br>";
 				result.style.color="blue";
@@ -197,7 +201,7 @@
 			}
 			
 		}
-		
+		// 비밀번호 확인
 		function checkP(){
 			var pwd1 = document.getElementById("pass1");
 			var pwd2 = document.getElementById("pass2");
@@ -210,10 +214,12 @@
 			} else {
 				result.style.color = "red";
 				result.innerHTML = "<sub>비밀번호가 일치하지 않습니다.</sub><br>";
+				checkPwd2 = false;
 			}
 			
 		}
 		
+		// 모든조건 만족하면 회원가입 true
 		function signUp(){
 			if(hostEnroll && checkPwd1 && checkPwd2 && checkEmail && checkNick){
 				if(document.getElementById("bankCopy").value != "" && document.getElementById("enrollImg").value != ""){
