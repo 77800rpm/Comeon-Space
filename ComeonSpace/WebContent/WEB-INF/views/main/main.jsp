@@ -61,6 +61,9 @@ https://templatemo.com/tm-559-zay-shop
 	
 	.carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ }
 	
+	#login, #logout {
+		cursor:pointer;
+	}
 	
 /* 메뉴바 스타일 */
 	
@@ -75,6 +78,7 @@ https://templatemo.com/tm-559-zay-shop
   
   -webkit-user-select: none;
   user-select: none;
+  
 }
 
 #menuToggle a
@@ -228,8 +232,6 @@ https://templatemo.com/tm-559-zay-shop
 
 <body>
 	
-	
-	
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -243,6 +245,7 @@ https://templatemo.com/tm-559-zay-shop
                 <img src="resources/image/search.png" id="searchImg">
                 <div class="flex-fill">
                     <ul class="nav header-list">
+                        <li class="nav-item">                
                         <li class="nav-item">
                             <a class="nav-link" href="index.html">공간보기 |</a>
                         </li>
@@ -256,7 +259,7 @@ https://templatemo.com/tm-559-zay-shop
                        <% if(loginUser == null){ %> 
                             <a class="nav-link main-login" id="login">로그인</a>
                        <% } else { %>
-                       		<a class="nav-link main-login" id="logout">로그아웃</a>
+                       		<a class="nav-link main-login btn-member-logout" id="logout">로그아웃</a>
                        <% } %>     
                         </li>
                     </ul>
@@ -265,8 +268,14 @@ https://templatemo.com/tm-559-zay-shop
 
         </div>
     </nav>
-    <!-- Close Header -->	
+    <!-- Close Header -->		
 	
+
+
+
+
+<% if(loginUser != null){ %>  	
+
 <!-- 메인페이지 메뉴바 시작 -->
 <nav role="navigation">
   <div id="menuToggle">
@@ -288,22 +297,27 @@ https://templatemo.com/tm-559-zay-shop
     <p>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <img src="https://img.hankyung.com/photo/202104/01.25738179.1.jpg" style="width: 70%">
-      </p><br><br><br>
+      </p><br>
       <p>
-      <a>김도지  회원님 환영합니다!</a> <!-- 회원 이름 가져오기 -->
+      <a><%= loginUser.getUserName() %>  회원님 환영합니다!</a> <!-- 회원 이름 가져오기 -->
       </p>
       <a href="mainPage.html"><li>홈</li></a>
       <a href="#"><li>고객센터</li></a>
       <a href="#"><li>마이페이지</li></a>
       <a href="https://www.instagram.com/willyarchives/" target="_blank"><li>👻</li></a>
       <a href="#" target="_blank"><li>
-      <button type="button" class="btn btn-warning">로그아웃😥</button></li></a>	<!-- 로그아웃 후 홈 화면 이동 -->
+      <button type="button" class="btn btn-warning btn-member-logout">로그아웃😥</button></li></a>	<!-- 로그아웃 후 홈 화면 이동 -->
     </ul>
   </div>
 </nav>
 	
 	<!-- 메인페이지 메뉴바 끝 -->
-	
+<% } %>     	
+
+
+
+
+
     <br><br><br><br>
     
     <!-- Modal -->
@@ -812,7 +826,7 @@ https://templatemo.com/tm-559-zay-shop
 			location.href="<%= request.getContextPath() %>/loginForm.me";
 		});
 		
-		$('#logout').on('click', function(){
+		$('.btn-member-logout').on('click', function(){
 			location.href="<%= request.getContextPath() %>/logout.me";
 		});
 	</script>
