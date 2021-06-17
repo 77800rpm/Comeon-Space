@@ -2,9 +2,13 @@ package member.model.service;
 
 import static common.JDBCTemplate.close;
 import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
+import common.img.model.vo.Img;
 import member.model.dao.MemberDAO;
 import member.model.vo.Member;
 
@@ -27,12 +31,33 @@ public class MemberService {
 		return result;
 	}
 
-	public int insertMember(Member member) {
+	public int insertMember(Member member, ArrayList<Img> list) {
 		Connection conn = getConnection();
 		
-		int result = new MemberDAO().insertMember(conn, member);
+		MemberDAO dao = new MemberDAO();
+		int result = dao.insertMember(conn, member);
+		int imgResult = 0;
+		if(!list.isEmpty()) {
+			imgResult = dao.insertHostImg(conn, list);
+			
+			if(imgResult > 0 && result > 0) {
+				commit(conn);
+				return result;
+			} else {
+				rollback(conn);
+				return 0;
+			}
+		} else {
+			if(result > 0) {
+				commit(conn);
+				return result;
+			} else {
+				rollback(conn);
+				return 0;
+			}
+		}
 		
-		return result;
+		
 	}
 
 	public Member loginMember(Member member) {
