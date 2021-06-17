@@ -138,7 +138,7 @@
 					success: function(data){
 							var result = '';
 							if(data == 0){
-								result = "<sub>사용 불가능한 이메일입니다.</sub>";
+								result = "<sub>사용 가능한 이메일입니다.</sub>";
 								$("#resultMsg3").css("color", "blue");
 								checkEmail=true;
 							} else {

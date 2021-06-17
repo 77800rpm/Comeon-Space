@@ -45,9 +45,9 @@ public class LoginServlet extends HttpServlet {
          session.setAttribute("loginUser", loginUser);
          session.setMaxInactiveInterval(600);
          
-         //response.sendRedirect(request.getContextPath());        
- 		
- 		request.getRequestDispatcher("WEB-INF/views/main/main.jsp").forward(request, response);
+//        response.sendRedirect(request.getContextPath());        
+        response.sendRedirect("index.jsp");
+// 		request.getRequestDispatcher("WEB-INF/views/main/main.jsp").forward(request, response);
 /*               
       } else {
          request.setAttribute("alertMsg", "존재하지 않는 회원입니다. 아이디와 비밀번호를 확인해 주세요.");
