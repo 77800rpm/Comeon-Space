@@ -16,7 +16,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <body>
-
+<%@ include file="../common/header.jsp" %>
 <!-- font -->
 <div style="font-family:Sans-serif">
 
@@ -211,7 +211,8 @@
 </div>
 
 </div>
-</div>      
+</div>
+<%@ include file="../common/footer.jsp" %>
 </body>
 
 </html>
