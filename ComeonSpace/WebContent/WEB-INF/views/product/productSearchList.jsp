@@ -1,21 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Zay Shop - Product Listing Page</title>
+    <title>Common Space - Search Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/templatemo.css">
-    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
@@ -132,7 +134,7 @@ https://templatemo.com/tm-559-zay-shop
               <form>              
 				<div class="dropdown3">               
 				<select id="browsers2" class="dropdownn" name="browsers">
-				    <option value="모든공간">모든 공간</option>
+				    <option value="모든공간" selected>모든 공간</option>
 				    <option value="오피스">오피스</option>
 				    <option value="스터디룸">스터디룸</option>
 				    <option value="공연장">공연장</option>
@@ -142,7 +144,7 @@ https://templatemo.com/tm-559-zay-shop
 				    <option value="회의실s">회의실</option>
 				</select>
 				<select id="browsers3" class="dropdownn" name="browsers">
-				    <option value="모든지역">모든 지역</option>
+				    <option value="모든지역" selected>모든 지역</option>
 				    <option value="경기도">경기도</option>
 				    <option value="서울">서울</option>
 				    <option value="인천">인천</option>
@@ -151,9 +153,8 @@ https://templatemo.com/tm-559-zay-shop
 				    <option value="부산울산">부산/울산</option>
 				    <option value="경상">경상</option>
 				    <option value="광주전라제주">광주/전라/제주</option>
-				</select>
-				
-				<input type="date" id="browser4" min="today">
+				</select>				
+				<input type="date" id="browser4" name="search-date" min="today">
 				<button type="submit" id="browser5">search</button>				
 				</div>   
 			</form> 
@@ -161,7 +162,7 @@ https://templatemo.com/tm-559-zay-shop
     </div>
     
     <span class="menu_under_img">
-    <img class="menu_under_img" src="../assets/img/space_3_img.jpg">
+    <img class="menu_under_img" src="assets/img/space_3_img.jpg">
     </span>
     
     <hr>
@@ -169,7 +170,7 @@ https://templatemo.com/tm-559-zay-shop
     
     <div class="row pro-list" id="pro-list-1">
         <div class="pro-photo col-md-3">
-	        <img class="card-img img-fluid" src="../assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">	        
+	        <img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">	        
         </div>
         <div class="pro-desc col-md-6 pro-list-title" >
         	<p class="pro-desc-title">신촌 24시 스터디룸 [주야창천]</p>
@@ -189,7 +190,7 @@ https://templatemo.com/tm-559-zay-shop
     </div><br><hr><br>
     <div class="row pro-list" id="pro-list-2">
         <div class="pro-photo col-md-3">
-	        <img class="card-img img-fluid" src="../assets/img/product_single_02.jpg" alt="Card image cap" id="product-detail">	        
+	        <img class="card-img img-fluid" src="assets/img/product_single_02.jpg" alt="Card image cap" id="product-detail">	        
         </div>
         <div class="pro-desc col-md-6 pro-list-title">
         	<p class="pro-desc-title">공간명입니다아</p>
@@ -203,7 +204,7 @@ https://templatemo.com/tm-559-zay-shop
     </div><br><hr><br>
     <div class="row pro-list" id="pro-list-3">
         <div class="pro-photo col-md-3">
-	        <img class="card-img img-fluid" src="../assets/img/product_single_03.jpg" alt="Card image cap" id="product-detail">	        
+	        <img class="card-img img-fluid" src="assets/img/product_single_03.jpg" alt="Card image cap" id="product-detail">	        
         </div>
         <div class="pro-desc col-md-6 pro-list-title">
         	<p class="pro-desc-title">공간명입니다아</p>
@@ -217,7 +218,7 @@ https://templatemo.com/tm-559-zay-shop
     </div><br><hr><br>
     <div class="row pro-list" id="pro-list-4">
         <div class="pro-photo col-md-3">
-	        <img class="card-img img-fluid" src="../assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">	        
+	        <img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">	        
         </div>
         <div class="pro-desc col-md-6 pro-list-title">
         	<p class="pro-desc-title">공간명입니다아</p>
@@ -231,7 +232,7 @@ https://templatemo.com/tm-559-zay-shop
     </div><br><hr><br>
     <div class="row pro-list" id="pro-list-5">
         <div class="pro-photo col-md-3">
-	        <img class="card-img img-fluid" src="../assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">	        
+	        <img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">	        
         </div>
         <div class="pro-desc col-md-6 pro-list-title">
         	<p class="pro-desc-title">공간명입니다아</p>
@@ -265,39 +266,44 @@ https://templatemo.com/tm-559-zay-shop
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="../assets/js/jquery-1.11.0.min.js"></script>
-    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/templatemo.js"></script>
-    <script src="../assets/js/custom.js"></script>
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
     <!-- End Script -->
     
-    
     <script>
-	$(function(){
-		$('#pro-list-1 div').mouseenter(function(){
-			$(this).parent().css({'background':'#F2FFED', 'cursor':'pointer'});
-		}).mouseout(function(){
-			$(this).parent().css({'background':'none'});
-		}).click(function(){
-			var num = $(this).parent().children().eq(0).text();
-			location.href="<%= request.getContextPath() %>/detail.no?no=" + num;
+    
+    // 상품 위에 마우스 커서 댔을 시 색상 변경 및 클릭 활성화
+    
+	    	$(function(){
+			$('#pro-list-1 div').mouseenter(function(){
+				$(this).parent().css({'background':'#F2FFED', 'cursor':'pointer'});
+			}).mouseout(function(){
+				$(this).parent().css({'background':'none'});
+			}).click(function(){
+				var num = $(this).parent().children().eq(0).text();
+				location.href="<%= request.getContextPath() %>/detail.no?no=" + num;
+			});
 		});
-	});
-	
-	$(document).ready(function() {
-	    var date = new Date();
+    	
+    
+    // 검색 최소 날짜 : 오늘
+    
+	    	$(document).ready(function() {
+	    	    var date = new Date();
 
-	    var day = date.getDate();
-	    var month = date.getMonth() + 1;
-	    var year = date.getFullYear();
+	    	    var day = date.getDate();
+	    	    var month = date.getMonth() + 1;
+	    	    var year = date.getFullYear();
 
-	    if (month < 10) month = "0" + month;
-	    if (day < 10) day = "0" + day;
+	    	    if (month < 10) month = "0" + month;
+	    	    if (day < 10) day = "0" + day;
 
-	    var today = year + "-" + month + "-" + day;       
-	    $("#browser4").attr("value", today);
-	});
+	    	    var today = year + "-" + month + "-" + day;       
+	    	    $("#browser4").attr("value", today);
+	    	});    
     </script>
 </body>
 
