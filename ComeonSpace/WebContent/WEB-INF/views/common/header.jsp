@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
 <!-- 검색 기능 및 페이지 연결 필요 -->
@@ -63,7 +63,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="index.jsp"><img src="../assets/img/logo.png" id="logoImg"></a>
+    <a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" id="logoImg"></a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="#">공간등록 <span class="sr-only">(current)</span></a>
