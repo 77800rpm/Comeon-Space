@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="member.model.vo.Member"%>
-<% Member loginUser = (Member)session.getAttribute("loginUser"); %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- 페이지 연결 / 지도 마커 표시 / 카테고리 검색 기능 -->
 
 <head>
     <title>Come on Space! - 메인페이지</title>
@@ -12,24 +13,24 @@
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.ico">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
     
     
         <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/templatemo.js"></script>
+    <script src="../assets/js/custom.js"></script>
 <!--
     
 TemplateMo 559 Zay Shop
@@ -62,249 +63,14 @@ https://templatemo.com/tm-559-zay-shop
 	.carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ }
 	
 	
-/* 메뉴바 스타일 */
-	
-#menuToggle
-{
-  display: block;
-  position: relative;
-  top: 75px;
-  left: 50px;
-  
-  z-index: 1;
-  
-  -webkit-user-select: none;
-  user-select: none;
-}
 
-#menuToggle a
-{
-  text-decoration: none;
-  color: #232323;
-  
-  transition: color 0.3s ease;
-}
-
-#menuToggle a:hover
-{
-  color: rgb(244,162,1);
-}
-
-
-#menuToggle input
-{
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-  
-  cursor: pointer;
-  
-  opacity: 0; 
-  z-index: 2; 
-  
-  -webkit-touch-callout: none;
-}
-
-/*
- * 햄버거 메뉴
- */
-#menuToggle span
-{
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-  
-  background: rgb(15, 103, 86);
-  border-radius: 3px;
-  
-  z-index: 1;
-  
-  transform-origin: 4px 0px;
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
-}
-
-#menuToggle span:first-child
-{
-  transform-origin: 0% 0%;
-}
-
-#menuToggle span:nth-last-child(2)
-{
-  transform-origin: 0% 100%;
-}
-
-/* 
- * 
- * 메뉴 모양 변형
- */
-#menuToggle input:checked ~ span
-{
-  opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: rgb(244,162,1);
-}
-
-/*
- * 
- */
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-
-
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-
-#menu
-{
-  font-family: 'jua', sans-serif;
-  position: absolute;
-  width: 350px;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  
-  background: rgb(15, 103, 86);
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-}
-
-#menu li
-{
-  padding: 10px 0;
-  font-size: 22px;
-}
-
-#logOut{text-decoration: underline;}
-
-
-#menuToggle input:checked ~ ul
-{
-  transform: none;
-}
-	
-/* 메뉴바 스타일 끝 */
-
-
-/* header */
-
-	.bar-menu{color: #0f6756; font-weight: bold;}
-	#logoImg{width: 60px; height: auto;}
-	#menuImg{width: 40px; height: auto;}
-	.header-list{float: right; padding: 0px;}
- 	.nav-link{padding: 4px; font-size: 20px !important;}
- 	.main-login{
- 		background-color: #0f6756;
- 		border-radius: 5px 5px 5px 5px;
- 		color: white !important;
-
-	}
-	#search{border: none; border-bottom: 1px solid black;}
-	#searchImg{width:15px; height: auto;}	
-	.footer{text-align: center;}
-	.footer-list{margin: 6px;}
-      
 </style>
 </head>
 
 
 <body>
-	
-	
-	
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-			
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-            	<img src="resources/image/logo.png" id="logoImg">
-            </a>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <input type="text" id="search" placeholder="어떤 장소를 찾으시나요?">
-                <img src="resources/image/search.png" id="searchImg">
-                <div class="flex-fill">
-                    <ul class="nav header-list">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">공간보기 |</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">공간등록 |</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="shop.html">고객센터 |</a>
-                        </li>                       
-                        <li class="nav-item">
-                       <% if(loginUser == null){ %> 
-                            <a class="nav-link main-login" id="login">로그인</a>
-                       <% } else { %>
-                       		<a class="nav-link main-login" id="logout">로그아웃</a>
-                       <% } %>     
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-    <!-- Close Header -->	
-	
-<!-- 메인페이지 메뉴바 시작 -->
-<nav role="navigation">
-  <div id="menuToggle">
-    <input type="checkbox" />
-    
-    <!--
-           햄버거 메뉴
-    -->
-    <span></span>
-    <span></span>
-    <span></span>
-    
-    <!--
-           메뉴바는 자바스크립트 사용해야 할 것 같아 보류하려다가
-           일단 css만 이용해서 만들었습니다.
-    -->
+        
  
-    <ul id="menu">
-    <p>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="https://img.hankyung.com/photo/202104/01.25738179.1.jpg" style="width: 70%">
-      </p><br><br><br>
-      <p>
-      <a>김도지  회원님 환영합니다!</a> <!-- 회원 이름 가져오기 -->
-      </p>
-      <a href="mainPage.html"><li>홈</li></a>
-      <a href="#"><li>고객센터</li></a>
-      <a href="#"><li>마이페이지</li></a>
-      <a href="https://www.instagram.com/willyarchives/" target="_blank"><li>👻</li></a>
-      <a href="#" target="_blank"><li>
-      <button type="button" class="btn btn-warning">로그아웃😥</button></li></a>	<!-- 로그아웃 후 홈 화면 이동 -->
-    </ul>
-  </div>
-</nav>
-	
-	<!-- 메인페이지 메뉴바 끝 -->
-	
-    <br><br><br><br>
     
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -323,7 +89,7 @@ https://templatemo.com/tm-559-zay-shop
         </div>
     </div>
 
-
+ 
 	
     <!-- 메인 배너 공간 시작 -->
     <!-- 
@@ -345,11 +111,11 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <a href=""><img class="img-fluid" src="assets/img/banner_img_01.jpg" alt="" height=400px;></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+                            <a href=""><img class="img-fluid" src="../assets/img/banner_img_01.jpg" alt="" height=400px;></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
-                                <h1 style="color: rgb(15, 103, 86)"><b>뒷마당 스페이스</b> 05/10~06/10</h1>
+                                <h1 style="color: rgb(15, 103, 86)">뒷마당 스페이스<br> 05/10~06/10</h1>
                                 <h3 class="h2">런칭 기념 얼리버드 특가!</h3>
                                 <p>
                                                                         호스트 박신우님의 취향이 곳곳에 있는 <a rel="sponsored" style="color: rgb(15, 103, 86)" href="https://templatemo.com" target="_blank">뒷마당 스페이스</a>가 오픈했습니다! 
@@ -366,11 +132,11 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="assets/img/banner_img_02.jpg" alt="">
+                            <img class="img-fluid" src="../assets/img/banner_img_02.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
-                                <h1 style="color: rgb(15, 103, 86)"><b><월간 스페이스></b><br>-아마추어 서울-</h1>
+                                <h1 style="color: rgb(15, 103, 86)">월간 스페이스<br>-아마추어 서울-</h1>
                                 <h3 class="h2">서울 애호가들의 사적인 지도</h3>
                                 <p>
                                                                         아마추어 서울은 서울 안의 장소에 관한  흥미로운 지도를 만듭니다.<br>
@@ -386,7 +152,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="assets/img/banner_img_03.jpg" alt="">	<!-- 이미지에 해당 공지사항 경로 링크 적용 -->
+                            <img class="img-fluid" src="../assets/img/banner_img_03.jpg" alt="">	<!-- 이미지에 해당 공지사항 경로 링크 적용 -->
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
@@ -427,17 +193,17 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+                <a href="#"><img src="../assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
                 <h5 class="text-center mt-3 mb-3">서교 레트로스페이스</h5>
                 
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+                <a href="#"><img src="../assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
                 <h2 class="h5 text-center mt-3 mb-3">신도림 레오의 스튜디오</h2>
                 
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+                <a href="#"><img src="../assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
                 <h2 class="h5 text-center mt-3 mb-3">성수 원데이노마드</h2>
             </div>
         </div>
@@ -648,7 +414,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="assets/img/feature_prod_01.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="../assets/img/recommend_prod_01.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -675,7 +441,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="assets/img/feature_prod_02.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="../assets/img/recommend_prod_02.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -700,7 +466,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="assets/img/feature_prod_03.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="../assets/img/recommend_prod_03.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -745,10 +511,10 @@ https://templatemo.com/tm-559-zay-shop
         <!-- 슬라이드 쇼 -->
         <div class="carousel-item active">
         <!--가로-->
-        <img class="d-block w-100" height=300px; src="./assets/img/reviewofthemonth1.jpg" alt="First slide">
+        <img class="d-block w-100" height=300px; src="../assets/img/reviewofthemonth1.jpg" alt="First slide">
         <div class="carousel-caption d-none d-md-block"> <h5>후암주방</h5> <p>후암동 공유주방</p> </div> </div>
-        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth2.jpg" alt="Second slide"> </div>
-        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth3.jpg" alt="Third slide"> </div>
+        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="../assets/img/reviewofthemonth2.jpg" alt="Second slide"> </div>
+        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="../assets/img/reviewofthemonth3.jpg" alt="Third slide"> </div>
         <!-- / 슬라이드 쇼 끝 -->
         
         <!-- 왼쪽 오른쪽 화살표 버튼 -->
@@ -792,33 +558,6 @@ https://templatemo.com/tm-559-zay-shop
 		</div>
 	
 	 -->
-	 <br><br><br><br>
-
-
-    <!-- Start Footer -->
-    <footer>
-      <div class="footer" style="color: rgb(15, 103, 86)">
-      <hr>
-		<span class="footer-list"><a>회사소개</a></span>      
-		<span class="footer-list"><a>이용약관</a></span>      
-		<span class="footer-list"><a>메뉴얼</a></span>      
-		<span class="footer-list"><a>고객센터</a></span>      
-      </div>
-    </footer>
-    <!-- End Footer -->
-	
-	<script>
-		$('#login').on('click', function(){
-			location.href="<%= request.getContextPath() %>/loginForm.me";
-		});
-		
-		$('#logout').on('click', function(){
-			location.href="<%= request.getContextPath() %>/logout.me";
-		});
-	</script>
-	
-	
-
 
 </body>
 
