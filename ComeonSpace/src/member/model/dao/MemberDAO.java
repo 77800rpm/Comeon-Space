@@ -8,8 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import common.img.model.vo.Img;
 import member.model.vo.Member;
 
 public class MemberDAO {
@@ -140,5 +142,35 @@ public class MemberDAO {
 		
 		return loginUser;
 	}
+
+	public int insertHostImg(Connection conn, ArrayList<Img> list) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertHostImg");
+		
+		try {
+			for(int i = 0; i < 2; i++) {
+				Img img = list.get(i);
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setInt(1, img.getImgLevel());
+				pstmt.setString(2, img.getImgOrigin());
+				pstmt.setString(3, img.getImgChange());
+				pstmt.setString(4, img.getImgPath());
+			
+				result += pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
 	
 }
