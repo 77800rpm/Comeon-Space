@@ -115,7 +115,7 @@ https://templatemo.com/tm-559-zay-shop
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
-                                <h1 style="color: rgb(15, 103, 86)"><b>뒷마당 스페이스</b> 05/10~06/10</h1>
+                                <h1 style="color: rgb(15, 103, 86)">뒷마당 스페이스<br> 05/10~06/10</h1>
                                 <h3 class="h2">런칭 기념 얼리버드 특가!</h3>
                                 <p>
                                                                         호스트 박신우님의 취향이 곳곳에 있는 <a rel="sponsored" style="color: rgb(15, 103, 86)" href="https://templatemo.com" target="_blank">뒷마당 스페이스</a>가 오픈했습니다! 
@@ -136,7 +136,7 @@ https://templatemo.com/tm-559-zay-shop
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
-                                <h1 style="color: rgb(15, 103, 86)"><b><월간 스페이스></b><br>-아마추어 서울-</h1>
+                                <h1 style="color: rgb(15, 103, 86)">월간 스페이스<br>-아마추어 서울-</h1>
                                 <h3 class="h2">서울 애호가들의 사적인 지도</h3>
                                 <p>
                                                                         아마추어 서울은 서울 안의 장소에 관한  흥미로운 지도를 만듭니다.<br>
@@ -414,7 +414,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="../assets/img/feature_prod_01.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="../assets/img/recommend_prod_01.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -441,7 +441,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="../assets/img/feature_prod_02.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="../assets/img/recommend_prod_02.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -466,7 +466,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="../assets/img/feature_prod_03.jpg" class="card-img-top" alt="..." height=400px;>
+                            <img src="../assets/img/recommend_prod_03.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
