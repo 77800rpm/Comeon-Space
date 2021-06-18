@@ -59,29 +59,6 @@
         <th>권한</th>
       </tr>
 
-<%
-		if(list.isEmpty()){
-	%>
-				<tr>
-					<td colspan="6">조회된 리스트가 없습니다.</td>
-				</tr>
-	<%
-		}else{
-			for(Board b : list){
-	 %>
-	 			<tr> 
-					<td><%= b.getBoardId() %></td>
-	 				<td><%= b.getCategory() %></td>
-					<td><%= b.getBoardTitle() %></td>
-					<td><%= b.getBoardWriter() %></td>
-					<td><%= b.getBoardCount() %></td>
-					<td><%= b.getCreateDate() %></td>
-	 			</tr>
-	 <%
-			}
-		}
-	 %>
-
     </thead>
     <tbody>
       <tr>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList" %>
+<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +17,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <body>
-<%@ include file="../common/header.jsp" %>
+<%-- <form action="<%= request.getContextPath() %>/selectUser.me"> --%>
+
+<%@ include file="WEB-INF/views/common/header.jsp" %>
 <!-- font -->
 <div style="font-family:Sans-serif">
 
@@ -25,7 +28,7 @@
  	 <br><br><br><br><br>
   <div style="margin-left:150px">
 	  <h5 class="w3-bar-item"><b>회원관리</b></h5>
-	  <a href="#" class="w3-bar-item w3-button">전체회원관리</a>
+	  <a href="<%= request.getContextPath() %>/selectUser.me" class="w3-bar-item w3-button">전체회원관리</a>
 	  <a href="#" class="w3-bar-item w3-button">통계 관리</a>
 	  <h5 class="w3-bar-item"><b>시설관리</b></h5>
 	  <a href="#" class="w3-bar-item w3-button">공간승인/취소</a>
@@ -52,147 +55,40 @@
 
 <div>           
   <table class="table table-bordered table-sm" style="text-align:center;">
-    <thead class="w3-light-grey">
-      <tr>
-        <th>이름</th>
-        <th>아이디</th>
-        <th>판매횟수</th>
-        <th>구매횟수</th>
-        <th>권한</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>10</td>
-        <td>8</td>
-        <td>
-      <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>8</td>
-        <td>5</td>
-        <td> 
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0</td>
-        <td>1</td>
-        <td>
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0</td>
-        <td>1</td>
-        <td>
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0</td>
-        <td>1</td>
-        <td>
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0</td>
-        <td>1</td>
-        <td>
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0</td>
-        <td>1</td>
-        <td>
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0</td>
-        <td>1</td>
-        <td>
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0</td>
-        <td>1</td>
-        <td>
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0</td>
-        <td>1</td>
-        <td>
-        <select name="position">
-		  <option value="관리자">관리자</option>
-		  <option value="호스트">호스트</option>
-		  <option value="게스트">게스트</option>
-   	  </select>
-        </td>
-      </tr>
-    </tbody>
+   	<% if(list.isEmpty()){ %>
+   		<thead class="w3-light-grey">
+		   	<tr>
+		   		<td>가입된 회원이 없습니다.</td>
+		   	</tr>
+		</thead>
+   	<% } else{ %>
+   		<thead class="w3-light-grey">
+	   		<tr>
+		        <th>이름</th>
+		        <th>이메일</th>
+		        <th>닉네임</th>
+		        <th>핸드폰번호</th>
+		        <th>권한</th>
+		      </tr>
+		 </thead>
+		 <tbody>
+   			<% for(Member m : list){ %>
+		      <tr>
+		        <td><%= m.getUserName() %></td>
+		        <td><%= m.getUserEmail() %></td>
+		        <td><%= m.getUserNic() %></td>
+		        <td><%= m.getUserPhone() %></td>
+		        <td>
+			      <select name="position">
+					  <option value="관리자" <%= m.getUserDiv().equals("관") ? "selected":"" %>>관리자</option>
+					  <option value="호스트" <%= m.getUserDiv().equals("호") ? "selected":"" %>>호스트</option>
+					  <option value="게스트" <%= m.getUserDiv().equals("게") ? "selected":"" %>>게스트</option>
+			   	  </select>
+		        </td>
+		      </tr>
+   			<% } %>
+   		</tbody>
+      <% } %>
    </table>
 	</div>
 </div>
@@ -212,7 +108,10 @@
 
 </div>
 </div>
-<%@ include file="../common/footer.jsp" %>
+
+<%@ include file="WEB-INF/views/common/footer.jsp" %>
+
+<!-- </form> -->
 </body>
 
 </html>

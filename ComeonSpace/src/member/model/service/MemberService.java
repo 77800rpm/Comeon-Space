@@ -71,7 +71,15 @@ public class MemberService {
 		return loginUser;
 		
 	}
-
+	
+	// 관리자페이지 - 회원조회관리
+	public ArrayList<Member> adminSelectUser() {
+		Connection conn = getConnection();
+		ArrayList<Member> selectUser = new MemberDAO().adminSelectUser(conn);
+		close(conn);
+		
+		return selectUser;
+	}
 
 
 	

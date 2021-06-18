@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -171,6 +172,42 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	// 관리자페이지 - 회원조회관리
+	public ArrayList<Member> adminSelectUser(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Member> selectUser = null;
+		
+		String query = prop.getProperty("adminSelectUser");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(query);
+			selectUser = new ArrayList<Member>();
+			while(rset.next()) {
+				Member m = new Member(rset.getInt("USER_NUM"),
+									   rset.getString("USER_EMAIL"),
+									   rset.getString("USER_PWD"),
+									   rset.getString("USER_NAME"),
+									   rset.getString("USER_NIC"),
+									   rset.getString("USER_PHONE"),
+									   rset.getDate("USER_CREATE"),
+									   rset.getString("USER_DIV"),
+									   rset.getString("USER_DELETE"));
+				selectUser.add(m);
+			} 
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		return selectUser;
+	}
+
 
 	
 }
