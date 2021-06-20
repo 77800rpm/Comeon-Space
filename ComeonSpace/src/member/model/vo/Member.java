@@ -3,6 +3,7 @@ package member.model.vo;
 import java.sql.Date;
 
 public class Member {
+	private int userNum;
 	private String userEmail;
 	private String userPwd;
 	private String userName;
@@ -35,6 +36,22 @@ public class Member {
 		this.userNic = userNic;
 		this.userPhone = userPhone;
 		this.userDiv = userDiv;
+	}
+	
+	
+
+	public Member(int userNum, String userEmail, String userPwd, String userName, String userNic, String userPhone,
+			Date userCreate, String userDiv, String userStatus) {
+		super();
+		this.userNum = userNum;
+		this.userEmail = userEmail;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.userNic = userNic;
+		this.userPhone = userPhone;
+		this.userCreate = userCreate;
+		this.userDiv = userDiv;
+		this.userStatus = userStatus;
 	}
 
 	public Member(String userEmail, String userPwd) {
@@ -105,6 +122,14 @@ public class Member {
 
 	public void setUserStatus(String userStatus) {
 		this.userStatus = userStatus;
+	}
+
+	public int getUserNum() {
+		return userNum;
+	}
+
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
 	}
 	
 	

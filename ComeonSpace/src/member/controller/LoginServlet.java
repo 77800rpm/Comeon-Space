@@ -16,7 +16,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login.me")
+@WebServlet(urlPatterns="/login.me", name="loginServlet")
 public class LoginServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
        
@@ -39,15 +39,14 @@ public class LoginServlet extends HttpServlet {
       Member member = new Member(userEmail,userPwd);
          
       Member loginUser = new MemberService().loginMember(member);
-      
       if(loginUser != null) {
          HttpSession session = request.getSession();
          session.setAttribute("loginUser", loginUser);
          session.setMaxInactiveInterval(600);
          
-         //response.sendRedirect(request.getContextPath());        
+         response.sendRedirect(request.getContextPath());        
  		
- 		request.getRequestDispatcher("WEB-INF/views/main/main.jsp").forward(request, response);
+// 		request.getRequestDispatcher("WEB-INF/views/main/main.jsp").forward(request, response);
 /*               
       } else {
          request.setAttribute("alertMsg", "존재하지 않는 회원입니다. 아이디와 비밀번호를 확인해 주세요.");

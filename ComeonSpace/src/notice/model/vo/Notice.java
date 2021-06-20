@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Notice {
 	private int nNum;
+	private String nWriter;
 	private String nTitle;
 	private String nContent;
 	private String nCategory;
@@ -55,6 +56,19 @@ public class Notice {
 		this.nContent = nContent;
 		this.nCategory = nCategory;
 	}
+	
+	public Notice(int nNum, String nWriter, String nTitle, String nContent, String nCategory, int admNum, String status,
+			Date date) {
+		super();
+		this.nNum = nNum;
+		this.nWriter = nWriter;
+		this.nTitle = nTitle;
+		this.nContent = nContent;
+		this.nCategory = nCategory;
+		this.admNum = admNum;
+		this.status = status;
+		this.date = date;
+	}
 
 	public int getnNum() {
 		return nNum;
@@ -97,6 +111,14 @@ public class Notice {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public String getnWriter() {
+		return nWriter;
+	}
+
+	public void setnWriter(String nWriter) {
+		this.nWriter = nWriter;
 	}
 	
 	
