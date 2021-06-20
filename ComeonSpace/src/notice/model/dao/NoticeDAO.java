@@ -45,6 +45,7 @@ public class NoticeDAO {
 						rset.getString("BOARDNOTICE_CATEGORY"),
 						rset.getInt("ADM_NUM"),
 						rset.getDate("BOARDNOTICE_DATE"));
+				no.setnWriter(rset.getString("BOARDNOTICE_WRITER"));
 				
 				list.add(no);
 			}
@@ -95,6 +96,7 @@ public class NoticeDAO {
 								rset.getString("BOARDNOTICE_TITLE"),
 								rset.getString("BOARDNOTICE_CONTENT"),
 								rset.getDate("BOARDNOTICE_DATE"));
+				no.setnWriter(rset.getString("BOARDNOTICE_WRITER"));
 			}
 			
 			

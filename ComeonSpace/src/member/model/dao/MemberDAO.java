@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import common.img.model.vo.Img;
+import img.model.vo.Img;
 import member.model.vo.Member;
 
 public class MemberDAO {
@@ -124,7 +124,8 @@ public class MemberDAO {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				loginUser = new Member(rset.getString("USER_EMAIL"),
+				loginUser = new Member(rset.getInt("USER_NUM"),
+									   rset.getString("USER_EMAIL"),
 									   rset.getString("USER_PWD"),
 									   rset.getString("USER_NAME"),
 									   rset.getString("USER_NIC"),
@@ -208,6 +209,62 @@ public class MemberDAO {
 		return selectUser;
 	}
 
+
+	public Member selectMember(Connection conn, String userEmail) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member profile = null;
+		
+		String query = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userEmail);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				profile = new Member();
+				profile.setUserName(rset.getString("USER_NAME"));
+				profile.setUserNic(rset.getString("USER_NIC"));
+				profile.setUserDiv(rset.getString("USER_DIV"));
+				profile.setUserPwd(rset.getString("USER_PWD"));
+				profile.setUserPhone(rset.getString("USER_PHONE"));
+				profile.setUserEmail(rset.getString("USER_EMAIL"));
+				profile.setUserNum(rset.getInt("USER_NUM"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}				
+		
+		
+		return profile;
+	}
+
+	public int deleteMember(Connection conn, int userNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("deleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userNum);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
 
 	
 }

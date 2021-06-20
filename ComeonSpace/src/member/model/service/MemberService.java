@@ -1,14 +1,14 @@
 package member.model.service;
 
 import static common.JDBCTemplate.close;
-import static common.JDBCTemplate.getConnection;
 import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
 import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import common.img.model.vo.Img;
+import img.model.vo.Img;
 import member.model.dao.MemberDAO;
 import member.model.vo.Member;
 
@@ -59,7 +59,6 @@ public class MemberService {
 		
 		
 	}
-
 	public Member loginMember(Member member) {
 		
 		Connection conn = getConnection();
@@ -80,6 +79,32 @@ public class MemberService {
 		
 		return selectUser;
 	}
+
+	public Member selectMember(String userEmail) {
+		Connection conn = getConnection();
+		
+		Member profile = new MemberDAO().selectMember(conn, userEmail);
+		
+		close(conn);
+		
+		return profile;
+	}
+
+	public int deleteMember(int userNum) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDAO().deleteMember(conn, userNum);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		// 관련 이미지 삭제도 추가해야함
+		close(conn);
+		
+		return result;
+	}
+
 
 
 	

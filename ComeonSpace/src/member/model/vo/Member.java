@@ -60,6 +60,7 @@ public class Member {
 		this.userDiv = userDiv;
 	}
 
+
 	public Member(String userEmail, String userPwd) {
 		super();
 		this.userEmail = userEmail;

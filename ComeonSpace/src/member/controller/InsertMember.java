@@ -16,8 +16,8 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.oreilly.servlet.MultipartRequest;
 
 import common.MyFileRenamePolicy;
-import common.img.model.vo.Img;
 import common.wrapper.SignUpWrapper;
+import img.model.vo.Img;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 

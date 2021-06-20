@@ -253,7 +253,7 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="about.html">공간등록 |</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">고객센터 |</a>
+                            <a class="nav-link" href="<%= request.getContextPath() %>/centerView.ce">고객센터 |</a>
                         </li>                       
                         <li class="nav-item">
                        <% if(loginUser == null){ %> 
@@ -302,7 +302,7 @@ https://templatemo.com/tm-559-zay-shop
       <a><%= loginUser.getUserName() %>  회원님 환영합니다!</a> <!-- 회원 이름 가져오기 -->
       </p>
       <a href="mainPage.html"><li>홈</li></a>
-      <a href="#"><li>고객센터</li></a>
+      <li onclick="<%= request.getContextPath() %>/centerView.ce">고객센터</li>
       <a href="#"><li>마이페이지</li></a>
       <a href="https://www.instagram.com/willyarchives/" target="_blank"><li>👻</li></a>
       <a href="#" target="_blank"><li>

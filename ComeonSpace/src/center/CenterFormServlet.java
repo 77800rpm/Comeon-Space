@@ -1,6 +1,7 @@
-package notice.cotroller;
+package center;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +10,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import img.model.service.ImgService;
+import img.model.vo.Img;
+import member.model.service.MemberService;
 import member.model.vo.Member;
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
 
 /**
- * Servlet implementation class NoticeInsertServlet
+ * Servlet implementation class CenterFormServlet
  */
-@WebServlet("/insert.no")
-public class NoticeInsertServlet extends HttpServlet {
+@WebServlet("/centerView.ce")
+public class CenterFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeInsertServlet() {
+    public CenterFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +36,27 @@ public class NoticeInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String title = request.getParameter("title");
-		String noDiv = request.getParameter("noDiv");
-		String content = request.getParameter("content");
-		
-//		HttpSession session = request.getSession();
-//		
-//		String loginUser = ((Member)session.getAttribute("loginUser")).getUserName();
-		
-		Notice no = new Notice(title, content, noDiv);
-		int result = new NoticeService().insertNotice(no);  
-		
-		if(result > 0) {
-			response.sendRedirect("noList.no");
+		// 회원 프로필 사진, 회원 정보 가져오기
+		HttpSession session = request.getSession();
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		Member profile = null;
+		Img profileImg = null;
+		if(loginUser != null) {
+			int userNum = loginUser.getUserNum();
+			String userEmail = loginUser.getUserEmail();
+			profile = new MemberService().selectMember(userEmail);
+			profileImg = new ImgService().selectMember(userNum);
 		}
+		
+		
+		ArrayList<Notice> noList = new NoticeService().selectNotice();
+		
+		request.setAttribute("profile", profile);
+		request.setAttribute("noList", noList);
+		request.setAttribute("prifileImg", profileImg);
+		request.getRequestDispatcher("WEB-INF/views/center/centerMain.jsp").forward(request, response);
+		
+		
 	}
 
 	/**

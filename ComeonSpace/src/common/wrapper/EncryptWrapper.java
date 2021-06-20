@@ -23,7 +23,7 @@ public class EncryptWrapper extends HttpServletRequestWrapper{
 		
 		String value = null;
 		
-		if(name != null) {
+		if(name != null && name.equals("userPwd")) {
 			try {
 				MessageDigest md = MessageDigest.getInstance("SHA-512");
 				
@@ -38,6 +38,8 @@ public class EncryptWrapper extends HttpServletRequestWrapper{
 			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
 			}
+		} else {
+			value = super.getParameter(name);
 		}
 		
 		return value;
