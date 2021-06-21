@@ -65,7 +65,7 @@
     <a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" id="logoImg"></a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">공간등록 <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<%= request.getContextPath() %>/centerMain.en">공간등록 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">고객센터</a>
