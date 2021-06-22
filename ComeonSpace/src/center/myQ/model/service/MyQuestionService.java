@@ -17,18 +17,27 @@ public class MyQuestionService {
 
 	public int insertQuestion(MyQuestion myQ, Img img) {
 		Connection conn = getConnection();
-		
-		int result = new MyQuestionDAO().insertQuestion(conn, myQ);
+		int result = 0;
+		int resultMyQ = new MyQuestionDAO().insertQuestion(conn, myQ);
 		
 		int resultImg = 0;
 		if(img != null) {
+			
 			resultImg = new ImgDAO().insertMyQ(conn, img);
-		}
-		
-		if(result > 0 && resultImg > 0) {
-			commit(conn);
+			
+			if(resultMyQ > 0 && resultImg > 0) {
+				commit(conn);
+				result = resultImg + resultMyQ;
+			} else {
+				rollback(conn);
+			} 
 		} else {
-			rollback(conn);
+			if(resultMyQ > 0) {
+				commit(conn);
+				result = resultMyQ;
+			} else {
+				rollback(conn);
+			}
 		}
 		close(conn);
 		
