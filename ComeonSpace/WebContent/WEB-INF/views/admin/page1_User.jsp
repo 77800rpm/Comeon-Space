@@ -19,7 +19,7 @@
 <body>
 <%-- <form action="<%= request.getContextPath() %>/selectUser.me"> --%>
 
-<%@ include file="WEB-INF/views/common/header.jsp" %>
+<%@ include file="../common/header.jsp" %>
 <!-- font -->
 <div style="font-family:Sans-serif">
 
@@ -109,7 +109,7 @@
 </div>
 </div>
 
-<%@ include file="WEB-INF/views/common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 
 <!-- </form> -->
 </body>
