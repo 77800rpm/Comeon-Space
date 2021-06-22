@@ -1,12 +1,38 @@
 package faq.model.vo;
 
+import java.sql.Date;
+
 public class Faq {
 	private int boardFaqNum;
 	private String boardFaqTitle;
 	private String boardFaqContent;
 	private int admNum;
+	private String status;
+	private Date date;
 	
 	public Faq() {}
+	
+
+	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent, int admNum, String status, Date date) {
+		super();
+		this.boardFaqNum = boardFaqNum;
+		this.boardFaqTitle = boardFaqTitle;
+		this.boardFaqContent = boardFaqContent;
+		this.admNum = admNum;
+		this.status = status;
+		this.date = date;
+	}
+
+
+
+	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent) {
+		super();
+		this.boardFaqNum = boardFaqNum;
+		this.boardFaqTitle = boardFaqTitle;
+		this.boardFaqContent = boardFaqContent;
+	}
+
+
 
 	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent, int admNum) {
 		super();
@@ -14,6 +40,22 @@ public class Faq {
 		this.boardFaqTitle = boardFaqTitle;
 		this.boardFaqContent = boardFaqContent;
 		this.admNum = admNum;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+	
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public int getBoardFaqNum() {
@@ -48,11 +90,13 @@ public class Faq {
 		this.admNum = admNum;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Faq [boardFaqNum=" + boardFaqNum + ", boardFaqTitle=" + boardFaqTitle + ", boardFaqContent="
-				+ boardFaqContent + ", admNum=" + admNum + "]";
+				+ boardFaqContent + ", admNum=" + admNum + ", status=" + status + ", date=" + date + "]";
 	}
+
 	
 	
 	

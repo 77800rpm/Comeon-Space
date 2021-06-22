@@ -72,7 +72,6 @@
         <th>번호</th>
         <th>제목</th>
         <th>내용</th>        
-        <th>작성자</th>
       </tr>
     </thead>
     <tbody>
@@ -81,7 +80,6 @@
         <td><%= f.getBoardFaqNum() %></td>
         <td><%= f.getBoardFaqTitle() %></td>
         <td><%= f.getBoardFaqContent() %></td>
-        <td><%= f.getAdmNum() %>
       </tr>
          <% } %>
     </tbody>

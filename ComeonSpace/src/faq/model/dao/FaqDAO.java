@@ -72,7 +72,6 @@ public class FaqDAO {
 			pstmt.setInt(1, f.getBoardFaqNum());
 			pstmt.setString(2, f.getBoardFaqTitle());
 			pstmt.setString(3, f.getBoardFaqContent());
-			pstmt.setInt(4,f.getAdmNum());
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
