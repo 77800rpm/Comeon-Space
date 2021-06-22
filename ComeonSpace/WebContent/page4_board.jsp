@@ -29,15 +29,11 @@
   <div style="margin-left:150px">
   <h5 class="w3-bar-item"><b>회원관리</b></h5>
   <a href="#" class="w3-bar-item w3-button">전체회원관리</a>
-  <a href="#" class="w3-bar-item w3-button">통계 관리</a>
   <h5 class="w3-bar-item"><b>시설관리</b></h5>
   <a href="#" class="w3-bar-item w3-button">공간승인/취소</a>
   <h5 class="w3-bar-item"><b>게시판 관리</b></h5>
   <a href="<%= request.getContextPath() %>/faqSelect.me" class="w3-bar-item w3-button">게시글 관리</a>
   <a href="#" class="w3-bar-item w3-button">공지사항 관리</a>
-  <h5 class="w3-bar-item"><b>서비스 관리</b></h5>
-  <a href="#" class="w3-bar-item w3-button">놀거리 등록</a>
-  <a href="#" class="w3-bar-item w3-button">놀거리 관리</a>
   </div>
 </div>
 
@@ -71,7 +67,9 @@
       <tr>
         <th>번호</th>
         <th>제목</th>
-        <th>내용</th>        
+        <th>내용</th>
+        <th>작성일</th>
+        <th>조회수</th>        
       </tr>
     </thead>
     <tbody>
@@ -80,6 +78,8 @@
         <td><%= f.getBoardFaqNum() %></td>
         <td><%= f.getBoardFaqTitle() %></td>
         <td><%= f.getBoardFaqContent() %></td>
+        <td><%= f.getCreateDate() %></td>
+        <td><%= f.getBoardCount() %>
       </tr>
          <% } %>
     </tbody>

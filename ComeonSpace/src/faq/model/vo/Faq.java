@@ -7,55 +7,20 @@ public class Faq {
 	private String boardFaqTitle;
 	private String boardFaqContent;
 	private int admNum;
-	private String status;
-	private Date date;
+	private Date createDate;
+	private int boardCount;
 	
 	public Faq() {}
-	
 
-	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent, int admNum, String status, Date date) {
+	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent, int admNum, Date createDate,
+			int boardCount) {
 		super();
 		this.boardFaqNum = boardFaqNum;
 		this.boardFaqTitle = boardFaqTitle;
 		this.boardFaqContent = boardFaqContent;
 		this.admNum = admNum;
-		this.status = status;
-		this.date = date;
-	}
-
-
-
-	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent) {
-		super();
-		this.boardFaqNum = boardFaqNum;
-		this.boardFaqTitle = boardFaqTitle;
-		this.boardFaqContent = boardFaqContent;
-	}
-
-
-
-	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent, int admNum) {
-		super();
-		this.boardFaqNum = boardFaqNum;
-		this.boardFaqTitle = boardFaqTitle;
-		this.boardFaqContent = boardFaqContent;
-		this.admNum = admNum;
-	}
-	
-	public String getStatus() {
-		return status;
-	}
-	
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
+		this.createDate = createDate;
+		this.boardCount = boardCount;
 	}
 
 	public int getBoardFaqNum() {
@@ -90,13 +55,31 @@ public class Faq {
 		this.admNum = admNum;
 	}
 
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public int getBoardCount() {
+		return boardCount;
+	}
+
+	public void setBoardCount(int boardCount) {
+		this.boardCount = boardCount;
+	}
 
 	@Override
 	public String toString() {
 		return "Faq [boardFaqNum=" + boardFaqNum + ", boardFaqTitle=" + boardFaqTitle + ", boardFaqContent="
-				+ boardFaqContent + ", admNum=" + admNum + ", status=" + status + ", date=" + date + "]";
+				+ boardFaqContent + ", admNum=" + admNum + ", createDate=" + createDate + ", boardCount=" + boardCount
+				+ "]";
 	}
 
+	
+	
 	
 	
 	

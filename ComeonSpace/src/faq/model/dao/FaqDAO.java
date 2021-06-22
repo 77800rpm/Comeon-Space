@@ -45,7 +45,9 @@ public class FaqDAO {
 				Faq f = new Faq(rset.getInt("BOARDFAQ_NUM"),
 								rset.getString("BOARDFAQ_TITLE"),
 								rset.getString("BOARDFAQ_CONTENT"),
-								rset.getInt("ADM_NUM"));
+								rset.getInt("ADM_NUM"),
+								rset.getDate("createDate"),
+								rset.getInt("boardCount"));
 				
 				selectBoard.add(f);
 			}

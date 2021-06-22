@@ -41,8 +41,7 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 				<h5 class="w3-bar-item">
 					<b>회원관리</b>
 				</h5>
-				<a href="#" class="w3-bar-item w3-button">전체회원관리</a> <a href="#"
-					class="w3-bar-item w3-button">통계 관리</a>
+				<a href="#" class="w3-bar-item w3-button">전체회원관리</a>
 				<h5 class="w3-bar-item">
 					<b>시설관리</b>
 				</h5>
@@ -53,11 +52,6 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 				<a href="<%=request.getContextPath()%>/faqSelect.me"
 					class="w3-bar-item w3-button">게시글 관리</a> <a href="#"
 					class="w3-bar-item w3-button">공지사항 관리</a>
-				<h5 class="w3-bar-item">
-					<b>서비스 관리</b>
-				</h5>
-				<a href="#" class="w3-bar-item w3-button">놀거리 등록</a> <a href="#"
-					class="w3-bar-item w3-button">놀거리 관리</a>
 			</div>
 		</div>
 
