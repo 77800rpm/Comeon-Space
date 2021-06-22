@@ -52,6 +52,10 @@
  		border-radius: 5px 5px 5px 5px;
  		color: white !important;
 	}
+	
+	#login, #logout {
+		cursor:pointer !important;
+	}
 
 </style>
 </head>
@@ -159,6 +163,14 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
 	
 	$('#logout').on('click', function(){
 		location.href="<%= request.getContextPath() %>/logout.me";
+	});
+</script>
+
+
+<!-- 검색 -->
+<script>
+	$('#main-search').on('click', function() {
+		location.href="<%= request.getContextPath() %>/search.pro";		
 	});
 </script>
 
