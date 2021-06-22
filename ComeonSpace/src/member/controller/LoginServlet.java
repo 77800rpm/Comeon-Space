@@ -57,6 +57,7 @@ public class LoginServlet extends HttpServlet {
       }
 */   
       } else {
+    	  System.out.println(userPwd);
          request.setAttribute("msg", "존재하지 않는 회원입니다. 아이디와 비밀번호를 확인해 주세요.");
          RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/member/loginAction.jsp");
          view.forward(request, response);

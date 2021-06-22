@@ -22,19 +22,19 @@ public class ImgService {
 		return profileImg;
 	}
 
-	public int insertMyQ(Img img) {
-		Connection conn = getConnection();
-		
-		int result = new ImgDAO().insertMyQ(conn, img);
-		if(result > 0) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
-		close(conn);
-		
-		return result;
-	}
+//	public int insertMyQ(Img img) {
+//		Connection conn = getConnection();
+//		
+//		int result = new ImgDAO().insertMyQ(conn, img);
+//		if(result > 0) {
+//			commit(conn);
+//		} else {
+//			rollback(conn);
+//		}
+//		close(conn);
+//		
+//		return result;
+//	}
 
 	public Img selectMyQ(int bId, int userNum) {
 		Connection conn = getConnection();

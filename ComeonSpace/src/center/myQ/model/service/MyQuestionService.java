@@ -10,17 +10,34 @@ import java.util.ArrayList;
 
 import center.myQ.model.dao.MyQuestionDAO;
 import center.myQ.model.vo.MyQuestion;
+import img.model.dao.ImgDAO;
+import img.model.vo.Img;
 
 public class MyQuestionService {
 
-	public int insertQuestion(MyQuestion myQ) {
+	public int insertQuestion(MyQuestion myQ, Img img) {
 		Connection conn = getConnection();
+		int result = 0;
+		int resultMyQ = new MyQuestionDAO().insertQuestion(conn, myQ);
 		
-		int result = new MyQuestionDAO().insertQuestion(conn, myQ);
-		if(result > 0) {
-			commit(conn);
+		int resultImg = 0;
+		if(img != null) {
+			
+			resultImg = new ImgDAO().insertMyQ(conn, img);
+			
+			if(resultMyQ > 0 && resultImg > 0) {
+				commit(conn);
+				result = resultImg + resultMyQ;
+			} else {
+				rollback(conn);
+			} 
 		} else {
-			rollback(conn);
+			if(resultMyQ > 0) {
+				commit(conn);
+				result = resultMyQ;
+			} else {
+				rollback(conn);
+			}
 		}
 		close(conn);
 		
@@ -43,6 +60,7 @@ public class MyQuestionService {
 		
 		return my;
 	}
+
 
 
 

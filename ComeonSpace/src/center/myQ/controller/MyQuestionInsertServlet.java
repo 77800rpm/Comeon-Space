@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 
@@ -91,14 +91,11 @@ public class MyQuestionInsertServlet extends HttpServlet {
 			myQ.setMyQContent(myQContent);
 			myQ.setUserNum(userNum);
 			
-			System.out.println(img == null);
 
-			int result = new MyQuestionService().insertQuestion(myQ);
+			int result = new MyQuestionService().insertQuestion(myQ, img);
 
 			if(img != null) {
-				int iResult = new ImgService().insertMyQ(img);
-				System.out.println(iResult);
-				if(result > 0 && iResult > 0) {
+				if(result > 0) {
 					System.out.println("사진 있고 성공했을 때");
 					response.sendRedirect("centerView.ce");
 				} else {
