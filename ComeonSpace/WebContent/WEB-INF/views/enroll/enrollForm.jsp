@@ -40,11 +40,10 @@
 	
 	/*체크박스를 다 안보이게*/
 	input[type=checkbox]{display:none;}
-	#imgPreview{width: 200px; height: 150px;}
-	.detailPreview{width: 200px; height: 150px; display:inline-block;}
-	#previewDiv{display: none;}
-	.detailBtnDiv{display: inline-block;}
-	.detailImg{text-aglin: center; display:inline-block;}
+	.detailDiv{display:inline-block;}
+	.detailDiv:hover{cursor:pointer;}
+	.hiddenBtn{display:none;}
+
 </style>
 </head>
 <body>
@@ -152,7 +151,7 @@
 			<div class="row">
 				<div class="col-md-10 mb-3">
 					<label>주소 (위치)</label><br>
-					<input type="text" id="sample6_postcode" name="address1" disabled class="form-control mt-1 adressInput" placeholder="우편번호" required>&nbsp;&nbsp;&nbsp;
+					<input type="text" id="sample6_postcode" name="address1" readonly class="form-control mt-1 adressInput" placeholder="우편번호" required>&nbsp;&nbsp;&nbsp;
 					<input type="button" onclick="sample6_execDaumPostcode()" class="adressButton" value="우편번호 찾기" required><br>
 					<input type="text" id="sample6_address" name="address2" class="form-control mt-1" placeholder="주소" required><br>
 					<input type="text" id="sample6_detailAddress" name="address3" class="form-control mt-1" placeholder="상세주소" required>
@@ -169,18 +168,31 @@
 			<div class="row">
 				<div class="col-md-12 mb-3">
 					<label>메인 이미지</label><br>
-					<input type="file" id="thumbnailImg" accept="image/*" name="thumbnailImg" required>
 				</div>
-				<div id="previewDiv">
-					<img id="imgPreview" />
+				<div id="titleImgArea" class="detailDiv">
+					<img id="titleImg" width="200" height="150">
 				</div>
 			</div>
+			<br>
 			<div class="row">
-				<div class="col-md-12 mb-3 detailBtnDiv" id="detailDiv">
-					<label>상세 이미지</label><br>
-					<input type="file" accept="image/*" class="detailImg" id="detailImg" name="detailImg" required><br>
+				<div class="col-md-12 mb-3" >
+					<label>상세 이미지</label><br><br>
+					<div id="contentImgArea1" class="detailDiv">
+						<img id="contentImg1" width="200" height="150"> 
+					</div>
+					<div id="contentImgArea2" class="detailDiv">
+						<img id="contentImg2" width="200" height="150"> 
+					</div> 
+					<div id="contentImgArea3" class="detailDiv">
+						<img id="contentImg3" width="200" height="150"> 
+					</div>
 				</div>
-				<div class="detailBtnDiv">
+				<!-- 파일 업로드 하는 부분 -->
+				<div id="fileArea">
+					<input type="file" id="img1" name="img1" class="hiddenBtn" onchange="LoadImg(this,1)">
+					<input type="file" id="img2" name="img2" class="hiddenBtn" onchange="LoadImg(this,2)">
+					<input type="file" id="img3" name="img3" class="hiddenBtn" onchange="LoadImg(this,3)">
+					<input type="file" id="img4" name="img4" class="hiddenBtn" onchange="LoadImg(this,4)">
 				</div>
 			</div>
 		</div>
@@ -293,82 +305,43 @@
         }).open();
     }
 	
-	$(document).ready(function(){
-		$("#thumbnailImg").on("change", imgPreview);		
+    $("#titleImgArea").click(function(){
+		$("#img1").click();
+	});
+	$("#contentImgArea1").click(function(){
+		$("#img2").click();
+	});
+	$("#contentImgArea2").click(function(){
+		$("#img3").click();
+	});
+	$("#contentImgArea3").click(function(){
+		$("#img4").click();
 	});
 	
-	var thumbnail;
-	function imgPreview(e){
-		
-		var file = e.target.files;
-		var files = Array.prototype.slice.call(file);
-		
-		if(file != null){
-			$("#previewDiv").show();
-		} else {
-			$("#previewDiv").hide();
-		}
-		
-		files.forEach(function(f){
-			if(!f.type.match("image.*")){
-				alert("이미지 확장자만 가능합니다.")
-				return;
-			}
-			
-			thumbnail = f;
-			
+	function LoadImg(value, num){
+		if(value.files && value.files[0]){
 			var reader = new FileReader();
-			reader.onload = function(e){
-				$("#imgPreview").attr("src", e.target.result);
+			
+			reader.onload = function(e){								
+				switch(num){
+				case 1: 
+					$("#titleImg").attr("src", e.target.result);
+					break;
+				case 2:
+					$("#contentImg1").attr("src", e.target.result);
+					break;
+				case 3: 
+					$("#contentImg2").attr("src", e.target.result);
+					break;
+				case 4:
+					$("#contentImg3").attr("src", e.target.result);
+					break;
+				}
 			}
-			reader.readAsDataURL(f);
-		});
-		
-		
-	}
-	var detailImg;
-	var result;
-	var index = 1;
-	
-	$(document).ready(function(){
-		$(document).on("change",'.detailImg',detailPreview);
-	});
-	
-	function detailPreview(e){
-		
-		var file = e.target.files;
-		var files = Array.prototype.slice.call(file);
-		
-		if(file != null){
-			$("#detailDiv").show();
-		} else {
-			$("#detailDiv").hide();
+			
+			reader.readAsDataURL(value.files[0]); //첫 번째, 0번째만 들어가게 하겠다
 		}
-		
-		files.forEach(function(f){
-			if(!f.type.match("image.*")){
-				alert("이미지 확장자만 가능합니다.")
-				return;
-			}
-			
-			detailImg = f;
-			
-			var reader = new FileReader();
-			reader.onload = function(e){
-				var $change = "#detailPreview" 
-				$($change).attr("src", e.target.result);
-				
-				var addImg = "<img class='detailPreview' src=\"" + e.target.result + "\" /><br>";
-				var addBtn = "<input type='file' name='detailImg'class='detailImg' accept='image/*'><br>";
-				$("#detailDiv").append(addImg);
-				$("#detailDiv").append(addBtn);
-
-				index++;
-			}
-			reader.readAsDataURL(f);
-		});
-		
 	}
-</script>
+	</script>
 </body>
 </html>

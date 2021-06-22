@@ -2,24 +2,26 @@ package enroll.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Enumeration;
-import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 
 import common.MyFileRenamePolicy;
+import enroll.model.service.EnrollService;
+import enroll.model.vo.Enroll;
+import img.model.service.ImgService;
 import img.model.vo.Img;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class EnrollInsertServlet
@@ -42,6 +44,9 @@ public class EnrollInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
+			HttpSession session = request.getSession();
+			int userNum = ((Member)session.getAttribute("loginUser")).getUserNum();
+			
 			int maxSize = 1024*1024*10;
 			String root = request.getSession().getServletContext().getRealPath("/");
 			String savePath = root + "/img_upload/";
@@ -62,6 +67,8 @@ public class EnrollInsertServlet extends HttpServlet {
 			while(files.hasMoreElements()) {
 				String name = files.nextElement();
 				
+				System.out.println(name);
+				
 				if(multipartRequest.getFilesystemName(name) != null) {
 					saveFiles.add(multipartRequest.getFilesystemName(name));
 					originFiles.add(multipartRequest.getOriginalFileName(name));
@@ -75,6 +82,7 @@ public class EnrollInsertServlet extends HttpServlet {
 				img.setImgOrigin(originFiles.get(i));
 				img.setImgChange(saveFiles.get(i));
 				img.setImgCategory(4);
+				img.setUserNum(userNum);
 				
 				if(i == originFiles.size() - 1) {
 					img.setImgLevel(0);
@@ -103,9 +111,9 @@ public class EnrollInsertServlet extends HttpServlet {
 			}
 			
 			
-			String address1 = multipartRequest.getParameter("address1");
+			String address1 = "("+multipartRequest.getParameter("address1")+") ";
 			String address2 = multipartRequest.getParameter("address2");
-			String address3 = multipartRequest.getParameter("address3");
+			String address3 = " "+multipartRequest.getParameter("address3");
 			String address = address1 + address2 + address3;
 
 			int price = Integer.parseInt(multipartRequest.getParameter("money"));
@@ -121,6 +129,32 @@ public class EnrollInsertServlet extends HttpServlet {
 						holiday += irr2[i] + ", ";
 					}
 				}
+			}
+			
+			Enroll en = new Enroll();
+			en.setpName(name);
+			en.setpIntro(shortExp);
+			en.setpLimit(person);
+			en.setpDetail(longExp);
+			en.setpCategory(category);
+			en.setpLocation(address);
+			en.setProductPrice(price);
+			en.setpFacility(facility);
+			en.setHoliday(holiday);
+			en.setUserNum(userNum);
+			
+			int resultEnroll = new EnrollService().insertSpace(en, fileList);
+			// P_NUMBER.NEXTVAL
+//			int	resultImg = new ImgService().insertSpace(fileList);
+			// P_NUMBER.CURRVAL
+			
+			
+			if(resultEnroll > 0) {
+				request.setAttribute("name", name);
+				request.getRequestDispatcher("WEB-INF/views/enroll/enrollSuccess.jsp").forward(request, response);
+			} else {
+				request.setAttribute("msg", "공간 등록에 실패하였습니다.");
+				request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 			}
 			
 			

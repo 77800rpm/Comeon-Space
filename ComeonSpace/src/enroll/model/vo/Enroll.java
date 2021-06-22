@@ -15,6 +15,9 @@ public class Enroll {
 	private String status;
 	private String holiday;
 	private int userNum;
+	
+	public Enroll() {}
+	
 	public Enroll(int pNum, String pName, int pLimit, int productPrice, String pCategory, String pIntro, String pDetail,
 			String pLocation, String pFacility, int pCount, String pApprove, String status, String holiday,
 			int userNum) {

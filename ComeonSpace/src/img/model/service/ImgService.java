@@ -1,8 +1,12 @@
 package img.model.service;
 
-import static common.JDBCTemplate.*;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.close;
+import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import img.model.dao.ImgDAO;
 import img.model.vo.Img;
@@ -39,5 +43,19 @@ public class ImgService {
 		close(conn);
 		return img;
 	}
+
+//	public int insertSpace(ArrayList<Img> fileList) {
+//		Connection conn = getConnection();
+//		
+//		int result = new ImgDAO().insertSpace(conn, fileList); 
+//		if(result > 0) {
+//			commit(conn);
+//		} else {
+//			rollback(conn);
+//		}
+//		close(conn);
+//		
+//		return result;
+//	}
 
 }
