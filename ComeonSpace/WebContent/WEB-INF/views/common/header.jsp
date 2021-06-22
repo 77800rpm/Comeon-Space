@@ -68,7 +68,7 @@
         <a class="nav-link" href="<%= request.getContextPath() %>/enrollMain.en">공간등록 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">고객센터</a>
+        <a class="nav-link" href="<%= request.getContextPath()%>/centerView.ce">고객센터</a>
       </li>
       <li class="nav-item">
         <% if(loginUser == null){ %>

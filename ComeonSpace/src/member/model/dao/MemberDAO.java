@@ -91,11 +91,11 @@ public class MemberDAO {
 		String query = prop.getProperty("insertMember");
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, member.getUserPwd());
-			pstmt.setString(2, member.getUserName());
-			pstmt.setString(3, member.getUserNic());
-			pstmt.setString(4, member.getUserPhone());
-			pstmt.setString(5, member.getUserEmail());
+			pstmt.setString(1, member.getUserEmail());
+			pstmt.setString(2, member.getUserPwd());
+			pstmt.setString(3, member.getUserName());
+			pstmt.setString(4, member.getUserNic());
+			pstmt.setString(5, member.getUserPhone());
 			pstmt.setString(6, member.getUserDiv());
 			
 			result = pstmt.executeUpdate();
@@ -132,7 +132,7 @@ public class MemberDAO {
 									   rset.getString("USER_PHONE"),
 									   rset.getDate("USER_CREATE"),
 									   rset.getString("USER_DIV"),
-									   rset.getString("USER_DELETE"));
+									   rset.getString("USER_STATUS"));
 				
 			} 
 		} catch (SQLException e) {

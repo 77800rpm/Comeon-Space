@@ -25,13 +25,13 @@ import member.model.vo.Member;
  * Servlet implementation class InsertMember
  */
 @WebServlet(urlPatterns="/signUp.do", name="InsertMember")
-public class InsertMember extends HttpServlet {
+public class InsertMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertMember() {
+    public InsertMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

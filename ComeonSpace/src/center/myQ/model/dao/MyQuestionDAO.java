@@ -69,10 +69,10 @@ public class MyQuestionDAO {
 				myQ.setMyQContent(rset.getString("MYQ_CONTENT"));
 				myQ.setMyQCategory(rset.getString("MYQ_CATEGORY"));
 				myQ.setMyQAnswer(rset.getString("MYQ_ANSWER"));
-				myQ.setMyQCreate(rset.getDate("MYQ_CREATE"));
+				myQ.setMyQCreate(rset.getDate("MYQ_DATE"));
 				myQ.setUserNum(rset.getInt("USER_NUM"));
 				myQ.setAdmNum(rset.getInt("ADM_NUM"));
-				myQ.setStatus(rset.getString("STATUS"));
+				myQ.setStatus(rset.getString("MYQ_STATUS"));
 				
 				list.add(myQ);
 				
@@ -105,10 +105,10 @@ public class MyQuestionDAO {
 				my.setMyQContent(rset.getString("MYQ_CONTENT"));
 				my.setMyQCategory(rset.getString("MYQ_CATEGORY"));
 				my.setMyQAnswer(rset.getString("MYQ_ANSWER"));
-				my.setMyQCreate(rset.getDate("MYQ_CREATE"));
+				my.setMyQCreate(rset.getDate("MYQ_DATE"));
 				my.setUserNum(rset.getInt("USER_NUM"));
 				my.setAdmNum(rset.getInt("ADM_NUM"));
-				my.setStatus(rset.getString("STATUS"));
+				my.setStatus(rset.getString("MYQ_STATUS"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -93,12 +93,10 @@ public class MyQuestionInsertServlet extends HttpServlet {
 			
 			System.out.println(img == null);
 
-			int result = new MyQuestionService().insertQuestion(myQ);
+			int result = new MyQuestionService().insertQuestion(myQ, img);
 
 			if(img != null) {
-				int iResult = new ImgService().insertMyQ(img);
-				System.out.println(iResult);
-				if(result > 0 && iResult > 0) {
+				if(result > 0) {
 					System.out.println("사진 있고 성공했을 때");
 					response.sendRedirect("centerView.ce");
 				} else {
