@@ -40,6 +40,7 @@ public class EnrollDAO {
 			pstmt.setString(6, en.getpLocation());
 			pstmt.setString(7, en.getpFacility());
 			pstmt.setInt(8, en.getUserNum());
+			pstmt.setInt(9, en.getpLimit());
 			
 			result = pstmt.executeUpdate();
 			
