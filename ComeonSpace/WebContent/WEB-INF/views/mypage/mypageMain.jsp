@@ -62,7 +62,7 @@
 						<%if(img == null){ %>
 							<img src="<%=request.getContextPath()%>/img_upload/<%= img.getImgChange() %>" width="300px;" height="200px;">
 						<%} else { %>
-							<img src="" width="300px" height="200px">
+							<img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" width="300px;" height="200px;">
 						<%} %>
 					</div>
                 </div>

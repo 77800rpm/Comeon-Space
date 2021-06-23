@@ -41,6 +41,7 @@ public class EnrollDAO {
 			pstmt.setString(7, en.getpFacility());
 			pstmt.setInt(8, en.getUserNum());
 			pstmt.setInt(9, en.getpLimit());
+			pstmt.setString(10, en.getHoliday());
 			
 			result = pstmt.executeUpdate();
 			
