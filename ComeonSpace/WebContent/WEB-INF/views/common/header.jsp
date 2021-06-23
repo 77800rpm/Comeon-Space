@@ -220,11 +220,7 @@
     <% if(loginUser != null){ %>
     <ul id="menu">
       <p>
-      <%if(pImg != null){ %>
-      <img src="<%= request.getContextPath()%>/img_upload/<%= pImg.getImgChange()%>" style="width: 70%">
-      <%} else { %>
-      <img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png">
-      <%} %>
+      <img src="assets/img/menubar_lobby.png" style="width: 70%">
       </p><br>
       <p>
       <a><%=profile.getUserName() %>님, 환영합니다!</a>
