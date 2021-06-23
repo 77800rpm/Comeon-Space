@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, java.util.ArrayList" %>
+<% Enroll p = (Enroll)request.getAttribute("product"); %>    
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -259,6 +261,13 @@ https://templatemo.com/tm-559-zay-shop
 
 							
                             </h1>
+                            
+                            
+                            
+                            <input type="hidden" value="<%= p.getpNum() %>" name="no">	
+                            
+                            
+                            
                             				                           
                             <p class="h3 py-2">40,000 원</p>
                             <p class="location">

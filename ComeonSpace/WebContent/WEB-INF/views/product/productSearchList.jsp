@@ -110,33 +110,36 @@ https://templatemo.com/tm-559-zay-shop
 	<% for(int i = 0 ; i < list.size(); i++) { %>
 	<% Enroll p = list.get(i); %>
 
-    
     <div class="row pro-list" id="pro-list-1">
-    <div class="pro-photo col-md-3">  
-    <input type = "hidden" value="<%= p.getpNum() %>">
-      
-   	<% for(int j = 0 ; j < fList.size(); j++){ %>
-   	<% Img f = fList.get(j); %> 
-   	<% if(p.getpNum() == f.getImgBoardId()) { %>
-	        <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= f.getImgChange() %>" alt="Card image cap" id="product-detail">	 
-	<%	 } %>
-	<% } %>	               
-        </div>
-  	
-        
-        <div class="pro-desc col-md-6 pro-list-title" >
-        	<p class="pro-desc-title"><%= p.getpName() %></p>
-        	<p class="pro-desc-lo">
-	        	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-				<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-				</svg>
-				<%= p.getpLocation() %>
-        	<p class="pro-intro"><%= p.getpIntro() %></p>
-        </div>
-        <div class="pro-price col-md-2 pro-list-text"><span class="pro-list-price"><%= p.getProductPrice() %></span><span class="pro-font"> 원</span></div>
-        <div class="pro-wish col-md-1 pro-list-text">
-        	<a class="btn btn-success text-white"><i class="far fa-heart"></i></a>
+    	   	
+	    <div class="pro-photo col-md-3">  
+		      
+		   	<% for(int j = 0 ; j < fList.size(); j++){ %>
+		   	<% Img f = fList.get(j); %> 
+		   	<% if(p.getpNum() == f.getImgBoardId()) { %>
+			        <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= f.getImgChange() %>" alt="Card image cap" id="product-detail">	 
+			<%	 } %>
+			<% } %>	               
+	    </div>
+	  		        
+	    <div class="pro-desc col-md-6 pro-list-title" >
+	        	<p class="pro-desc-title"><%= p.getpName() %></p>
+	        	<p class="pro-desc-lo">
+		        	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+					<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+					</svg>
+					<%= p.getpLocation() %>
+	        	<p class="pro-intro"><%= p.getpIntro() %></p>
+	    </div>
+	    
+	    <div class="pro-price col-md-2 pro-list-text" id="pro-list-text-id1"><span class="pro-list-price"><%= p.getProductPrice() %></span><span class="pro-font"> 원</span></div>
+
+	    <div class="pro-wish col-md-1 pro-list-text">
+	    <a class="btn btn-success text-white"><i class="far fa-heart"></i></a>
 		</div>
+		
+		<div><input type = "hidden" value="<%= p.getpNum() %>"></div>
+		
     </div><br><hr><br>
 
 
@@ -169,8 +172,8 @@ https://templatemo.com/tm-559-zay-shop
 			}).mouseout(function(){
 				$(this).parent().css({'background':'none'});
 			}).click(function(){
-				var num = $(this).parent().children().eq(0).text();
-				location.href="<%= request.getContextPath() %>/productDetail.no?no=" + no;
+				var num = $(this).parent().children().eq(4).text();
+				location.href="<%= request.getContextPath() %>/productDetail.no?no=" + num;
 			});
 		});
     	
