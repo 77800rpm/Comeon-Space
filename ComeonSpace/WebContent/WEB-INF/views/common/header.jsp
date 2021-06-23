@@ -227,7 +227,7 @@
       <img src="assets/img/menubar_lobby.png" style="width: 70%">
       </p><br>
       <p>
-      <a><%=profile.getUserName() %>님, 환영합니다!</a>
+      <a>앗.. 당신... 환영!</a>
       </p>
       <li><a href="index.jsp">홈</a></li>
       <li><a href="<%= request.getContextPath()%>/centerView.ce">고객센터</a></li>
