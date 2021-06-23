@@ -11,10 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-=======
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;

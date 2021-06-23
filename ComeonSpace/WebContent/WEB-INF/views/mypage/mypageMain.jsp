@@ -65,6 +65,11 @@
 							<img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" width="300px;" height="200px;">
 						<%} %>
 					</div>
+					<div>
+						<h2><%= profile.getUserName() %>님, 반갑습니다.</h2>
+						<br>
+						<span>자신만의 </span>
+					</div>
                 </div>
                 
             </div>

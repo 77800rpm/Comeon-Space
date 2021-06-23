@@ -316,7 +316,6 @@
 </script>
 
 
-<<<<<<< HEAD
 <!-- 검색 -->
 <script>
 	$('#main-search').on('click', function() {
@@ -324,11 +323,6 @@
 	});
 </script>
 
-  
-</body>
-</html>
-=======
-<!-- 메뉴바 로그인 -->
 <script>
 	$('#login2').on('click', function(){
 		location.href="<%= request.getContextPath() %>/loginForm.me";
@@ -338,6 +332,6 @@
 		location.href="<%= request.getContextPath() %>/logout.me";
 	});
 </script>
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
+  
 </body>
 </html>
