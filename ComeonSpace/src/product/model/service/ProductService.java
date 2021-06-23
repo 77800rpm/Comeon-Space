@@ -35,4 +35,29 @@ public class ProductService {
 		
 		return list;
 	}
+
+	public Enroll selectProduct(int no) {
+		Connection conn = getConnection();
+		
+		ProductDAO dao = new ProductDAO();
+		
+		int result = dao.updateCount(conn, no);
+		
+		Enroll product = null;
+		
+		if(result > 0) {
+			product = dao.selectProduct(conn, no);
+			
+			if(product != null) 
+			commit(conn);
+			else rollback(conn);
+			
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return product;
+	}
 }

@@ -83,6 +83,7 @@
 </style>
 
 <body>
+	<%@ include file="../common/header.jsp" %>
     <section class="section-div">
         <div class="container">
             <div class="row">
@@ -149,6 +150,7 @@
 	       		
 	       	</form>  
        </div>
+       <%@ include file="../common/footer.jsp" %>
        
     </section>
 </body>

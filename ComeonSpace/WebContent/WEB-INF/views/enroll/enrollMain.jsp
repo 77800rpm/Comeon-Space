@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="member.model.vo.Member"%>
-<%
-	Member loginUser = (Member)session.getAttribute("loginUser");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +27,7 @@
 </style>
 </head>
 <body>
+	<%@ include file="../common/header.jsp" %>
 	<!-- 배너 -->
 	<section class="bg-success py-5">
         <div class="container">
@@ -142,6 +140,7 @@
 	<div class="row text-center pt-3 pb-3">
 		<button id="button_moreNotice">더보기 +</button>
 	</div>
+	<%@ include file="../common/footer.jsp" %>
     </section>
 
     <script>

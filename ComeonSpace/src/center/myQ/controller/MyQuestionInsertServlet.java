@@ -91,7 +91,6 @@ public class MyQuestionInsertServlet extends HttpServlet {
 			myQ.setMyQContent(myQContent);
 			myQ.setUserNum(userNum);
 			
-			System.out.println(img == null);
 
 			int result = new MyQuestionService().insertQuestion(myQ, img);
 

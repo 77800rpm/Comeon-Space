@@ -40,6 +40,22 @@ public class Enroll {
 	
 	
 	
+	public Enroll(int pNum, String pName, int pLimit, int productPrice, String pCategory, String pIntro, String pDetail,
+			String pLocation, String pFacility, int pCount, String holiday) {
+		super();
+		this.pNum = pNum;
+		this.pName = pName;
+		this.pLimit = pLimit;
+		this.productPrice = productPrice;
+		this.pCategory = pCategory;
+		this.pIntro = pIntro;
+		this.pDetail = pDetail;
+		this.pLocation = pLocation;
+		this.pFacility = pFacility;
+		this.pCount = pCount;
+		this.holiday = holiday;
+	}
+
 	public Enroll(int pNum, String pName, int productPrice, String pCategory, String pIntro, String pLocation,
 			int pCount) {
 		super();

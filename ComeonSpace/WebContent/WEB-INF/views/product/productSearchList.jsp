@@ -170,7 +170,7 @@ https://templatemo.com/tm-559-zay-shop
 				$(this).parent().css({'background':'none'});
 			}).click(function(){
 				var num = $(this).parent().children().eq(0).text();
-				location.href="<%= request.getContextPath() %>/detail.no?no=" + num;
+				location.href="<%= request.getContextPath() %>/detail.no?no=" + no;
 			});
 		});
     	

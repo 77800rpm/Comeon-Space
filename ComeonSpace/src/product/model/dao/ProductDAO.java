@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -91,5 +92,62 @@ public class ProductDAO {
 		
 		
 		return list;
+	}
+
+
+	public int updateCount(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateCount");	
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public Enroll selectProduct(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Enroll product = null;
+		
+		String query = prop.getProperty("selectProduct");	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+					  product = new Enroll(rset.getInt("product_num"),
+										rset.getString("product_name"),
+										rset.getInt("product_limit"),
+										rset.getInt("product_price"),
+										rset.getString("product_category"),
+										rset.getString("product_intro"),
+										rset.getString("Product_detail"),
+										rset.getString("product_location"),
+										rset.getString("product_fac"),
+										rset.getInt("product_count"),
+										rset.getString("product_holiday"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return product;
 	}
 }
