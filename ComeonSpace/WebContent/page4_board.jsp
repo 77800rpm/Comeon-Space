@@ -32,7 +32,7 @@
   <h5 class="w3-bar-item"><b>시설관리</b></h5>
   <a href="#" class="w3-bar-item w3-button">공간승인/취소</a>
   <h5 class="w3-bar-item"><b>게시판 관리</b></h5>
-  <a href="<%= request.getContextPath() %>/faqSelect.me" class="w3-bar-item w3-button">게시글 관리</a>
+  <a href="<%= request.getContextPath() %>/list.bo" class="w3-bar-item w3-button">게시글 관리</a>
   <a href="#" class="w3-bar-item w3-button">공지사항 관리</a>
   </div>
 </div>
@@ -49,7 +49,7 @@
   <h5 style="padding:1%"><b>게시글 관리</b></h5>
 
 <div>           
-  <table class="table table-bordered table-sm" style="text-align:center;">
+  <table class="table table-bordered table-sm" style="text-align:center;" id="listArea">
   	<% if(list == null){ %>
     <thead class="w3-light-grey">
        <tr>
@@ -104,12 +104,28 @@
 </div>
 </div>
 
-
-
-
 </div>
 
 </div>
+<script>
+		$(function(){
+			$('#listArea td').mouseenter(function(){
+				$(this).parent().css({'background':'darkgrey', 'cursor':'pointer'});
+			}).mouseout(function(){
+				$(this).parent().css('background','none');
+			}).click(function(){
+				var bId=$(this).parent().children().eq(0).text();
+				if('<%= loginUser %>' != 'null'){
+					location.href='<%= request.getContextPath() %>/detail.bo?bId=' + bId;
+				} else {
+					alert('회원만 이용할 수 있는 서비스입니다.');
+				}
+			})
+		});
+	</script>
+
+
+
 <%@ include file="WEB-INF/views/common/footer.jsp" %>      
 </body>
 

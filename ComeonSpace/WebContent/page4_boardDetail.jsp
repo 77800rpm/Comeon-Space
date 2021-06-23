@@ -3,6 +3,7 @@
 	import="faq.model.service.*"%>
 <%-- <% ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); %> --%>
 <%
+	Faq f = (Faq)request.getAttribute("Faq");
 	FaqService fs = new FaqService();
 ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 %>
@@ -65,30 +66,52 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 			<div>
 
 				<h5 style="padding: 1%">
-					<b>게시글 작성</b>
+					<b>게시글 상세페이지</b>
 				</h5>
 
-				<div class="tableArea">
-					<form action="<%=request.getContextPath()%>/insert.bo"
-						method="post">
-						<table>
-							<tr>
-								<th>제목</th>
-								<td colspan="3"><input type="text" size="100" name="title"></td>
-							</tr>
-							<tr>
-								<th>내용</th>
-								<td colspan="3"><textarea rows="15" cols="100"
-										name="content" style="resize: none;"></textarea></td>
-							</tr>
-						</table>
-						<br>
-						<div align="center">
-							<input type="submit" id="insertBtn" value="등록하기">
-							<input type="button" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
-						</div>
-					</form>
+					
+	<div class="outer">
+		<br>
+		<h2 align="center">게시판 상세보기</h2>
+		<div class="tableArea">
+			<form action="<%= request.getContextPath() %>/boardUpdateForm.bo" id="detailForm" method="post">
+				<table>
+					<tr>
+						<th>제목</th>
+						<td colspan="3">
+						<%= f.getBoardFaqTitle() %><input type="hidden" name="title" value="<%= f.getBoardFaqTitle() %>">
+						</td>
+					</tr>
+					<tr>
+						<th>조회수</th>
+						<td>
+							<%= f.getBoardCount() %>
+						</td>
+						<th>작성일</th>
+						<td>
+							<%= f.getCreateDate() %>
+							<input type="hidden" name="date" value="<%= f.getCreateDate() %>" >
+						</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<textarea name="content" cols="60" rows="15" style="resize:none;" readonly><%= f.getBoardFaqContent() %></textarea>
+						</td>
+					</tr>
+				</table>
+				
+				<div align="center">
+					<input type="submit" id="updateBtn" value="수정">
+					<input type="button" onclick="deleteBoard();" id="deleteBtn" value="삭제">
+					<input type="button" onclick="location.href='<%= request.getContextPath() %>/list.bo'" id="menuBtn" value="메뉴로">
 				</div>
+			</form>
+		</div>
+				
+				
 			</div>
 		</div>
 

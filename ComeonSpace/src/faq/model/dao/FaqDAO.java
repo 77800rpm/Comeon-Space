@@ -46,8 +46,8 @@ public class FaqDAO {
 								rset.getString("BOARDFAQ_TITLE"),
 								rset.getString("BOARDFAQ_CONTENT"),
 								rset.getInt("ADM_NUM"),
-								rset.getDate("createDate"),
-								rset.getInt("boardCount"));
+								rset.getDate("CREATE_DATE"),
+								rset.getInt("BOARD_COUNT"));
 				
 				selectBoard.add(f);
 			}

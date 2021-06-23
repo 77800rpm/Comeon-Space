@@ -1,28 +1,25 @@
 package faq.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import faq.model.service.FaqService;
 import faq.model.vo.Faq;
 
 /**
- * Servlet implementation class FaqSelectServlet
+ * Servlet implementation class FaqUpdateForm
  */
-@WebServlet("/list.bo")
-public class FaqSelectServlet extends HttpServlet {
+@WebServlet("/boardUpdateForm.bo")
+public class FaqUpdateForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqSelectServlet() {
+    public FaqUpdateForm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +28,17 @@ public class FaqSelectServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Faq> list = new FaqService().faqSelect();
+		String title = request.getParameter("title");
+//		String date = request.getParameter("date");
+		String content = request.getParameter("content");
 		
-		request.setAttribute("list", list);
-//		request.getRequestDispatcher("WEB-INF/views/admin/page4_board.jsp").forward(request, response);
-		request.getRequestDispatcher("page4_board.jsp").forward(request, response);
-	
-	
+		Faq f = new Faq();
+		f.setBoardFaqTitle(title);
+//		f.setCreateDate(date);
+		f.setBoardFaqContent(content);
+		
+		request.setAttribute("f", f);
+		request.getRequestDispatcher("boardDetail.jsp").forward(request, response);
 	}
 
 	/**
