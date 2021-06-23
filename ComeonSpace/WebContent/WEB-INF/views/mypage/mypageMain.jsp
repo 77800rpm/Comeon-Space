@@ -66,9 +66,11 @@
 						<%} %>
 					</div>
 					<div>
-						<h2><%= profile.getUserName() %>님, 반갑습니다.</h2>
+						<h2><%= profile.getUserName() %> <sub>님,</sub> </h2>
+						<h4>반갑습니다.</h4>
 						<br>
-						<span>자신만의 </span>
+						<br>
+						<hr>
 					</div>
                 </div>
                 

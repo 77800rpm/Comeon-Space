@@ -27,6 +27,7 @@
 	.list-text{
 		font-size: 13px !important;
 	}
+	.list-text:hover{cursor: pointer; background: #E9EEF2;}
 </style>
 </head>
 <body>
