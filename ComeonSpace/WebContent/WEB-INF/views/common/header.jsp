@@ -231,7 +231,7 @@
       </p>
       <li><a href="index.jsp">홈</a></li>
       <li><a href="<%= request.getContextPath()%>/centerView.ce">고객센터</a></li>
-      <li><a href="#">마이페이지</a></li>
+      <li><a href="<%= request.getContextPath()%>/mypageMain.my">마이페이지</a></li>
       <li><a href="https://www.instagram.com/willyarchives/" target="_blank">👻</a></li>
       <li>
       <button type="button" class="btn btn-warning" id="logout2">로그아웃😥</button></li>

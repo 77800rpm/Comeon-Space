@@ -17,7 +17,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class MypageMainServlet
  */
-@WebServlet("/MypageMainServlet")
+@WebServlet("/mypageMain.my")
 public class MypageMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

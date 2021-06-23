@@ -108,7 +108,7 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Start Section -->
     <section class="container">
-        <%if(loginUser != null && profile != null){ %>
+        <%if(loginUser != null){ %>
 	        <div class="row pb-3 profile-div">
 	        	<%if(pImg != null){ %>
 	        		<div class="center-profile">
@@ -120,7 +120,7 @@ https://templatemo.com/tm-559-zay-shop
 	        		</div>
 	        	<%} %>
 	            <div class="col-lg-6">
-	                <h2 class="h21"><%=profile.getUserName() %>님, 무엇을 도와드릴까요?</h2>
+	                <h2 class="h21"><%= loginUser.getUserName() %>님, 무엇을 도와드릴까요?</h2>
 	              	<div class="center-list" id="myQInsert"><a>문의하기</a></div>
 	              	<div class="center-list" id="myQList"><a>내 질문</a></div>
 	              	<div class="center-list" id="noList"><a>공지사항</a></div>
