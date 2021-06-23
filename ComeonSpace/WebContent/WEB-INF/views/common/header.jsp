@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="member.model.vo.Member, img.model.vo.Img"%>
-<% Member loginUser = (Member)session.getAttribute("loginUser");
-   Member profile = (Member)request.getAttribute("profile"); 
-   Img pImg = (Img)request.getAttribute("profileImg"); %>
+<% Member loginUser = (Member)session.getAttribute("loginUser");%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
