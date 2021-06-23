@@ -61,4 +61,14 @@ public class ProductService {
 		
 		return product;
 	}
+
+	public ArrayList<Img> selectThumbnail(int no) {
+		Connection conn = getConnection();
+		
+		ArrayList<Img> list = new ProductDAO().selectThumbnail(conn, no);
+		
+		close(conn);
+		
+		return list;
+	}
 }

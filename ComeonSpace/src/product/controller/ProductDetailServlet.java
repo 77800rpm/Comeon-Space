@@ -1,6 +1,8 @@
 package product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import enroll.model.vo.Enroll;
+import img.model.vo.Img;
 import product.model.service.ProductService;
 
 /**
@@ -32,13 +35,20 @@ public class ProductDetailServlet extends HttpServlet {
 		
 		int no = Integer.parseInt(request.getParameter("no")); // 주소 no=?
 		
+
+		
 		Enroll product = new ProductService().selectProduct(no);
+		
+		ProductService pService = new ProductService();
+		ArrayList<Img> fileList = pService.selectThumbnail(no);
+		
 		
 		String page = null;
 		
 		if(product != null) {
 			page = "WEB-INF/views/product/productDetailPage.jsp";
 			request.setAttribute("product", product);
+			request.setAttribute("fileList", fileList);
 		} else {
 			page = "WEB-INF/views/common/errorPage.jsp";
 			request.setAttribute("msg", "게시글 상세 조회에 실패하였습니다.");

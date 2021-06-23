@@ -180,6 +180,12 @@ box-sizing: border-box;
 -moz-appearance: none;
 }
 
+#p-Detail{
+ 	font-family: 'Nanum Gothic', sans-serif;	
+    font-size: 20px !important;	
+	
+}
+
 .reviewList-title{
 	font-weight: 40px !important;
 }

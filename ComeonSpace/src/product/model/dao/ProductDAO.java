@@ -150,4 +150,40 @@ public class ProductDAO {
 		
 		return product;
 	}
+
+
+	public ArrayList<Img> selectThumbnail(Connection conn, int no) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Img> list = null;
+		
+		String query = prop.getProperty("selectThumbnail");	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			rset = pstmt.executeQuery();
+			
+			list = new ArrayList<Img>();
+			
+			while(rset.next()) {
+				Img pro = new Img();
+				pro.setImgNum(rset.getInt("img_num"));
+				pro.setImgOrigin(rset.getString("img_origin"));
+				pro.setImgChange(rset.getString("img_change"));
+				pro.setImgPath(rset.getString("img_path"));
+				pro.setImgBoardId(rset.getInt("img_boardid"));
+				
+				list.add(pro);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 }

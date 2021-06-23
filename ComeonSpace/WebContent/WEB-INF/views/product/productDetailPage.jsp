@@ -1,25 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, java.util.ArrayList" %>
-<% Enroll p = (Enroll)request.getAttribute("product"); %>    
+    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, img.model.vo.*, java.util.ArrayList" %>
+<%
+
+	Enroll p = (Enroll)request.getAttribute("product");
+
+	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList"); 
+	Img titleImg = fileList.get(0);
+	
+	String[] checkedFacility = new String[17];
+	String facilityStr = p.getpFacility();
+	
+	if(!facilityStr.equals("null")) {
+		String[] splitStr = facilityStr.split(", ");
+		for(String str : splitStr){
+			switch(str) {
+				case "TV": checkedFacility[0] = "checked"; break;
+				case "빔 프로젝트": checkedFacility[1] = "checked"; break;
+				case "마이크": checkedFacility[2] = "checked"; break;
+				case "주차공간": checkedFacility[3] = "checked"; break;
+				case "내부 화장실": checkedFacility[4] = "checked"; break;
+				case "PC/노트북": checkedFacility[5] = "checked"; break;
+				case "금연": checkedFacility[6] = "checked"; break;
+				case "취사시설": checkedFacility[7] = "checked"; break;
+				case "복사/인쇄기": checkedFacility[8] = "checked"; break;
+				case "화이트보드": checkedFacility[9] = "checked"; break;
+				case "전신거울": checkedFacility[10] = "checked"; break;
+				case "의자/테이블": checkedFacility[11] = "checked"; break;
+				case "공용라운지": checkedFacility[12] = "checked"; break;
+				case "테라스/루트탑": checkedFacility[13] = "checked"; break;
+				case "탈의실": checkedFacility[14] = "checked"; break;
+				case "반려동물 동반가능": checkedFacility[15] = "checked"; break;
+				case "음식물 반입가능": checkedFacility[16] = "checked"; break;
+			}
+		}
+	}
+	
+	
+%>    
     
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>상품 페이지</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/templatemo.css">
-    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">    
-    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
     
     <!-- 내 웹 폰트 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,8 +62,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
     <!-- Slick -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/slick.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
     
 
 <style type="text/css">
@@ -55,54 +90,47 @@
 	#searchImg{width:15px; height: auto;}	
 	.footer{text-align: center;}
 	.footer-list{margin: 6px;}
+	
+	
+	
+	/* 입력할 부분 클릭 시, 겉에 태두리 생기는 부분*/
+	.form-control:focus{color:#212529;background-color:#fff;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
+	
+	/* 버튼 클릭 (편의시설/정기휴무일) 디자인 */
+	.btn-primary{color:DimGrey; background-color:white; border-color:lightgray;}
+	.btn-primary:hover{color:DimGrey; background-color:white; border-color:lightgray;}
+	input[type=checkbox]:checked + label {color:white; background-color:rgb(15, 103, 86);}
+	
+	/*체크박스를 다 안보이게*/
+	input[type=checkbox]{display:none;}
+	.detailDiv{display:inline-block;}
+	.detailDiv:hover{cursor:pointer;}
+	.hiddenBtn{display:none;}
+	
 </style>
-
-<!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
+	
+	<!-- 지도 api 스크립트 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1165f3d77895f712c2f9db5d4f67bb0d&libraries=services,clusterer,drawing"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
 </head>
 
 <body>
-    <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                </div>
-                <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Close Top Nav -->
 
 
-    <!-- Header -->
-    <!-- Header -->
+
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand text-success logo h1 align-self-center">
-				<img src="../assets/img/menu.png" id="menuImg">
+				<img src="assets/img/menu.png" id="menuImg">
             </a>
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-            	<img src="../assets/img/logo.png" id="logoImg">
+            	<img src="assets/img/logo.png" id="logoImg">
             </a>
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <input type="text" id="search" placeholder="어떤 장소를 찾으시나요?">
-                <img src="../assets/img/search.png" id="searchImg">
+                <img src="assets/img/search.png" id="searchImg">
                 <div class="flex-fill">
                     <ul class="nav header-list">
                         <li class="nav-item">
@@ -150,7 +178,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="../assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= titleImg.getImgChange() %>" alt="Card image cap" id="product-detail">
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -169,19 +197,21 @@ https://templatemo.com/tm-559-zay-shop
                                 <!--First slide-->
                                 <div class="carousel-item active">
                                     <div class="row">
+                                    
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_01.jpg" alt="Product Image 1">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(1).getImgChange() %>" alt="Product Image 1">
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="col-4">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(2).getImgChange() %>" alt="Product Image 2">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_02.jpg" alt="Product Image 2">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_03.jpg" alt="Product Image 3">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(3).getImgChange() %>" alt="Product Image 3">
                                             </a>
                                         </div>
                                     </div>
@@ -193,17 +223,18 @@ https://templatemo.com/tm-559-zay-shop
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_04.jpg" alt="Product Image 4">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(1).getImgChange() %>" alt="Product Image 1">
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="col-4">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(2).getImgChange() %>" alt="Product Image 2">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_05.jpg" alt="Product Image 5">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_06.jpg" alt="Product Image 6">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(3).getImgChange() %>" alt="Product Image 3">
                                             </a>
                                         </div>
                                     </div>
@@ -213,19 +244,20 @@ https://templatemo.com/tm-559-zay-shop
                                 <!--Third slide-->
                                 <div class="carousel-item">
                                     <div class="row">
+                      					 <div class="col-4">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(1).getImgChange() %>" alt="Product Image 1">
+                                            </a>
+                                        </div>
+                                        
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_07.jpg" alt="Product Image 7">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(2).getImgChange() %>" alt="Product Image 2">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_08.jpg" alt="Product Image 8">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="../assets/img/product_single_09.jpg" alt="Product Image 9">
+                                                <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(3).getImgChange() %>" alt="Product Image 3">
                                             </a>
                                         </div>
                                     </div>
@@ -250,7 +282,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="card">
                         <div class="card-body">
                         <br>
-                            <h1 class="h2" id="jemok">영통역 좋은 세미나 룸
+                            <h1 class="h2" id="jemok"><%= p.getpName() %><input type = "hidden" id="api-name" value="<%= p.getpName() %>">
                             
                             <a class="btn btn-success text-white"><i class="far fa-heart"></i></a>
                             <a class="btn btn-success text-white">
@@ -269,10 +301,10 @@ https://templatemo.com/tm-559-zay-shop
                             
                             
                             				                           
-                            <p class="h3 py-2">40,000 원</p>
+                            <p class="h3 py-2"><%= p.getProductPrice() %> 원</p>
                             <p class="location">
 							<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBSc1x%2Fbtq5M27RmQL%2FWqkF4T7WO9bBbBMfwp3690%2Fimg.png" width="25" height="25">
-							경기도 수원시 영통구174번길 52층</p>
+							<span id="location-api"><%= p.getpLocation() %></span></p><input type = "hidden" id="api-adrr" value="<%= p.getpLocation() %>">
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
@@ -285,7 +317,7 @@ https://templatemo.com/tm-559-zay-shop
 							<br>
 
                             <h6>한 줄 소개 :</h6>
-                            <p>이렇고 저런 공간입니다. 이렇고 저런 공간입니다. 이렇고 저런 공간입니다. 이렇고 저런 공간입니다. 이렇고 저런 공간입니다.</p>
+                            <p><%= p.getpIntro() %></p>
                             
                             <br>
                             
@@ -295,7 +327,7 @@ https://templatemo.com/tm-559-zay-shop
                                     <h6>카테고리 :</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>#세미나룸 #영통역 #어쩌구</strong></p>
+                                    <p class="text-muted"><strong>#<%= p.getpCategory() %></strong></p>
                                 </li>
                             </ul>
 
@@ -307,7 +339,7 @@ https://templatemo.com/tm-559-zay-shop
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item">
-                                                 <h6>날짜 : <input type="date" id="dateselectbutton" value="today" min="today"></h6>
+                                                 <h6>날짜 : <input type="date" id="dateselectbutton" min="today"></h6>
                                             </li>
                                         </ul>
                                     </div>
@@ -330,7 +362,7 @@ https://templatemo.com/tm-559-zay-shop
 									<span> 2021.05.20. (목)</span>
 									<br>
 									<span> 총 </span> <span
-										style="color: #0f6756; font-size: 150%; font-weight: bold">40,000</span>
+										style="color: #0f6756; font-size: 150%; font-weight: bold"><%= p.getProductPrice() %></span>
 									<span> 원</span>
 								</div>
 								
@@ -365,7 +397,7 @@ https://templatemo.com/tm-559-zay-shop
 				<br><br>
 				<span id="bt011"><a href="#menu1">공간 소개</a></span>
 				<b>　　　</b>
-				<span id="bt022"><a href="#menu2">시설 안내</a></span>
+				<span id="bt022"><a href="#menu2">편의 시설</a></span>
 				<b>　　　</b>
 				<span id="bt033"><a href="#menu3">유의 사항</a></span>
 				<b>　　　</b>
@@ -384,60 +416,59 @@ https://templatemo.com/tm-559-zay-shop
 				<hr size="3px"><br><br>
 				<h3 class="bar-menu">공간 소개</h3>
 				<br>
-				<pre>
+				<pre id="p-Detail">
 				
-밝고 깔끔한 합리적인 단독룸, 이룸 스터디룸 회의실 여의도점입니다 :)
-
-★정기 이용 시에는 할인 적용되니 별도 카톡 문의 주세요 :)
-				
--여의도역 5번 출구 8분 거리 (샛강역 2번 출구 3분 거리)
-				
--10인 정원의 스터디, 회의, 강의, 인터뷰, 영상 촬영, 세미나, 원데이 클래스 등에 최적화된 공간
-				
--60인치 크기 대형 화이트보드 / 50인치 스마트 TV(노트북, 스마트폰 무선 연결 및 넷플릭스, 유튜브 이용가능)
-				
--화이트톤의 깔끔한 인테리어, 조명장비 및 삼각대 등 촬영 장비 이용 가능(유료 이용)
-				
--연중무휴 24시간 이용 가능
-				
--할인 적용되는 주차장이 있으나, 만차인 경우가 많음에 유의해주세요. (만차시 건물 앞 유료 노상 주차장 이용 가능)
-				
--인원 미확정시, 확정 인원으로 예약 후 문의주시면 추가 결제 안내해드리겠습니다.
-				
--당일 예약은 직접 문의 주시면 예약 불가로 표시되어 있더라도 가능합니다.
-				
--문의: 카카오톡 @이룸여의도
+<%= p.getpDetail() %>
 				
 				</pre>
 				</div>
 				<br><br>
 				<div id="menu2">
 				<hr size="3px"><br><br>
-				<h3 class="bar-menu">시설 안내</h3>
+				<h3 class="bar-menu">편의 시설</h3>
 				<br>
-				<pre>
+
 				
-1) 60인치 크기 대형 화이트보드
-
-2) 50인치 대형 스마트 TV(노트북, 스마트폰 등과 무선 연결(미러링) 가능 / 유튜브, 넷플릭스 등 TV 자체 이용 가능)
-
-3) 무료 와이파이, HDMI 케이블, LAN 케이블, 멀티탭, 충전기 등 각종 통신 유선 및 전원 포트
-
-4) 원하는 대로 배치하여 사용 가능한 대형 테이블 4개와 오래 앉아도 편한 회의용 의자(메쉬 소재, 높낮이 조절 및 등받이)
-
-5) 깨끗하게 관리되는 실내 단독 화장실
-
-6) 50m 인근에 인쇄/복사점, 문구점, 편의점 위치
-
-7) 손소독제, 물티슈, 티슈, 방향제 비치
-
-8) 촬영용 조명 및 링라이트, 삼각대 (유료 이용 - 15,000원/시간 무제한)
-
-9) 입실 관련 안내문자는 예약 당일 오전에 발송됩니다.
-
-10) 기타 문의사항은 카카오톡 채널(@이룸여의도)로 문의주시면 24시간 상담내용을 받아보실 수 있습니다.
-
-				</pre>	
+			<div class="row">
+				<div class="mb-3">
+				<label class="mb-2"></label><br>
+					<input type="checkbox" id="chk1" value="TV" name="facility" <%= checkedFacility[0] %> disabled>
+					<label for="chk1" class="btn btn-primary">TV</label>
+					<input type="checkbox" id="chk2" value="빔 프로젝트" name="facility" <%= checkedFacility[1] %> disabled>
+					<label for="chk2" class="btn btn-primary">빔 프로젝트</label>
+					<input type="checkbox" id="chk3" value="마이크" name="facility" <%= checkedFacility[2] %> disabled>
+					<label for="chk3" class="btn btn-primary">마이크</label>
+					<input type="checkbox" id="chk4" value="주차공간" name="facility" <%= checkedFacility[3] %> disabled>
+					<label for="chk4" class="btn btn-primary">주차공간</label>
+					<input type="checkbox" id="chk5" value="내부 화장실" name="facility" <%= checkedFacility[4] %> disabled>
+					<label for="chk5" class="btn btn-primary">내부 화장실</label>
+					<input type="checkbox" id="chk6" value="PC/노트북" name="facility" <%= checkedFacility[5] %> disabled>
+					<label for="chk6" class="btn btn-primary">PC/노트북</label>
+					<input type="checkbox" id="chk7" value="금연" name="facility" <%= checkedFacility[6] %> disabled>
+					<label for="chk7" class="btn btn-primary">금연</label>
+					<input type="checkbox" id="chk8" value="취사시설" name="facility" <%= checkedFacility[7] %> disabled>
+					<label for="chk8" class="btn btn-primary">취사시설</label>
+					<input type="checkbox" id="chk9" value="복사/인쇄기" name="facility" <%= checkedFacility[8] %> disabled>
+					<label for="chk9" class="btn btn-primary">복사/인쇄기</label>
+					<input type="checkbox" id="chk10" value="화이트보드" name="facility" <%= checkedFacility[9] %> disabled>
+					<label for="chk10" class="btn btn-primary">화이트보드</label>
+					<input type="checkbox" id="chk11" value="전신거울" name="facility" <%= checkedFacility[10] %> disabled>
+					<label for="chk11" class="btn btn-primary">전신거울</label>
+					<input type="checkbox" id="chk12" value="의자/테이블" name="facility" <%= checkedFacility[11] %> disabled>
+					<label for="chk12" class="btn btn-primary">의자/테이블</label>
+					<input type="checkbox" id="chk13" value="공용라운지" name="facility" <%= checkedFacility[12] %> disabled>
+					<label for="chk13" class="btn btn-primary">공용라운지</label>
+					<input type="checkbox" id="chk14" value="테라스/루트탑" name="facility" <%= checkedFacility[13] %> disabled>
+					<label for="chk14" class="btn btn-primary">테라스/루트탑</label>
+					<input type="checkbox" id="chk15" value="탈의실" name="facility" <%= checkedFacility[14] %> disabled>
+					<label for="chk15" class="btn btn-primary">탈의실</label>
+					<input type="checkbox" id="chk16" value="반려동물 동반가능" name="facility" <%= checkedFacility[15] %> disabled>
+					<label for="chk16" class="btn btn-primary">반려동물 동반가능</label>
+					<input type="checkbox" id="chk17" value="음식물 반입가능" name="facility" <%= checkedFacility[16] %> disabled>
+					<label for="chk17" class="btn btn-primary">음식물 반입가능</label>
+				</div>
+			</div>
+	
 				
 				</div>
 				<br><br>
@@ -446,7 +477,7 @@ https://templatemo.com/tm-559-zay-shop
 				<h3 class="bar-menu">유의 사항</h3>
 				<br>
 				<pre>
-1) 최소 2시간 이상, 1시간 단위로 예약 가능합니다.
+1) 하루 단위로 예약 가능합니다.
 
 2) 예약은 선입금으로 진행되며, 예약된 사용 시간 전에 퇴실해도 잔여 시간은 환불되지 않습니다. 단, 인원이나 시간 추가시에는 사후 결제 가능합니다.
 
@@ -472,15 +503,10 @@ https://templatemo.com/tm-559-zay-shop
 				<hr size="3px"><br><br>
 				<h3 class="bar-menu">오시는 길</h3>
 				<br>
-<pre>
 
 
+<div id="map" style="width:100%;height:550px;"></div>
 
-		여기에 지도 api
-
-
-
-</pre>
 				</div>
 				<br><br><br><br>
 				<div id="menu5">
@@ -542,15 +568,15 @@ https://templatemo.com/tm-559-zay-shop
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="../assets/js/jquery-1.11.0.min.js"></script>
-    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/templatemo.js"></script>
-    <script src="../assets/js/custom.js"></script>
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
     <!-- End Script -->
 
     <!-- Start Slider Script -->
-    <script src="../assets/js/slick.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
     <script>
         $('#carousel-related-product').slick({
             infinite: true,
@@ -583,6 +609,64 @@ https://templatemo.com/tm-559-zay-shop
         });
     </script>
     <!-- End Slider Script -->
+    
+    <!-- 지도 api -->
+    <script>
+
+    // 주소를 이용해 좌표 값 받아 오기
+    var apiadrr = $('#api-adrr').val();
+    // 장소 이름 받아 오기
+    var apiname = $('#api-name').val();
+    
+    var geocoder = new kakao.maps.services.Geocoder();
+
+    var callback = function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+            console.log(result);
+        }
+    };
+
+    // apiadrr에 x,y값 제대로 담긴 것 확인
+    geocoder.addressSearch(apiadrr, callback);
+    
+    console.log(apiname);
+    
+    
+    
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+    
+    var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+    geocoder.addressSearch(apiadrr, function(result, status) {
+
+        // 정상적으로 검색이 완료됐으면 
+         if (status === kakao.maps.services.Status.OK) {
+
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: coords
+            });
+
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: apiname
+            });
+            infowindow.open(map, marker);
+
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+        } 
+    });    
+    
+	</script>
+
 
 </body>
 

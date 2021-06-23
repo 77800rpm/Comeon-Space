@@ -67,6 +67,8 @@ public class Enroll {
 		this.pLocation = pLocation;
 		this.pCount = pCount;
 	}
+	
+	
 
 	public int getpNum() {
 		return pNum;

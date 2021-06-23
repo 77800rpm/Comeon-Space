@@ -23,6 +23,17 @@ public class Img {
 
 
 
+	public Img(int imgNum, String imgOrigin, String imgChange, String imgPath, int imgBoardId) {
+		super();
+		this.imgNum = imgNum;
+		this.imgOrigin = imgOrigin;
+		this.imgChange = imgChange;
+		this.imgPath = imgPath;
+		this.imgBoardId = imgBoardId;
+	}
+
+
+
 	public Img(int imgNum, int userNum, int imgLevel, int imgCategory, String imgOrigin, String imgChange,
 			String imgPath, String status, int imgBoardId) {
 		super();
