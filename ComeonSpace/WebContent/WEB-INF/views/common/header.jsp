@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="member.model.vo.Member, img.model.vo.Img"%>
-<% Member loginUser = (Member)session.getAttribute("loginUser");
-   Member profile = (Member)request.getAttribute("profile"); 
-   Img pImg = (Img)request.getAttribute("profileImg"); %>
+<% Member loginUser = (Member)session.getAttribute("loginUser");%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,6 +50,10 @@
  		background-color: #0f6756;
  		border-radius: 5px 5px 5px 5px;
  		color: white !important;
+	}
+	
+	#login, #logout {
+		cursor:pointer !important;
 	}
 
 
@@ -223,7 +225,7 @@
       <img src="assets/img/menubar_lobby.png" style="width: 70%">
       </p><br>
       <p>
-      <a><%=profile.getUserName() %>님, 환영합니다!</a>
+      <a>앗.. 당신... 환영!</a>
       </p>
       <li><a href="index.jsp">홈</a></li>
       <li><a href="<%= request.getContextPath()%>/centerView.ce">고객센터</a></li>
@@ -312,7 +314,13 @@
 </script>
 
 
-<!-- 메뉴바 로그인 -->
+<!-- 검색 -->
+<script>
+	$('#main-search').on('click', function() {
+		location.href="<%= request.getContextPath() %>/search.pro";		
+	});
+</script>
+
 <script>
 	$('#login2').on('click', function(){
 		location.href="<%= request.getContextPath() %>/loginForm.me";
@@ -322,5 +330,6 @@
 		location.href="<%= request.getContextPath() %>/logout.me";
 	});
 </script>
+  
 </body>
 </html>

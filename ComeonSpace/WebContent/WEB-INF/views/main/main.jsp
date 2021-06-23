@@ -62,7 +62,7 @@ https://templatemo.com/tm-559-zay-shop
 	.carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ }
 	
 	#login, #logout {
-		cursor:pointer;
+		cursor:pointer !important;
 	}
 	
 /* 메뉴바 스타일 */
@@ -242,7 +242,7 @@ https://templatemo.com/tm-559-zay-shop
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <input type="text" id="search" placeholder="어떤 장소를 찾으시나요?">
-                <img src="resources/image/search.png" id="searchImg">
+                <img src="resources/image/search.png" id="searchImg" onclick="goSearch();">
                 <div class="flex-fill">
                     <ul class="nav header-list">
                         <li class="nav-item">                
@@ -262,6 +262,7 @@ https://templatemo.com/tm-559-zay-shop
                        		<a class="nav-link main-login btn-member-logout" id="logout">로그아웃</a>
                        <% } %>     
                         </li>
+                                        
                     </ul>
                 </div>
             </div>
@@ -829,6 +830,12 @@ https://templatemo.com/tm-559-zay-shop
 		$('.btn-member-logout').on('click', function(){
 			location.href="<%= request.getContextPath() %>/logout.me";
 		});
+
+		$('.searchImg').on('click', function(){
+			location.href="<%= request.getContextPath() %>/search.pro";
+		});
+		
+
 	</script>
 	
 	

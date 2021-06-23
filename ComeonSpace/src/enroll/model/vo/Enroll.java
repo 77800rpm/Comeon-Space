@@ -37,6 +37,37 @@ public class Enroll {
 		this.holiday = holiday;
 		this.userNum = userNum;
 	}
+	
+	
+	
+	public Enroll(int pNum, String pName, int pLimit, int productPrice, String pCategory, String pIntro, String pDetail,
+			String pLocation, String pFacility, int pCount, String holiday) {
+		super();
+		this.pNum = pNum;
+		this.pName = pName;
+		this.pLimit = pLimit;
+		this.productPrice = productPrice;
+		this.pCategory = pCategory;
+		this.pIntro = pIntro;
+		this.pDetail = pDetail;
+		this.pLocation = pLocation;
+		this.pFacility = pFacility;
+		this.pCount = pCount;
+		this.holiday = holiday;
+	}
+
+	public Enroll(int pNum, String pName, int productPrice, String pCategory, String pIntro, String pLocation,
+			int pCount) {
+		super();
+		this.pNum = pNum;
+		this.pName = pName;
+		this.productPrice = productPrice;
+		this.pCategory = pCategory;
+		this.pIntro = pIntro;
+		this.pLocation = pLocation;
+		this.pCount = pCount;
+	}
+
 	public int getpNum() {
 		return pNum;
 	}
@@ -120,6 +151,14 @@ public class Enroll {
 	}
 	public void setUserNum(int userNum) {
 		this.userNum = userNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Enroll [pNum=" + pNum + ", pName=" + pName + ", pLimit=" + pLimit + ", productPrice=" + productPrice
+				+ ", pCategory=" + pCategory + ", pIntro=" + pIntro + ", pDetail=" + pDetail + ", pLocation="
+				+ pLocation + ", pFacility=" + pFacility + ", pCount=" + pCount + ", pApprove=" + pApprove + ", status="
+				+ status + ", holiday=" + holiday + ", userNum=" + userNum + "]";
 	}
 	
 	

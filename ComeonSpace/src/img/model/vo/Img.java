@@ -13,6 +13,16 @@ public class Img {
 	
 	public Img() {}
 
+	
+	
+	public Img(String imgChange, int imgBoardId) {
+		super();
+		this.imgChange = imgChange;
+		this.imgBoardId = imgBoardId;
+	}
+
+
+
 	public Img(int imgNum, int userNum, int imgLevel, int imgCategory, String imgOrigin, String imgChange,
 			String imgPath, String status, int imgBoardId) {
 		super();

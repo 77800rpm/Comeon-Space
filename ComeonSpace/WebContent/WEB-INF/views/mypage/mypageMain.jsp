@@ -62,8 +62,15 @@
 						<%if(img == null){ %>
 							<img src="<%=request.getContextPath()%>/img_upload/<%= img.getImgChange() %>" width="300px;" height="200px;">
 						<%} else { %>
-							<img src="" width="300px" height="200px">
+							<img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" width="300px;" height="200px;">
 						<%} %>
+					</div>
+					<div>
+						<h2><%= profile.getUserName() %> <sub>님,</sub> </h2>
+						<h4>반갑습니다.</h4>
+						<br>
+						<br>
+						<hr>
 					</div>
                 </div>
                 
