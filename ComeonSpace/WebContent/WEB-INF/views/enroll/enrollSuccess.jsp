@@ -22,6 +22,7 @@
 </style>
 </head>
 <body>
+	<%@ include file="../common/header.jsp" %>
 	<br><br><br>
 
 	<!-- 공간 등록 -->
@@ -50,6 +51,7 @@
 			<input type="button" id="button" value="확인">
 		</div>
 	</div>
+	<%@ include file="../common/footer.jsp" %>
 	<script>
 		$(function(){
 			$("#button").on("click",function(){

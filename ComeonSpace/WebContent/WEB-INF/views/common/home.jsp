@@ -26,11 +26,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../assets/js/jquery-1.11.0.min.js"></script>
-    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/templatemo.js"></script>
-    <script src="../assets/js/custom.js"></script>
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
 <!--
     
 TemplateMo 559 Zay Shop
@@ -61,35 +61,11 @@ https://templatemo.com/tm-559-zay-shop
 	
 	
 	.carousel-inner > .carousel-item > img{ /* width: 640px; height: 720px; */ }
-	
-	
 
 </style>
 </head>
-
-
 <body>
         
- 
-    
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="어떤 공간을 찾으시나요?">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
- 
 	
     <!-- 메인 배너 공간 시작 -->
     <!-- 
@@ -216,6 +192,7 @@ https://templatemo.com/tm-559-zay-shop
 
 
     <!-- 카테고리 시작 -->
+    <!-- 필터 검색 기능 이용해서 카테고리 클릭시 해당 카테고리 필터가 적용된 검색창으로 이동 -->
 <main style="background: #eeebeb">
 
   <section class="py-5 text-center container" id="categorySec">
@@ -358,7 +335,7 @@ https://templatemo.com/tm-559-zay-shop
 	<!-- 지도 시작 -->
 	
 	<!-- 지도에 마커 기능 이용해서 주위 공간 표시해야함 -->
-	<!-- 카카오 혹은 네이버 지도 api 이용해보기 -->
+	<!-- 카카오 지도 api 이용 -->
 
 <br><br><br>
 <div class="mapContainer">
@@ -371,28 +348,10 @@ https://templatemo.com/tm-559-zay-shop
 			<h2>어느 지역의 공간을<br> 찾으시나요?🕵️‍♂️</h2>	
 		</div>
 		
-    <div class="col-md-7" id="mapid" style="width: 100%; height: 500px;"></div>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <script>
-        var mymap = L.map('mapid').setView([37.499007, 127.032911, 13], 13);
-
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            maxZoom: 18,
-            attribution: 'Zay Telmplte | Template Design by <a href="https://templatemo.com/">Templatemo</a> | Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1
-        }).addTo(mymap);
-
-        L.marker([37.499007, 127.032911, 13]).addTo(mymap)
-            .bindPopup("<b>KH</b> 정보 교육원<br />").openPopup();
-
-        mymap.scrollWheelZoom.disable();
-        mymap.touchZoom.disable();
-    </script>
-    	</div>
+    <div class="col-md-7" id="mapid" style="width: 80%; height: 500px; margin: 0 auto;"></div>
+    <%@ include file="mainPage_map.jsp" %>
+    
+ 		</div>
     </div>
     <!-- 지도 끝 -->   
     
@@ -496,6 +455,7 @@ https://templatemo.com/tm-559-zay-shop
     
     <br><br><br><br><br>
 
+
 	<!-- 이달의 리뷰 시작 -->
 	<div class="container">
     <div class="row">
@@ -504,7 +464,7 @@ https://templatemo.com/tm-559-zay-shop
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script> $('.carousel').carousel({ interval: 2000 //기본 5초 }) </script> <div class="container"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚜️이 달의 리뷰⚜️</h2></div>
+        <script> $('.carousel').carousel({ interval: 2000  }) </script> <div class="container"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚜️이 달의 리뷰⚜️</h2></div>
         <div id="demo" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
         
@@ -547,18 +507,7 @@ https://templatemo.com/tm-559-zay-shop
 </div>
 </div>
 	<!-- 이 달의 리뷰 끝 -->
-
-
-
-
-	<!-- 구분 줄로 프로그레스 바 를 이용하려고 했는데 깔끔해보이지 않아서 뺐습니다.
-	
-		<div class="progress">
-  		<div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
-	
-	 -->
+<br><br>
 
 </body>
-
 </html>

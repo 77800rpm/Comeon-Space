@@ -107,13 +107,14 @@
         text-decoration: underline;
      }
      .section-div{padding-top: 1rem; padding-bottom: 1rem;} 
-	
-	
-	
+	#errorNotice{text-align: center; }
+	.body-div{margin-top: 50px;}
+	.center-body-div{margin-bottom: 100px;}
 </style>
 
 <body>
-    <section class="section-div">
+	<%@ include file="../common/header.jsp" %>
+    <section class="section-div body-div">
         <div class="container">
             <div class="row">
                 <div class="text-black main-div">
@@ -125,7 +126,7 @@
     <!-- Close Banner -->
 
     <!-- Start Section -->
-    <section class="container center">
+    <section class="container center center-body-div">
        <form>
 	       <div class="center-sideList center-align">
 	       		<span class="sideList-top">고객센터</span><br>
@@ -151,7 +152,7 @@
 	       			</tr>
 	       			<%if(list.isEmpty()){ %>
 						<tr>
-							<td colspan="5">존재하는 공지사항이 없습니다.</td>
+							<td colspan="5" id="errorNotice">존재하는 공지사항이 없습니다.</td>
 						</tr>
 						<%} else{ %>
 						<%		for(Notice n : list){ %>
@@ -167,32 +168,7 @@
 	       		</table>
 	       </div>
 	       <div class="center-sideList"></div>
-	       <div class="notice-button center-vertical center-content">
-	       		<a href="#"><input type="button" value="글쓰기" class="button-style" id="noBtn"></a>
-	     		<ul class="pagination">
-		             <li class="page-item">
-		               <a class="page-link" href="#">&laquo;</a>
-		             </li>
-		             <li class="page-item">
-		               <a class="page-link" href="#">1</a>
-		             </li>
-		             <li class="page-item">
-		               <a class="page-link" href="#">2</a>
-		             </li>
-		             <li class="page-item">
-		               <a class="page-link" href="#">3</a>
-		             </li>
-		             <li class="page-item">
-		               <a class="page-link" href="#">4</a>
-		             </li>
-		             <li class="page-item">
-		               <a class="page-link" href="#">5</a>
-		             </li>
-		             <li class="page-item">
-		               <a class="page-link" href="#">&raquo;</a>
-		             </li>             
-	         	</ul>
-	       </div>
+	       
 	       <script>
 	       		$(function(){
 	       			$("#noBtn").on("click",function(){
@@ -207,11 +183,17 @@
 						var num = $(this).parent().children().eq(0).text();
 						location.href="<%= request.getContextPath() %>/detail.no?no=" + num;
 					})
+					
+					$(document).ready(function(){
+						$("#errorNotice").unbind();
+					})
 	       		})
+	       		
 	       </script>
 		</form>	
 	       
     </section>
+    <%@ include file="../common/footer.jsp" %>
     
 </body>
 

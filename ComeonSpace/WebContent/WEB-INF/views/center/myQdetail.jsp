@@ -96,6 +96,8 @@ https://templatemo.com/tm-559-zay-shop
 </style>
 
 <body>
+	<%@ include file="../common/header.jsp" %>
+	
     <section class="section-div">
         <div class="container">
             <div class="row">
@@ -149,13 +151,14 @@ https://templatemo.com/tm-559-zay-shop
        				</tr>
        				<tr>
        					<td colspan="5" style="text-align: center;">
-       					<input type="button" value="목록으로">
+       					<input type="button" value="목록으로" onclick="location.href='javascript:history.go(-1)'">
        					</td>
        				</tr>
        			</table>
        			
 	       	</form>  
        </div>
+       <%@ include file="../common/footer.jsp" %>
     </section>
     <!-- End Section -->
 

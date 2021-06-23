@@ -3,7 +3,6 @@
 <%
 	Member profile = (Member)request.getAttribute("profile");
 	ArrayList<Notice> noList = (ArrayList)request.getAttribute("noList");
-	Member loginUser = (Member)session.getAttribute("loginUser");
 	Img pImg = (Img)request.getAttribute("profileImg");
 %>
 <!DOCTYPE html>
@@ -89,11 +88,13 @@ https://templatemo.com/tm-559-zay-shop
 	border-bottom: 2px solid green; margin-bottom: 30px; }
 	.profile-div{margin-bottom: 20px;}
 	#noticeTable:hover{cursor: pointer; background: #E9EEF2;}
+	#errorNotice{text-align: center; }
 	
 </style>
 <head>
 </head>
 <body>
+	<%@ include file="../common/header.jsp" %>
     <section class="py-5">
         <div class="container">
             <div class="row">
@@ -151,15 +152,15 @@ https://templatemo.com/tm-559-zay-shop
 		<hr>
 		<br>
 		<div class="center-notice">
-			<span class="center-board-title">Notice 게시판</span><br>
-			<table class="table">
+			<span class="center-board-title">Notice 게시판</span><br><br>
+			<table class="table table-striped" id="listArea">
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>작성날짜</th>
 				</tr>
-				<%if(noList != null){ %>
+				<%if(!noList.isEmpty()){ %>
 					<%for(Notice n : noList) {%>
 						<tr id="noticeTable">
 							<td><%= n.getnNum() %></td>
@@ -170,7 +171,7 @@ https://templatemo.com/tm-559-zay-shop
 					<%} %>
 				<%} else {%>
 					<tr>
-						<td colspan="4">등록된 공지사항이 없습니다.</td>
+						<td colspan="4" id="errorNotice">등록된 공지사항이 없습니다.</td>
 					</tr>
 				<%} %>
 			</table>
@@ -196,8 +197,22 @@ https://templatemo.com/tm-559-zay-shop
 	    			location.href="<%= request.getContextPath() %>/myQView.ce";
 	    		});
 	    	})
+	    	
+	    	$(function(){
+	    		$("#listArea td").mouseenter(function(){
+					$(this).parent().css({"background": "#E0E5EA" , "cursor" : "pointer"});
+				}).mouseout(function(){
+					$(this).parent().css({"background":"none"});
+				}).click(function(){
+					var num = $(this).parent().children().eq(0).text();
+					location.href="<%= request.getContextPath() %>/detail.no?no=" + num;
+				})
+				
+				$("#errorNotice").unbind();
+	    	})
 	    </script>
 	</section>
+	<%@ include file="../common/footer.jsp" %>
 </body>
 
 </html>

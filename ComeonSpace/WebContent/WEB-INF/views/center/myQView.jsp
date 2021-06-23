@@ -116,6 +116,7 @@ https://templatemo.com/tm-559-zay-shop
 </style>
 
 <body>
+	<%@ include file="../common/header.jsp" %>
     <section class="section-div">
         <div class="container">
             <div class="row">
@@ -199,6 +200,7 @@ https://templatemo.com/tm-559-zay-shop
        </div>
        
     </section>
+    <%@ include file="../common/footer.jsp" %>
 	<script>
 		$(function(){
 			$("#myQuestionList td").mouseenter(function(){

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList" %>
-<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.Member"
+    import="member.model.service.*" %>
+<%--<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); --%>
+<% MemberService ms = new MemberService();
+   ArrayList<Member> list = (ArrayList<Member>)ms.adminSelectUser(); %>
 <!DOCTYPE html>
 <html>
 
@@ -55,7 +58,13 @@
 
 <div>           
   <table class="table table-bordered table-sm" style="text-align:center;">
-   	<% if(list.isEmpty()){ %>
+  	<% if(list == null){ %>
+   		<thead class="w3-light-grey">
+		   	<tr>
+		   		<td> NULL ERROR! </td>
+		   	</tr>
+		</thead>
+   	<% }else if(list.isEmpty()){ %>
    		<thead class="w3-light-grey">
 		   	<tr>
 		   		<td>가입된 회원이 없습니다.</td>

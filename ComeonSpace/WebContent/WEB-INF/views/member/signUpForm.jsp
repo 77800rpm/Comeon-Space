@@ -36,6 +36,7 @@
 	
 </style>
 <body>
+	<%@ include file="../common/header.jsp" %>
     <div class="container ">
 	<div class="row ">
         <div class="col-md-6 center-block">
@@ -102,6 +103,7 @@
         </div><!-- ends col-6 -->
 	</div>
 </div>
+<%@ include file="../common/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/jquery-1.11.0.min.js"></script>
     <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
