@@ -47,6 +47,7 @@
 </style>
 </head>
 <body>
+	<%@ include file="../common/header.jsp" %>
 	<!-- 공간 등록하기 title 시작 -->
 	<br><br>
 	<div class="container">
@@ -253,6 +254,7 @@
 		
 	</div> <!-- container 태그 -->
 </form>
+<%@ include file="../common/footer.jsp" %>
 	<br><br>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
