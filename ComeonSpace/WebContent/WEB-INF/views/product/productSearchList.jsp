@@ -25,13 +25,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
-<!--
-    
-TemplateMo 559 Zay Shop
 
-https://templatemo.com/tm-559-zay-shop
 
--->
 
 <style>
 	*{font-family: 'Nanum Gothic', sans-serif;}
@@ -138,7 +133,7 @@ https://templatemo.com/tm-559-zay-shop
 	    <a class="btn btn-success text-white"><i class="far fa-heart"></i></a>
 		</div>
 		
-		<div><input type = "hidden" value="<%= p.getpNum() %>"></div>
+		<div><input type = "hidden" id="pronum" value="<%= p.getpNum() %>"></div>
 		
     </div><br><hr><br>
 
@@ -172,7 +167,7 @@ https://templatemo.com/tm-559-zay-shop
 			}).mouseout(function(){
 				$(this).parent().css({'background':'none'});
 			}).click(function(){
-				var num = $(this).parent().children().eq(4).text();
+				var num = $('#hidden').text();
 				location.href="<%= request.getContextPath() %>/productDetail.no?no=" + num;
 			});
 		});
