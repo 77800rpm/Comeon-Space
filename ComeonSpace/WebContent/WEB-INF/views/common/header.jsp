@@ -225,7 +225,7 @@
       <img src="assets/img/menubar_lobby.png" style="width: 70%">
       </p><br>
       <p>
-      <a>앗.. 당신... 환영!</a>
+      <a>오랜만이에요... 보고싶었습니다!</a>
       </p>
       <li><a href="index.jsp">홈</a></li>
       <li><a href="<%= request.getContextPath()%>/centerView.ce">고객센터</a></li>
@@ -239,6 +239,9 @@
       <p>
       <img src="assets/img/menubar_lobby.png" style="width: 70%">
       </p><br>
+      <p>
+      <a>안녕하세요! Come on Space입니다.</a>
+      </p>
       <li><button type="button" class="btn btn-warning" id="login2">로그인🤗</button></li>
       <li><a href="index.jsp">홈</a></li>
       <li><a href="<%= request.getContextPath()%>/centerView.ce">고객센터</a></li>
