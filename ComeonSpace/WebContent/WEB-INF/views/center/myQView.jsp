@@ -112,6 +112,7 @@ https://templatemo.com/tm-559-zay-shop
      .main-div{border-bottom: 2px solid green;}
      .section-div{padding-top: 1rem; padding-bottom: 1rem;}
     #tableTop{background: #E3F8E7;} 
+    #test{clear:both;}
 	
 </style>
 
@@ -130,14 +131,15 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Start Section -->
     <section class="container center">
-       <div class="center-sideList center-align">
-       		<span class="sideList-top">고객센터</span><br>
-       		<span class="sideList"><a>문의하기</a></span><br>
-       		<span class="sideList"><a>공지사항</a></span><br>
-       		<span class="sideList"><a>FAQ</a></span><br>
-       		<span class="sideList"><a>내 질문</a></span><br>
-       		<span class="sideList"><a>회원탈퇴</a></span>
-       </div>
+<!--        <div class="center-sideList center-align"> -->
+<!--        		<span class="sideList-top">고객센터</span><br> -->
+<!--        		<span class="sideList"><a>문의하기</a></span><br> -->
+<!--        		<span class="sideList"><a>공지사항</a></span><br> -->
+<!--        		<span class="sideList"><a>FAQ</a></span><br> -->
+<!--        		<span class="sideList"><a>내 질문</a></span><br> -->
+<!--        		<span class="sideList"><a>회원탈퇴</a></span> -->
+<!--        </div> -->
+		<%@ include file="centerMenubar.jsp" %>
        <div class="center-align center-vertical" id="center-qTitle">
        		<h2>내 질문</h2>
        		<br>
@@ -198,7 +200,8 @@ https://templatemo.com/tm-559-zay-shop
 	             </li>             
 	         </ul>
        </div>
-       
+       <div id="test"></div>
+       <br>
     </section>
     <%@ include file="../common/footer.jsp" %>
 	<script>

@@ -42,7 +42,7 @@ public class MypageMainServlet extends HttpServlet {
 		
 		request.setAttribute("profile", profile);
 		request.setAttribute("img", img);
-		request.getRequestDispatcher("WEB-INF/views/mypage,mypageMain.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
 	}
 
 	/**

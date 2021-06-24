@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="member.model.vo.Member, java.util.ArrayList, notice.model.vo.Notice"%>
+<%
+	ArrayList<Notice> list = (ArrayList)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +26,7 @@
 	.bg-success { background-color:rgb(15, 103, 86) !important;}
 	.bg-light { background-color: #F5F5F5 !important;}
 	
-	.table>tbody>tr:hover{--bs-table-accent-bg:var(--bs-table-striped-bg);}
+	.table>tbody>tr>td:hover{--bs-table-accent-bg:var(--bs-table-striped-bg);}
 </style>
 </head>
 <body>
@@ -107,39 +110,36 @@
     <div class="row text-center pt-5 pb-3">
 		<h2>공지사항</h2>
 	</div>
-	<table class="table" style="width:1030px; margin-left:auto; margin-right:auto;">
+	<table class="table" id="enrollNotice" style="width:1030px; margin-left:auto; margin-right:auto;">
 		<thead>
 			<tr>
-				<th width="900px">제목</th>
+				<th width="130px">번호</th>
+				<th width="800px">제목</th>
 				<th width="130px">작성 날짜</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>[긴급공지] 2021-05-30일 금융 거래 마비</td>
-				<td>2021-05-27</td>
-			</tr>
-			<tr>
-				<td>수많은 게스트들이 당신의 공간을 기다리고 있어요</td>
-				<td>2021-04-25</td>
-			</tr>
-			<tr>
-				<td>공지사항공지사항공지사항공지사항공지사항공지사항</td>
-				<td>2021-03-20</td>
-			</tr>
-			<tr>
-				<td>공간등록 시 호스트 계정이 필요합니다</td>
-				<td>2021-02-20</td>
-			</tr>
-			<tr>
-				<td>호스트게스트샬라샬라 빰빰빰 빰빰빰 빰빰빰 빰빰빰</td>
-				<td>2021-01-14</td>
-			</tr>
+			<%if(list.isEmpty()){ %>
+				<tr>
+					<th colspan="3" style="text-align:center;">등록된 공지사항이 없습니다.</th>
+				</tr>
+			<%} else {%>
+				<%for(Notice n : list){ %>
+					<tr>
+						<td><%= n.getnNum() %></td>
+						<td><%= n.getnTitle() %></td>
+						<td><%= n.getDate() %></td>
+					</tr>
+				<%} %>
+			<%} %>
 		</tbody>
 	</table>
-	<div class="row text-center pt-3 pb-3">
-		<button id="button_moreNotice">더보기 +</button>
-	</div>
+	<%if(!list.isEmpty()){ %>
+		<div class="row text-center pt-3 pb-3">
+			<button id="button_moreNotice">더보기 +</button>
+		</div>
+	<%} %>
+	<br><br><br>
 	<%@ include file="../common/footer.jsp" %>
     </section>
 
@@ -154,6 +154,19 @@
    				alert("호스트만 이용 가능합니다.");
    			}
    		});
-    </script>
+   		
+   		$("#enrollNotice td").mouseenter(function(){
+   			$(this).parent().css({"background": "#E0E5EA" , "cursor" : "pointer"});
+   		}).mouseout(function(){
+   			$(this).parent().css({"background":"none"});
+   		}).click(function(){
+   			var num = $(this).parent().children().eq(0).text();
+   			location.href="<%=request.getContextPath()%>/detail.no?no=" + num;
+   		});
+   		
+   		$("#button_moreNotice").on("click", function(){
+   			location.href="<%=request.getContextPath()%>/noList.no";
+   		})
+   	</script>
 </body>
 </html>

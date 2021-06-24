@@ -88,7 +88,7 @@ https://templatemo.com/tm-559-zay-shop
 	}
 	.main-div{border-bottom: 2px solid green;}
      .section-div{padding-top: 1rem; padding-bottom: 1rem;}
-	
+	#test{clear:both;}
 </style>
 
 <body>
@@ -106,14 +106,15 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Start Section -->
     <section class="container center">
-       <div class="center-sideList center-align">
-       		<span class="sideList-top">고객센터</span><br>
-       		<span class="sideList"><a>문의하기</a></span><br>
-       		<span class="sideList"><a>공지사항</a></span><br>
-       		<span class="sideList"><a>FAQ</a></span><br>
-       		<span class="sideList"><a>내 질문</a></span><br>
-       		<span class="sideList"><a>회원탈퇴</a></span>
-       </div>
+<!--        <div class="center-sideList center-align"> -->
+<!--        		<span class="sideList-top">고객센터</span><br> -->
+<!--        		<span class="sideList"><a>문의하기</a></span><br> -->
+<!--        		<span class="sideList"><a>공지사항</a></span><br> -->
+<!--        		<span class="sideList"><a>FAQ</a></span><br> -->
+<!--        		<span class="sideList"><a>내 질문</a></span><br> -->
+<!--        		<span class="sideList"><a>회원탈퇴</a></span> -->
+<!--        </div> -->
+		<%@ include file="centerMenubar.jsp" %>
        <div class="center-align center-vertical" id="center-qTitle">
        		<h2>문의하기</h2>
        		<h4>Comeon Space의 중심은 여러분 입니다. </h4>
@@ -161,6 +162,8 @@ https://templatemo.com/tm-559-zay-shop
 	       		
 	       	</form>  
        </div>
+       <div id="test"></div>
+       <br><br>
        <%@ include file="../common/footer.jsp" %>
     </section>
     <!-- End Section -->
