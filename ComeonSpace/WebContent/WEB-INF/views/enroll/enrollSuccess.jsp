@@ -51,6 +51,7 @@
 			<input type="button" id="button" value="확인">
 		</div>
 	</div>
+	<br><br><br>
 	<%@ include file="../common/footer.jsp" %>
 	<script>
 		$(function(){
