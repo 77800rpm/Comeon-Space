@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.Member"
-    import="member.model.service.*" %>
-<%--<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); --%>
-<% MemberService ms = new MemberService();
-   ArrayList<Member> list = (ArrayList<Member>)ms.adminSelectUser(); %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice"%>
+<% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html>
 
@@ -22,7 +19,7 @@
 <body>
 <%-- <form action="<%= request.getContextPath() %>/selectUser.me"> --%>
 
-<%@ include file="../common/header.jsp" %>
+<%@ include file="WEB-INF/views/common/header.jsp" %>
 <!-- font -->
 <div style="font-family:Sans-serif">
 
@@ -31,12 +28,12 @@
  	 <br><br><br><br><br>
   <div style="margin-left:150px">
 	  <h5 class="w3-bar-item"><b>회원관리</b></h5>
-	  <a href="<%= request.getContextPath() %>/selectUser.me" class="w3-bar-item w3-button">전체회원관리</a>
+	  <a class="w3-bar-item w3-button">전체회원관리</a>
 	  <h5 class="w3-bar-item"><b>시설관리</b></h5>
 	  <a href="#" class="w3-bar-item w3-button">공간승인/취소</a>
 	  <h5 class="w3-bar-item"><b>게시판 관리</b></h5>
 	  <a href="#" class="w3-bar-item w3-button">게시글 관리</a>
-	  <a href="#" class="w3-bar-item w3-button">공지사항 관리</a>
+	  <a href="<%= request.getContextPath() %>/list.no" class="w3-bar-item w3-button">공지사항 관리</a>
   </div>
 </div>
 
@@ -49,7 +46,7 @@
 
 <div>
 	<br>
-  <h5 style="padding:1%"><b>전체회원관리</b></h5>
+  <h5 style="padding:1%"><b>공지사항관리</b></h5>
   	<br>
 
 <div>           
@@ -63,37 +60,31 @@
    	<% }else if(list.isEmpty()){ %>
    		<thead class="w3-light-grey">
 		   	<tr>
-		   		<td>가입된 회원이 없습니다.</td>
+		   		<td>공지사항이 없습니다.</td>
 		   	</tr>
 		</thead>
    	<% } else{ %>
    		<thead class="w3-light-grey">
 	   		<tr>
-		        <th>이름</th>
-		        <th>이메일</th>
-		        <th>닉네임</th>
-		        <th>핸드폰번호</th>
-		        <th>권한</th>
+				<th>번호</th>
+		        <th>제목</th>
+		        <th>작성자</th>
+		        <th>공지유형</th>
+		        <th>작성날짜</th>
 		      </tr>
 		 </thead>
 		 <tbody>
-   			<% for(Member m : list){ %>
+  		<% for(Notice no : list){ %>
 		      <tr>
-		        <td><%= m.getUserName() %></td>
-		        <td><%= m.getUserEmail() %></td>
-		        <td><%= m.getUserNic() %></td>
-		        <td><%= m.getUserPhone() %></td>
-		        <td>
-			      <select name="position">
-					  <option value="관리자" <%= m.getUserDiv().equals("관") ? "selected":"" %>>관리자</option>
-					  <option value="호스트" <%= m.getUserDiv().equals("호") ? "selected":"" %>>호스트</option>
-					  <option value="게스트" <%= m.getUserDiv().equals("게") ? "selected":"" %>>게스트</option>
-			   	  </select>
-		        </td>
+		        <td><%= no.getnNum()%></td>
+				<td><%= no.getnTitle()%></td>
+				<td><%= no.getAdmNum()%></td>
+				<td><%= no.getnCategory()%></td>
+				<td><%= no.getDate()%></td>
 		      </tr>
-   			<% } %>
+		      <% } %>
+	<% } %>
    		</tbody>
-      <% } %>
    </table>
 	</div>
 </div>
@@ -114,9 +105,24 @@
 </div>
 </div>
 
-<%@ include file="../common/footer.jsp" %>
+<%@ include file="WEB-INF/views/common/footer.jsp" %>
 
 <!-- </form> -->
+<!-- 상세조회 -->
+		<script>
+		$(function(){
+			$('#listArea td').mouseenter(function(){	
+				$(this).parent().css({'background':'darkgray','cursor':'pointer'});
+			}).mouseout(function(){
+				$(this).parent().css({'background':'none'});
+			}).click(function(){
+				var num = $(this).parent().children().eq(0).text(); 
+				location.href="<%=request.getContextPath() %>/detail.no?no=" + num;
+			});
+		});
+		</script>
+
+
 </body>
 
 </html>

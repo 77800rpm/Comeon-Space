@@ -26,6 +26,7 @@ public class FaqService {
 		Connection conn = getConnection();
 		
 		int result = new FaqDAO().insertBoard(conn, f);
+		
 		if(result > 0) {
 			commit(conn);
 		} else {

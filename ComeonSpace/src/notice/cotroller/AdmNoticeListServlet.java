@@ -1,23 +1,28 @@
-package faq.controller;
+package notice.cotroller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import notice.model.service.NoticeService;
+import notice.model.vo.Notice;
+
 /**
- * Servlet implementation class FaqWriteFormServlet
+ * Servlet implementation class AdmNoticeListServlet
  */
-@WebServlet("/writeBoardForm.bo")
-public class FaqWriteFormServlet extends HttpServlet {
+@WebServlet("/list.no")
+public class AdmNoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqWriteFormServlet() {
+    public AdmNoticeListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,14 +30,13 @@ public class FaqWriteFormServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		request.getRequestDispatcher("WEB-INF/views/admin/page4_boardWriteForm.jsp").forward(request, response);;
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		request.setCharacterEncoding("UTF-8");
+		ArrayList<Notice> list = new NoticeService().admselectList();
 		
-		//화면 만 이동
-		
-		request.getRequestDispatcher("page4_boardWriteForm.jsp").forward(request, response);;
-	
-	
+		request.setAttribute("list", list);
+//		request.getRequestDispatcher("WEB-INF/views/admin/page5_notice2.jsp").forward(request, response);
+		request.getRequestDispatcher("page5_notice2.jsp").forward(request, response);
 	}
 
 	/**

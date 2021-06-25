@@ -47,7 +47,8 @@ public class FaqDAO {
 								rset.getString("BOARDFAQ_CONTENT"),
 								rset.getInt("ADM_NUM"),
 								rset.getDate("CREATE_DATE"),
-								rset.getInt("BOARD_COUNT"));
+								rset.getInt("BOARD_COUNT"),
+								rset.getString("ADM_NAME"));
 				
 				selectBoard.add(f);
 			}
@@ -71,11 +72,12 @@ public class FaqDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, f.getBoardFaqNum());
+			pstmt.setInt(1,f.getBoardFaqNum());
 			pstmt.setString(2, f.getBoardFaqTitle());
 			pstmt.setString(3, f.getBoardFaqContent());
-			result = pstmt.executeUpdate();
+			pstmt.setString(4, f.getAdmName());
 			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
