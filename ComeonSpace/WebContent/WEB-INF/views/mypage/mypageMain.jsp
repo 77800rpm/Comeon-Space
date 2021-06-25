@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="member.model.vo.Member, img.model.vo.Img"%>
 <%
-	Member profile = (Member)request.getAttribute("profile");
 	Img img = (Img)request.getAttribute("img");
 %>
 <!DOCTYPE html>
@@ -39,12 +38,12 @@
 	.list-text{
 		font-size: 13px !important;
 	}
-	
-	
+	.h-inline{display:inline-block;}
+	.mypage-profile{display:inline-block;}
 	
 </style>
 <header>
-<%-- 	<%@ include file="../common/header.jsp" %> --%>
+    <%@ include file="../common/header.jsp" %>
 </header>
 <body>
     <!-- Start Content -->
@@ -57,20 +56,22 @@
                 <div class="myP-main h2">
                     	마이페이지
                 </div>
+                <br>
                 <div class="row">
 					<div id="mypageProfileImg">
 						<%if(img == null){ %>
-							<img src="<%=request.getContextPath()%>/img_upload/<%= img.getImgChange() %>" width="300px;" height="200px;">
+							<img class="mypage-profile" src="<%=request.getContextPath()%>/img_upload/<%= img.getImgChange() %>" width="200px;" height="150px;">
 						<%} else { %>
-							<img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" width="300px;" height="200px;">
+							<img class="mypage-profile" src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" width="200px;" height="150px;">
 						<%} %>
+						<h2 class="h-inline"><%= loginUser.getUserName() %></h2> <h4 class="h-inline">님,</h4>
+						<h4 class="h-inline">반갑습니다.</h4>
 					</div>
 					<div>
-						<h2><%= profile.getUserName() %> <sub>님,</sub> </h2>
-						<h4>반갑습니다.</h4>
 						<br>
 						<br>
 						<hr>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</div>
                 </div>
                 

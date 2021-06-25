@@ -37,11 +37,12 @@ public class ProductService {
 	}
 
 	public Enroll selectProduct(int no) {
+		
 		Connection conn = getConnection();
 		
 		ProductDAO dao = new ProductDAO();
 		
-		int result = dao.updateCount(conn, no);
+		int result = new ProductDAO().updateCount(conn, no);
 		
 		Enroll product = null;
 		
@@ -59,5 +60,15 @@ public class ProductService {
 		close(conn);
 		
 		return product;
+	}
+
+	public ArrayList<Img> selectThumbnail(int no) {
+		Connection conn = getConnection();
+		
+		ArrayList<Img> list = new ProductDAO().selectThumbnail(conn, no);
+		
+		close(conn);
+		
+		return list;
 	}
 }

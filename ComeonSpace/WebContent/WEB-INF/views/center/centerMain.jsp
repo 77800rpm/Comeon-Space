@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.Member, notice.model.vo.Notice, img.model.vo.Img"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.Member, notice.model.vo.Notice, img.model.vo.Img, faq.model.vo.Faq"%>
 <%
 	Member profile = (Member)request.getAttribute("profile");
 	ArrayList<Notice> noList = (ArrayList)request.getAttribute("noList");
+	ArrayList<Faq> fList = (ArrayList)request.getAttribute("fList");
 	Img pImg = (Img)request.getAttribute("profileImg");
 %>
 <!DOCTYPE html>
@@ -88,7 +89,8 @@ https://templatemo.com/tm-559-zay-shop
 	border-bottom: 2px solid green; margin-bottom: 30px; }
 	.profile-div{margin-bottom: 20px;}
 	#noticeTable:hover{cursor: pointer; background: #E9EEF2;}
-	#errorNotice{text-align: center; }
+	#FaqTable:hover{cursor: pointer; background: #E9EEF2;}
+	.errorNotice{text-align: center; }
 	
 </style>
 <head>
@@ -108,7 +110,7 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Start Section -->
     <section class="container">
-        <%if(loginUser != null && profile != null){ %>
+        <%if(loginUser != null){ %>
 	        <div class="row pb-3 profile-div">
 	        	<%if(pImg != null){ %>
 	        		<div class="center-profile">
@@ -120,18 +122,18 @@ https://templatemo.com/tm-559-zay-shop
 	        		</div>
 	        	<%} %>
 	            <div class="col-lg-6">
-	                <h2 class="h21"><%=profile.getUserName() %>님, 무엇을 도와드릴까요?</h2>
+	                <h2 class="h21"><%= loginUser.getUserName() %>님, 무엇을 도와드릴까요?</h2>
 	              	<div class="center-list" id="myQInsert"><a>문의하기</a></div>
 	              	<div class="center-list" id="myQList"><a>내 질문</a></div>
 	              	<div class="center-list" id="noList"><a>공지사항</a></div>
 	              	<div class="center-list" id="withdrawal">회원탈퇴</div>
-	              	<div class="center-list"><a>자주 묻는 질문</a></div>
+	              	<div class="center-list" id="faqList"><a>자주 묻는 질문</a></div>
 	            </div>
 	        </div>
         <%} %>
         <div class="center-FAQ">
         	<span class="center-board-title">FAQ 게시판</span><br>
-        	<table class="table table-hover">
+        	<table class="table table-striped" id="listArea2">
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -139,13 +141,21 @@ https://templatemo.com/tm-559-zay-shop
 					<th>작성날짜</th>
 					<th>조회수</th>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>비밀번호 어떻게 바꾸나요?</td>
-					<td>Adm</td>
-					<td>5.27</td>
-					<td>2</td>
-				</tr>
+				<%if(!fList.isEmpty()){ %>
+					<%for(Faq f : fList) {%>
+						<tr id="FaqTable">
+							<td><%= f.getBoardFaqNum() %></td>
+							<td><%= f.getBoardFaqTitle() %></td>
+							<td>Comeon Space</td>
+							<td><%= f.getCreateDate() %></td>
+							<td><%= f.getBoardFaqContent() %></td>
+						</tr>
+					<%} %>
+				<%} else {%>
+					<tr>
+						<td colspan="5" id="noFAQ" class="errorNotice">등록된 FAQ가 없습니다.</td>
+					</tr>
+				<%} %>
 			</table>
 		</div>
 		<br>
@@ -171,7 +181,7 @@ https://templatemo.com/tm-559-zay-shop
 					<%} %>
 				<%} else {%>
 					<tr>
-						<td colspan="4" id="errorNotice">등록된 공지사항이 없습니다.</td>
+						<td colspan="4" id="noNotice" class="errorNotice">등록된 공지사항이 없습니다.</td>
 					</tr>
 				<%} %>
 			</table>
@@ -197,6 +207,11 @@ https://templatemo.com/tm-559-zay-shop
 	    			location.href="<%= request.getContextPath() %>/myQView.ce";
 	    		});
 	    	})
+	    	$(function(){
+	    		$("#faqList").on("click",function(){
+	    			location.href="<%= request.getContextPath() %>/faqList.ce";
+	    		});
+	    	})
 	    	
 	    	$(function(){
 	    		$("#listArea td").mouseenter(function(){
@@ -208,7 +223,20 @@ https://templatemo.com/tm-559-zay-shop
 					location.href="<%= request.getContextPath() %>/detail.no?no=" + num;
 				})
 				
-				$("#errorNotice").unbind();
+				$("#noNotice").unbind();
+	    	})
+	    	
+	    	$(function(){
+	    		$("#listArea2 td").mouseenter(function(){
+					$(this).parent().css({"background": "#E0E5EA" , "cursor" : "pointer"});
+				}).mouseout(function(){
+					$(this).parent().css({"background":"none"});
+				}).click(function(){
+					var num = $(this).parent().children().eq(0).text();
+					location.href="<%= request.getContextPath() %>/detail.fa?no=" + num;
+				})
+				
+				$("#noFAQ").unbind();
 	    	})
 	    </script>
 	</section>

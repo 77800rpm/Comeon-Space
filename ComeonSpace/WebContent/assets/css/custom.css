@@ -101,7 +101,7 @@ background-repeat: no-repeat;
 
 .pro-list-text{
     position: relative;
-    top: 130px;
+    top: 130px !important;
     text-align: center;
 }
 
@@ -178,6 +178,12 @@ margin: 0;
 box-sizing: border-box;
 -webkit-appearance: none;
 -moz-appearance: none;
+}
+
+#p-Detail{
+ 	font-family: 'Nanum Gothic', sans-serif;	
+    font-size: 20px !important;	
+	
 }
 
 .reviewList-title{

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice"%>
-<% ArrayList<Notice> list = (ArrayList)request.getAttribute("list"); %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, faq.model.vo.Faq"%>
+<% ArrayList<Faq> fList = (ArrayList)request.getAttribute("fList"); %>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
@@ -136,11 +136,11 @@
 <!-- 	       		<span class="side-list"><a>내 질문</a></span><br> -->
 <!-- 	       		<span class="side-list"><a>회원탈퇴</a></span> -->
 <!-- 	       </div> -->
-			<%@ include file="../center/centerMenubar.jsp" %>
+			<%@ include file="centerMenubar.jsp" %>
 	       <div class="center-align center-vertical" id="center-nTitle">
-	       		<h2>공지사항</h2>
+	       		<h2>자주 묻는 질문</h2>
 	       		<br>
-	       		<span>Comeon Space의 오류, 장애, 기타 공지사항을 안내해드립니다.</span>
+	       		<span>여러분이 자주 겪는 어려움을 해결해 드리겠습니다.</span>
 	       </div>
 	       <div class="center-content center-align center-vertical">
 	       		<table class="table table-striped" id="listArea">
@@ -148,21 +148,21 @@
 	       				<th>번호</th>
 	       				<th>제목</th>
 	       				<th>작성자</th>
-	       				<th>공지유형</th>
 	       				<th>작성날짜</th>
+	       				<th>조회수</th>
 	       			</tr>
-	       			<%if(list.isEmpty()){ %>
+	       			<%if(fList.isEmpty()){ %>
 						<tr>
-							<td colspan="5" id="errorNotice">존재하는 공지사항이 없습니다.</td>
+							<td colspan="5" id="errorNotice">존재하는 FAQ가 없습니다.</td>
 						</tr>
 						<%} else{ %>
-						<%		for(Notice n : list){ %>
+						<%		for(Faq f : fList){ %>
 									<tr>
-										<td><%= n.getnNum()%></td>
-										<td><%= n.getnTitle()%></td>
-										<td><%= n.getAdmNum()%></td>
-										<td><%= n.getnCategory()%></td>
-										<td><%= n.getDate()%></td>
+										<td><%= f.getBoardFaqNum()%></td>
+										<td><%= f.getBoardFaqTitle()%></td>
+										<td>Comeon Space</td>
+										<td><%= f.getCreateDate()%></td>
+										<td><%= f.getBoardCount()%></td>
 									</tr>
 						<%		} %>
 						<%} %>
@@ -172,9 +172,6 @@
 	       
 	       <script>
 	       		$(function(){
-	       			$("#noBtn").on("click",function(){
-	       				location.href="<%= request.getContextPath()%>/insertForm.no";
-	       			});
 	       			
 	       			$("#listArea td").mouseenter(function(){
 						$(this).parent().css({"background": "#E0E5EA" , "cursor" : "pointer"});

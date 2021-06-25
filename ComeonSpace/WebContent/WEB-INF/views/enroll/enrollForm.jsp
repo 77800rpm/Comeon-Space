@@ -60,7 +60,7 @@
 	
 	<br>
 
-<form action="<%=request.getContextPath()%>/enroll.en" method="post" encType="multipart/form-data">
+<form onsubmit="return imgCheck();" action="<%=request.getContextPath()%>/enroll.en" method="post" encType="multipart/form-data">
 	<!-- 기본 정보 입력 -->
 	<div class="container">
 		<div class="col-md-7 m-auto">
@@ -190,10 +190,10 @@
 				</div>
 				<!-- 파일 업로드 하는 부분 -->
 				<div id="fileArea">
-					<input type="file" id="img1" name="img1" class="hiddenBtn" onchange="LoadImg(this,1)">
-					<input type="file" id="img2" name="img2" class="hiddenBtn" onchange="LoadImg(this,2)">
-					<input type="file" id="img3" name="img3" class="hiddenBtn" onchange="LoadImg(this,3)">
-					<input type="file" id="img4" name="img4" class="hiddenBtn" onchange="LoadImg(this,4)">
+					<input type="file" id="img1" name="img1" class="hiddenBtn" onchange="LoadImg(this,1)" required>
+					<input type="file" id="img2" name="img2" class="hiddenBtn" onchange="LoadImg(this,2)" required>
+					<input type="file" id="img3" name="img3" class="hiddenBtn" onchange="LoadImg(this,3)" required>
+					<input type="file" id="img4" name="img4" class="hiddenBtn" onchange="LoadImg(this,4)" required>
 				</div>
 			</div>
 		</div>
@@ -249,11 +249,13 @@
 			
 		<!-- 등록 버튼 -->
 		<div class="col-md-8 m-auto text-center">
-			<input type="submit" id="button" value="공간 등록 완료">
+			<input type="submit" id="button" onclick="imgCheck();" value="공간 등록 완료">
 		</div>
 		
 	</div> <!-- container 태그 -->
+	<br><br><br><br>
 </form>
+
 <%@ include file="../common/footer.jsp" %>
 	<br><br>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -306,6 +308,10 @@
             }
         }).open();
     }
+	img1 = false;
+	img2 = false;
+	img3 = false;
+	img4 = false;
 	
     $("#titleImgArea").click(function(){
 		$("#img1").click();
@@ -328,15 +334,19 @@
 				switch(num){
 				case 1: 
 					$("#titleImg").attr("src", e.target.result);
+					img1 = true;
 					break;
 				case 2:
 					$("#contentImg1").attr("src", e.target.result);
+					img2 = true;
 					break;
 				case 3: 
 					$("#contentImg2").attr("src", e.target.result);
+					img3 = true;
 					break;
 				case 4:
 					$("#contentImg3").attr("src", e.target.result);
+					img4 = true;
 					break;
 				}
 			}
@@ -344,6 +354,17 @@
 			reader.readAsDataURL(value.files[0]); //첫 번째, 0번째만 들어가게 하겠다
 		}
 	}
+	
+	function imgCheck(){
+		if(img1==false||img2==false||img3==false||img4==false){
+			alert("사진을 모두 등록해주세요.");
+			return false;
+		} else {
+			return true;
+		}
+		
+	}
+	
 	</script>
 </body>
 </html>

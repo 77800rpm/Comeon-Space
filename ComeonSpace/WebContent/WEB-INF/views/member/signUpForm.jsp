@@ -36,7 +36,7 @@
 	
 </style>
 <body>
-	<%@ include file="../common/header.jsp" %>
+	<br><br>
     <div class="container ">
 	<div class="row ">
         <div class="col-md-6 center-block">
@@ -95,7 +95,8 @@
 
             <div class="form-group btn-block">
                 <input class="btn btn-success center-block regBtn" accept="image/jpeg, image/png,.txt" type="submit" name="submit_reg" value="가입하기" onclick="signUp();">
-                <input class="btn btn-success center-block regBtn" accept="image/jpeg, image/png,.txt" type="button" name="cancel" value="취소">
+                &nbsp;&nbsp;
+                <input class="btn btn-success center-block regBtn" accept="image/jpeg, image/png,.txt" type="button" name="cancel" id="goMainBtn"value="취소">
             </div>
             </fieldset>
             </form><!-- ends register form -->
@@ -103,6 +104,7 @@
         </div><!-- ends col-6 -->
 	</div>
 </div>
+<br><br><br><br>
 <%@ include file="../common/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/jquery-1.11.0.min.js"></script>
@@ -249,6 +251,11 @@
 			} 
 			
 		}
+		
+		//취소 버튼 눌러서 메인가기
+		$("#goMainBtn").on("click",function(){
+			location.href="<%=request.getContextPath()%>";
+		})
 	</script>		
 		
 	

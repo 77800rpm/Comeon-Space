@@ -17,7 +17,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class MypageMainServlet
  */
-@WebServlet("/MypageMainServlet")
+@WebServlet("/mypageMain.my")
 public class MypageMainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,7 +42,7 @@ public class MypageMainServlet extends HttpServlet {
 		
 		request.setAttribute("profile", profile);
 		request.setAttribute("img", img);
-		request.getRequestDispatcher("WEB-INF/views/mypage,mypageMain.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
 	}
 
 	/**
