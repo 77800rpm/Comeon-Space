@@ -71,4 +71,22 @@ public class ProductService {
 		
 		return list;
 	}
+
+	public ArrayList<Enroll> selectCategory(String category) {
+		Connection conn = getConnection();
+		
+		ArrayList<Enroll> list = new ProductDAO().selectCategory(conn, category);
+		
+		close(conn);
+		return list;
+	}
+
+	public ArrayList<Enroll> mainCategory() {
+		Connection conn = getConnection();
+		
+		ArrayList<Enroll> list = new ProductDAO().mainCategory(conn);
+		
+		return list;
+	}
+
 }

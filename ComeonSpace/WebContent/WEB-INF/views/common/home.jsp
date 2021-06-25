@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll"%>
+<% ArrayList<Enroll> list = (ArrayList)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -213,13 +214,21 @@ https://templatemo.com/tm-559-zay-shop
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">스튜디오</text></svg>
 
             <div class="card-body">
-              <p class="card-text">조명 맛집은 어디?📸</p>
+              <p class="card-text">스튜디오/조명 맛집은 어디?📸</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>	<!-- view 버튼 클릭 시 해당 카테고리의 공간들 검색창으로 넘어가게. 공간검색창에서 필터 기능 이용? -->
-                  
+                  <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>	<!-- view 버튼 클릭 시 해당 카테고리의 공간들 검색창으로 넘어가게. 공간검색창에서 필터 기능 이용? -->
+                  <input type="hidden" name="catrgory1" value="스튜디오">
                 </div>
-                <small class="text-muted">52 곳</small>
+                <small class="text-muted">
+                	<%if(!list.isEmpty()) {%>
+                		<%for(Enroll en : list){%>
+                			<%if(en.getpCategory().equals("스튜디오")){ %>
+                				<%=en.getpCount() %> 곳
+                			<%} %>
+                		<%} %>
+                	<%} %>
+				</small>
               </div>
             </div>
           </div>
@@ -229,13 +238,21 @@ https://templatemo.com/tm-559-zay-shop
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">스터디룸</text></svg>
 
             <div class="card-body">
-              <p class="card-text">절대 집중!👩‍🎓</p>
+              <p class="card-text">스터디룸/절대 집중!👩‍🎓</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
+                  <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>
+                  <input type="hidden" name="catrgory1" value="스터디룸">
                 </div>
-                <small class="text-muted">46 곳</small>
+                <small class="text-muted">
+                	<%if(!list.isEmpty()) {%>
+                		<%for(Enroll en : list){%>
+                			<%if(en.getpCategory().equals("스터디룸")){ %>
+                				<%=en.getpCount() %> 곳
+                			<%} %>
+                		<%} %>
+                	<%} %>
+				</small>
               </div>
             </div>
           </div>
@@ -245,13 +262,21 @@ https://templatemo.com/tm-559-zay-shop
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">공연장</text></svg>
 
             <div class="card-body">
-              <p class="card-text">꿈을 펼쳐봐!🤟🏼</p>
+              <p class="card-text">공연장/꿈을 펼쳐봐!🤟🏼</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
+                  <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>
+                  <input type="hidden" name="catrgory1" value="공연장">
                 </div>
-                <small class="text-muted">18 곳</small>
+                <small class="text-muted">
+                	<%if(!list.isEmpty()) {%>
+                		<%for(Enroll en : list){%>
+                			<%if(en.getpCategory().equals("공연장")){ %>
+                				<%=en.getpCount() %> 곳
+                			<%} %>
+                		<%} %>
+                	<%} %>
+				</small>
               </div>
             </div>
           </div>
@@ -262,13 +287,21 @@ https://templatemo.com/tm-559-zay-shop
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">회의실</text></svg>
 
             <div class="card-body">
-              <p class="card-text">아이디어를 쥐어짜보게..💡</p>
+              <p class="card-text">회의실/아이디어를 쥐어짜보게..💡</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
+                  <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>
+                  <input type="hidden" name="catrgory1" value="회의실">
                 </div>
-                <small class="text-muted">33 곳</small>
+                <small class="text-muted">
+                	<%if(!list.isEmpty()) {%>
+                		<%for(Enroll en : list){%>
+                			<%if(en.getpCategory().equals("회의실")){ %>
+                				<%=en.getpCount() %> 곳
+                			<%} %>
+                		<%} %>
+                	<%} %>
+				</small>
               </div>
             </div>
           </div>
@@ -278,13 +311,21 @@ https://templatemo.com/tm-559-zay-shop
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">공유주방</text></svg>
 
             <div class="card-body">
-              <p class="card-text">갖고 싶은 잇템 다 있는<br> 우리의 주방👩🏼‍🍳</p>
+              <p class="card-text">공유주방/갖고 싶은 잇템 다 있는<br> 우리의 주방👩🏼‍🍳</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
+                  <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>
+                  <input type="hidden" name="catrgory1" value="주방">
                 </div>
-                <small class="text-muted">21 곳</small>
+                <small class="text-muted">
+                	<%if(!list.isEmpty()) {%>
+                		<%for(Enroll en : list){%>
+                			<%if(en.getpCategory().equals("주방")){ %>
+                				<%=en.getpCount() %> 곳
+                			<%} %>
+                		<%} %>
+                	<%} %>
+				</small>
               </div>
             </div>
           </div>
@@ -294,13 +335,21 @@ https://templatemo.com/tm-559-zay-shop
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">오피스</text></svg>
 
             <div class="card-body">
-              <p class="card-text">눈치 X 독립오피스부터 카페<br> 같은 공유오피스까지!👨🏼‍💻</p>
+              <p class="card-text">오피스/눈치 X 독립오피스부터 카페<br> 같은 공유오피스까지!👨🏼‍💻</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
+                  <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>
+                  <input type="hidden" name="catrgory1" value="오피스">
                 </div>
-                <small class="text-muted">52 곳</small>
+                <small class="text-muted">
+                	<%if(!list.isEmpty()) {%>
+                		<%for(Enroll en : list){%>
+                			<%if(en.getpCategory().equals("오피스")){ %>
+                				<%=en.getpCount() %> 곳
+                			<%} %>
+                		<%} %>
+                	<%} %>
+				</small>
               </div>
             </div>
           </div>
@@ -311,13 +360,21 @@ https://templatemo.com/tm-559-zay-shop
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">다목적홀</text></svg>
 
             <div class="card-body">
-              <p class="card-text">소규모 강연👩‍🏫부터<br>내 작품 전시👨‍🎨까지 다 가능!</p>
+              <p class="card-text">다목적홀/소규모 강연👩‍🏫부터<br>내 작품 전시👨‍🎨까지 다 가능!</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
+                  <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>
+                  <input type="hidden" name="catrgory1" value="다목적홀">
                 </div>
-                <small class="text-muted">34 곳</small>
+                <small class="text-muted">
+                	<%if(!list.isEmpty()) {%>
+                		<%for(Enroll en : list){%>
+                			<%if(en.getpCategory().equals("다목적홀")){ %>
+                				<%=en.getpCount() %> 곳
+                			<%} %>
+                		<%} %>
+                	<%} %>
+				</small>
               </div>
             </div>
           </div>
@@ -508,6 +565,13 @@ https://templatemo.com/tm-559-zay-shop
 </div>
 	<!-- 이 달의 리뷰 끝 -->
 <br><br>
-
+<script>
+	$(document).ready(function(){
+		$(".categoryBtn").on("click",function(){
+			var category = $(this).next().val();
+			location.href="<%=request.getContextPath()%>/search.ca?category="+category;
+		})
+	})
+</script>
 </body>
 </html>

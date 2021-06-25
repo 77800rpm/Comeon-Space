@@ -38,12 +38,6 @@ public class CheckNickServlet extends HttpServlet {
 //		request.setAttribute("inputNick", inputNickName);
 //		
 //		request.getRequestDispatcher("WEB-INF/views/member/checkNickForm.jsp").forward(request, response);
-		String msg = "";
-		if(result > 0) {
-			msg="사용 불가능한 이메일 입니다.";
-		} else {
-			msg="사용 가능한 이메일 입니다.";
-		}
 		
 		response.setContentType("application/json; charset=UTF-8");
 		response.getWriter().println(result);

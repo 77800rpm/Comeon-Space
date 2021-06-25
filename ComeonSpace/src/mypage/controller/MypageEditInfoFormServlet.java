@@ -11,20 +11,19 @@ import javax.servlet.http.HttpSession;
 
 import img.model.service.ImgService;
 import img.model.vo.Img;
-import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class MypageMainServlet
+ * Servlet implementation class MypageEditInfoFormServlet
  */
-@WebServlet("/mypageMain.my")
-public class MypageMainServlet extends HttpServlet {
+@WebServlet("/editInfo.my")
+public class MypageEditInfoFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageMainServlet() {
+    public MypageEditInfoFormServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,8 +38,7 @@ public class MypageMainServlet extends HttpServlet {
 		Img img = new ImgService().selectMember(userNum);
 		
 		request.setAttribute("img", img);
-		request.getRequestDispatcher("WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("WEB-INF/views/mypage/mypageEditInfo.jsp").forward(request, response);
 	}
 
 	/**

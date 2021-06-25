@@ -186,4 +186,79 @@ public class ProductDAO {
 		
 		return list;
 	}
+
+
+	public ArrayList<Enroll> selectCategory(Connection conn, String category) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Enroll product = null;
+		ArrayList<Enroll> list = new ArrayList<Enroll>();
+		
+		String query = prop.getProperty("selectCategory");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, category);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				  product = new Enroll(rset.getInt("product_num"),
+									rset.getString("product_name"),
+									rset.getInt("product_limit"),
+									rset.getInt("product_price"),
+									rset.getString("product_category"),
+									rset.getString("product_intro"),
+									rset.getString("Product_detail"),
+									rset.getString("product_location"),
+									rset.getString("product_fac"),
+									rset.getInt("product_count"),
+									rset.getString("product_holiday"));
+				  
+				  list.add(product);
+
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
+
+
+	public ArrayList<Enroll> mainCategory(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Enroll> list = new ArrayList<Enroll>();
+		Enroll en = null;
+		
+		String query = prop.getProperty("mainCategory");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			while(rset.next()) {
+				en = new Enroll();
+				en.setpCategory(rset.getString("PRODUCT_CATEGORY"));
+				en.setpCount(rset.getInt(1));
+				
+				list.add(en);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		
+		return list;
+	}
 }

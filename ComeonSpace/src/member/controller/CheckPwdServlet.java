@@ -1,4 +1,4 @@
-package mypage.controller;
+package member.controller;
 
 import java.io.IOException;
 
@@ -9,22 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import img.model.service.ImgService;
-import img.model.vo.Img;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class MypageMainServlet
+ * Servlet implementation class CheckPwdServlet
  */
-@WebServlet("/mypageMain.my")
-public class MypageMainServlet extends HttpServlet {
+@WebServlet(urlPatterns="/checkPwd.me", name="checkPwdServlet")
+public class CheckPwdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageMainServlet() {
+    public CheckPwdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +32,16 @@ public class MypageMainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		String checkPwd = request.getParameter("checkPwd");
 		int userNum = ((Member)session.getAttribute("loginUser")).getUserNum();
+		Member m = new Member();
+		m.setUserPwd(checkPwd);
+		m.setUserNum(userNum);
 		
-		Img img = new ImgService().selectMember(userNum);
+		int result = new MemberService().checkPwd(m);
 		
-		request.setAttribute("img", img);
-		request.getRequestDispatcher("WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
-		
+		response.setContentType("application/json; charset=UTF-8");
+		response.getWriter().println(result);
 	}
 
 	/**

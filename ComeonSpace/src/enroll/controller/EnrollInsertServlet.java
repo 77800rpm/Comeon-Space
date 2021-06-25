@@ -67,7 +67,6 @@ public class EnrollInsertServlet extends HttpServlet {
 			while(files.hasMoreElements()) {
 				String name = files.nextElement();
 				
-				System.out.println(name);
 				
 				if(multipartRequest.getFilesystemName(name) != null) {
 					saveFiles.add(multipartRequest.getFilesystemName(name));

@@ -36,7 +36,7 @@
          <h1 class="h3 pb-4">마이페이지</h1>
          <ul class="list-unstyled templatemo-accordion">
              <li class="pb-3">
-                 <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                 <a class="collapsed d-flex justify-content-between text-decoration-none" href="#" id="editInfoBtn">
                      	개인정보수정
                  </a>
              </li>
@@ -69,6 +69,9 @@
          </ul>
      </div>
      <script>
+     	$("#editInfoBtn").on("click",function(){
+     		location.href="<%=request.getContextPath()%>/editInfo.my";
+     	})
      </script>
 </body>
 </html>

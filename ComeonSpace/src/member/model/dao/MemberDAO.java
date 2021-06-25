@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import common.wrapper.SignUpWrapper;
 import img.model.vo.Img;
 import member.model.vo.Member;
 
@@ -259,6 +260,38 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	public int checkPwd(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		SignUpWrapper su = new SignUpWrapper();
+		String pwd = su.wrapper(m.getUserPwd());
+		
+		String query = prop.getProperty("checkPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, m.getUserNum());
+			pstmt.setString(2, pwd);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
 			close(pstmt);
 		}
 		

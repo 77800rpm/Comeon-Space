@@ -107,6 +107,15 @@ public class MemberService {
 		return result;
 	}
 
+	public int checkPwd(Member m) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDAO().checkPwd(conn, m);
+		
+		close(conn);
+		return result;
+	}
+
 
 
 	
