@@ -15,13 +15,7 @@ public class Member {
 	
 	public Member() {}
 	
-	public int getUserNum() {
-		return userNum;
-	}
-
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
-	}
+	
 
 	public Member(int userNum, String userEmail, String userPwd, String userName, String userNic, String userPhone,
 			Date userCreate, String userDiv, String userStatus) {
@@ -60,6 +54,26 @@ public class Member {
 		this.userDiv = userDiv;
 	}
 
+
+	
+	public Member(String userEmail, String userName, String userNic, String userPhone) {
+		super();
+		this.userEmail = userEmail;
+		this.userName = userName;
+		this.userNic = userNic;
+		this.userPhone = userPhone;
+	}
+
+
+	public int getUserNum() {
+		return userNum;
+	}
+
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
+	
+	
 
 	public Member(String userEmail, String userPwd) {
 		super();

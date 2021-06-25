@@ -14,6 +14,29 @@ public class Faq {
 	public Faq() {}
 
 	
+	
+	
+	
+	public Faq(String boardFaqTitle, String boardFaqContent) {
+		super();
+		this.boardFaqTitle = boardFaqTitle;
+		this.boardFaqContent = boardFaqContent;
+	}
+
+
+
+
+
+	public Faq(int boardFaqNum, String boardFaqTitle, Date createDate, int boardCount) {
+		super();
+		this.boardFaqNum = boardFaqNum;
+		this.boardFaqTitle = boardFaqTitle;
+		this.createDate = createDate;
+		this.boardCount = boardCount;
+	}
+
+
+
 	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent, int admNum, Date createDate,
 			int boardCount, String admName) {
 		super();

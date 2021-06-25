@@ -35,21 +35,14 @@ public class FaqInsertServlet extends HttpServlet {
 		
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String admName = request.getParameter("admName");
-		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		String writer = loginUser.getUserEmail();
-		
 		Faq f = new Faq();
 		f.setBoardFaqTitle(title);
 		f.setBoardFaqContent(content);
-		f.setAdmName(admName);
 
 		int result = new FaqService().insertBoard(f);
-		
+		     
 		if(result > 0) {
-			response.sendRedirect("list.bo");
+			response.sendRedirect("/list.bo");
 		} else {
 			request.setAttribute("msg", "게시글 작성 실패하였습니다.");
 		}

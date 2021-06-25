@@ -44,11 +44,8 @@ public class FaqDAO {
 			while(rset.next()) {
 				Faq f = new Faq(rset.getInt("BOARDFAQ_NUM"),
 								rset.getString("BOARDFAQ_TITLE"),
-								rset.getString("BOARDFAQ_CONTENT"),
-								rset.getInt("ADM_NUM"),
 								rset.getDate("CREATE_DATE"),
-								rset.getInt("BOARD_COUNT"),
-								rset.getString("ADM_NAME"));
+								rset.getInt("BOARD_COUNT"));
 				
 				selectBoard.add(f);
 			}
@@ -72,10 +69,8 @@ public class FaqDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1,f.getBoardFaqNum());
-			pstmt.setString(2, f.getBoardFaqTitle());
-			pstmt.setString(3, f.getBoardFaqContent());
-			pstmt.setString(4, f.getAdmName());
+			pstmt.setString(1, f.getBoardFaqTitle());
+			pstmt.setString(2, f.getBoardFaqContent());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

@@ -73,7 +73,7 @@
 		        <th>이메일</th>
 		        <th>닉네임</th>
 		        <th>핸드폰번호</th>
-		        <th>권한</th>
+		        <th>탈퇴</th>
 		      </tr>
 		 </thead>
 		 <tbody>
@@ -84,11 +84,6 @@
 		        <td><%= m.getUserNic() %></td>
 		        <td><%= m.getUserPhone() %></td>
 		        <td>
-			      <select name="position">
-					  <option value="관리자" <%= m.getUserDiv().equals("관") ? "selected":"" %>>관리자</option>
-					  <option value="호스트" <%= m.getUserDiv().equals("호") ? "selected":"" %>>호스트</option>
-					  <option value="게스트" <%= m.getUserDiv().equals("게") ? "selected":"" %>>게스트</option>
-			   	  </select>
 		        </td>
 		      </tr>
    			<% } %>

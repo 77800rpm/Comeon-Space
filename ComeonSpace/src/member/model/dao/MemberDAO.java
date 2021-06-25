@@ -188,15 +188,10 @@ public class MemberDAO {
 			rset = stmt.executeQuery(query);
 			selectUser = new ArrayList<Member>();
 			while(rset.next()) {
-				Member m = new Member(rset.getInt("USER_NUM"),
-									   rset.getString("USER_EMAIL"),
-									   rset.getString("USER_PWD"),
+				Member m = new Member(rset.getString("USER_EMAIL"),
 									   rset.getString("USER_NAME"),
 									   rset.getString("USER_NIC"),
-									   rset.getString("USER_PHONE"),
-									   rset.getDate("USER_CREATE"),
-									   rset.getString("USER_DIV"),
-									   rset.getString("USER_DELETE"));
+									   rset.getString("USER_PHONE"));
 				selectUser.add(m);
 			} 
 			

@@ -52,46 +52,34 @@
 
 <div>           
   <table class="table table-bordered table-sm" style="text-align:center;">
-  
-   		<thead class="w3-light-grey">
-		   	<tr>
-		   		<td> NULL ERROR! </td>
-		   	</tr>
-		</thead>
-   	
-   		<thead class="w3-light-grey">
-		   	<tr>
-		   		<td>공지사항이 없습니다.</td>
-		   	</tr>
-		</thead>
-   	
+ 
    		<thead class="w3-light-grey">
 	   		<tr>
-				<th>번호</th>
-		        <th>제목</th>
-		        <th>작성날짜</th>
+				<th>제목</th>
+		        <th>내용</th>
+		        <th>작성일</th>
 		      </tr>
 		 </thead>
 		 <tbody>
-  		       				<tr>
-       					<td>
-       						<input type="hidden" name="num" value="">
-       					</td>
-       					<td>
-	       					
-	       					<input type="hidden" name="title" value="">	
-	       				</td>
-       					<td>
-       						
-       						<input type="hidden" name="date" value="">
-       					</td>
-       				</tr>
-       				<tr>
-       					<td colspan="3" id="FAQ-content">
-       					<p><input type="hidden" name="content" value=""></p>
-       					</td>
-       				</tr>
-	
+	 				<tr>
+			<td>
+				<input type="hidden" name="num" value="">
+			</td>
+			<td>
+				
+				<input type="hidden" name="title" value="">	
+			</td>
+			<td>
+				
+				<input type="hidden" name="date" value="">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" id="FAQ-content">
+			<p><input type="hidden" name="content" value=""></p>
+			</td>
+		</tr>
+
    		</tbody>
    </table>
 	</div>

@@ -67,7 +67,6 @@
       <tr>
         <th>번호</th>
         <th>제목</th>
-        <th>내용</th>
         <th>작성일</th>
         <th>조회수</th>        
       </tr>
@@ -77,7 +76,6 @@
       <tr>
         <td><%= f.getBoardFaqNum() %></td>
         <td><%= f.getBoardFaqTitle() %></td>
-        <td><%= f.getBoardFaqContent() %></td>
         <td><%= f.getCreateDate() %></td>
         <td><%= f.getBoardCount() %>
       </tr>
