@@ -340,17 +340,17 @@
 </script>
   
   
-  <script>
+<script>
 	$('#adminPage').on('click', function(){
    		var check = $("#userDiv").val();
    		console.log(check);
    		if(check == 'admin'){
    			location.href="<%=request.getContextPath()%>/selectUser.me";
-   		} else {
+   		} else {	//나름.. 이스터에그..??
    			location.href="https://www.teamlab.art/ko/";
    		}
    	});
-  </script>
+</script>
   
 </body>
 </html>
