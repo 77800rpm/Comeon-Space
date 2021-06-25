@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll, img.model.vo.*" %>
 <% ArrayList<Enroll> list = (ArrayList)request.getAttribute("list"); %>    
 <% ArrayList<Img> fList = (ArrayList)request.getAttribute("fList"); %>    
+<% ArrayList<Enroll> sList = (ArrayList)request.getAttribute("sList"); %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +61,7 @@
         	<!-- 검색 -->
               <form>              
 				<div class="dropdown3">               
-				<select id="browsers2" class="dropdownn" name="browsers">
+				<select id="browsers2" class="dropdownn" name="product_category">
 				    <option value="모든공간" selected>모든 공간</option>
 				    <option value="오피스">오피스</option>
 				    <option value="스터디룸">스터디룸</option>
@@ -68,15 +69,15 @@
 				    <option value="주방">주방</option>
 				    <option value="스튜디오">스튜디오</option>
 				    <option value="다목적홀">다목적홀</option>
-				    <option value="회의실s">회의실</option>
+				    <option value="회의실">회의실</option>
 				</select>
-				<select id="browsers3" class="dropdownn" name="browsers">
+				<select id="browsers3" class="dropdownn" name="product_location">
 				    <option value="모든지역" selected>모든 지역</option>
 				    <option value="경기도">경기도</option>
 				    <option value="서울">서울</option>
 				    <option value="인천">인천</option>
 				    <option value="강원">강원</option>
-				    <option value="대전충청">대전/충청</option>
+				    <option value="대전충북충남">대전/충청</option>
 				    <option value="부산울산">부산/울산</option>
 				    <option value="경상">경상</option>
 				    <option value="광주전라제주">광주/전라/제주</option>
