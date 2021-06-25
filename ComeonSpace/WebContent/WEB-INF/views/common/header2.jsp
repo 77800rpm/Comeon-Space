@@ -226,7 +226,7 @@
       <img src="assets/img/menubar_lobby.png" style="width: 70%">
       </p><br>
       <p>
-      <a>오랜만이에요... 보고싶었습니다!</a>
+      <label><%= loginUser.getUserNic() %>님의 방문을 환영합니다.</label>
       </p>
       <li><a href="index.jsp">홈</a></li>
       <li><a href="<%= request.getContextPath()%>/centerView.ce">고객센터</a></li>
