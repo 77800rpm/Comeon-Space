@@ -76,6 +76,17 @@ public class NoticeService {
 		return result;
 	}
 
+	//관리자 공지사항 
+	public ArrayList<Notice> admselectList() {
+		Connection conn = getConnection();
+		
+		ArrayList<Notice> list = new NoticeDAO().admselectNotice(conn);
+		
+		close(conn);
+		
+		return list;
+	}
+
 
 
 }

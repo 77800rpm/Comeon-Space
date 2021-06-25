@@ -134,7 +134,7 @@
 	    <a class="btn btn-success text-white"><i class="far fa-heart"></i></a>
 		</div>
 		
-		<div><input type = "hidden" class="pronum" value="<%= p.getpNum() %>"></div>
+		<input type = "hidden" class="pronum" value="<%= p.getpNum() %>">
 		
     </div><br><hr><br>
 
@@ -168,7 +168,7 @@
 			}).mouseout(function(){
 				$(this).parent().css({'background':'none'});
 			}).click(function(){
-				var num = $('.pronum').val();
+				var num = $(this).parent().children('input').val();
 				location.href="<%= request.getContextPath() %>/productDetail.no?no=" + num;
 			});
 		});

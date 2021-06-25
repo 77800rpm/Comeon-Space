@@ -9,8 +9,46 @@ public class Faq {
 	private int admNum;
 	private Date createDate;
 	private int boardCount;
+	private String admName;
 	
 	public Faq() {}
+
+	
+	
+	
+	
+	public Faq(String boardFaqTitle, String boardFaqContent) {
+		super();
+		this.boardFaqTitle = boardFaqTitle;
+		this.boardFaqContent = boardFaqContent;
+	}
+
+
+
+
+
+	public Faq(int boardFaqNum, String boardFaqTitle, Date createDate, int boardCount) {
+		super();
+		this.boardFaqNum = boardFaqNum;
+		this.boardFaqTitle = boardFaqTitle;
+		this.createDate = createDate;
+		this.boardCount = boardCount;
+	}
+
+
+
+	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent, int admNum, Date createDate,
+			int boardCount, String admName) {
+		super();
+		this.boardFaqNum = boardFaqNum;
+		this.boardFaqTitle = boardFaqTitle;
+		this.boardFaqContent = boardFaqContent;
+		this.admNum = admNum;
+		this.createDate = createDate;
+		this.boardCount = boardCount;
+		this.admName = admName;
+	}
+
 
 	public Faq(int boardFaqNum, String boardFaqTitle, String boardFaqContent, int admNum, Date createDate,
 			int boardCount) {
@@ -22,6 +60,18 @@ public class Faq {
 		this.createDate = createDate;
 		this.boardCount = boardCount;
 	}
+
+	
+	
+	public String getAdmName() {
+		return admName;
+	}
+
+
+	public void setAdmName(String admName) {
+		this.admName = admName;
+	}
+
 
 	public int getBoardFaqNum() {
 		return boardFaqNum;
@@ -71,12 +121,15 @@ public class Faq {
 		this.boardCount = boardCount;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Faq [boardFaqNum=" + boardFaqNum + ", boardFaqTitle=" + boardFaqTitle + ", boardFaqContent="
 				+ boardFaqContent + ", admNum=" + admNum + ", createDate=" + createDate + ", boardCount=" + boardCount
-				+ "]";
+				+ ", admName=" + admName + "]";
 	}
+
+	
 
 	
 	
