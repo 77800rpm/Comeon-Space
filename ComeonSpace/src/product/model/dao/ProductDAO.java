@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import enroll.model.vo.Enroll;
@@ -258,7 +259,44 @@ public class ProductDAO {
 			close(stmt);
 		}
 		
-		
+	
 		return list;
 	}
+			
+	public ArrayList<Enroll> selectList(String product_location, Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Enroll> slist = new ArrayList<Enroll>();
+		
+		String query = prop.getProperty("searchProduct");	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, '%'+product_location+'%');
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Enroll pro = new Enroll(rset.getInt("PRODUCT_NUM"),
+										rset.getString("PRODUCT_NAME"),
+										rset.getInt("PRODUCT_PRICE"),
+										rset.getString("PRODUCT_CATEGORY"),
+										rset.getString("PRODUCT_INTRO"),
+										rset.getString("PRODUCT_LOCATION"),
+										rset.getInt("PRODUCT_COUNT"));
+				
+				slist.add(pro);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+	
+		return slist;
+	}
+	
+	
 }

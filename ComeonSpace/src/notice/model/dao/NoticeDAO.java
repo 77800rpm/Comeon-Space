@@ -153,5 +153,39 @@ public class NoticeDAO {
 		
 		return result;
 	}
+	
+	
+	// 관리자 페이지 공지사항 
+	public ArrayList<Notice> admselectNotice(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Notice> list = new ArrayList<Notice>();
+		
+		String query = prop.getProperty("selectNotice");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			while(rset.next()) {
+				Notice no = new Notice(rset.getInt("BOARDNOTICE_NUM"),
+						rset.getString("BOARDNOTICE_TITLE"),
+						rset.getString("BOARDNOTICE_CONTENT"),
+						rset.getString("BOARDNOTICE_CATEGORY"),
+						rset.getInt("ADM_NUM"),
+						rset.getDate("BOARDNOTICE_DATE"));
+//				no.setnWriter(rset.getString("BOARDNOTICE_WRITER"));
+				
+				list.add(no);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return list;
+	}
 
 }

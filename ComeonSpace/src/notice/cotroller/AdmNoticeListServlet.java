@@ -1,28 +1,28 @@
-package faq.controller;
+package notice.cotroller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import faq.model.service.FaqService;
-import faq.model.vo.Faq;
-import member.model.vo.Member;
+import notice.model.service.NoticeService;
+import notice.model.vo.Notice;
 
 /**
- * Servlet implementation class FaqInsertServlet
+ * Servlet implementation class AdmNoticeListServlet
  */
-@WebServlet("/insert.bo")
-public class FaqInsertServlet extends HttpServlet {
+@WebServlet("/list.no")
+public class AdmNoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqInsertServlet() {
+    public AdmNoticeListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +30,13 @@ public class FaqInsertServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("UTF-8");
+		ArrayList<Notice> list = new NoticeService().admselectList();
 		
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		Faq f = new Faq();
-		f.setBoardFaqTitle(title);
-		f.setBoardFaqContent(content);
-
-		int result = new FaqService().insertBoard(f);
-		     
-		if(result > 0) {
-			response.sendRedirect("/list.bo");
-		} else {
-			request.setAttribute("msg", "게시글 작성 실패하였습니다.");
-		}
-		
-		
+		request.setAttribute("list", list);
+//		request.getRequestDispatcher("WEB-INF/views/admin/page5_notice2.jsp").forward(request, response);
+		request.getRequestDispatcher("page5_notice2.jsp").forward(request, response);
 	}
 
 	/**

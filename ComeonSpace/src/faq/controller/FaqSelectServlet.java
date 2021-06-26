@@ -15,7 +15,7 @@ import faq.model.vo.Faq;
 /**
  * Servlet implementation class FaqSelectServlet
  */
-@WebServlet("/faqSelect.me")
+@WebServlet("/list.bo")
 public class FaqSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -6,23 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import faq.model.service.FaqService;
 import faq.model.vo.Faq;
-import member.model.vo.Member;
 
 /**
- * Servlet implementation class FaqInsertServlet
+ * Servlet implementation class FaqUpdateForm
  */
-@WebServlet("/insert.bo")
-public class FaqInsertServlet extends HttpServlet {
+@WebServlet("/boardUpdateForm.bo")
+public class FaqUpdateForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqInsertServlet() {
+    public FaqUpdateForm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,23 +28,17 @@ public class FaqInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
 		String title = request.getParameter("title");
+//		String date = request.getParameter("date");
 		String content = request.getParameter("content");
+		
 		Faq f = new Faq();
 		f.setBoardFaqTitle(title);
+//		f.setCreateDate(date);
 		f.setBoardFaqContent(content);
-
-		int result = new FaqService().insertBoard(f);
-		     
-		if(result > 0) {
-			response.sendRedirect("/list.bo");
-		} else {
-			request.setAttribute("msg", "게시글 작성 실패하였습니다.");
-		}
 		
-		
+		request.setAttribute("f", f);
+		request.getRequestDispatcher("boardDetail.jsp").forward(request, response);
 	}
 
 	/**

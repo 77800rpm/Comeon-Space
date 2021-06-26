@@ -327,7 +327,7 @@
                                     <h6>카테고리 :</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>#<%= p.getpCategory() %></strong></p>
+                                    <p class="text-muted"><strong>#<%= p.getpName() %>　#<%= p.getpCategory() %>　#최대인원_<%= p.getpLimit() %>　#휴무일_<%= p.getHoliday() %></strong></p>
                                 </li>
                             </ul>
 
@@ -339,14 +339,14 @@
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item">
-                                                 <h6>날짜 : <input type="date" id="dateselectbutton" min="today"></h6>
+                                                 <h6>날짜 : <input type="date" id="dateselectbutton" name="select-date" min="today"></h6>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
-                                                <h6>인원 : <input type="hidden" name="product-quanity" id="product-quanity" value="1"> </h6>
+                                                <h6>인원 : <input type="hidden" name="product-quanity" id="product-quanity" value="1" max="<%= p.getpLimit() %>">  </h6>
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
