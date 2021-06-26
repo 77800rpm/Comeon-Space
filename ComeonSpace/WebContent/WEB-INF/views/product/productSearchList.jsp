@@ -83,6 +83,7 @@
 				    <option value="광주전라제주">광주/전라/제주</option>
 				</select>				
 				<input type="date" id="browser4" name="search-date" min="today">
+				<input type="hidden" name="searchDate" id="searchDate">
 				<button type="submit" id="browser5">search</button>				
 				</div>   
 			</form> 
@@ -158,11 +159,11 @@
     <script src="assets/js/custom.js"></script>
     <!-- End Script -->
     
-    <script>
     
+    <script>
     // 상품 위에 마우스 커서 댔을 시 색상 변경 및 클릭 활성화
     
-	    	$(function(){
+    	$(function(){
 			$('#pro-list-1 div').mouseenter(function(){
 				$(this).parent().css({'background':'#F2FFED', 'cursor':'pointer'});
 			}).mouseout(function(){
@@ -176,20 +177,39 @@
     
     // 검색 최소 날짜 : 오늘
     
-	    	$(document).ready(function() {
-	    	    var date = new Date();
+    	$(document).ready(function() {
+    	    var date = new Date();
 
-	    	    var day = date.getDate();
-	    	    var month = date.getMonth() + 1;
-	    	    var year = date.getFullYear();
+    	    var day = date.getDate();
+    	    var month = date.getMonth() + 1;
+    	    var year = date.getFullYear();
 
-	    	    if (month < 10) month = "0" + month;
-	    	    if (day < 10) day = "0" + day;
+    	    if (month < 10) month = "0" + month;
+    	    if (day < 10) day = "0" + day;
 
-	    	    var today = year + "-" + month + "-" + day;       
-	    	    $("#browser4").attr("value", today);
-	    	});    
+    	    var today = year + "-" + month + "-" + day;       
+    	    $("#browser4").attr("value", today);
+    	});    
+    
+    // 날짜에서 요일 값 찾기
+	    $(document).ready(function(){
+	    	$("#browser4").change(function(){
+	    		var value = $(this).val();
+	    		var weekName = new Array('일','월','화','수','목','금','토'); 
+
+	    		var day = new Date(value).getDay();
+	    		var result = weekName[day];
+	    		console.log(result);
+	    		
+				$("#searchDate").val(result);
+	    	});
+	    })
+
+	    
     </script>
+    
+    
+    
 </body>
 
 </html>
