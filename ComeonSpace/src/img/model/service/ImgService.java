@@ -33,4 +33,33 @@ public class ImgService {
 	}
 
 
+
+	public int updateProfile(Img img) {
+		Connection conn = getConnection();
+		
+		int result = new ImgDAO().updateProfile(conn, img);
+		
+		if(result > 0) {
+			commit(conn);
+			close(conn);
+			return result;
+		} else {
+			rollback(conn);
+			
+			int resultImg = new ImgDAO().insertMember(conn, img);
+			
+			if(resultImg >0) {
+				commit(conn);
+				close(conn);
+				return resultImg;
+			} else {
+				rollback(conn);
+				close(conn);
+				return resultImg;
+			}
+		}
+		
+	}
+
+
 }

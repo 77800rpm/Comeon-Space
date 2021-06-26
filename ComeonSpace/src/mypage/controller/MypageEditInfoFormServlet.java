@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import img.model.service.ImgService;
 import img.model.vo.Img;
+import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
@@ -34,9 +35,12 @@ public class MypageEditInfoFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		int userNum = ((Member)session.getAttribute("loginUser")).getUserNum();
+		String userEmail = ((Member)session.getAttribute("loginUser")).getUserEmail();
 		
+		Member member = new MemberService().selectMember(userEmail);
 		Img img = new ImgService().selectMember(userNum);
 		
+		request.setAttribute("member", member);
 		request.setAttribute("img", img);
 		request.getRequestDispatcher("WEB-INF/views/mypage/mypageEditInfo.jsp").forward(request, response);
 	}
