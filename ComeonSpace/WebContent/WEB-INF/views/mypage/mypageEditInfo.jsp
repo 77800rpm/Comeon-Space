@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="img.model.vo.Img"%>
+    pageEncoding="UTF-8" import="img.model.vo.Img, member.model.vo.Member"%>
 <%
+	Member m = (Member)request.getAttribute("member");
 	Img img = (Img)request.getAttribute("img");
 %>
 <!DOCTYPE html>
@@ -109,87 +110,77 @@
                 </div>
                 <div class="row">
                 	<div class="col-lg-1"></div>
-        		    <div class="col-lg-5">
-        		    <form method="post" encType="multipart/form-data" action="<%=request.getContextPath()%>/updateProfile.my">
+        		    <div class="col-lg-8">
+	      		    <form onsubmit="return sumbit();" method="post" encType="multipart/form-data" action="<%=request.getContextPath()%>/updateProfile.my">
         		    	<fieldset>
         		    		<div class="form-group" style="text-align: left"> 
       							<label for="InputEmail" class="form-label mt-4">이메일</label>
-      							<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" disabled value="<%=loginUser.getUserEmail() %>">
+      							<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="userEmail" readonly value="<%=m.getUserEmail() %>"/>
       							<small id="emailHelp" class="form-text text-muted">이메일은 로그인시 사용됩니다.</small>
     						</div>
     						
-    						   <div class="form-group">
-  									<fieldset disabled>
-    								<label class="form-label" for="user_name">이름</label>
-   									 <input class="form-control" id="user_name" type="text" value="<%=loginUser.getUserName() %>" disabled>
-  									</fieldset>
-							   </div>
+   						   <div class="form-group">
+								<fieldset disabled>
+   								<label class="form-label" for="user_name">이름</label>
+								<input class="form-control" id="user_name" type="text" value="<%= m.getUserName()%>" disabled/>
+								</fieldset>
+						   </div>
 							   
-							   <div class="form-group">
-							   	<label for="InputPhone" class="form-label mt-4">전화번호</label>
-							   	<input type="tel" class="form-control" id="InputPhone" value="<%=loginUser.getUserPhone()%>">
-							   	<small id="phoneHelp" class="form-text text-muted">조건 : ( - )제외 입력</small>
-							   </div>
+						   <div class="form-group">
+						   	<label for="InputPhone" class="form-label mt-4">전화번호</label>
+						   	<input type="tel" class="form-control" name="userPhone" id="InputPhone" value="<%=m.getUserPhone()%>"/>
+						   	<small id="phoneHelp" class="form-text text-muted">조건 : ( - )제외 입력</small>
+						   </div>
+						   <br>
+	        				<div class="form-group">
+	        					<label for="profileBox" class="form-label mt-4"></label>
+	        					<%if(img != null){ %>
+									<img src="<%=request.getContextPath()%>/img_upload/<%=img.getImgChange()%>" id='profileImg' width="250px" height="200px"/>        					
+	        					<%} else {%>
+	        						<img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" id='profileImg' width="250px" height="200px"/>
+	        					<%} %>
+	        				</div>
+	        				
+	        				<div class="form-group">
+	      						<label for="formFile" class="form-label mt-3">프로필 사진 업로드</label>
+	      						<input class="form-control" type="file" id="formFile" name="profileImgUpdate" onchange="changeImg(this)"/>
+	    					</div>
+	        				<div class="form-group has-success">
+	  							<label class="form-label mt-3" for="inputValid">닉네임 설정</label>
+	  							<input type="text" name="userNick" value=<%=m.getUserNic() %> class="form-control" id="inputNick"/>
+	  							<div id="checkNickName"></div>
+							</div>
 							   
-							   <br><hr><hr>
+						   <br/><hr/><hr/>
 							   
-							   <div class="form-group">
-							   	<label for="InputPassword" class="form-label mt-4">기존 비밀번호</label>
-							   	<input type="password" class="form-control" id="inputPassword" required placeholder="기존 비밀번호 입력">
-							   	<div id="checkPwdResult"></div>
-							   </div>
+						   <div class="form-group">
+						   	<label for="InputPassword" class="form-label mt-4">기존 비밀번호</label>
+						   	<input type="password" name="userPwd" class="form-control" id="inputPassword" required placeholder="기존 비밀번호 입력"/>
+						   	<div id="checkPwdResult"></div>
+						   </div>
+						   
+						   <div class="form-group">
+						   	<label for="InputNewPassword" class="form-label mt-4">새로운 비밀번호</label>
+						   	<input type="password" class="form-control" id="inputnNew" name="newPwd" onchange="pwd();" placeholder="새로운 비밀번호 입력"/>
+						   	<div id="newPwdResult"></div>
+						   </div>
 							   
-							   <div class="form-group">
-							   	<label for="InputNewPassword" class="form-label mt-4">새로운 비밀번호</label>
-							   	<input type="password" class="form-control" id="inputnNew" onchange="pwd();" placeholder="새로운 비밀번호 입력">
-							   	<div id="emailHelp" class="form-text text-muted" id="newPwdResult"></div>
-							   </div>
-							   
-							   <div class="form-group">
-							   	 <label for="confirmPassword" class="form-label mt-4">비밀번호 확인</label>
-							   	 <input type="password" class="form-control" id="confirmPassword" placeholder="비밀번호 확인">
-							   </div>
+						   <div class="form-group">
+						   	 <label for="confirmPassword" class="form-label mt-4">비밀번호 확인</label>
+						   	 <input type="password" class="form-control" id="confirmPassword" placeholder="비밀번호 확인"/>
+						   	 <div id="checkNewPwdResult"></div>
+						   </div>
     							
-    							<br>
+   							<br/>
     							
-    							<div id="btn_group">
-    							<br>
-    								<button type="submit" id="btn_green">수정하기</button>
-    								<button type="submit" id="btn_green2">취소</button>
-    							</div>
-        		    	</fieldset>
-        		    </form>
-        		    
-        		   <!-- <div class="form-label mt-4" id="profileBox" style="background: #BDBDBD;">  -->
-        		    
-        		    </div>
-        		    
-        		    <div class="col-lg-1">
-        		    	
-        		    </div>
-        		    
-        			<div class="col-lg-4">
-        				<div class="form-group">
-        					<label for="profileBox" class="form-label mt-4"></label>
-        					<%if(img != null){ %>
-								<img src="<%=request.getContextPath()%>/img_upload/<%=img.getImgChange()%>" id='profileImg' width="250px" height="200px">        					
-        					<%} else {%>
-        						<img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" id='profileImg' width="250px" height="200px">
-        					<%} %>
-        				</div>
-        				
-        				<div class="form-group">
-      						<label for="formFile" class="form-label mt-3">프로필 사진 업로드</label>
-      						<input class="form-control" type="file" id="formFile" onchange="changeImg(this)">
-    					</div>
-        				
-        				<div class="form-group has-success">
-  							<label class="form-label mt-3" for="inputValid">닉네임 설정</label>
-  							<input type="text" value=<%=loginUser.getUserNic() %> class="form-control" id="inputNick">
-  							<div id="checkNickName"></div>
-						</div>
-        				
-        			</div>
+  							<div id="btn_group">
+   							<br/>
+   								<button type="submit" id="btn_green">수정하기</button>
+   								<button type="button" id="btn_green2">취소</button>
+   							</div>
+       			    	</fieldset>
+        			</form>
+        		 
                 </div>
             </div>
         </div>
@@ -208,7 +199,8 @@
 	    		reader.readAsDataURL(value.files[0]);
     		}
     	}
-    	
+    	checkPwd1 = true;
+    	checkPwd2 = true;
     	// 새로운 비밀번호 정규표현식
     	function pwd(){
 			var regExp = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,12}$/;
@@ -227,13 +219,33 @@
 				result.style.color="blue";
 				checkPwd1 = true;
 			}
+			$("#confirmPassword").focus();
 			
 		}
     	
-    	checkPwd = false;
+    	// 새로운 비밀번호확인
+    	$("#confirmPassword").blur(function(){
+    		var newPwd = $("#inputnNew").val();
+    		var checkPwd = $(this).val();
+    		var result ='';
+    		if(newPwd == checkPwd){
+    			result = '<sub>비밀번호가 일치합니다.</sub>';
+    			$("#checkNewPwdResult").css("color","blue");
+    			checkPwd2 = true;
+    		} else {
+    			result = '<sub>비밀번호가 일치하지 않습니다.</sub>';	
+    			$("#checkNewPwdResult").css("color","red");
+    			checkPwd2 = false;
+    		}
+    		
+    		$("#checkNewPwdResult").html(result);
+    	})
+    	
+    	
+    	checkNick = false;
     	$(function(){
     		//닉네임 중복체크
-    		$("#inputNick").blur(function(){
+    		$("#inputNick").change(function(){
 				var check = $("#inputNick").val();
 				$.ajax({
 					url:"checkNick.me",
@@ -259,7 +271,7 @@
 				});
 			});
     		
-    		
+    		checkPwd = false;
     		//기존 비밀번호 입력
     		$("#inputPassword").change(function(){
    				var check = $("#inputPassword").val();
@@ -282,11 +294,36 @@
 							console.log("일치함");
 						}
    						$("#checkPwdResult").html(result);
+   						var test = $("#inputNick").val();
+   						console.log(test);
     				}
     			});
     		});
     		
     	})
+    	
+    	function sumbit(){
+    		if(checkPwd && checkPwd1 && checkPwd2 && checkNick){
+    			return true;
+    		} else if(!checkpwd){
+    			alert("기존 비밀번호를 입력해주세요.");
+    			$("#inputPassword").focus();
+    			return false;
+    		} else if(!checkPwd1){
+    			alert("비밀번호 형식에 맞게 변경햊쉐요.");
+    			$("#inputnNew").focus();
+    			return false;
+    		} else if(!checkPwd2){
+    			alert("변경할 비밀번호를 확인해주세요.")
+    			$("#confirmPassword").focus();
+    			return false;
+    		} else {
+    			alert("닉네임 중복체크 해주세요.");
+    			$("#inputNick").focus();
+    			return false;
+    		}
+    		
+    	}
     	
     </script>
 </body>

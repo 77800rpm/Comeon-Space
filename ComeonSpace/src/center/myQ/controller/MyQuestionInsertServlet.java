@@ -18,7 +18,6 @@ import com.oreilly.servlet.MultipartRequest;
 import center.myQ.model.service.MyQuestionService;
 import center.myQ.model.vo.MyQuestion;
 import common.MyFileRenamePolicy;
-import img.model.service.ImgService;
 import img.model.vo.Img;
 import member.model.vo.Member;
 

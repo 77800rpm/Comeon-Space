@@ -38,6 +38,7 @@ public class MypageMainServlet extends HttpServlet {
 		
 		Img img = new ImgService().selectMember(userNum);
 		
+		
 		request.setAttribute("img", img);
 		request.getRequestDispatcher("WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
 		

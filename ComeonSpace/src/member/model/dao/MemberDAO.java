@@ -294,5 +294,29 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int updateProfile(Connection conn, Member member, String insertPwd) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String pwd = new SignUpWrapper().wrapper(insertPwd);
+		String query = prop.getProperty("updateProfile");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, member.getUserPhone());
+			pstmt.setString(3, member.getUserNic());
+			pstmt.setInt(4, member.getUserNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
 	
 }
