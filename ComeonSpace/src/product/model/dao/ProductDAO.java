@@ -263,7 +263,7 @@ public class ProductDAO {
 		return list;
 	}
 			
-	public ArrayList<Enroll> selectList(String product_location, Connection conn) {
+	public ArrayList<Enroll> selectList(String PRODUCT_LOCATION, String PRODUCT_CATEGORY, String PRODUCT_HOLIDAY, Connection conn) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -272,7 +272,8 @@ public class ProductDAO {
 		String query = prop.getProperty("searchProduct");	
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, '%'+product_location+'%');
+			pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
+			pstmt.setString(2, "%"+PRODUCT_CATEGORY+"%");
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {

@@ -61,7 +61,7 @@
         	<!-- 검색 -->
               <form>              
 				<div class="dropdown3">               
-				<select id="browsers2" class="dropdownn" name="product_category">
+				<select id="PRODUCT_CATEGORY" class="dropdownn" name="PRODUCT_CATEGORY">
 				    <option value="모든공간" selected>모든 공간</option>
 				    <option value="오피스">오피스</option>
 				    <option value="스터디룸">스터디룸</option>
@@ -71,9 +71,9 @@
 				    <option value="다목적홀">다목적홀</option>
 				    <option value="회의실">회의실</option>
 				</select>
-				<select id="browsers3" class="dropdownn" name="product_location">
+				<select id="PRODUCT_CATEGORY" class="dropdownn" name="PRODUCT_LOCATION">
 				    <option value="모든지역" selected>모든 지역</option>
-				    <option value="경기도">경기도</option>
+				    <option value="경기">경기도</option>
 				    <option value="서울">서울</option>
 				    <option value="인천">인천</option>
 				    <option value="강원">강원</option>
@@ -83,7 +83,7 @@
 				    <option value="광주전라제주">광주/전라/제주</option>
 				</select>				
 				<input type="date" id="browser4" name="search-date" min="today">
-				<input type="hidden" name="searchDate" id="searchDate">
+				<input type="hidden" name="PRODUCT_HOLIDAY" id="searchDate">
 				<button type="submit" id="browser5">search</button>				
 				</div>   
 			</form> 

@@ -33,12 +33,17 @@ public class ProductSearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String f_location = request.getParameter("product_location");
-		String field = request.getParameter("field");
+		String PRODUCT_LOCATION = request.getParameter("PRODUCT_LOCATION");
+		String PRODUCT_CATEGORY = request.getParameter("PRODUCT_CATEGORY");
+		String PRODUCT_HOLIDAY = request.getParameter("PRODUCT_HOLIDAY");
 		
 		ArrayList<Enroll> list = new ProductService().selectList();
-		ArrayList<Enroll> slist = new ProductService().selectList(f_location);
+		ArrayList<Enroll> slist = new ProductService().selectList(PRODUCT_LOCATION, PRODUCT_CATEGORY, PRODUCT_HOLIDAY);
 		ArrayList<Img> fList = new ProductService().selectFList();
+		
+		System.out.println(PRODUCT_LOCATION);
+		System.out.println(PRODUCT_CATEGORY);
+		System.out.println(PRODUCT_HOLIDAY);
 		
 		String page = null;
 		if(list != null && fList != null) {
