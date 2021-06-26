@@ -371,7 +371,7 @@
                                 
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg btn-reserv" name="submit" value="buy">예약하기</button>
+                                        <button type="submit" class="btn btn-success btn-lg btn-reserv" name="submit" value="buy" onclick="buy()">예약하기</button>
                                     </div>
                                 </div>
                             </form>
@@ -667,6 +667,43 @@
     
 	</script>
 
+
+<!-- 결제..!! -->
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script>
+var IMP = window.IMP; // 생략해도 괜찮습니다.
+IMP.init("imp14686250"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+
+function buy(){
+	// IMP.request_pay(param, callback) 호출
+	IMP.request_pay({ // param
+	  pay_method: "kakaopay",
+	  merchant_uid: "ORD20180131-0000011",
+	  name: "도지의 공유 오피스",
+	  amount: 64900,
+	  buyer_email: "healthyK@naver.com",
+	  buyer_name: "강건강",
+	  buyer_tel: "010-4242-4242",
+	  buyer_addr: "서울특별시 강남구 역삼동",
+	  buyer_postcode: "01181"
+	}, function (rsp) { // callback
+	  if (rsp.success) {
+	      ...,
+	      // 결제 성공 시 로직,
+	      ...
+	  } else {
+	      ...,
+	      // 결제 실패 시 로직,
+	      ...
+	  }
+	});
+}
+
+
+</script>
 
 </body>
 
