@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice"%>
 <% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list"); %>
-<% Notice no = (Notice)request.getAttribute("no"); %>
 <!DOCTYPE html>
 <html>
 
@@ -20,7 +19,7 @@
 <body>
 <%-- <form action="<%= request.getContextPath() %>/selectUser.me"> --%>
 
-<%@ include file="WEB-INF/views/common/header.jsp" %>
+<%@ include file="../common/header.jsp" %>
 <!-- font -->
 <div style="font-family:Sans-serif">
 
@@ -34,7 +33,7 @@
 	  <a href="#" class="w3-bar-item w3-button">공간승인/취소</a>
 	  <h5 class="w3-bar-item"><b>게시판 관리</b></h5>
 	  <a href="#" class="w3-bar-item w3-button">게시글 관리</a>
-	  <a href="<%= request.getContextPath() %>" class="w3-bar-item w3-button">공지사항 관리</a>
+	  <a href="<%= request.getContextPath() %>/admList.no" class="w3-bar-item w3-button">공지사항 관리</a>
   </div>
 </div>
 
@@ -47,42 +46,53 @@
 
 <div>
 	<br>
-  <h5 style="padding:1%"><b>공지사항</b></h5>
+  <h5 style="padding:1%"><b>공지사항관리</b></h5>
   	<br>
 
 <div>           
-  <table class="table table-bordered table-sm" style="text-align:center;">
- 
+  <table class="table table-bordered table-sm" style="text-align:center;" id="listArea">
+  	<% if(list == null){ %>
+   		<thead class="w3-light-grey">
+		   	<tr>
+		   		<td> NULL ERROR! </td>
+		   	</tr>
+		</thead>
+   	<% }else if(list.isEmpty()){ %>
+   		<thead class="w3-light-grey">
+		   	<tr>
+		   		<td>공지사항이 없습니다.</td>
+		   	</tr>
+		</thead>
+   	<% } else{ %>
    		<thead class="w3-light-grey">
 	   		<tr>
-				<th>제목</th>
-		        <th>내용</th>
-		        <th>작성일</th>
+				<th>번호</th>
+		        <th>제목</th>
+		        <th>작성자</th>
+		        <th>작성날짜</th>
 		      </tr>
 		 </thead>
 		 <tbody>
-	 				<tr>
-			<td>
-				<input type="hidden" name="num" value="">
-			</td>
-			<td>
-				
-				<input type="hidden" name="title" value="">	
-			</td>
-			<td>
-				
-				<input type="hidden" name="date" value="">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3" id="FAQ-content">
-			<p><input type="hidden" name="content" value=""></p>
-			</td>
-		</tr>
-
+  		<% for(Notice no : list){ %>
+		      <tr>
+		        <td><%= no.getnNum()%></td>
+				<td><%= no.getnTitle()%></td>
+				<td><%= no.getAdmName()%></td>
+				<td><%= no.getDate()%></td>
+		      </tr>
+		      <% } %>
+	<% } %>
    		</tbody>
    </table>
 	</div>
+	
+	<div align="right">
+		<% if(loginUser != null && loginUser.getUserEmail().equals("admin123@cs.com")){ %>
+			<input type="button" onclick="location.href='admNoticeWriteForm.jsp'" id="writeNoBtn" value="글쓰기">
+		<% } %>			
+		</div>
+	
+	
 </div>
 
 <!-- page-button -->
@@ -101,7 +111,7 @@
 </div>
 </div>
 
-<%@ include file="WEB-INF/views/common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
 
 <!-- </form> -->
 <!-- 상세조회 -->
@@ -113,7 +123,7 @@
 				$(this).parent().css({'background':'none'});
 			}).click(function(){
 				var num = $(this).parent().children().eq(0).text(); 
-				location.href="<%=request.getContextPath() %>/detail.no?no=" + num;
+				location.href="<%=request.getContextPath() %>/admDetail.no?no=" + num;
 			});
 		});
 		</script>

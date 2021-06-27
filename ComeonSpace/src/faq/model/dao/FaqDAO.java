@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import faq.model.vo.Faq;
 import member.model.dao.MemberDAO;
+import notice.model.vo.Notice;
 
 public class FaqDAO {
 	
@@ -42,12 +43,12 @@ public class FaqDAO {
 			rset = stmt.executeQuery(query);
 			selectBoard = new ArrayList<Faq>();
 			while(rset.next()) {
-				Faq f = new Faq(rset.getInt("BOARDFAQ_NUM"),
+				Faq fo = new Faq(rset.getInt("BOARDFAQ_NUM"),
 								rset.getString("BOARDFAQ_TITLE"),
 								rset.getDate("CREATE_DATE"),
 								rset.getInt("BOARD_COUNT"));
 				
-				selectBoard.add(f);
+				selectBoard.add(fo);
 			}
 			
 			
@@ -61,16 +62,16 @@ public class FaqDAO {
 		return selectBoard;
 	}
 
-	public int insertBoard(Connection conn, Faq f) {
+	public int admInsertFaq(Connection conn, Faq fo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
-		String query = prop.getProperty("insertBoard");
-		
+		String query = prop.getProperty("admInsertFaq");
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, f.getBoardFaqTitle());
-			pstmt.setString(2, f.getBoardFaqContent());
+			pstmt.setString(1, fo.getBoardFaqTitle());
+			pstmt.setString(2, fo.getBoardFaqContent());
+//			pstmt.setString(3, f.getAdmName());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -82,4 +83,52 @@ public class FaqDAO {
 		return result;
 	}
 
+	public Faq admDetailFaq(Connection conn, int bId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Faq fo = null;
+		
+		String query = prop.getProperty("admDetailFaq");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bId);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				fo = new Faq();
+				fo.setBoardFaqNum(rset.getInt("BOARDFAQ_NUM"));
+				fo.setBoardFaqTitle(rset.getString("BOARDFAQ_TITLE"));
+				fo.setBoardFaqContent(rset.getString("BOARDFAQ_CONTENT"));
+				fo.setCreateDate(rset.getDate("CREATE_DATE"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return fo;
+	}
+
+	public int admDeleteFaq(Connection conn, int bId) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("admDeleteFaq");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, bId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 }

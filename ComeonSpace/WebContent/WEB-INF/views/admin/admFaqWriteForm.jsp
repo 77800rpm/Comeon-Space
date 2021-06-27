@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.ArrayList, faq.model.vo.Faq "
 	import="faq.model.service.*"%>
-<% 
-// ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); 
-%>
+<%-- <% ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); %> --%>
 <%
-FaqService fs = new FaqService();
+	FaqService fs = new FaqService();
 ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 %>
 <!DOCTYPE html>
@@ -27,7 +25,7 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <body>
-	<%@ include file="WEB-INF/views/common/header.jsp"%>
+	<%@ include file="../common/header.jsp"%>
 
 	<div style="font-family: Sans-serif">
 		<!-- Sidebar -->
@@ -67,30 +65,26 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 			<div>
 
 				<h5 style="padding: 1%">
-					<b>게시글 상세조회</b>
+					<b>게시글 작성</b>
 				</h5>
 
 				<div class="tableArea">
-					<form action="<%=request.getContextPath()%>/detail.bo"
+					<form action="<%=request.getContextPath()%>/faqInsert.bo"
 						method="post">
 						<table>
 							<tr>
 								<th>제목</th>
-								<td colspan="3"><input type="hidden" name="title" value=""></td>
+								<td colspan="3"><input type="text" size="100" name="title"></td>
 							</tr>
 							<tr>
 								<th>내용</th>
 								<td colspan="3"><textarea rows="15" cols="100"
-										name="content" style="resize: none;" readonly></textarea></td>
-							</tr>
-							<tr>
-								<th>작성자</th>
-								<td colspan="3"><input rows="15" name="admName"></input></td>
+										name="content" style="resize: none;"></textarea></td>
 							</tr>
 						</table>
 						<br>
 						<div align="center">
-							<input type="submit" id="insertBtn" value="삭제">
+							<input type="submit" id="insertBtn" value="등록하기">
 							<input type="button" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
 						</div>
 					</form>
@@ -99,7 +93,7 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 		</div>
 
 	</div>
-	<%@ include file="WEB-INF/views/common/footer.jsp"%>
+	<%@ include file="../common/footer.jsp"%>
 </body>
 
 </html>

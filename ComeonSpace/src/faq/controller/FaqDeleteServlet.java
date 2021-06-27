@@ -1,4 +1,4 @@
-package notice.cotroller;
+package faq.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import faq.model.service.FaqService;
 import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
 
 /**
- * Servlet implementation class AdmNoticeDetailServlet
+ * Servlet implementation class FaqDeleteServlet
  */
-@WebServlet("/admDetail.no")
-public class AdmNoticeDetailServlet extends HttpServlet {
+@WebServlet("/admDeleteFaq.bo")
+public class FaqDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdmNoticeDetailServlet() {
+    public FaqDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +30,14 @@ public class AdmNoticeDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int num = Integer.parseInt(request.getParameter("no"));
-		System.out.println(num);
-		Notice no = new NoticeService().admDetailNotice(num);
-		
-		
-		if(no != null) {
-			request.setAttribute("no", no);
-//			request.getRequestDispatcher("WEB-INF/views/notice/noticeDetail.jsp").forward(request, response);
-			request.getRequestDispatcher("admNoticeDetail.jsp").forward(request, response);
+		int bId = Integer.parseInt(request.getParameter("bId"));
+		System.out.println(bId);
+		int result = new FaqService().admDeleteFaq(bId);
+		System.out.println(result);
+		if(result > 0) {
+			response.sendRedirect("list.bo");
 		}
 	}
-				
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

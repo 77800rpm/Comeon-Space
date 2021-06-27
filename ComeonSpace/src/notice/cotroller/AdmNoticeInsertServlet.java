@@ -1,26 +1,28 @@
 package notice.cotroller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.vo.Member;
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
 
 /**
- * Servlet implementation class AdmNoticeDetailServlet
+ * Servlet implementation class AdmNoticeInsertServlet
  */
-@WebServlet("/admDetail.no")
-public class AdmNoticeDetailServlet extends HttpServlet {
+@WebServlet("/admInsert.no")
+public class AdmNoticeInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdmNoticeDetailServlet() {
+    public AdmNoticeInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +32,22 @@ public class AdmNoticeDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int num = Integer.parseInt(request.getParameter("no"));
-		System.out.println(num);
-		Notice no = new NoticeService().admDetailNotice(num);
 		
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String userName = ((Member)request.getSession().getAttribute("loginUser")).getUserName();
 		
-		if(no != null) {
-			request.setAttribute("no", no);
-//			request.getRequestDispatcher("WEB-INF/views/notice/noticeDetail.jsp").forward(request, response);
-			request.getRequestDispatcher("admNoticeDetail.jsp").forward(request, response);
+		Notice n = new Notice();
+		n.setAdmName(userName);
+		n.setnTitle(title);
+		n.setnContent(content);
+		
+		int result = new NoticeService().admInsertNotice(n);  
+		
+		if(result > 0) {
+			response.sendRedirect("admList.no");
 		}
 	}
-				
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

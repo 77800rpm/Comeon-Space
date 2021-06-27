@@ -19,7 +19,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <body>
-<%@ include file="WEB-INF/views/common/header.jsp" %>
+<%@ include file="../common/header.jsp" %>
 
 <div style="font-family:Sans-serif">
 <!-- Sidebar -->
@@ -72,12 +72,12 @@
       </tr>
     </thead>
     <tbody>
-       <% for(Faq f : list){ %>
+       <% for(Faq fo : list){ %>
       <tr>
-        <td><%= f.getBoardFaqNum() %></td>
-        <td><%= f.getBoardFaqTitle() %></td>
-        <td><%= f.getCreateDate() %></td>
-        <td><%= f.getBoardCount() %>
+        <td><%= fo.getBoardFaqNum() %></td>
+        <td><%= fo.getBoardFaqTitle() %></td>
+        <td><%= fo.getCreateDate() %></td>
+        <td><%= fo.getBoardCount() %>
       </tr>
          <% } %>
     </tbody>
@@ -86,9 +86,13 @@
    </div>
 </div>
 
-<div class="buttonArea" align="right">
-				<button onclick="location.href='<%= request.getContextPath() %>/writeBoardForm.bo'">작성하기</button>
-</div>
+	<div align="right">
+		<% if(loginUser != null && loginUser.getUserEmail().equals("admin123@cs.com")){ %>
+			<input type="button" onclick="location.href='admFaqWriteForm.jsp'" id="writeBoBtn" value="글쓰기">
+		<% } %>			
+		</div>
+
+
 <!-- page-button -->
 <div class="w3-center">
 <div class="w3-bar">
@@ -114,14 +118,14 @@
 			}).click(function(){
 				var bId=$(this).parent().children().eq(0).text();
 				if('<%= loginUser %>' != 'null'){
-					location.href='<%= request.getContextPath() %>/detail.bo?bId=' + bId;
+					location.href='<%= request.getContextPath() %>/faqDetail.bo?fo=' + bId;
 				} else {
-					alert('회원만 이용할 수 있는 서비스입니다.');
+					alert('관리자만 이용할 수 있는 서비스입니다.');
 				}
 			})
 		});
 	</script>
-<%@ include file="WEB-INF/views/common/footer.jsp" %>      
+<%@ include file="../common/footer.jsp" %>      
 </body>
 
 </html>

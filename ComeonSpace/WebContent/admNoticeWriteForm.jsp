@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.ArrayList, faq.model.vo.Faq "
-	import="faq.model.service.*"%>
-<%-- <% ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); %> --%>
-<%
-	FaqService fs = new FaqService();
-ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
-%>
+	pageEncoding="UTF-8" 
+	import="member.model.vo.Member"%>
+
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
@@ -49,9 +45,8 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 				<h5 class="w3-bar-item">
 					<b>게시판 관리</b>
 				</h5>
-				<a href="<%=request.getContextPath()%>/faqSelect.me"
-					class="w3-bar-item w3-button">게시글 관리</a> <a href="#"
-					class="w3-bar-item w3-button">공지사항 관리</a>
+				<a class="w3-bar-item w3-button">게시글 관리</a> 
+				<a href="#" class="w3-bar-item w3-button">공지사항 관리</a>
 			</div>
 		</div>
 
@@ -65,17 +60,25 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 			<div>
 
 				<h5 style="padding: 1%">
-					<b>게시글 작성</b>
+					<b>공지사항 작성하기</b>
 				</h5>
 
 				<div class="tableArea">
-					<form action="<%=request.getContextPath()%>/insert.bo"
-						method="post">
+					<form action="<%=request.getContextPath()%>/admInsert.no" method="post">
 						<table>
 							<tr>
 								<th>제목</th>
 								<td colspan="3"><input type="text" size="100" name="title"></td>
 							</tr>
+							<tr>
+						<th>작성자</th>
+						<td>
+							<%= loginUser.getUserNic().equals("관리자") %>
+							<!-- 관리자 이름 가져오는 방법! -->
+						</td>
+						<th>작성일</th>
+						<td><input type="date" name="date"></td>
+					</tr>
 							<tr>
 								<th>내용</th>
 								<td colspan="3"><textarea rows="15" cols="100"
@@ -84,7 +87,7 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 						</table>
 						<br>
 						<div align="center">
-							<input type="submit" id="insertBtn" value="등록하기">
+							<input type="submit" id="insertBtn" value="등록">
 							<input type="button" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
 						</div>
 					</form>

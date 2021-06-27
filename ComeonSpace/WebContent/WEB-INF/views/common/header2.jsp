@@ -280,7 +280,6 @@
          <% } else { %>
             <a class="nav-link main-login" id="logout">로그아웃</a>
          <% } %>
-      </li>
     </ul>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

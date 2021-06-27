@@ -32,12 +32,12 @@ public class FaqUpdateForm extends HttpServlet {
 //		String date = request.getParameter("date");
 		String content = request.getParameter("content");
 		
-		Faq f = new Faq();
-		f.setBoardFaqTitle(title);
-//		f.setCreateDate(date);
-		f.setBoardFaqContent(content);
+		Faq fo = new Faq();
+		fo.setBoardFaqTitle(title);
+//		fo.setCreateDate(date);
+		fo.setBoardFaqContent(content);
 		
-		request.setAttribute("f", f);
+		request.setAttribute("fo", fo);
 		request.getRequestDispatcher("boardDetail.jsp").forward(request, response);
 	}
 

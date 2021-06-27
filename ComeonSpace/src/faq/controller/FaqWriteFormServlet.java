@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FaqWriteFormServlet
  */
-@WebServlet("/writeBoardForm.bo")
+@WebServlet("/writeFaqForm.bo")
 public class FaqWriteFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,7 @@ public class FaqWriteFormServlet extends HttpServlet {
 		
 		//화면 만 이동
 		
-		request.getRequestDispatcher("page4_boardWriteForm.jsp").forward(request, response);;
+		request.getRequestDispatcher("admFaqWriteForm.jsp").forward(request, response);;
 	
 	
 	}
