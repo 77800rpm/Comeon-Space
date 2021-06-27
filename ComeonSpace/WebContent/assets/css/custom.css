@@ -120,13 +120,22 @@ background-repeat: no-repeat;
 	cursor: pointer;
 }
 
-#search-result{
+#search-result {
 	font-family: 'Jua', sans-serif !important;
 	font-size: 35px;
   	color: #0f6756;	
   	text-decoration: underline;
   	text-underline-position: under;
 }
+
+#search-result2 {
+	font-family: 'Jua', sans-serif !important;
+	font-size: 35px;
+  	color: #0f6756;	
+  	text-decoration: underline;
+  	text-underline-position: under;
+}
+
 
 #browser4{
     background-color: white;
@@ -146,6 +155,24 @@ box-sizing: border-box;
 }
 
 #browser5{
+    background-color: #0f6756;
+    color:white;
+    border: 1px solid gray;
+    border-radius: 15px;
+    display: inline-block;
+  font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+    padding: 0.5em 1em 0.5em 1em;
+
+margin: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+#browser6{
     background-color: #0f6756;
     color:white;
     border: 1px solid gray;

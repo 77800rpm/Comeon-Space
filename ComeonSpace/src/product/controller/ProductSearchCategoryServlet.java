@@ -3,6 +3,7 @@ package product.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +15,16 @@ import img.model.vo.Img;
 import product.model.service.ProductService;
 
 /**
- * Servlet implementation class ProductSearchServlet
+ * Servlet implementation class ProductSearchCategoryServlet
  */
-@WebServlet("/search.pro")
-public class ProductSearchServlet extends HttpServlet {
+@WebServlet("/search.cate")
+public class ProductSearchCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductSearchServlet() {
+    public ProductSearchCategoryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,11 +34,34 @@ public class ProductSearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String PRODUCT_LOCATION = request.getParameter("PRODUCT_LOCATION");
+		String PRODUCT_CATEGORY = request.getParameter("PRODUCT_CATEGORY");
+		String PRODUCT_HOLIDAY = request.getParameter("PRODUCT_HOLIDAY");		
 		
-		ArrayList<Enroll> list = new ProductService().selectList();
+		
+		String ALL_PRODUCT_LOCATION = "";
+		if(PRODUCT_LOCATION.equals("모든지역")) {
+			ALL_PRODUCT_LOCATION = PRODUCT_CATEGORY;
+			PRODUCT_LOCATION = " ";
+		}
+		
+		
+//		String ALL_PRODUCT_CATEGORY = "";
+//		if(PRODUCT_CATEGORY.equals("모든공간")) {
+//			ALL_PRODUCT_CATEGORY = PRODUCT_CATEGORY;
+//			PRODUCT_CATEGORY = "";
+//			System.out.println("PRODUCT_CATEGORY : " + PRODUCT_CATEGORY);
+//			System.out.println("ALL_PRODUCT_CATEGORY : " + ALL_PRODUCT_CATEGORY);
+//		}
+
+		
+		ArrayList<Enroll> list = new ProductService().selectList(PRODUCT_LOCATION, PRODUCT_CATEGORY, PRODUCT_HOLIDAY);
 		ArrayList<Img> fList = new ProductService().selectFList();
 		
-
+		System.out.println(PRODUCT_LOCATION);
+		System.out.println(PRODUCT_CATEGORY);
+		System.out.println(PRODUCT_HOLIDAY);
+				
 		String page = null;
 		if(list != null && fList != null) {
 			page = "WEB-INF/views/product/productSearchList.jsp";
@@ -50,9 +74,7 @@ public class ProductSearchServlet extends HttpServlet {
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);	
-		
-	}		
-
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
