@@ -2,6 +2,7 @@ package product.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 import static common.JDBCTemplate.getConnection;
 import static common.JDBCTemplate.rollback;
@@ -71,4 +72,33 @@ public class ProductService {
 		
 		return list;
 	}
+
+	public ArrayList<Enroll> selectCategory(String category) {
+		Connection conn = getConnection();
+		
+		ArrayList<Enroll> list = new ProductDAO().selectCategory(conn, category);
+		
+		close(conn);
+		return list;
+	}
+
+	public ArrayList<Enroll> mainCategory() {
+		Connection conn = getConnection();
+		
+		ArrayList<Enroll> list = new ProductDAO().mainCategory(conn);
+		
+		return list;
+	}
+	
+	public ArrayList<Enroll> selectList(String PRODUCT_LOCATION, String PRODUCT_CATEGORY, String PRODUCT_HOLIDAY) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Enroll> slist = new ProductDAO().selectList(PRODUCT_LOCATION, PRODUCT_CATEGORY, PRODUCT_HOLIDAY, conn);
+		
+		close(conn);
+		
+		return slist;
+	}
+
 }

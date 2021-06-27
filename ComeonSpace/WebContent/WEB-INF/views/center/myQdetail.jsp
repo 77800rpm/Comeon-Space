@@ -91,7 +91,7 @@ https://templatemo.com/tm-559-zay-shop
 	.main-div{border-bottom: 2px solid green;}
 	.section-div{padding-top: 1rem; padding-bottom: 1rem;}
 	#FAQ-content{white-space: pre-line;}
-	
+	#test{clear:both;}
 	
 </style>
 
@@ -159,6 +159,7 @@ https://templatemo.com/tm-559-zay-shop
        			
 	       	</form>  
        </div>
+       <div id="test"></div>
        <%@ include file="../common/footer.jsp" %>
     </section>
     <!-- End Section -->

@@ -35,7 +35,6 @@ public class ProductDetailServlet extends HttpServlet {
 		
 		int no = Integer.parseInt(request.getParameter("no")); // 주소 no=?
 		
-
 		
 		Enroll product = new ProductService().selectProduct(no);
 		

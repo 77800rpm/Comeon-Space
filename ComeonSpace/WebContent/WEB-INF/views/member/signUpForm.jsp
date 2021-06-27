@@ -178,7 +178,6 @@
 							$("#resultMsg4").html(result);
 					},
 					error: function(data){
-						console.log("실패");
 					}
 					
 				});

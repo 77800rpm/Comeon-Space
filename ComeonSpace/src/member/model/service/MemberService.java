@@ -107,6 +107,29 @@ public class MemberService {
 		return result;
 	}
 
+	public int checkPwd(Member m) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDAO().checkPwd(conn, m);
+		
+		close(conn);
+		return result;
+	}
+
+	public int updateProfile(Member member, String insertPwd) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDAO().updateProfile(conn, member, insertPwd);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
 
 
 	

@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import common.wrapper.SignUpWrapper;
 import img.model.vo.Img;
 import member.model.vo.Member;
 
@@ -257,6 +258,62 @@ public class MemberDAO {
 			close(pstmt);
 		}
 		
+		
+		return result;
+	}
+
+	public int checkPwd(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		SignUpWrapper su = new SignUpWrapper();
+		String pwd = su.wrapper(m.getUserPwd());
+		
+		String query = prop.getProperty("checkPwd");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, m.getUserNum());
+			pstmt.setString(2, pwd);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	public int updateProfile(Connection conn, Member member, String insertPwd) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String pwd = new SignUpWrapper().wrapper(insertPwd);
+		String query = prop.getProperty("updateProfile");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, member.getUserPhone());
+			pstmt.setString(3, member.getUserNic());
+			pstmt.setInt(4, member.getUserNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 		
 		return result;
 	}

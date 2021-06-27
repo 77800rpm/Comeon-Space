@@ -14,6 +14,9 @@
 
 <style>
 
+#nick123 {color: rgb(244,162,1);}
+
+
     *{font-family: 'jua', sans-serif; !important}
     a, p, h1, h2, h3{font-family: 'jua', sans-serif; !important}
 
@@ -226,14 +229,15 @@
       <img src="assets/img/menubar_lobby.png" style="width: 70%">
       </p><br>
       <p>
-      <a>오랜만이에요... 보고싶었습니다!</a>
+      <label id="nick123"> <%= loginUser.getUserNic() %> </label>
+      <label> 님의 방문을 환영합니다.</label>
       </p>
       <li><a href="index.jsp">홈</a></li>
       <li><a href="<%= request.getContextPath()%>/centerView.ce">고객센터</a></li>
       <li><a href="<%= request.getContextPath()%>/mypageMain.my">마이페이지</a></li>
-      <li><a href="https://www.instagram.com/willyarchives/" target="_blank">👻</a></li>
-      <li>
-      <button type="button" class="btn btn-warning" id="logout2">로그아웃😥</button></li>
+      <li><button type="button" id="adminPage" class="btn btn-success">👻</button>
+      <li><input type="hidden" id="userDiv" value="<%=loginUser.getUserDiv()%>"></li>
+      <li><button type="button" class="btn btn-warning" id="logout2">로그아웃😥</button></li>
     </ul>
     <% } else { %>
     <ul id="menu">
@@ -333,6 +337,19 @@
 	$('#logout2').on('click', function(){
 		location.href="<%= request.getContextPath() %>/logout.me";
 	});
+</script>
+  
+  
+<script>
+	$('#adminPage').on('click', function(){
+   		var check = $("#userDiv").val();
+   		console.log(check);
+   		if(check == 'admin'){
+   			location.href="<%=request.getContextPath()%>/selectUser.me";
+   		} else {	//나름.. 이스터에그..??
+   			location.href="https://www.teamlab.art/ko/";
+   		}
+   	});
 </script>
   
 </body>

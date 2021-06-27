@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import enroll.model.vo.Enroll;
@@ -186,4 +187,117 @@ public class ProductDAO {
 		
 		return list;
 	}
+
+
+	public ArrayList<Enroll> selectCategory(Connection conn, String category) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Enroll product = null;
+		ArrayList<Enroll> list = new ArrayList<Enroll>();
+		
+		String query = prop.getProperty("selectCategory");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, category);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				  product = new Enroll(rset.getInt("product_num"),
+									rset.getString("product_name"),
+									rset.getInt("product_limit"),
+									rset.getInt("product_price"),
+									rset.getString("product_category"),
+									rset.getString("product_intro"),
+									rset.getString("Product_detail"),
+									rset.getString("product_location"),
+									rset.getString("product_fac"),
+									rset.getInt("product_count"),
+									rset.getString("product_holiday"));
+				  
+				  list.add(product);
+
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
+
+
+	public ArrayList<Enroll> mainCategory(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Enroll> list = new ArrayList<Enroll>();
+		Enroll en = null;
+		
+		String query = prop.getProperty("mainCategory");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			while(rset.next()) {
+				en = new Enroll();
+				en.setpCategory(rset.getString("PRODUCT_CATEGORY"));
+				en.setpCount(rset.getInt(1));
+				
+				list.add(en);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+	
+		return list;
+	}
+			
+	public ArrayList<Enroll> selectList(String PRODUCT_LOCATION, String PRODUCT_CATEGORY, String PRODUCT_HOLIDAY, Connection conn) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Enroll> slist = new ArrayList<Enroll>();
+		
+		String query = prop.getProperty("searchProduct");	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
+			pstmt.setString(2, "%"+PRODUCT_CATEGORY+"%");
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Enroll pro = new Enroll(rset.getInt("PRODUCT_NUM"),
+										rset.getString("PRODUCT_NAME"),
+										rset.getInt("PRODUCT_PRICE"),
+										rset.getString("PRODUCT_CATEGORY"),
+										rset.getString("PRODUCT_INTRO"),
+										rset.getString("PRODUCT_LOCATION"),
+										rset.getInt("PRODUCT_COUNT"));
+				
+				slist.add(pro);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+	
+		return slist;
+	}
+	
+	
 }

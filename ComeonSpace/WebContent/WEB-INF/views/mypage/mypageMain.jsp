@@ -59,8 +59,8 @@
                 <br>
                 <div class="row">
 					<div id="mypageProfileImg">
-						<%if(img == null){ %>
-							<img class="mypage-profile" src="<%=request.getContextPath()%>/img_upload/<%= img.getImgChange() %>" width="200px;" height="150px;">
+						<%if(img != null){ %>
+							<img class="mypage-profile" src="<%= request.getContextPath()%>/img_upload/<%= img.getImgChange() %>" width="200px;" height="150px;">
 						<%} else { %>
 							<img class="mypage-profile" src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" width="200px;" height="150px;">
 						<%} %>

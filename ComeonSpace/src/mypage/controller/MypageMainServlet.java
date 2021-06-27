@@ -34,15 +34,14 @@ public class MypageMainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String userEmail = ((Member)session.getAttribute("loginUser")).getUserEmail();
 		int userNum = ((Member)session.getAttribute("loginUser")).getUserNum();
 		
-		Member profile = new MemberService().selectMember(userEmail);
 		Img img = new ImgService().selectMember(userNum);
 		
-		request.setAttribute("profile", profile);
+		
 		request.setAttribute("img", img);
 		request.getRequestDispatcher("WEB-INF/views/mypage/mypageMain.jsp").forward(request, response);
+		
 	}
 
 	/**

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, img.model.vo.*, java.util.ArrayList" %>
+    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, img.model.vo.*, java.util.ArrayList, member.model.vo.Member" %>
 <%
+	Member loginUser = (Member)session.getAttribute("loginUser");
 
 	Enroll p = (Enroll)request.getAttribute("product");
 
@@ -64,6 +65,9 @@
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     
 
 <style type="text/css">
@@ -327,7 +331,7 @@
                                     <h6>카테고리 :</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>#<%= p.getpCategory() %></strong></p>
+                                    <p class="text-muted"><strong>#<%= p.getpName() %>　#<%= p.getpCategory() %>　#최대인원_<%= p.getpLimit() %>　#휴무일_<%= p.getHoliday() %></strong></p>
                                 </li>
                             </ul>
 
@@ -339,14 +343,14 @@
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item">
-                                                 <h6>날짜 : <input type="date" id="dateselectbutton" min="today"></h6>
+                                                 <h6>날짜 : <input type="date" id="dateselectbutton" name="select-date" min="today"></h6>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
-                                                <h6>인원 : <input type="hidden" name="product-quanity" id="product-quanity" value="1"> </h6>
+                                                <h6>인원 : <input type="hidden" name="product-quanity" id="product-quanity" value="1" max="<%= p.getpLimit() %>">  </h6>
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
@@ -371,7 +375,7 @@
                                 
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg btn-reserv" name="submit" value="buy">예약하기</button>
+                                        <button type="button" class="btn btn-success btn-lg btn-reserv" name="submit" value="buy" id="buy">예약하기</button>
                                     </div>
                                 </div>
                             </form>
@@ -668,6 +672,63 @@
 	</script>
 
 
-</body>
+<!-- 결제..!! -->
+<script>
+$('#buy').on('click', function(){
+	var IMP = window.IMP; // 생략해도 괜찮.
+	IMP.init("imp14686250"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
 
+		IMP.request_pay({	// IMP.request_pay(param, callback) 호출  // param
+		  pay_method: "kakaopay",
+		  merchant_uid: "merchant_" + new Date().getTime(),
+		  name: '<%= p.getpName() %>',
+		  amount: <%=p.getProductPrice()%>,
+		  buyer_email: '<%=loginUser.getUserEmail()%>',
+		  buyer_name: '<%=loginUser.getUserName()%>',
+		  buyer_tel: '<%=loginUser.getUserPhone()%>',
+		  buyer_addr: "(주)ComeOnSpace",
+		  buyer_postcode: "08208"
+		}, function (rsp) { // callback
+		  if (rsp.success) {	// 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+			  
+	    		var msg = '결제가 완료되었습니다.';
+    			
+	    		alert(msg);
+
+		    	//[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+		    	jQuery.ajax({
+		    		url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+		    		type: 'POST',
+		    		dataType: 'json',
+		    		data: {
+			    		imp_uid : rsp.imp_uid
+			    		//기타 필요한 데이터가 있으면 추가 전달
+		    		}
+		      }).done(function (data) {
+		        // 가맹점 서버 결제 API 성공시 로직
+		    	if ( everythings_fine ) {
+		    		var msg = '결제가 완료되었습니다.';
+		    			
+		    		alert(msg);
+		    	} else {
+		    		//[3] 아직 제대로 결제가 되지 않았습니다.
+		    		//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+		    		var msg = '결제가 아직 완료되지 않았습니다.';
+		    		
+		    		alert(msg);
+		    	}
+		    });  
+		  } else {
+		      // 결제 실패 시 로직
+		      var msg = '결제에 실패하였습니다.';
+		      msg += '에러내용 : ' + rsp.error_msg;
+		        
+		      alert(msg);
+		  }
+		});
+
+});
+</script>
+
+</body>
 </html>

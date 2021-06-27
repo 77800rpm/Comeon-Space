@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll, img.model.vo.*" %>
 <% ArrayList<Enroll> list = (ArrayList)request.getAttribute("list"); %>    
 <% ArrayList<Img> fList = (ArrayList)request.getAttribute("fList"); %>    
+<% ArrayList<Enroll> sList = (ArrayList)request.getAttribute("sList"); %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +61,7 @@
         	<!-- 검색 -->
               <form>              
 				<div class="dropdown3">               
-				<select id="browsers2" class="dropdownn" name="browsers">
+				<select id="PRODUCT_CATEGORY" class="dropdownn" name="PRODUCT_CATEGORY">
 				    <option value="모든공간" selected>모든 공간</option>
 				    <option value="오피스">오피스</option>
 				    <option value="스터디룸">스터디룸</option>
@@ -68,20 +69,21 @@
 				    <option value="주방">주방</option>
 				    <option value="스튜디오">스튜디오</option>
 				    <option value="다목적홀">다목적홀</option>
-				    <option value="회의실s">회의실</option>
+				    <option value="회의실">회의실</option>
 				</select>
-				<select id="browsers3" class="dropdownn" name="browsers">
+				<select id="PRODUCT_CATEGORY" class="dropdownn" name="PRODUCT_LOCATION">
 				    <option value="모든지역" selected>모든 지역</option>
-				    <option value="경기도">경기도</option>
+				    <option value="경기">경기도</option>
 				    <option value="서울">서울</option>
 				    <option value="인천">인천</option>
 				    <option value="강원">강원</option>
-				    <option value="대전충청">대전/충청</option>
+				    <option value="대전충북충남">대전/충청</option>
 				    <option value="부산울산">부산/울산</option>
 				    <option value="경상">경상</option>
 				    <option value="광주전라제주">광주/전라/제주</option>
 				</select>				
 				<input type="date" id="browser4" name="search-date" min="today">
+				<input type="hidden" name="PRODUCT_HOLIDAY" id="searchDate">
 				<button type="submit" id="browser5">search</button>				
 				</div>   
 			</form> 
@@ -157,11 +159,11 @@
     <script src="assets/js/custom.js"></script>
     <!-- End Script -->
     
-    <script>
     
+    <script>
     // 상품 위에 마우스 커서 댔을 시 색상 변경 및 클릭 활성화
     
-	    	$(function(){
+    	$(function(){
 			$('#pro-list-1 div').mouseenter(function(){
 				$(this).parent().css({'background':'#F2FFED', 'cursor':'pointer'});
 			}).mouseout(function(){
@@ -175,20 +177,39 @@
     
     // 검색 최소 날짜 : 오늘
     
-	    	$(document).ready(function() {
-	    	    var date = new Date();
+    	$(document).ready(function() {
+    	    var date = new Date();
 
-	    	    var day = date.getDate();
-	    	    var month = date.getMonth() + 1;
-	    	    var year = date.getFullYear();
+    	    var day = date.getDate();
+    	    var month = date.getMonth() + 1;
+    	    var year = date.getFullYear();
 
-	    	    if (month < 10) month = "0" + month;
-	    	    if (day < 10) day = "0" + day;
+    	    if (month < 10) month = "0" + month;
+    	    if (day < 10) day = "0" + day;
 
-	    	    var today = year + "-" + month + "-" + day;       
-	    	    $("#browser4").attr("value", today);
-	    	});    
+    	    var today = year + "-" + month + "-" + day;       
+    	    $("#browser4").attr("value", today);
+    	});    
+    
+    // 날짜에서 요일 값 찾기
+	    $(document).ready(function(){
+	    	$("#browser4").change(function(){
+	    		var value = $(this).val();
+	    		var weekName = new Array('일','월','화','수','목','금','토'); 
+
+	    		var day = new Date(value).getDay();
+	    		var result = weekName[day];
+	    		console.log(result);
+	    		
+				$("#searchDate").val(result);
+	    	});
+	    })
+
+	    
     </script>
+    
+    
+    
 </body>
 
 </html>
