@@ -204,6 +204,7 @@
 	$('.all-view').on('click', function(){
 		location.href="<%= request.getContextPath() %>/search.pro";
 	});
+	
     </script>
     
     
