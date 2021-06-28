@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/templatemo.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+
+<title>내 공간 목록</title>
+
+<style>
+	/* 검색창 */
+	.form-control:focus{color:#212529;background-color:#fff;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:none;}
+	.bg-success{background-color: rgb(15, 103, 86) !important; border:none; border-top-right-radius: 5px; border-bottom-right-radius: 5px;}
+	::placeholder{ font-size: 0.9em;}
+	
+	/* 더보기*/
+	#button_moreSpace{border: 1px solid black; padding: 12px 30px; font-size: 15px; width: 300px; margin-left:auto; margin-right:auto; background: white;}
+	
+	/* 버튼 */
+	.button-ok{background: rgb(15, 103, 86); color: white; border: none; padding: 6px; border-radius:40px; font-weight:bold; font-size: 14px; width:150px; pointer-events: none;}
+	.button-no{background: gray; color: white; border: none; padding: 6px; border-radius:40px; font-weight:bold; font-size: 14px; width:150px; pointer-events: none;}
+	.button-ing{background: orange; color: white; border: none; padding: 6px; border-radius:40px; font-weight:bold; font-size: 14px; width:150px; pointer-events: none;}
+	
+	/* 이미지 크기 조절 */
+	img{height: 220px;}
+</style>
+</head>
+<body>
+	<br><br><br>
+	<!-- title -->
+	<div class="container m-auto">
+		<div class="row text-center mb-2">
+			<h2>My Come on Space</h2>
+		</div>
+	</div>
+	<!-- title -->
+	
+	<!-- 검색창 -->
+	 <div class="container col-md-9">
+		<div class="row mb-4">
+			<div class="col-md-9">
+			</div>
+			<div class="col-md-3">
+				<div class="input-group">
+                    <input type="text" class="form-control" id="search" name="search" placeholder="search...">
+                    <button type="submit" class="bg-success">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+			</div>
+		</div>
+	 </div>
+	<!-- 검색창 -->
+	
+	<!-- 공간 목록 -->
+	<div class="container col-md-9 mb-5">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card mb-2">
+					<img class="rounded-2" src="../assets/img/space.jpg">
+				</div>
+				<div class="card-body text-center">
+					<div class="col-md-8 m-auto text-center">
+						<button class="button-ok mb-3">승인 완료</button>
+					</div>
+					<h5>용인 스튜디오</h5>
+					<small>용인스튜디오는 샬라샬라 샬라샬라 샬라샬라 샬라샬라</small>
+	            </div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-2">
+					<img class="rounded-2" src="../assets/img/space1.jpg">
+				</div>
+				<div class="card-body text-center">
+					<div class="col-md-8 m-auto text-center">
+						<button class="button-no mb-3">승인 거절</button>
+					</div>
+					<h5>인계동 파티룸</h5>
+					<small>용인스튜디오는 샬라샬라 샬라샬라 샬라샬라 샬라샬라</small>
+	            </div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-2">
+					<img class="rounded-2" src="../assets/img/space1.jpg">
+				</div>
+				<div class="card-body text-center">
+					<div class="col-md-8 m-auto text-center">
+						<button class="button-ing mb-3">승인 확인 중</button>
+					</div>
+					<h5>대형 행사장</h5>
+					<small>용인스튜디오는 샬라샬라 샬라샬라 샬라샬라 샬라샬라</small>
+	            </div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container col-md-9 mb-5">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card mb-2">
+					<img class="rounded-2" src="../assets/img/space1.jpg">
+				</div>
+				<div class="card-body text-center">
+					<div class="col-md-8 m-auto text-center">
+						<button class="button-no mb-3">승인 거절</button>
+					</div>
+					<h5>용인 스튜디오</h5>
+					<small>용인스튜디오는 샬라샬라 샬라샬라 샬라샬라 샬라샬라</small>
+	            </div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-2">
+					<img class="rounded-2" src="../assets/img/space1.jpg">
+				</div>
+				<div class="card-body text-center">
+					<div class="col-md-8 m-auto text-center">
+						<button class="button-no mb-3">승인 거절</button>
+					</div>
+					<h5>인계동 파티룸</h5>
+					<small>용인스튜디오는 샬라샬라 샬라샬라 샬라샬라 샬라샬라</small>
+	            </div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-2">
+					<img class="rounded-2" src="../assets/img/space1.jpg">
+				</div>
+				<div class="card-body text-center">
+					<div class="col-md-8 m-auto text-center">
+						<button class="button-ok mb-3">승인 확인</button>
+					</div>
+					<h5>대형 행사장</h5>
+					<small>용인스튜디오는 샬라샬라 샬라샬라 샬라샬라 샬라샬라</small>
+	            </div>
+			</div>
+		</div>
+	</div>
+	<!-- 공간 목록 -->
+	
+	<!-- 페이지 번호 -->
+	<div class="w3-center">
+		<div class="w3-bar">
+		  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
+		  <a href="#" class="w3-button w3-teal">1</a>
+		  <a href="#" class="w3-button">2</a>
+		  <a href="#" class="w3-button">3</a>
+		  <a href="#" class="w3-button">4</a>
+		  <a href="#" class="w3-button">5</a>
+		  <a href="#" class="w3-button">&raquo;</a>
+		</div>
+	</div>
+	<!-- 페이지 번호 -->
+	
+</body>
+</html>

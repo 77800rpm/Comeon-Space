@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/templatemo.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+
+<link href='../resources/calendar/main.css' rel='stylesheet' />
+<script src='../resources/calendar/main.js'></script>
+
+<title>내 공간 관리</title>
+
+<style>
+	.bg-light { background-color: #F5F5F5 !important;}
+	p{font-size: 15px !important;}
+	.green{color: rgb(15, 103, 86);}
+	
+	/* 버튼 */
+	.button-ok{background: rgb(15, 103, 86); color: white; border: none; padding: 6px; border-radius:40px; font-weight:bold; font-size: 14px; width:120px; pointer-events: none;}
+	.button-no{background: orange; color: white; border: none; padding: 6px; border-radius:40px; font-weight:bold; font-size: 14px; width:120px; pointer-events: none;}
+	#button_moreNotice{border: 1px solid black; padding: 12px 30px; font-size: 15px; width: 300px; margin-left:auto; margin-right:auto; background: white;}
+	
+	/* 버튼 디자인 */
+	#userView{background: rgb(15, 103, 86); color: white; border: none; padding: 14px; border-radius:40px; font-weight:bold !important; width:170px;}
+	#update{background: orange; color: white; border: none; padding: 14px; border-radius:40px; font-weight:bold !important; width:170px;}
+	
+		
+	.table>tbody>tr:hover{--bs-table-accent-bg:var(--bs-table-striped-bg);}
+	.table>tbody>tr{vertical-align: middle;}
+
+</style>
+</head>
+<body>
+	<br><br><br>
+	<!-- title -->
+	<div class="container m-auto">
+		<div class="row text-center mb-2">
+			<h2>용인 스튜디오</h2>
+		</div>
+	</div>
+	<!-- title -->
+	
+	<!-- 공간 정보 -->
+	<section class="bg-light py-5">
+	<div class="container">
+		<div class="row col-md-10 m-auto">
+			<div class="col-md-6">
+				<div id='calendar'></div>
+				<script>
+				document.addEventListener('DOMContentLoaded', function() {
+			        var calendarEl = document.getElementById('calendar');
+			        var calendar = new FullCalendar.Calendar(calendarEl, {
+			          initialView: 'dayGridMonth'
+			        });
+			        calendar.render();
+			      });
+				</script>
+			</div>
+			<div class="col-md-6">
+				<div class="row text-end">
+					<div class="col-md-6 mb-3">
+						<br><br><br>
+						<p>이번달 예약 횟수</p>
+						<h3>6회</h3>
+					</div>
+					<div class="col-md-6 mb-3">
+						<br><br><br>
+						<p>이번달 예상 수익</p>
+						<h3 class="green">5000000원</h3>
+					</div>
+				</div>
+				<br>
+				<div class="row text-end">
+					<div class="col-md-6 mb-3">
+						<p>총 예약 횟수</p>
+						<h3>64회</h3>
+					</div>
+					<div class="col-md-6 mb-3">
+						<p>총 수익</p>
+						<h3 class="green">2360000원</h3>
+					</div>
+				</div>
+				<br>
+				<form>
+				<div class="row float-end">
+					<input type="submit" id="userView" value="사용자 보기">
+					&ensp;&ensp;&ensp;&ensp;
+					<input type="submit" id="update" value="수정하기">
+				</div>
+				<br><br><br>
+				<div class="row float-end">
+					<a href="#" style="color: black; font-size: 14px !important;">
+						공간 삭제하기
+					</a>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</section>
+	<!-- 공간 정보 -->
+	
+	<!-- 게시판 -->
+	<div class="row text-center pt-5 pb-3">
+		<h2>게시판</h2>
+	</div>
+	<div class="container col-md-9">
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="15%%">작성자</th>
+					<th width="60px">제목</th>
+					<th width="13%">작성 날짜</th>
+					<th width="12%">답변 상태</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>남나눔</td>
+				<td>주차 가능한가요?</td>
+				<td>2021-05-31</td>
+				<td><button class="button-no">답변 미완료</button></td>
+			</tr>
+			<tr>
+				<td>도대담</td>
+				<td>주차 가능한가요?</td>
+				<td>2021-05-30</td>
+				<td><button class="button-no">답변 미완료</button></td>
+			</tr>
+			<tr>
+				<td>류라라</td>
+				<td>직계가족 8인 가능한가요?</td>
+				<td>2021-05-27</td>
+				<td><button class="button-ok">답변 완료</button></td>
+			</tr>
+			<tr>
+				<td>하현화</td>
+				<td>근처에 지하철역 가까운 곳이 어디인가요?</td>
+				<td>2021-05-15</td>
+				<td><button class="button-ok">답변 완료</button></td>
+			</tr>
+			<tr>
+				<td>강건강</td>
+				<td>화장실은 외부에 있나요? 남여공용인가요?</td>
+				<td>2021-04-29</td>
+				<td><button class="button-ok">답변 완료</button></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<!-- 페이지 번호 -->
+	<div class="w3-center">
+		<div class="w3-bar">
+		  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
+		  <a href="#" class="w3-button w3-teal">1</a>
+		  <a href="#" class="w3-button">2</a>
+		  <a href="#" class="w3-button">3</a>
+		  <a href="#" class="w3-button">4</a>
+		  <a href="#" class="w3-button">5</a>
+		  <a href="#" class="w3-button">&raquo;</a>
+		</div>
+	</div>
+	<!-- 페이지 번호 -->
+	<!-- 게시판 -->
+	<br>
+</body>
+</html>
