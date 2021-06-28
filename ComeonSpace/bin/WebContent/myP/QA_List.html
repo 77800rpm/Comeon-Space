@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/templatemo.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+
+<title>나의 문의내역</title>
+
+<style>
+	.form-control:focus{color:#212529;background-color:#fff;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
+	
+	.table>tbody>tr:hover{--bs-table-accent-bg:var(--bs-table-striped-bg);}
+	.table>tbody>tr{vertical-align: middle; height: 55px;}
+	
+	.page-link {color: black; background-color: white;}
+	.page-link:hover {color: white; background-color: rgb(15, 103, 86) !important;}
+	
+	.content{background: WhiteSmoke; font-size:15px !important; text-align: center;}
+</style>
+</head>
+<body>
+	<br><br><br>
+	<!-- title -->
+	<div class="container m-auto">
+		<div class="row text-center mb-2">
+			<h2>나의 문의내역</h2>
+		</div>
+	</div>
+	<!-- title -->
+	
+	<!-- 질문자/답변자 -->
+	 <div class="container col-md-8">
+		<div class="row mb-4">
+			<div class="col-md-10">
+			</div>
+			<div class="col-md-2">
+				<select name="category" class="form-control">
+					<option value="office">전체</option>
+					<option value="study">게스트</option>
+					<option value="concert">호스트</option>
+				</select>
+			</div>
+		</div>
+	 </div>
+	<!-- 질문자/답변자 -->
+	
+	<!-- 게시판 -->
+	<div class="container col-md-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="10%">분류</th>
+					<th width="78%">제목</th>
+					<th width="12%">작성 날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>게스트</td>
+				<td>제목1의 제목은 무엇인가요?</td>
+				<td>2021-05-31</td>
+			</tr>
+			<tr>
+				<td>게스트</td>
+				<td>제목2의 제목은 무엇인가요?</td>
+				<td>2021-05-30</td>
+			</tr>
+			<tr>
+				<td>게스트</td>
+				<td>제목3의 제목은 무엇인가요?</td>
+				<td>2021-05-27</td>
+			</tr>
+			<tr>
+				<td>게스트</td>
+				<td>모임 가능 AAA???</td>
+				<td>2021-05-15</td>
+			</tr>
+			<tr>
+				<td>호스트</td>
+				<td>제목5의 제목은 무엇인가요?</td>
+				<td>2021-04-29</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- 게시판 -->
+
+	<!-- 페이지 번호 -->
+	<div class="w3-center">
+		<div class="w3-bar">
+		  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
+		  <a href="#" class="w3-button w3-teal">1</a>
+		  <a href="#" class="w3-button">2</a>
+		  <a href="#" class="w3-button">3</a>
+		  <a href="#" class="w3-button">4</a>
+		  <a href="#" class="w3-button">5</a>
+		  <a href="#" class="w3-button">&raquo;</a>
+		</div>
+	</div>
+	<!-- 페이지 번호 -->
+</body>
+</html>

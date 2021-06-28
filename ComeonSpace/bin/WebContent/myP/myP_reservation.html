@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Zay Shop - Product Listing Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+</head>
+<style>
+	.myP-main{
+		border-bottom: 3px solid green;
+		text-align: center;
+		padding-bottom: 10px; 
+	}
+	.list-text{
+		font-size: 13px !important;
+	}
+	.title{margin-bottom: 5px;}
+	.myP-pag{margin-left: 30%;}
+	.myP-pag1{margin-left: 30%;}
+	.table-hover td{cursor: pointer;}
+	.second-div{margin-left: 25px;}
+	.table-pay{color: red; display:inline-block;}
+	.re-table tr, th, td{border: 1px solid black;}
+	table{width: 100%;}
+	tr{padding: 10px;}
+	td{padding: 10px;}
+	th{
+		padding-left: 10px; 
+		background-color: rgb(15, 103, 86);
+		color: white;
+	}
+	
+</style>
+<body>
+    
+    <!-- Start Content -->
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="h3 pb-4">마이페이지</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	개인정보수정
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	나의 문의내역
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	판매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;작성된 후기</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;결제내역</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	구매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;후기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="myP-main h2">
+                    	예약현황
+                </div>
+                <div class="container">
+				    <div class="row">
+				        <div class="col-md-4">
+				        	<img src="../resources/image/logo.png">
+				        </div>
+				        <div class="col-md-7">
+				        	<table class="re-table">
+				        		<tr>
+				        			<th>공간 명</th>
+				        			<td>백그라운드 세미나 룸</td>
+				        		</tr>
+				        		<tr>
+				        			<th>상세 내용</th>
+				        			<td>
+				        				상품 선택:B방(20인 이하)<br>
+				        				날짜 선택:2021.05.20(수)<br>
+				        				인원 : 5명
+				        			</td>
+				        		</tr>
+				        		<tr>
+				        			<th>최종 결제 금액</th>
+				        			<td><h4 class="table-pay">130,000</h4>원</td>
+				        		</tr>
+				        		<tr>
+				        			<th>결제 일시</th>
+				        			<td>2021.05.17 (일) 15:32</td>
+				        		</tr>
+				        		<tr>
+				        			<th>결제 방식</th>
+				        			<td>카드 결제</td>
+				        		</tr>
+				        	</table>
+				        </div>
+				    </div>
+				</div>
+				<br>
+                <div class="container">
+				    <div class="row">
+				        <div class="col-md-4">
+				        	<img src="../resources/image/logo.png">
+				        </div>
+				        <div class="col-md-7">
+				        	<table class="re-table">
+				        		<tr>
+				        			<th>공간 명</th>
+				        			<td>백그라운드 세미나 룸</td>
+				        		</tr>
+				        		<tr>
+				        			<th>상세 내용</th>
+				        			<td>
+				        				상품 선택:B방(20인 이하)<br>
+				        				날짜 선택:2021.05.20(수)<br>
+				        				인원 : 5명
+				        			</td>
+				        		</tr>
+				        		<tr>
+				        			<th>최종 결제 금액</th>
+				        			<td><h4 class="table-pay">130,000</h4>원</td>
+				        		</tr>
+				        		<tr>
+				        			<th>결제 일시</th>
+				        			<td>2021.05.17 (일) 15:32</td>
+				        		</tr>
+				        		<tr>
+				        			<th>결제 방식</th>
+				        			<td>카드 결제</td>
+				        		</tr>
+				        	</table>
+				        </div>
+				    </div>
+				</div>
+    		</div>
+		</div>
+	</div>
+    
+
+    <!-- Start Script -->
+    <script src="../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/templatemo.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    <!-- End Script -->
+</body>
+
+</html>

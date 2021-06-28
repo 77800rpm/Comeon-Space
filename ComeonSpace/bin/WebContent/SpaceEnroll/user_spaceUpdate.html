@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/templatemo.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+
+<title>공간 수정하기</title>
+
+<style>
+	/* 마지막에 submit 버튼 디자인 */
+	#button{background: rgb(15, 103, 86); color: white; border: none; padding: 12px 30px; border-radius:40px; font-weight:bold;}
+	
+	/* 기본 화면 설계 디자인 */
+	label{font-size: 13.5px !important; font-weight: bold !important;}
+	hr{opacity:1;}
+	h5{font-weight: bold !important;}
+	input{ font-size: 0.9em !important;}
+	::placeholder{ font-size: 0.9em;}
+	textarea{font-size: 0.8em !important;}
+	p{font-size: 0.9em !important;}
+	#small{font-size: 12px;}
+	
+	/* 입력할 부분 클릭 시, 겉에 태두리 생기는 부분*/
+	.form-control:focus{color:#212529;background-color:#fff;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
+	
+	/* 버튼 클릭 (편의시설/정기휴무일) 디자인 */
+	.btn-primary{color:DimGrey; background-color:white; border-color:lightgray}
+	.btn-primary:hover{color:white; background-color:rgb(15, 103, 86); border-color:rgb(15, 103, 86);}
+	input[type=checkbox]:checked + label {color:white; background-color:rgb(15, 103, 86);}
+	
+	/*체크박스를 다 안보이게 */
+	input[type=checkbox]{display:none;}
+
+	
+</style>
+</head>
+<body>
+	<!-- 공간 수정하기 title 시작 -->
+	<br><br>
+	<div class="row text-center">
+		<h1>공간 수정하기</h1>
+		<p>Modify Space</p>
+	</div>
+	<!-- 공간 수정하기 title 끝 -->
+	
+	<br>
+
+<form>
+	<!-- 기본 정보 입력 -->
+	<div class="container">
+		<div class="col-md-7 m-auto">
+			<h5>기본 정보</h5>
+			<hr style="border:solid; color:rgb(15, 103, 86);">
+			<div class="row">
+				<div class="col-md-9 mb-3">
+					<label>공간 명</label>
+					<input type="text" class="form-control mt-1" id="name" name="name" placeholder="공간 명을 입력해주세요" required>
+				</div>
+				<div class="col-md-3 mb-3">
+						<label>수용인원</label>
+						<input type="number" class="form-control mt-1" id="number" name="number" value="0" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-9 mb-3">
+					<label>공간 한 줄 소개</label>
+					<input type="text" class="form-control mt-1" id="short_Exp" name="short_Exp" placeholder="한 줄로 공간을 소개해주세요" required>
+				</div>
+				<div class="col-md-3 mb-3">
+					<label>카테고리</label><br>
+					<select name="category" class="form-control mt-1">
+						<option value="office">오피스</option>
+						<option value="study">스터디룸</option>
+						<option value="concert">공연장</option>
+						<option value="kitchen">주방</option>
+						<option value="studio">스튜디오</option>
+						<option value="multiHall">다목적홀</option>
+						<option value="meetingRoom">회의실</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 mb-3">
+					<label>공간 상세 소개</label>
+					<textarea class="form-control mt-1" id="long_Exp" name="long_Exp" placeholder="공간에 대해 상세히 소개해주세요" rows="7" required></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="mb-3">
+				<label class="mb-2">편의시설</label><br>
+					<input type="checkbox" id="chk1"/>
+					<label for="chk1" class="btn btn-primary">TV</label>
+					<input type="checkbox" id="chk2"/>
+					<label for="chk2" class="btn btn-primary">빔 프로젝트</label>
+					<input type="checkbox" id="chk3"/>
+					<label for="chk3" class="btn btn-primary">마이크</label>
+					<input type="checkbox" id="chk4"/>
+					<label for="chk4" class="btn btn-primary">주차공간</label>
+					<input type="checkbox" id="chk5"/>
+					<label for="chk5" class="btn btn-primary">내부 화장실</label>
+					<input type="checkbox" id="chk6"/>
+					<label for="chk6" class="btn btn-primary">PC/노트북</label>
+					<input type="checkbox" id="chk7"/>
+					<label for="chk7" class="btn btn-primary">금연</label>
+					<input type="checkbox" id="chk8"/>
+					<label for="chk8" class="btn btn-primary">취사시설</label>
+					<input type="checkbox" id="chk9"/>
+					<label for="chk9" class="btn btn-primary">복사/인쇄기</label>
+					<input type="checkbox" id="chk10"/>
+					<label for="chk10" class="btn btn-primary">화이트보드</label>
+					<input type="checkbox" id="chk11"/>
+					<label for="chk11" class="btn btn-primary">전신거울</label>
+					<input type="checkbox" id="chk12"/>
+					<label for="chk12" class="btn btn-primary">의자/테이블</label>
+					<input type="checkbox" id="chk13"/>
+					<label for="chk13" class="btn btn-primary">공용라운지</label>
+					<input type="checkbox" id="chk14"/>
+					<label for="chk14" class="btn btn-primary">테라스/루트탑</label>
+					<input type="checkbox" id="chk15"/>
+					<label for="chk15" class="btn btn-primary">탈의실</label>
+					<input type="checkbox" id="chk16"/>
+					<label for="chk16" class="btn btn-primary">반려동물 동반가능</label>
+					<input type="checkbox" id="chk17"/>
+					<label for="chk17" class="btn btn-primary">음식물 반입가능</label>
+				</div>
+			</div>
+		</div>
+		
+		<br><br>
+		
+		<!-- 위치 정보 입력 -->
+		<div class="col-md-7 m-auto">
+			<h5>위치 정보</h5>
+			<hr style="border: solid; color:rgb(15, 103, 86);">
+			<div class="row">
+				<div class="col-md-10 mb-3">
+					<label>주소 (위치)</label>
+					<input type="text" class="form-control mt-1" id="location1" name="location1" placeholder="검색을 눌러 주소를 입력해주세요" required>
+				</div>
+				<div class="col-md-2 mb-3">
+					<label></label>
+					<button class="form-control mt-1" style="color: white; background:rgb(15, 103, 86);">검색</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 mb-3">
+					<label>상세 주소</label>
+					<input type="text" class="form-control mt-1" id="location2" name="location2" placeholder="상세 주소를 입력해주세요" required>
+				</div>
+			</div>
+		</div>
+			
+		<br><br>
+		
+		<!-- 이미지등록 입력 -->
+		<div class="col-md-7 m-auto">
+			<h5>이미지 등록</h5>
+			<hr style="border: solid; color:rgb(15, 103, 86);">
+			<div class="row">
+				<div class="col-md-12 mb-3">
+					<label>메인 이미지</label>
+					<input type="file" class="form-control mt-1" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 mb-3">
+					<label>상세 이미지</label>
+					<input type="file" multiple class="form-control mt-1" required>
+				</div>
+			</div>
+		</div>
+		
+		<br><br>
+		
+		<!-- 이용 정보 입력 -->
+		<div class="col-md-7 m-auto">
+			<h5>이용 정보</h5>
+			<hr style="border: solid; color:rgb(15, 103, 86);">
+			<div class="row">
+				<div class="col-md-3 mb-3">
+					<label>이용 시간</label>
+					<input type="time" class="form-control mt-1" id="startTime" name="startTime" required>
+				</div>
+				<div class="col-md-1 mb-3">
+					<br>
+					<p class="text-center">~</p>
+				</div>
+				<div class="col-md-3 mb-3">
+					<label></label>
+					<input type="time" class="form-control mt-1" id="lastTime" name="lastTime" value="0" required>
+				</div>
+				<div class="col-md-1 mb-3">
+				</div>
+				<div class="col-md-4 mb-3">
+					<label>1일 비용</label>
+					<input type="number" class="form-control mt-1" id="money" name="money" value="0" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<label class="mb-2">정기휴무일</label><br>
+					<input type="checkbox" id="holiday_check1"/>
+					<label for="holiday_check1" class="btn btn-primary">월</label>
+					<input type="checkbox" id="holiday_check2"/>
+					<label for="holiday_check2" class="btn btn-primary">화</label>
+					<input type="checkbox" id="holiday_check3"/>
+					<label for="holiday_check3" class="btn btn-primary">수</label>
+					<input type="checkbox" id="holiday_check4"/>
+					<label for="holiday_check4" class="btn btn-primary">목</label>
+					<input type="checkbox" id="holiday_check5"/>
+					<label for="holiday_check5" class="btn btn-primary">금</label>
+					<input type="checkbox" id="holiday_check6"/>
+					<label for="holiday_check6" class="btn btn-primary">토</label>
+					<input type="checkbox" id="holiday_check7"/>
+					<label for="holiday_check7" class="btn btn-primary">일</label>
+				</div>
+			</div>
+		</div>
+		
+		<br><br>
+			
+		<!-- 등록 버튼 -->
+		<div class="col-md-8 m-auto text-center">
+			<input type="submit" id="button" value="공간 수정 완료">
+		</div>
+		
+	</div> <!-- container 태그 -->
+</form>
+	<br><br>
+</body>
+</html>

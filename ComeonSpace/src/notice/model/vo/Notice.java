@@ -11,8 +11,26 @@ public class Notice {
 	private int admNum;
 	private String status;
 	private Date date;
+	private String admName;
 	
 	
+	public Notice() {}
+	
+	public Notice(int nNum, String nTitle, Date date, String admName) {
+		super();
+		this.nNum = nNum;
+		this.nTitle = nTitle;
+		this.date = date;
+		this.admName = admName;
+	}
+
+	public Notice(String nTitle, String nContent, Date date) {
+		super();
+		this.nTitle = nTitle;
+		this.nContent = nContent;
+		this.date = date;
+	}
+
 	public Notice(int nNum, String nTitle, String nContent, String nCategory, int admNum, String status, Date date) {
 		super();
 		this.nNum = nNum;
@@ -68,6 +86,17 @@ public class Notice {
 		this.admNum = admNum;
 		this.status = status;
 		this.date = date;
+	}
+	
+	
+	
+	
+	public String getAdmName() {
+		return admName;
+	}
+
+	public void setAdmName(String admName) {
+		this.admName = admName;
 	}
 
 	public int getnNum() {

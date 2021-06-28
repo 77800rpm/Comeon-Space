@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Come on Space - 마이페이지</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+</head>
+<style>
+	.myP-main{
+		border-bottom: 3px solid green;
+		text-align: center;
+		padding-bottom: 10px; 
+	}
+	.list-text{
+		font-size: 13px !important;
+	}
+	
+	#btn_green{
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	
+	#btn_group button{
+		border: 1px; solid green;
+		background-color: rgb(15, 103, 86);
+		color: white;
+		padding: 5px;
+	}
+	
+	#btn_group button:hover{
+		color: white;
+		background-color: rgb(244,162,1);
+	}
+	
+	#profileBox{
+		width: 250px;
+		height: 250px;
+		border-radius: 30%;
+		overflow: hidden;
+		
+		position: absolute;
+		left: 50%;
+		
+		
+	}
+	
+	.profile{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	
+	
+</style>
+<body>
+    
+    <!-- Start Content -->
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="h3 pb-4">마이페이지</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	개인정보수정
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	나의 문의내역
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	판매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;작성된 후기</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;결제내역</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                            	구매내역
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;예약현황</a></li>
+                            <li><a class="text-decoration-none list-text" href="#">&nbsp;&nbsp;후기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="myP-main h2">
+                    	마이페이지
+                </div>
+                <div class="row">
+                	<div class="col-lg-1"></div>
+        		    <div class="col-lg-5">
+        		    <form>
+        		    	<fieldset>
+        		    		<div class="form-group" style="text-align: left"> 
+      							<label for="InputEmail" class="form-label mt-4">이메일</label>
+      							<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="dozyKim@kakao.com">
+      							<small id="emailHelp" class="form-text text-muted">이메일은 로그인시 사용됩니다.</small>
+    						</div>
+    						
+    						   <div class="form-group">
+  									<fieldset disabled="">
+    								<label class="form-label" for="user_name">이름</label>
+   									 <input class="form-control" id="user_name" type="text" placeholder="김도지" disabled="">
+  									</fieldset>
+							   </div>
+							   
+							   <div class="form-group">
+							   	<label for="InputPhone" class="form-label mt-4">전화번호</label>
+							   	<input type="tel" class="form-control" id="InputPhone" placeholder="01075457545">
+							   	<small id="phoneHelp" class="form-text text-muted">조건 : ( - )제외 입력</small>
+							   </div>
+							   
+							   <br><hr><hr>
+							   
+							   <div class="form-group">
+							   	<label for="InputPassword" class="form-label mt-4">기존 비밀번호</label>
+							   	<input type="password" class="form-control" id="InputPassword" placeholder="기존 비밀번호 입력">
+							   </div>
+							   
+							   <div class="form-group">
+							   	<label for="InputNewPassword" class="form-label mt-4">새로운 비밀번호</label>
+							   	<input type="password" class="form-control" id="InputPassword" placeholder="새로운 비밀번호 입력">
+							   	<small id="emailHelp" class="form-text text-muted">조건 : 8자 이상</small>
+							   </div>
+							   
+							   <div class="form-group">
+							   	 <label for="confirmPassword" class="form-label mt-4">비밀번호 확인</label>
+							   	 <input type="password" class="form-control" id="confirmPassword" placeholder="비밀번호 확인">
+							   </div>
+    							
+    							<br>
+    							
+    							<div id="btn_group">
+    								<button type="submit" id="btn_green">수정하기</button>
+    							</div>
+        		    	</fieldset>
+        		    </form>
+        		    
+        		   <!-- <div class="form-label mt-4" id="profileBox" style="background: #BDBDBD;">  -->
+        		    
+        		    </div>
+        		    
+        		    <div class="col-lg-1">
+        		    	
+        		    </div>
+        		    
+        			<div class="col-lg-4">
+        				<div class="form-group">
+        					<label for="profileBox" class="form-label mt-4"></label>
+        					<img class="profile" src="https://img.hankyung.com/photo/202104/01.25738179.1.jpg">
+        				</div>
+        				
+        				<div class="form-group">
+      						<label for="formFile" class="form-label mt-3">프로필 사진 업로드</label>
+      						<input class="form-control" type="file" id="formFile">
+    					</div>
+        				
+        				<div class="form-group has-success">
+  							<label class="form-label mt-3" for="inputValid">닉네임 설정</label>
+  							<input type="text" value="도지머스크" class="form-control is-valid" id="inputValid">
+  							<div class="valid-feedback">사용할 수 있는 닉네임입니다!</div>
+						</div>
+        				
+        			</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Start Script -->
+    <script src="../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/templatemo.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    <!-- End Script -->
+</body>
+
+</html>

@@ -11,11 +11,13 @@ import javax.servlet.http.HttpSession;
 import faq.model.service.FaqService;
 import faq.model.vo.Faq;
 import member.model.vo.Member;
+import notice.model.service.NoticeService;
+import notice.model.vo.Notice;
 
 /**
  * Servlet implementation class FaqInsertServlet
  */
-@WebServlet("/insert.bo")
+@WebServlet("/faqInsert.bo")
 public class FaqInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,22 +33,22 @@ public class FaqInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
 		
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		Faq f = new Faq();
-		f.setBoardFaqTitle(title);
-		f.setBoardFaqContent(content);
-
-		int result = new FaqService().insertBoard(f);
-		     
-		if(result > 0) {
-			response.sendRedirect("/list.bo");
-		} else {
-			request.setAttribute("msg", "게시글 작성 실패하였습니다.");
-		}
+//		String userName = ((Member)request.getSession().getAttribute("loginUser")).getUserName();
 		
+		Faq fo = new Faq();
+//		fo.setAdmName(userName);
+		fo.setBoardFaqTitle(title);
+		fo.setBoardFaqContent(content);
+		
+		int result = new FaqService().admInsertFaq(fo);  
+		
+		if(result > 0) {
+			response.sendRedirect("list.bo");
+		}
 		
 	}
 

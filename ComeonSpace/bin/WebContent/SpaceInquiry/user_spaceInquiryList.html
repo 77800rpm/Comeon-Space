@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/templatemo.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+
+<title>공간 문의내역</title>
+
+<style>
+	.form-control:focus{color:#212529;background-color:#fff;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
+	
+	.table>tbody>tr:hover{--bs-table-accent-bg:var(--bs-table-striped-bg);}
+	.table>tbody>tr{vertical-align: middle; height: 55px;}
+
+	/* 글쓰기 버튼 디자인 */
+	#button{background: rgb(15, 103, 86); color: white; border: none; padding: 5px 30px; border-radius:40px; font-weight:bold !important; font-size: 15px !important; float: right !important;}
+	
+</style>
+</head>
+<body>
+	<br><br><br>
+	<!-- title -->
+	<div class="container m-auto">
+		<div class="row text-center mb-2">
+			<h2>문의내역</h2>
+		</div>
+	</div>
+	<!-- title -->
+	
+	<!-- 게시판 -->
+	<div class="container col-md-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="15%">작성자</th>
+					<th width="72%">제목</th>
+					<th width="12%">작성 날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>남나눔</td>
+				<td>제목1의 제목은 무엇인가요?</td>
+				<td>2021-05-31</td>
+			</tr>
+			<tr>
+				<td>도대담</td>
+				<td>제목2의 제목은 무엇인가요?</td>
+				<td>2021-05-30</td>
+			</tr>
+			<tr>
+				<td>류라라</td>
+				<td>제목3의 제목은 무엇인가요?</td>
+				<td>2021-05-27</td>
+			</tr>
+			<tr>
+				<td>하현화</td>
+				<td>모임 가능 AAA???</td>
+				<td>2021-05-15</td>
+			</tr>
+			<tr>
+				<td>강건강</td>
+				<td>제목5의 제목은 무엇인가요?</td>
+				<td>2021-04-29</td>
+			</tr>
+			</tbody>
+		</table>
+		<!-- 글쓰기 버튼 -->
+		<input type="submit" id="button" value="글쓰기">
+	</div>
+	<!-- 게시판 -->
+	
+	<br>
+	
+	<!-- 페이지 번호 -->
+	<div class="w3-center mt-3">
+		<div class="w3-bar">
+		  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
+		  <a href="#" class="w3-button w3-teal">1</a>
+		  <a href="#" class="w3-button">2</a>
+		  <a href="#" class="w3-button">3</a>
+		  <a href="#" class="w3-button">4</a>
+		  <a href="#" class="w3-button">5</a>
+		  <a href="#" class="w3-button">&raquo;</a>
+		</div>
+	</div>
+	<!-- 페이지 번호 -->
+</body>
+</html>

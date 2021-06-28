@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import faq.model.dao.FaqDAO;
 import faq.model.vo.Faq;
+import notice.model.dao.NoticeDAO;
+import notice.model.vo.Notice;
 
 public class FaqService {
 
@@ -22,11 +24,11 @@ public class FaqService {
 		return selectBoard;
 	}
 
-	public int insertBoard(Faq f) {
+
+	public int admInsertFaq(Faq fo) {
 		Connection conn = getConnection();
 		
-		int result = new FaqDAO().insertBoard(conn, f);
-		
+		int result = new FaqDAO().admInsertFaq(conn, fo);
 		if(result > 0) {
 			commit(conn);
 		} else {
@@ -36,5 +38,31 @@ public class FaqService {
 		
 		return result;
 	}
-	
+
+
+	public Faq admDetailFaq(int bId) {
+		Connection conn = getConnection();
+		
+		Faq fo = new FaqDAO().admDetailFaq(conn, bId);
+		
+		close(conn);
+		
+		return fo;
+	}
+
+
+	public int admDeleteFaq(int bId) {
+		Connection conn = getConnection();
+		
+		int result = new FaqDAO().admDeleteFaq(conn, bId);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
 }
