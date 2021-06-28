@@ -545,7 +545,11 @@
 									<p id="qna-nickname"><%=qna.getUserNick() %>　<span id="qna-date"><%=qna.getQnaDate() %></span></p>
 									<p><%=qna.getQnaContent() %></p><br>																
 								</div>
-									
+								<%if(qna.getQnaAnswer() != null){ %>
+									<div>
+										<p> ㄴ <%=qna.getQnaAnswer() %> </p> 
+									</div>	
+								<%} %>
 							</div>	
 						<%} %>
 					<%} %>
