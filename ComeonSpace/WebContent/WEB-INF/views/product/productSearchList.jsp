@@ -31,6 +31,11 @@
 
 <style>
 	*{font-family: 'Nanum Gothic', sans-serif;}
+	
+	.pro-list-price, .pro-font{
+		position: relative;
+		bottom: 40px;
+	}
 </style>
 </head>
 
@@ -122,7 +127,7 @@
 			<% } %>	               
 	    </div>
 	  		        
-	    <div class="pro-desc col-md-6 pro-list-title" >
+	    <div class="pro-desc col-md-7 pro-list-title" >
 	        	<p class="pro-desc-title"><%= p.getpName() %></p>
 	        	<p class="pro-desc-lo">
 		        	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
@@ -134,9 +139,6 @@
 	    
 	    <div class="pro-price col-md-2 pro-list-text" id="pro-list-text-id1"><span class="pro-list-price"><%= p.getProductPrice() %></span><span class="pro-font"> 원</span></div>
 
-	    <div class="pro-wish col-md-1 pro-list-text">
-	    <a class="btn btn-success text-white"><i class="far fa-heart"></i></a>
-		</div>
 		
 		<input type = "hidden" class="pronum" value="<%= p.getpNum() %>">
 		
@@ -197,7 +199,7 @@
 
 	var result = $("#PRODUCT_LOCATION option:selected").text() + " " + $("#PRODUCT_CATEGORY option:selected").text();	
 	$('#search-result').html(result);
-	
+
 	
 	// 모두 보기
 

@@ -710,15 +710,17 @@
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
         } 
-    });    
+    });  
+    
     $(document).ready(function(){
     	var content = $("#qnaContent").val();
     	if(content == null || content == '' || content.equals('')){
-    		$("#qnaBtn").unbind();
+    		$(".qnaBtn").unbind();
     	} else {
-    		$("#qnaBtn").bind("click");
+    		$(".qnaBtn").bind("click");
     	}
     })
+    
     //Q&A 등록하기
     $("#browser5").on("click",function(){
     	var hostNum = $("#hostQnaNum").val();
@@ -759,6 +761,7 @@
 						
 					}
 					$("#qnaContent").val('');
+					location.reload();
     		}, error:function(data){
     			console.log("실패");
     		}
