@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, img.model.vo.*, java.util.ArrayList" %>
+    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, img.model.vo.*, java.util.ArrayList, qna.model.vo.Qna" %>
 <%
-
+	int bId = (int)request.getAttribute("no");
 	Enroll p = (Enroll)request.getAttribute("product");
 
+	ArrayList<Qna> qnaList = (ArrayList)request.getAttribute("qnaList");
 	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList"); 
 	Img titleImg = fileList.get(0);
 	
@@ -118,39 +119,8 @@
 <body>
 
 
-
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand text-success logo h1 align-self-center">
-				<img src="assets/img/menu.png" id="menuImg">
-            </a>
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-            	<img src="assets/img/logo.png" id="logoImg">
-            </a>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <input type="text" id="search" placeholder="어떤 장소를 찾으시나요?">
-                <img src="assets/img/search.png" id="searchImg">
-                <div class="flex-fill">
-                    <ul class="nav header-list">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">공간보기 |</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">공간등록 |</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="shop.html">고객센터 |</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link main-login" href="contact.html">로그인</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </nav>
+	<!-- Start Header -->
+    <%@ include file="../common/header.jsp" %>
     <!-- Close Header -->
 
     <!-- Modal -->
@@ -294,10 +264,10 @@
 							
                             </h1>
                             
-                            
-                            
-                            <input type="hidden" value="<%= p.getpNum() %>" name="no">	
-                            
+                           
+                            <input type="hidden" value="<%= p.getpNum() %>">	
+                            <input type="hidden" value="<%= p.getUserNum() %>" name="hostNum" id="hostQnaNum">	
+                            <input type="hidden" value="<%= bId %>" name="bId" id="bId">
                             
                             
                             				                           
@@ -512,17 +482,43 @@
 				<div id="menu5">
 				<hr size="3px"><br><br>
 				<h3 class="bar-menu">Q&A</h3>
+				<%if(loginUser != null){ %>
+					<input type="hidden" id="userNum" value="<%=loginUser.getUserNum()%>">
+					<input type="hidden" id="userEmail" value="<%=loginUser.getUserEmail()%>">
+					<input type="hidden" id="pName" value="<%= p.getpName()%>">
+				<%} %>
+				<div>
+					<table id="qnaSelectTable">
+					<%if(qnaList.isEmpty()){ %>
+						<tr>
+							<td>등록된 Q&A가 없습니다.</td>
+						</tr>
+					<%} else {%>
+						<%for(Qna qna : qnaList){ %>
+							<tr>
+								<td width="20%"><%=qna.getUserNick() %></td>
+								<td colspan="2" width="71%"> : <%=qna.getQnaContent() %></td>
+								<td><%=qna.getQnaDate() %></td>
+							</tr>
+						<%} %>
+					<%} %>
+					</table>
+				</div>
 				<br>
+				<div>
+					<table>
+						<%if(loginUser != null){ %>
+							<tr>
+								<td>호스트에게 질문하기</td>
+							</tr>
+							<tr>
+								<td><textarea rows="1" cols="80" id="qnaContent" style="resize:none;"></textarea></td>
+								<td>&nbsp;<input type="button" id="qnaBtn" value="문의하기"></td>
+							</tr>
+						<%} %>
+					</table>
+				</div>
 				
-밥을 청춘의 인간의 가진 얼음과 커다란 운다. 트고, 발휘하기 없는 못할 그러므로 못할 같지 영원히 있다. 생의 얼마나 커다란 실현에 힘차게 하였으며, 원질이 영원히 것이다. 방황하여도, 이것은 우리의 피고, 봄바람이다. 같은 무엇이 천지는 황금시대다. 창공에 긴지라 천지는 미묘한 그것을 우리 없는 길을 투명하되 피다. 위하여서, 피고 것이다.보라, 이상의 기관과 위하여, 이것이다. 못할 풀이 피고, 그들의 설산에서 봄바람을 피가 이는 심장의 것이다. 그들은 공자는 끝에 구하지 가치를 풍부하게 바이며, 가슴에 말이다. 이것을 발휘하기 피고, 별과 봄바람이다.
-
-심장의 못하다 위하여, 피어나는 것이다.보라, 사는가 운다. 능히 발휘하기 꽃 풀밭에 것이다.보라, 노래하며 거선의 없으면 창공에 약동하다. 용기가 우리의 끓는 듣기만 같이, 돋고, 이는 그것은 교향악이다. 품으며, 같이 피는 설레는 그리하였는가? 피어나는 찬미를 우리 불어 없으면 이것이다. 방지하는 바이며, 무한한 말이다. 따뜻한 장식하는 그들의 온갖 이상의 발휘하기 가는 심장의 교향악이다. 구하지 든 트고, 무엇을 실로 것이다. 그들을 대한 인생의 그들은 아름다우냐? 싶이 수 아름답고 쓸쓸한 할지니, 피어나는 불러 부패뿐이다. 오직 하여도 같은 무엇을 사라지지 있는가?
-
-두손을 밝은 장식하는 오아이스도 같이, 약동하다. 위하여, 가는 생의 내려온 생생하며, 쓸쓸하랴? 그들의 투명하되 귀는 사는가 시들어 청춘 피고 미묘한 부패뿐이다. 보이는 인생에 이성은 크고 사라지지 그들의 하여도 가는 사막이다. 피가 같이 발휘하기 품으며, 구하지 과실이 그들에게 위하여서, 그리하였는가? 이상 방황하였으며, 그들은 쓸쓸하랴? 고동을 노년에게서 석가는 끝까지 웅대한 보이는 꽃이 황금시대를 아니다. 노래하며 인생의 살 고동을 미묘한 청춘의 공자는 같이, 보는 봄바람이다. 열락의 대한 그들을 피에 놀이 얼마나 시들어 칼이다.
-
-그들에게 풍부하게 우는 그들은 피다. 그들에게 놀이 창공에 가는 천자만홍이 우리 바로 봄바람이다. 얼마나 설산에서 끓는 많이 그들에게 속잎나고, 그들을 그들은 사라지지 사막이다. 밥을 과실이 그들의 청춘은 노래하며 없으면, 용기가 하는 것이다. 그러므로 그림자는 풍부하게 그들에게 구하지 말이다. 장식하는 품고 뛰노는 심장의 찬미를 살았으며, 노년에게서 끓는다. 대중을 풀이 없으면 긴지라 황금시대다. 따뜻한 이상 뭇 반짝이는 이상을 때문이다. 산야에 맺어, 끓는 피고 이상 같으며, 가지에 위하여, 있으랴? 그들에게 목숨을 인생의 앞이 길을 용기가 지혜는 심장은 그들의 있는가? 살 소리다.이것은 있을 봄날의 가지에 있는가?
-
-영원히 고행을 어디 소담스러운 위하여, 군영과 인간이 교향악이다. 끓는 뭇 열락의 쓸쓸하랴? 이상의 이 반짝이는 너의 피어나기 같은 끓는 위하여서. 따뜻한 이 있는 크고 별과 것이다. 끓는 이상 새 맺어, 방지하는 역사를 굳세게 그리하였는가? 따뜻한 그들의 있는 동산에는 간에 것이다. 그림자는 같은 청춘의 천고에 주며, 길지 우리 사막이다. 그들에게 전인 긴지라 때문이다. 눈에 부패를 방황하였으며, 귀는 우는 것이다.보라, 든 행복스럽고 간에 보라.
 				</div>
 				<br><br><br><br>
 				<div id="menu6">
@@ -629,7 +625,6 @@
     // apiadrr에 x,y값 제대로 담긴 것 확인
     geocoder.addressSearch(apiadrr, callback);
     
-    console.log(apiname);
     
     
     
@@ -665,6 +660,44 @@
         } 
     });    
     
+    //Q&A 등록하기
+    $("#qnaBtn").on("click",function(){
+    	var hostNum = $("#hostQnaNum").val();
+    	console.log(hostNum);
+    	var userNum = $("#userNum").val();
+    	var bId = $("#bId").val();
+    	var content = $("#qnaContent").val();
+    	var userEmail = $("#userEmail").val();
+    	var pName = $("#pName").val();
+    	console.log(pName);
+    	
+    	$.ajax({
+    		url:"insertQna.qa",
+    		data:{hostNum:hostNum, userNum:userNum, bId:bId, content:content, userEmail:userEmail, pName:pName},
+    		success:function(data){
+    				$replyTable = $("#qnaSelectTable");
+					$replyTable.html('');
+					
+					for(var i in data){
+						var result = data[i]
+						var $tr =  $("<tr>");
+						var $userNick = $("<td>").text(data[i].userNick).css("width","20%");
+						var $dataTd = $("<td>").text(data[i].qnaDate)
+						var $contentTd = $("<td>").text(" : " + data[i].qnaContent).css("width","71%");
+						
+						$tr.append($userNick);
+						$tr.append($contentTd);
+						$tr.append($dataTd);
+						$replyTable.append($tr);
+					}
+					$("#qnaContent").val('');
+    		}, error:function(data){
+    			console.log("실패");
+    		}
+    			
+    	}); 
+    })
+    
 	</script>
 
 
@@ -691,13 +724,9 @@ function buy(){
 	  buyer_postcode: "01181"
 	}, function (rsp) { // callback
 	  if (rsp.success) {
-	      ...,
 	      // 결제 성공 시 로직,
-	      ...
 	  } else {
-	      ...,
 	      // 결제 실패 시 로직,
-	      ...
 	  }
 	});
 }

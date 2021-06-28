@@ -56,6 +56,7 @@ public class ProductDAO {
 										rset.getString("PRODUCT_LOCATION"),
 										rset.getInt("PRODUCT_COUNT"));
 				
+				
 				list.add(pro);
 			}
 			
@@ -140,6 +141,7 @@ public class ProductDAO {
 										rset.getString("product_fac"),
 										rset.getInt("product_count"),
 										rset.getString("product_holiday"));
+					  product.setUserNum(rset.getInt("USER_NUM"));
 			}
 
 		} catch (SQLException e) {
