@@ -541,13 +541,13 @@
 						<%for(Qna qna : qnaList){ %>
 							<div class="row">
 								<div class="pro-photo col-md-1 profile-size"><img class="profile-size" src="resources/image/defaultProfile.png"></div>
-								<div class="pro-desc col-md-6" id="qnaList">					
-									<p id="qna-nickname"><%=qna.getUserNick() %>　<span id="qna-date"><%=qna.getQnaDate() %></span></p>
+								<div class="pro-desc col-md-6" class="qnaList">					
+									<p class="qna-nickname"><%=qna.getUserNick() %>　<span class="qna-date"><%=qna.getQnaDate() %></span></p>
 									<p><%=qna.getQnaContent() %></p><br>																
 								</div>
 								<%if(qna.getQnaAnswer() != null){ %>
 									<div>
-										<p> ㄴ <%=qna.getQnaAnswer() %> </p> 
+										<p> ㄴ <%=qna.getQnaAnswer()%> </p>
 									</div>	
 								<%} %>
 							</div>	
@@ -736,16 +736,27 @@
 					$replyTable.html('');
 					
 					for(var i in data){
-						var result = data[i]
-						var $tr =  $("<tr>");
-						var $userNick = $("<td>").text(data[i].userNick).css("width","20%");
-						var $dataTd = $("<td>").text(data[i].qnaDate)
-						var $contentTd = $("<td>").text(" : " + data[i].qnaContent).css("width","71%");
+// 						var result = data[i]
+// 						var $tr =  $("<tr>");
+// 						var $userNick = $("<td>").text(data[i].userNick).css("width","20%");
+// 						var $dataTd = $("<td>").text(data[i].qnaDate)
+// 						var $contentTd = $("<td>").text(" : " + data[i].qnaContent).css("width","71%");
 						
-						$tr.append($userNick);
-						$tr.append($contentTd);
-						$tr.append($dataTd);
-						$replyTable.append($tr);
+// 						$tr.append($userNick);
+// 						$tr.append($contentTd);
+// 						$tr.append($dataTd);
+// 						$replyTable.append($tr);
+						var $startDiv = $("<div>").attr("class","row");
+						var $div = $("<div>").html("<img class='profile-size' src='resources/image/defaultProfile.png'>").attr("class","pro-photo col-md-1 profile-size");
+						var $div2 = $("<div>").html("<p>"+data[i].userNick+"  "+data[i].qnaDate+"</p><br><p>"+data[i].qnaContent+"</p>").attr("class","pro-desc col-md-6");
+// 						var $user = $("<div>").html
+						
+						$startDiv.append($div);
+						$startDiv.append($div2);
+// 						$startDiv.append($user);
+						$replyTable.append($startDiv);
+						
+						
 					}
 					$("#qnaContent").val('');
     		}, error:function(data){
