@@ -662,17 +662,22 @@
             map.setCenter(coords);
         } 
     });    
-    
+    $(document).ready(function(){
+    	var content = $("#qnaContent").val();
+    	if(content == null || content == '' || content.equals('')){
+    		$("#qnaBtn").unbind();
+    	} else {
+    		$("#qnaBtn").bind("click");
+    	}
+    })
     //Q&A 등록하기
     $("#qnaBtn").on("click",function(){
     	var hostNum = $("#hostQnaNum").val();
-    	console.log(hostNum);
     	var userNum = $("#userNum").val();
     	var bId = $("#bId").val();
     	var content = $("#qnaContent").val();
     	var userEmail = $("#userEmail").val();
     	var pName = $("#pName").val();
-    	console.log(pName);
     	
     	$.ajax({
     		url:"insertQna.qa",
