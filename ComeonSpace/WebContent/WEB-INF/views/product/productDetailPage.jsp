@@ -114,7 +114,7 @@
 	.detailDiv:hover{cursor:pointer;}
 	.hiddenBtn{display:none;}
 	
-	#qna-nickname {
+	.qna-nickname {
 		color: #0f6756 !important;
 		font-weight: 700;
 	}
@@ -125,7 +125,7 @@
 	    font-size: 20px !important;		
 	}
 	
-	#qna-date {
+	.qna-date {
 		color: #829894 !important;
 		zoom : 80%;
 	}
@@ -542,10 +542,14 @@
 							<div class="row">
 								<div class="pro-photo col-md-1 profile-size"><img class="profile-size" src="resources/image/defaultProfile.png"></div>
 								<div class="pro-desc col-md-6" id="qnaList">					
-									<p id="qna-nickname"><%=qna.getUserNick() %>　<span id="qna-date"><%=qna.getQnaDate() %></span></p>
+									<p class="qna-nickname"><%=qna.getUserNick() %>　<span class="qna-date"><%=qna.getQnaDate() %></span></p>
 									<p><%=qna.getQnaContent() %></p><br>																
 								</div>
-									
+								<%if(qna.getQnaAnswer() != null){ %>
+									<div>
+										<p> ㄴ <%=qna.getQnaAnswer()%> </p>
+									</div>	
+								<%} %>
 							</div>	
 						<%} %>
 					<%} %>
@@ -707,17 +711,22 @@
             map.setCenter(coords);
         } 
     });    
-    
+    $(document).ready(function(){
+    	var content = $("#qnaContent").val();
+    	if(content == null || content == '' || content.equals('')){
+    		$("#qnaBtn").unbind();
+    	} else {
+    		$("#qnaBtn").bind("click");
+    	}
+    })
     //Q&A 등록하기
     $("#browser5").on("click",function(){
     	var hostNum = $("#hostQnaNum").val();
-    	console.log(hostNum);
     	var userNum = $("#userNum").val();
     	var bId = $("#bId").val();
     	var content = $("#qnaContent").val();
     	var userEmail = $("#userEmail").val();
     	var pName = $("#pName").val();
-    	console.log(pName);
     	
     	$.ajax({
     		url:"insertQna.qa",
@@ -727,16 +736,27 @@
 					$replyTable.html('');
 					
 					for(var i in data){
-						var result = data[i]
-						var $tr =  $("<tr>");
-						var $userNick = $("<td>").text(data[i].userNick).css("width","20%");
-						var $dataTd = $("<td>").text(data[i].qnaDate)
-						var $contentTd = $("<td>").text(" : " + data[i].qnaContent).css("width","71%");
+// 						var result = data[i]
+// 						var $tr =  $("<tr>");
+// 						var $userNick = $("<td>").text(data[i].userNick).css("width","20%");
+// 						var $dataTd = $("<td>").text(data[i].qnaDate)
+// 						var $contentTd = $("<td>").text(" : " + data[i].qnaContent).css("width","71%");
 						
-						$tr.append($userNick);
-						$tr.append($contentTd);
-						$tr.append($dataTd);
-						$replyTable.append($tr);
+// 						$tr.append($userNick);
+// 						$tr.append($contentTd);
+// 						$tr.append($dataTd);
+// 						$replyTable.append($tr);
+						var $startDiv = $("<div>").attr("class","row");
+						var $div = $("<div>").html("<img class='profile-size' src='resources/image/defaultProfile.png'>").attr("class","pro-photo col-md-1 profile-size");
+						var $div2 = $("<div>").html("<p class='qna-nickname'>"+data[i].userNick+"<span class='qna-date'>"+data[i].qnaDate+"<span></p><br><p>"+data[i].qnaContent+"</p>").attr("class","pro-desc col-md-6");
+// 						var $user = $("<div>").html
+						
+						$startDiv.append($div);
+						$startDiv.append($div2);
+// 						$startDiv.append($user);
+						$replyTable.append($startDiv);
+						
+						
 					}
 					$("#qnaContent").val('');
     		}, error:function(data){

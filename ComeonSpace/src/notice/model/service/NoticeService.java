@@ -87,6 +87,12 @@ public class NoticeService {
 		return list;
 	}
 
+	public int getListCount() {
+		Connection conn = getConnection();
+		int result = new NoticeDAO().getListCount(conn);
+		close(conn);
+		return result;
+	}
 	public int admInsertNotice(Notice n) {
 		Connection conn = getConnection();
 		

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.pageInfo.model.vo.PageInfo;
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
 
@@ -31,8 +32,38 @@ public class NoticeListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int listCount;
+		int currentPage;
+		int pageLimit;
+		int boardLimit;
+		int maxPage;
+		int startPage;
+		int endPage;
+		
+		NoticeService nService = new NoticeService();
+		listCount = nService.getListCount();
+		
+		currentPage = 1;
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		pageLimit = 10;
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)(listCount/boardLimit));
+		
+		startPage = ((currentPage-1)/boardLimit) * pageLimit + 1;
+		endPage = startPage + boardLimit - 1;
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		
 		request.setCharacterEncoding("UTF-8");
-		ArrayList<Notice> list = new NoticeService().selectNotice();
+		ArrayList<Notice> list = nService.selectNotice(pi);
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/views/notice/noticeList.jsp").forward(request, response);
