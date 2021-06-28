@@ -114,7 +114,7 @@
 	.detailDiv:hover{cursor:pointer;}
 	.hiddenBtn{display:none;}
 	
-	#qna-nickname {
+	.qna-nickname {
 		color: #0f6756 !important;
 		font-weight: 700;
 	}
@@ -125,7 +125,7 @@
 	    font-size: 20px !important;		
 	}
 	
-	#qna-date {
+	.qna-date {
 		color: #829894 !important;
 		zoom : 80%;
 	}
@@ -541,7 +541,7 @@
 						<%for(Qna qna : qnaList){ %>
 							<div class="row">
 								<div class="pro-photo col-md-1 profile-size"><img class="profile-size" src="resources/image/defaultProfile.png"></div>
-								<div class="pro-desc col-md-6" class="qnaList">					
+								<div class="pro-desc col-md-6" id="qnaList">					
 									<p class="qna-nickname"><%=qna.getUserNick() %>　<span class="qna-date"><%=qna.getQnaDate() %></span></p>
 									<p><%=qna.getQnaContent() %></p><br>																
 								</div>
@@ -748,7 +748,7 @@
 // 						$replyTable.append($tr);
 						var $startDiv = $("<div>").attr("class","row");
 						var $div = $("<div>").html("<img class='profile-size' src='resources/image/defaultProfile.png'>").attr("class","pro-photo col-md-1 profile-size");
-						var $div2 = $("<div>").html("<p>"+data[i].userNick+"  "+data[i].qnaDate+"</p><br><p>"+data[i].qnaContent+"</p>").attr("class","pro-desc col-md-6");
+						var $div2 = $("<div>").html("<p class='qna-nickname'>"+data[i].userNick+"<span class='qna-date'>"+data[i].qnaDate+"<span></p><br><p>"+data[i].qnaContent+"</p>").attr("class","pro-desc col-md-6");
 // 						var $user = $("<div>").html
 						
 						$startDiv.append($div);
