@@ -5,7 +5,6 @@
 	Enroll p = (Enroll)request.getAttribute("product");
 	
 	Member loginUser = (Member)session.getAttribute("loginUser");
-
 	ArrayList<Qna> qnaList = (ArrayList)request.getAttribute("qnaList");
 	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList"); 
 	Img titleImg = fileList.get(0);
@@ -73,11 +72,9 @@
     
 
 <style type="text/css">
-
 	 a:link{ color: #0f6756; text-decoration: none;}
 	 a:visited{ color: #0f6756; text-decoration: none;}
 	 a:hover{ color: #0f6756; text-decoration: none;}
-
 	 
 </style>
 
@@ -91,7 +88,6 @@
  		background-color: green;
  		border-radius: 5px 5px 5px 5px;
  		color: white !important;
-
 	}
 	#search{border: none; border-bottom: 1px solid black;}
 	#searchImg{width:15px; height: auto;}	
@@ -101,7 +97,7 @@
 	
 	
 	/* 입력할 부분 클릭 시, 겉에 태두리 생기는 부분*/
-	.form-control:focus{color:#212529;background-color:#fff;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
+	textarea:focus{color:#212529;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
 	
 	/* 버튼 클릭 (편의시설/정기휴무일) 디자인 */
 	.btn-primary{color:DimGrey; background-color:white; border-color:lightgray;}
@@ -119,6 +115,12 @@
 		font-weight: 700;
 	}
 	
+	
+	.qna-nickname-host {
+		color: #498579 !important;
+		font-weight: 700;
+	}
+	
 	#qnaHost {
 		color: #0f6756 !important;	
 		font-weight: 700;		
@@ -132,7 +134,7 @@
 	
 	#qna-all-list {
 	 	font-family: 'Nanum Gothic', sans-serif !important;	
-	    font-size: 20px !important;	
+	    font-size: 18px !important;	
     }
     
     .qnaBtn {
@@ -152,6 +154,14 @@
     	zoom: 65%;
     	object-fit: cover;
 		border-radius: 100%;
+    }
+	
+    
+    .profile-size-host {
+    	zoom: 65%;
+    	object-fit: cover;
+		position: relative;
+		left: 100px;
     }
 	
 </style>
@@ -299,11 +309,6 @@
                         <br>
                             <h1 class="h2" id="jemok"><%= p.getpName() %><input type = "hidden" id="api-name" value="<%= p.getpName() %>">
                             
-                            <a class="btn btn-success text-white"><i class="far fa-heart"></i></a>
-                            <a class="btn btn-success text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-							<path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
-							</svg></a>
                             
 
 							
@@ -316,7 +321,6 @@
                             
                             
                             				                           
-                            <p class="h3 py-2"><%= p.getProductPrice() %> 원</p>
                             <p class="location">
 							<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBSc1x%2Fbtq5M27RmQL%2FWqkF4T7WO9bBbBMfwp3690%2Fimg.png" width="25" height="25">
 							<span id="location-api"><%= p.getpLocation() %></span></p><input type = "hidden" id="api-adrr" value="<%= p.getpLocation() %>">
@@ -543,12 +547,17 @@
 								<div class="pro-photo col-md-1 profile-size"><img class="profile-size" src="resources/image/defaultProfile.png"></div>
 								<div class="pro-desc col-md-6" id="qnaList">					
 									<p class="qna-nickname"><%=qna.getUserNick() %>　<span class="qna-date"><%=qna.getQnaDate() %></span></p>
-									<p><%=qna.getQnaContent() %></p><br>																
+									<p><%=qna.getQnaContent() %></p><br>														
 								</div>
+							</div>	
+							
+							<div class="row">
 								<%if(qna.getQnaAnswer() != null){ %>
-									<div>
-										<p> ㄴ <%=qna.getQnaAnswer()%> </p>
-									</div>	
+								<div class="pro-photo col-md-1 profile-size"><img class="profile-size-host" src="resources/image/arrow.png"></div>
+								<div class="pro-desc col-md-6" id="qnaList">					
+									<p class="qna-nickname-host">'<%=p.getpName() %>' 호스트의 답글　<span class="qna-date"><%=qna.getAnsDate() %></span></p>
+									<p><%=qna.getQnaAnswer() %></p><br><br>														
+								</div>
 								<%} %>
 							</div>	
 						<%} %>
@@ -660,20 +669,17 @@
     
     <!-- 지도 api -->
     <script>
-
     // 주소를 이용해 좌표 값 받아 오기
     var apiadrr = $('#api-adrr').val();
     // 장소 이름 받아 오기
     var apiname = $('#api-name').val();
     
     var geocoder = new kakao.maps.services.Geocoder();
-
     var callback = function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
             console.log(result);
         }
     };
-
     // apiadrr에 x,y값 제대로 담긴 것 확인
     geocoder.addressSearch(apiadrr, callback);
     
@@ -687,26 +693,20 @@
     };  
     
     var map = new kakao.maps.Map(mapContainer, mapOption); 
-
     geocoder.addressSearch(apiadrr, function(result, status) {
-
         // 정상적으로 검색이 완료됐으면 
          if (status === kakao.maps.services.Status.OK) {
-
             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
             // 결과값으로 받은 위치를 마커로 표시합니다
             var marker = new kakao.maps.Marker({
                 map: map,
                 position: coords
             });
-
             // 인포윈도우로 장소에 대한 설명을 표시합니다
             var infowindow = new kakao.maps.InfoWindow({
                 content: apiname
             });
             infowindow.open(map, marker);
-
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
         } 
@@ -840,17 +840,14 @@
 	// 오늘 날짜
 	
 	var today = new Date();
-
 	today.setDate(today.getDate());
 	
 	// 최종 날짜
-
 	    $(document).ready(function(){
 	    	$("#dateselectbutton").change(function(){
 	    		var value = $(this).val();
 	    		console.log(value);
 	    		var weekName = new Array('일','월','화','수','목','금','토'); 
-
 	    		var day = new Date(value).getDay();
 	    		var dateWeek = weekName[day];
 	    		console.log(dateWeek);
