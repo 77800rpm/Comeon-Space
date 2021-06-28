@@ -1,5 +1,7 @@
 package product.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,12 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import enroll.model.vo.Enroll;
 import img.model.vo.Img;
-import static common.JDBCTemplate.close;
+import product.model.vo.Product;
 
 public class ProductDAO {
 
@@ -333,4 +334,28 @@ public class ProductDAO {
 	}
 	
 	
+	//공간 승인/취소 위한 리스트 가져오기
+	public ArrayList<Product> selectProductList(Integer pageNo, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Product> slist = new ArrayList<Product>();
+		String query = null;
+
+		query = prop.getProperty("selectProductSpaceApproveList");
+		try {
+			/*페이지 번호 받을 수 있는 쿼리로 수정할 예정*/
+			pstmt = conn.prepareStatement(query);
+	        //pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
+	        //pstmt.setString(2, "%"+PRODUCT_HOLIDAY+"%");
+	        rset = pstmt.executeQuery();
+	         
+	        while(rset.next()) {
+	            Product vo = new Product(rset.getInt("PRODUCT_NUM"), rset.getString("PRODUCT_NAME"));
+	            slist.add(vo);
+	         }
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return slist;
+	}
 }

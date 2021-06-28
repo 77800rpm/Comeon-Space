@@ -37,8 +37,8 @@ public class AdmNoticeDetailServlet extends HttpServlet {
 		
 		if(no != null) {
 			request.setAttribute("no", no);
-//			request.getRequestDispatcher("WEB-INF/views/notice/noticeDetail.jsp").forward(request, response);
-			request.getRequestDispatcher("admNoticeDetail.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/views/admin/admNoticeDetail.jsp").forward(request, response);
+//			request.getRequestDispatcher("admNoticeDetail.jsp").forward(request, response);
 		}
 	}
 				

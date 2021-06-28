@@ -35,8 +35,8 @@ public class AdmNoticeListServlet extends HttpServlet {
 		ArrayList<Notice> list = new NoticeService().admselectList();
 		
 		request.setAttribute("list", list);
-//		request.getRequestDispatcher("WEB-INF/views/admin/admNoticeList.jsp").forward(request, response);
-		request.getRequestDispatcher("admNoticeList.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/admin/admNoticeList.jsp").forward(request, response);
+//		request.getRequestDispatcher("admNoticeList.jsp").forward(request, response);
 	}
 
 	/**
