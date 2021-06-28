@@ -41,7 +41,7 @@
                  </a>
              </li>
              <li class="pb-3">
-                 <a class="collapsed d-flex justify-content-between text-decoration-none" href="#">
+                 <a class="collapsed d-flex justify-content-between text-decoration-none" href="#" id="qnaListBtn">
                      	나의 문의내역
                  </a>
              </li>
@@ -71,6 +71,9 @@
      <script>
      	$("#editInfoBtn").on("click",function(){
      		location.href="<%=request.getContextPath()%>/editInfo.my";
+     	})
+     	$("#qnaListBtn").on("click",function(){
+     		location.href="<%=request.getContextPath()%>/qnaList.my";
      	})
      </script>
 </body>

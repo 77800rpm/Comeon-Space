@@ -56,6 +56,7 @@ public class ProductDAO {
 										rset.getString("PRODUCT_LOCATION"),
 										rset.getInt("PRODUCT_COUNT"));
 				
+				
 				list.add(pro);
 			}
 			
@@ -140,6 +141,7 @@ public class ProductDAO {
 										rset.getString("product_fac"),
 										rset.getInt("product_count"),
 										rset.getString("product_holiday"));
+					  product.setUserNum(rset.getInt("USER_NUM"));
 			}
 
 		} catch (SQLException e) {
@@ -268,32 +270,63 @@ public class ProductDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Enroll> slist = new ArrayList<Enroll>();
-		
-		String query = prop.getProperty("searchProduct");	
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
-			pstmt.setString(2, "%"+PRODUCT_CATEGORY+"%");
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				Enroll pro = new Enroll(rset.getInt("PRODUCT_NUM"),
-										rset.getString("PRODUCT_NAME"),
-										rset.getInt("PRODUCT_PRICE"),
-										rset.getString("PRODUCT_CATEGORY"),
-										rset.getString("PRODUCT_INTRO"),
-										rset.getString("PRODUCT_LOCATION"),
-										rset.getInt("PRODUCT_COUNT"));
-				
-				slist.add(pro);
-			}
+		String query = null;
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
+		
+		if(PRODUCT_CATEGORY.equals("모든공간")) {
+			query = prop.getProperty("selectSearchCategoryAll");
+			try {
+				pstmt = conn.prepareStatement(query);
+		        pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
+		        pstmt.setString(2, "%"+PRODUCT_HOLIDAY+"%");
+		        rset = pstmt.executeQuery();
+		         
+		         while(rset.next()) {
+		            Enroll pro = new Enroll(rset.getInt("PRODUCT_NUM"),
+		                              rset.getString("PRODUCT_NAME"),
+		                              rset.getInt("PRODUCT_PRICE"),
+		                              rset.getString("PRODUCT_CATEGORY"),
+		                              rset.getString("PRODUCT_INTRO"),
+		                              rset.getString("PRODUCT_LOCATION"),
+		                              rset.getInt("PRODUCT_COUNT"));
+		            
+		            slist.add(pro);
+		         }				
+		         
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+						
+			
+		} else {
+			query = prop.getProperty("selectSearch");	
+			try {
+		         pstmt = conn.prepareStatement(query);
+		         pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
+		         pstmt.setString(2, "%"+PRODUCT_CATEGORY+"%");
+		         pstmt.setString(3, "%"+PRODUCT_HOLIDAY+"%");
+		         rset = pstmt.executeQuery();
+		         
+		         while(rset.next()) {
+		            Enroll pro = new Enroll(rset.getInt("PRODUCT_NUM"),
+		                              rset.getString("PRODUCT_NAME"),
+		                              rset.getInt("PRODUCT_PRICE"),
+		                              rset.getString("PRODUCT_CATEGORY"),
+		                              rset.getString("PRODUCT_INTRO"),
+		                              rset.getString("PRODUCT_LOCATION"),
+		                              rset.getInt("PRODUCT_COUNT"));
+		            
+		            slist.add(pro);
+		         }
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
+
+
 		
 	
 		return slist;

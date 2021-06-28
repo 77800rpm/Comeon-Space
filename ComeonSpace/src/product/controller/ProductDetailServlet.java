@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import enroll.model.vo.Enroll;
 import img.model.vo.Img;
 import product.model.service.ProductService;
+import qna.model.service.QnaService;
+import qna.model.vo.Qna;
 
 /**
  * Servlet implementation class ProductDetailServlet
@@ -40,12 +42,15 @@ public class ProductDetailServlet extends HttpServlet {
 		
 		ProductService pService = new ProductService();
 		ArrayList<Img> fileList = pService.selectThumbnail(no);
-		
-		
+		ArrayList<Qna> qnaList = new QnaService().selectQna(no);
+
 		String page = null;
 		
 		if(product != null) {
 			page = "WEB-INF/views/product/productDetailPage.jsp";
+			
+			request.setAttribute("qnaList", qnaList);
+			request.setAttribute("no", no);
 			request.setAttribute("product", product);
 			request.setAttribute("fileList", fileList);
 		} else {

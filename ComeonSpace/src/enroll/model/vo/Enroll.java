@@ -18,6 +18,7 @@ public class Enroll {
 	
 	public Enroll() {}
 	
+	
 	public Enroll(int pNum, String pName, int pLimit, int productPrice, String pCategory, String pIntro, String pDetail,
 			String pLocation, String pFacility, int pCount, String pApprove, String status, String holiday,
 			int userNum) {
@@ -37,9 +38,7 @@ public class Enroll {
 		this.holiday = holiday;
 		this.userNum = userNum;
 	}
-	
-	
-	
+
 	public Enroll(int pNum, String pName, int pLimit, int productPrice, String pCategory, String pIntro, String pDetail,
 			String pLocation, String pFacility, int pCount, String holiday) {
 		super();
