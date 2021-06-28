@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/templatemo.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+
+<title>문의내역 확인</title>
+
+<style>
+	.form-control:focus{color:#212529;background-color:#fff;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
+	
+	.bg-light { background-color: #F5F5F5 !important;}
+	
+	label{font-size: 13.5px !important; font-weight: bold !important;}
+	
+	/* 버튼 디자인 */
+	#update{background: rgb(15, 103, 86); color: white; border: none; padding: 7px 30px; border-radius:40px; font-weight:bold !important;}
+	#ok{background: orange; color: white; border: none; padding: 7px 30px; border-radius:40px; font-weight:bold !important;}
+	
+</style>
+</head>
+<body>
+	<br><br><br>
+	<!-- title -->
+	<div class="container m-auto">
+		<div class="row text-center mb-5">
+			<h2>문의내역</h2>
+		</div>
+	</div>
+	<!-- title -->
+	
+	<!-- 질문자 문의내역 확인 -->
+	<div class="container">
+		<div class="col-md-8 m-auto">
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label>공간명</label>
+					<input type="text" class="form-control mt-1" required>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label>문의제목</label>
+					<input type="text" class="form-control mt-1" required>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-3">
+					<label>문의번호</label>
+					<input type="text" class="form-control mt-1" required>
+				</div>
+				<div class="col-md-3">
+					<label>문의유형</label>
+					<select name="category" class="form-control mt-1">
+						<option value="guest">게스트</option>
+						<option value="host">호스트</option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<label>문의 날짜</label>
+					<input type="text" class="form-control mt-1" required>
+				</div>
+				<div class="col-md-3">
+					<label>질문자 닉네임</label>
+					<input type="text" class="form-control mt-1" required>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label>문의 내용</label>
+					<textarea class="form-control mt-1" id="long_Exp" name="long_Exp" rows="10" required></textarea>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label>첨부 이미지</label>
+					<input type="file" class="form-control mt-1" required>
+				</div>
+			</div>
+		</div>
+	</div><br>
+	<!-- 질문자 문의내역 확인 -->
+	
+	<!-- 답변자 문의내역 확인 -->
+	<section class="bg-light py-3">
+	<div class="container">
+		<div class="col-md-8 m-auto">
+			<div class="row mb-3">
+				<div class="col-md-6"></div>
+				<div class="col-md-3">
+					<label>답변 날짜</label>
+					<input type="text" class="form-control mt-1" required>
+				</div>
+				<div class="col-md-3">
+					<label>답변자 닉네임</label>
+					<input type="text" class="form-control mt-1" required>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-12">
+					<label>답변 내용</label>
+					<textarea class="form-control mt-1" id="long_Exp" name="long_Exp" rows="10" required></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 답변자 문의내역 확인 -->
+	
+	<!-- 확인 / 수정 -->
+	<form>
+	<div class="container mt-5">
+		<div class="col-md-6 m-auto text-center">
+			<input type="submit" id="update" value="수정">
+			&ensp;
+			<input type="submit" id="ok" value="확인">
+		</div>
+	</div>
+	</form>
+	<!-- 확인 / 수정 -->
+	
+	<br>
+	</section>
+	
+</body>
+</html>

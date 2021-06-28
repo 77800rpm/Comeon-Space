@@ -87,6 +87,44 @@ public class NoticeService {
 		return list;
 	}
 
+	public int admInsertNotice(Notice n) {
+		Connection conn = getConnection();
+		
+		int result = new NoticeDAO().admInsertNotice(conn, n);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
+	public Notice admDetailNotice(int num) {
+		Connection conn = getConnection();
+		
+		Notice no = new NoticeDAO().admDetailNotice(conn, num);
+		
+		close(conn);
+		
+		return no;
+	}
+
+	public int admDeleteNotice(int num) {
+		Connection conn = getConnection();
+		
+		int result = new NoticeDAO().admDeleteNotice(conn, num);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result;
+	}
+
 
 
 }

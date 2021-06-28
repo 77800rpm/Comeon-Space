@@ -1,0 +1,220 @@
+/*
+Custom Css
+*/
+
+.btn-reserv {
+	width: 200px;
+	position: relative;
+	left: 250px;
+}
+
+.dropdownn{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 15px;
+    display: inline-block;
+  font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+
+margin: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+
+
+background-image:
+linear-gradient(45deg, transparent 50%, gray 50%),
+linear-gradient(135deg, gray 50%, transparent 50%),
+radial-gradient(#ddd 70%, transparent 72%);
+background-position:
+calc(100% - 20px) calc(1em + 2px),
+calc(100% - 15px) calc(1em + 2px),
+calc(100% - .5em) .5em;
+background-size:
+5px 5px,
+5px 5px,
+1.5em 1.5em;
+background-repeat: no-repeat;
+}
+
+.dropdown3{
+}
+
+.pro-list{
+ 	font-family: 'Nanum Gothic', sans-serif;	
+    font-size: 20px;
+}
+
+
+.fonttttt{
+	font-family: 'Nanum Gothic', sans-serif;	
+    transform : rotate(0.03deg);
+    font-size: 20px !important;
+    font-weight: normal;	
+}
+
+.pro-intro{
+	font-family: 'Nanum Gothic', sans-serif;	
+    transform : rotate(0.03deg);
+    font-size: 20px !important;
+    font-weight: normal;
+}
+
+.pro-font{
+	font-family: 'Nanum Gothic', sans-serif;	
+    transform : rotate(0.03deg);
+    font-size: 20px !important;
+    font-weight: normal;
+}
+
+.pro-desc-title{
+	font-family: 'Jua', sans-serif;
+	font-size: 35px !important;
+  	color: #0f6756;
+  	transform : rotate(0.04deg);		
+}
+
+
+.pro-desc-lo{
+	color: gray;
+	font-family: 'Nanum Gothic', sans-serif;	
+    transform : rotate(0.03deg);
+    font-size: 20px !important;
+    font-weight: normal;
+}
+
+.pro-list-price{
+	font-family: 'Jua', sans-serif;
+	font-size: 25px !important;
+  	color: #0f6756;		
+}
+
+.menu_under_img{
+	width:65%;
+	position: relative;
+	left: 120px;
+	top: 8px;
+}
+
+.pro-list-text{
+    position: relative;
+    top: 130px !important;
+    text-align: center;
+}
+
+.pro-list-title{
+    position: relative;
+    top: 30px;
+}
+
+.containerrr {
+	
+	position: relative;
+	left: 30px;
+}
+
+.pro-cursor {
+	cursor: pointer;
+}
+
+#search-result {
+	font-family: 'Jua', sans-serif !important;
+	font-size: 35px;
+  	color: #0f6756;	
+  	text-decoration: underline;
+  	text-underline-position: under;
+}
+
+#search-result2 {
+	font-family: 'Jua', sans-serif !important;
+	font-size: 35px;
+  	color: #0f6756;	
+  	text-decoration: underline;
+  	text-underline-position: under;
+}
+
+
+#browser4{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 15px;
+    display: inline-block;
+  font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+    padding: 0.5em 1em 0.5em 1em;
+
+margin: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+#browser5{
+    background-color: #0f6756;
+    color:white;
+    border: 1px solid gray;
+    border-radius: 15px;
+    display: inline-block;
+  font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+    padding: 0.5em 1em 0.5em 1em;
+
+margin: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+#browser6{
+    background-color: #0f6756;
+    color:white;
+    border: 1px solid gray;
+    border-radius: 15px;
+    display: inline-block;
+  font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+    padding: 0.5em 1em 0.5em 1em;
+
+margin: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+#dateselectbutton{
+    background-color: white;
+    color: #0f6756;
+    border: 3px solid #0f6756;
+    border-radius: 20px;
+    display: inline-block;
+    line-height: 1.5em;
+    padding: 0.5em 1em 0.5em 1em;
+
+margin: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+#p-Detail{
+ 	font-family: 'Nanum Gothic', sans-serif;	
+    font-size: 20px !important;	
+	
+}
+
+.reviewList-title{
+	font-weight: 40px !important;
+}
+
+

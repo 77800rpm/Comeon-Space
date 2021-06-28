@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Come on Space 공간등록</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css"> <!-- 배너 레이아웃, 폰트 // 가운데 정렬 -->
+<link rel="stylesheet" href="../assets/css/templatemo.css"> <!-- 배너 배경 색상과 공간홍보 터치감 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/fontawesome.min.css"> <!-- 공간등록 홍보 아이콘 -->
+
+<style>
+	#button{background: orange; color: white; border: none; padding: 12px 30px; border-radius:40px; font-weight:bold;}
+	#button_moreNotice{border: 1px solid black; padding: 12px 30px; font-size: 15px;
+					width: 300px; margin-left:auto; margin-right:auto;}
+ 	button:focus{outline:0px;}
+
+	#banner_iamge{width: 400px;}
+	
+	/* 배너 색상 */
+	.bg-success { background-color:rgb(15, 103, 86) !important;}
+	.bg-light { background-color: #F5F5F5 !important;}
+	
+	.table>tbody>tr:hover{--bs-table-accent-bg:var(--bs-table-striped-bg);}
+</style>
+</head>
+<body>
+	<!-- 배너 -->
+	<section class="bg-success py-5">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-md-8 text-white">
+                    <h1>Come on Space</h1>
+                    <h1><strong>공간 등록하기</strong></h1>
+                    <p>
+                    	비어있는 시간이 더 많은 내 공간,<br>
+                    	간편하게 다른 사람과 공유해보세요<br>
+                    </p>
+                    <small>모임 | 촬영 | 스터디 | 연습실 | 행사장 | 공유 오피스 등 다양한 공간 등록 가능</small><br><br>
+	                <button id="button">공간 등록</button> 
+	                <!-- input으로 하면 나머지 디자인 CSS는 되지만, font 크기나 굵기 변경 X
+	                	  정보를 가져가거나 저장하지 않고, 그냥 페이지 이동이니까 괜찮지 않을까?-->               	 
+                </div>
+                <div class="col-md-4">
+                    <img src="banner_image.png" alt="Image" id="banner_iamge">
+                </div>
+            </div>
+        </div>
+    </section>
+	<!-- 배너 끝 -->
+	
+	<!-- 공간등록 홍보 시작 -->
+   <section class="container py-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-6 m-auto">
+                <h2>비어있는 공간으로 수익 창출하기</h2>
+                <p>
+                   	 비어있는 내 공간, 효율적으로 활용하기
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-success text-center">
+                    <i class="fa fa-file-invoice fa-lg"></i></div> <!-- fontawesome.min.css에서 fa "____" 여기만 바꾸면 아이콘 변경 가능 / 아이콘은 webfonts랑도 연관 -->
+                    <h2 class="h5 mt-4 text-center">간편한 공간등록</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-success text-center">
+                    <i class="fas fa-calendar"></i></div>
+                    <h2 class="h5 mt-4 text-center">손쉬운 공간관리</h2>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-success text-center">
+                    <i class="fa fa-user-lock"></i></div>
+                    <h2 class="h5 mt-4 text-center">전문 관리체제</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-success text-center">
+                    <i class="fa fa-hand-holding-usd"></i></div>
+                    <h2 class="h5 mt-4 text-center">수익 창출</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 공간등록 홍보 끝 -->
+    
+
+    
+    <!-- 공지사항 시작 -->
+	<section class="bg-light py-5">
+    <div class="row text-center pt-5 pb-3">
+		<h2>공지사항</h2>
+	</div>
+	<table class="table" style="width:1030px; margin-left:auto; margin-right:auto;">
+		<thead>
+			<tr>
+				<th width="900px">제목</th>
+				<th width="130px">작성 날짜</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>[긴급공지] 2021-05-30일 금융 거래 마비</td>
+				<td>2021-05-27</td>
+			</tr>
+			<tr>
+				<td>수많은 게스트들이 당신의 공간을 기다리고 있어요</td>
+				<td>2021-04-25</td>
+			</tr>
+			<tr>
+				<td>공지사항공지사항공지사항공지사항공지사항공지사항</td>
+				<td>2021-03-20</td>
+			</tr>
+			<tr>
+				<td>공간등록 시 호스트 계정이 필요합니다</td>
+				<td>2021-02-20</td>
+			</tr>
+			<tr>
+				<td>호스트게스트샬라샬라 빰빰빰 빰빰빰 빰빰빰 빰빰빰</td>
+				<td>2021-01-14</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="row text-center pt-3 pb-3">
+		<button id="button_moreNotice">더보기 +</button>
+	</div>
+    </section>
+    <!-- 공지사항 끝 -->
+</body>
+</html>

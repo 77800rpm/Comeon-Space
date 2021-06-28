@@ -13,7 +13,7 @@ import notice.model.vo.Notice;
 /**
  * Servlet implementation class AdmNoticeDetailServlet
  */
-@WebServlet("/AdmDetail.no")
+@WebServlet("/admDetail.no")
 public class AdmNoticeDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,13 +31,14 @@ public class AdmNoticeDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		int num = Integer.parseInt(request.getParameter("no"));
-		Notice no = new NoticeService().detailNotice(num);
+		System.out.println(num);
+		Notice no = new NoticeService().admDetailNotice(num);
 		
 		
 		if(no != null) {
 			request.setAttribute("no", no);
 //			request.getRequestDispatcher("WEB-INF/views/notice/noticeDetail.jsp").forward(request, response);
-			request.getRequestDispatcher("page5_noticeDetail.jsp").forward(request, response);
+			request.getRequestDispatcher("admNoticeDetail.jsp").forward(request, response);
 		}
 	}
 				
