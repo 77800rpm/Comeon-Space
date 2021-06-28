@@ -3,8 +3,8 @@
 <%
 	int bId = (int)request.getAttribute("no");
 	Enroll p = (Enroll)request.getAttribute("product");
-	
 	Member loginUser = (Member)session.getAttribute("loginUser");
+
 	ArrayList<Qna> qnaList = (ArrayList)request.getAttribute("qnaList");
 	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList"); 
 	Img titleImg = fileList.get(0);
@@ -170,7 +170,21 @@
       position: relative;
       left: 100px;
     }
+    
+    .startPro{
+    	position: fixed;
+    	bottom: 25px;
+    	right: 35px;
+    	zoom: 120%;
+    }
+    
+    .startProBtn{
+    	zoom: 150%;
+    }
    
+  	#logout, #login{
+  		cursor: pointer;
+  	}
 </style>
    
    <!-- 지도 api 스크립트 -->
@@ -181,32 +195,45 @@
 
 <body>
 
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+			<a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" id="logoImg"></a>
 
-   <!-- Start Header -->
-    <!-- Close Header -->
-
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav header-list">
+                        <li class="nav-item">                
+                        <li class="nav-item">
+                            <a class="nav-link" href="search.pro">공간보기 |</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="enrollMain.en">공간등록 |</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<%= request.getContextPath() %>/centerView.ce">고객센터 |</a>
+                        </li>                       
+                        <li class="nav-item">
+                       <% if(loginUser == null){ %> 
+                            <a class="nav-link main-login" id="login">로그인</a>
+                       <% } else { %>
+                       		<a class="nav-link main-login btn-member-logout" id="logout">로그아웃</a>
+                       <% } %>     
+                        </li>
+                                        
+                    </ul>
                 </div>
-            </form>
+            </div>
+
         </div>
-    </div>
+    </nav>
+    <!-- Close Header -->	
 
 
 
     <!-- Open Content -->
     <section class="bg-light">
-        <div class="container pb-5">
+        <div class="container pb-5" id="startPro">
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
@@ -580,7 +607,7 @@
 					<%} %>
 					</div>
 				</div>
-				<br><br>
+				<br>
 				<div>
 				<br>
 					<table>
@@ -625,6 +652,17 @@
 
 
 
+	<!-- 위로 가기 -->
+	<div class="startPro">
+	<a href="#startPro">
+	<span class="startProBtn">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
+		<path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z"/>
+		</svg>
+	</span>
+	TOP
+	</a>
+</div>
 
 
 
@@ -857,7 +895,15 @@
           });
        })
        
-      
+
+    $('#login').on('click', function(){
+		location.href="<%= request.getContextPath() %>/loginForm.me";
+	});
+	
+	$('#logout').on('click', function(){
+		location.href="<%= request.getContextPath() %>/logout.me";
+	});
+	
    </script>
    
    
