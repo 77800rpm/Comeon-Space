@@ -719,6 +719,7 @@
     	var content = $("#qnaContent").val();
     	var userEmail = $("#userEmail").val();
     	var pName = $("#pName").val();
+
     	if(content.length == 0){
     		alert("Q&A를 입력해주세요.");
     	} else {
@@ -729,21 +730,23 @@
 	    				$replyTable = $("#qnaSelectTable");
 						$replyTable.html('');
 						
-						var $startDiv = $("<div>").attr("class","row");
-						var $div = $("<div>").html("<img class='profile-size' src='resources/image/defaultProfile.png'>").attr("class","pro-photo col-md-1 profile-size");
-						var $div2 = $("<div>").html("<p class='qna-nickname'>"+data[i].userNick+"<span class='qna-date'>"+data[i].qnaDate+"<span></p><br><p>"+data[i].qnaContent+"</p>").attr("class","pro-desc col-md-6");
-						
-						$startDiv.append($div);
-						$startDiv.append($div2);
-						$replyTable.append($startDiv);
-					}
+						for(i in data){
+							var $startDiv = $("<div>").attr("class","row");
+							var $div = $("<div>").html("<img class='profile-size' src='resources/image/defaultProfile.png'>").attr("class","pro-photo col-md-1 profile-size");
+							var $div2 = $("<div>").html("<p class='qna-nickname'>"+data[i].userNick+"<span class='qna-date'>"+data[i].qnaDate+"<span></p><br><p>"+data[i].qnaContent+"</p>").attr("class","pro-desc col-md-6");
+							
+							$startDiv.append($div);
+							$startDiv.append($div2);
+							$replyTable.append($startDiv);
+						}
 					$("#qnaContent").val('');
 					location.reload();
-    		}, error:function(data){
-    			console.log("실패");
-    		}
+    			}, error:function(data){
+    				console.log("실패");
+    			}
     			
-    	}); 
+    		}); 
+    	}	
     })
     
 	</script>
