@@ -1,30 +1,27 @@
-package qna.controller;
+package mypage.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import member.model.vo.Member;
 import qna.model.service.QnaService;
 import qna.model.vo.Qna;
 
 /**
- * Servlet implementation class QnaListServlet
+ * Servlet implementation class MyPageQnaDetailServlet
  */
-@WebServlet("/qnaList.my")
-public class QnaListServlet extends HttpServlet {
+@WebServlet("/qnaDetail.my")
+public class MyPageQnaDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaListServlet() {
+    public MyPageQnaDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +30,18 @@ public class QnaListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		int hostNum = ((Member)session.getAttribute("loginUser")).getUserNum();
+		int no = Integer.parseInt(request.getParameter("no"));
 		
-		ArrayList<Qna> hostList = new QnaService().selectAllQna(hostNum);
-		ArrayList<Qna> userList = new QnaService().selectUserQna(hostNum);
+		Qna q = new QnaService().detailQna(no);
+		if(q != null) {
+			request.setAttribute("q", q);
+			request.getRequestDispatcher("WEB-INF/views/mypage/mypageQnaDetail.jsp").forward(request, response);
+		} else {
+			request.setAttribute("msg", "Q&A 상세조회에 실패하였습니다.");
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
+			
+		}
 		
-		request.setAttribute("userList", userList);
-		request.setAttribute("hostList", hostList);
-		request.getRequestDispatcher("WEB-INF/views/mypage/mypageQna.jsp").forward(request, response);
 	}
 
 	/**

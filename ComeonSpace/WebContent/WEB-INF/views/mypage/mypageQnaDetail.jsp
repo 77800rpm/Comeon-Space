@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, qna.model.vo.Qna"%>
+    pageEncoding="UTF-8" import=" qna.model.vo.Qna"%>
 <%
-	ArrayList<Qna> hostList = (ArrayList)request.getAttribute("hostList");
-	ArrayList<Qna> userList = (ArrayList)request.getAttribute("userList");
+	Qna q = (Qna)request.getAttribute("q");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,57 +58,53 @@
                     	마이페이지
                 </div>
                 <br>
+                <form action="<%=request.getContextPath()%>/answerQna.my">
                 <div class="row">
 					<div id="mypageProfileImg">
 						<table class="table" id="tableArea">
 							<tr>
-								<th width="5%;">번호</th>
+								<th width="10%;">번호</th>
 								<th width="15%;">작성자</th>
 								<th width="20%;">공간명</th>
-								<th width="40%;">내용</th>
-								<th width="10%;">작성날짜</th>
-								<th width="20%;">비고</th>
+								<th width="15%;">작성날짜</th>
 							</tr>
-							<%if(loginUser.getUserDiv().equals("guest")){ %>
-								<%if(userList.isEmpty()){ %>
-									<tr>
-										<td colspan="4" id="noQnaTd">등록된 Q&A가 없습니다.</td>
-									</tr>
-								<%} else { %>
-									<%for(Qna q : userList){ %>
-										<tr>
-											<td><%=q.getQnaNum() %></td>
-											<td><%=q.getUserNick() %></td>
-											<td><%=q.getpName() %></td>
-											<td><%=q.getQnaContent() %></td>
-											<td><%=q.getQnaDate() %></td>
-											<td>
-												<%if(q.getQnaAnswer() == null){ %>
-													답변대기
-												<%} else {%>
-													<input type="button" value="답변보기" class="ansBtn">
-												<%} %>
-											</td>
-										</tr>
-									<%} %>
-								<%} %>
+							<%if(loginUser.getUserDiv().equals("host")){ %>
+								<tr>
+									<td><%=q.getQnaNum() %><input type="hidden" name="qnaNum" value="<%=q.getQnaNum() %>"></td>
+									<td><%=q.getUserNick() %></td>
+									<td><%=q.getpName() %></td>
+									<td><%=q.getQnaDate() %></td>
+								</tr>
+								<tr>
+									<th>문의내용 </th>
+									<td colspan="4"><%=q.getQnaContent() %></td>
+								</tr>
+								<tr>
+									<th rowspan="4" style="vertical-align:center">답변내용</th>
+									<td colspan="3"><textarea rows="10" cols="95" name="answerContent" id="qnaContent" style="resize:none;"><%if(q.getQnaAnswer() == null){%><%} else {%><%=q.getQnaAnswer() %><%} %></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="text-align:center"><input type="submit" value="답변하기">&nbsp;&nbsp;&nbsp;<input type="button" id="goMainBtn" value="목록으로"></td>
+								</tr>
 							<%} else {%>
-								<%if(hostList.isEmpty()){ %>
-									<tr>
-										<td colspan="4" id="noQnaTd">등록된 Q&A가 없습니다.</td>
-									</tr>
-								<%} else { %>
-									<%for(Qna q : hostList){ %>
-										<tr>
-											<td><%=q.getQnaNum() %></td>
-											<td><%=q.getUserNick() %></td>
-											<td><%=q.getpName() %></td>
-											<td><%=q.getQnaContent() %></td>
-											<td><%=q.getQnaDate() %></td>
-											<td><input type="button" value="답변하기" class="ansBtn"></td>
-										</tr>
-									<%} %>
-								<%} %>
+								<tr>
+									<td><%=q.getQnaNum() %><input type="hidden" name="qnaNum" value="<%=q.getQnaNum() %>"></td>
+									<td><%=q.getUserNick() %></td>
+									<td><%=q.getpName() %></td>
+									<td><%=q.getQnaDate() %></td>
+								</tr>
+								<tr>
+									<th>문의내용 </th>
+									<td colspan="4"><%=q.getQnaContent() %></td>
+								</tr>
+								<tr>
+									<th rowspan="4" style="vertical-align:center">답변내용</th>
+									<td colspan="3"><textarea rows="10" cols="95" name="answerContent" id="qnaContent" style="resize:none;" readonly><%if(q.getQnaAnswer() == null){%><%} else {%><%=q.getQnaAnswer() %><%} %></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="4" style="text-align:center"><input type="button" id="goMainBtn" value="목록으로"></td>
+								</tr>
+							
 							<%} %>
 						</table>
 					</div>
@@ -120,16 +115,15 @@
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					</div>
                 </div>
-                
+                </form>
             </div>
 
         </div>
     </div>
     <script>
-	    $("#tableArea input").on("click",function(){
-			var num = $(this).parent().parent().children().eq(0).text();
-			location.href="<%= request.getContextPath()%>/qnaDetail.my?no="+num;
-		})
+    	$("#goMainBtn").on("click",function(){
+    		location.href="<%=request.getContextPath()%>/qnaList.my";
+    	})
     </script>
 </body>
 <footer>
