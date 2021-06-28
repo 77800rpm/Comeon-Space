@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import enroll.model.vo.Enroll;
+import img.model.service.ImgService;
 import img.model.vo.Img;
+import member.model.vo.Member;
 import product.model.service.ProductService;
 import qna.model.service.QnaService;
 import qna.model.vo.Qna;
@@ -37,10 +40,13 @@ public class ProductDetailServlet extends HttpServlet {
 		
 		int no = Integer.parseInt(request.getParameter("no")); // 주소 no=?
 		
+		HttpSession session = request.getSession();
+		int userNum = ((Member)(session.getAttribute("loginUser"))).getUserNum();
 		
 		Enroll product = new ProductService().selectProduct(no);
 		
 		ProductService pService = new ProductService();
+		Img profile = new ImgService().selectMember(userNum);
 		ArrayList<Img> fileList = pService.selectThumbnail(no);
 		ArrayList<Qna> qnaList = new QnaService().selectQna(no);
 
@@ -49,6 +55,7 @@ public class ProductDetailServlet extends HttpServlet {
 		if(product != null) {
 			page = "WEB-INF/views/product/productDetailPage.jsp";
 			
+			request.setAttribute("img", profile);
 			request.setAttribute("qnaList", qnaList);
 			request.setAttribute("no", no);
 			request.setAttribute("product", product);

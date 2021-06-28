@@ -8,6 +8,7 @@
 	ArrayList<Qna> qnaList = (ArrayList)request.getAttribute("qnaList");
 	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList"); 
 	Img titleImg = fileList.get(0);
+	Img profile = (Img)request.getAttribute("img");
 	
 	String[] checkedFacility = new String[17];
 	String facilityStr = p.getpFacility();
@@ -151,9 +152,15 @@
     }
     
     .profile-size {
-    	zoom: 65%;
+    	zoom: 60%;
     	object-fit: cover;
 		border-radius: 100%;
+    }
+    .profile-size2 {
+    	zoom: 60%;
+    	object-fit: cover;
+		border-radius: 100%;
+		width: 200px; height: 200px;
     }
 	
     
@@ -536,15 +543,24 @@
 					<input type="hidden" id="userNum" value="<%=loginUser.getUserNum()%>">
 					<input type="hidden" id="userEmail" value="<%=loginUser.getUserEmail()%>">
 					<input type="hidden" id="pName" value="<%= p.getpName()%>">
+					<%if(profile != null){ %>
+						<input type="hidden" id="profile" value="<%=profile.getImgChange()%>">
+					<%} %>
 				<%} %>
 				<div id="qna-all-list">
 					<div id="qnaSelectTable">
 					<%if(qnaList.isEmpty()){ %>
 							<div>등록된 Q&A가 없습니다.</div>
-					<%} else {%>
+					<%} else { %>
 						<%for(Qna qna : qnaList){ %>
 							<div class="row">
-								<div class="pro-photo col-md-1 profile-size"><img class="profile-size" src="resources/image/defaultProfile.png"></div>
+								<div class="pro-photo col-md-1 profile-size">
+									<%if(qna.getUserProfile() == null){ %>
+										<img class="profile-size" src="resources/image/defaultProfile.png">
+									<%} else {%>
+										<img class="profile-size2" src="<%=request.getContextPath()%>/img_upload/<%=qna.getUserProfile()%>">
+									<%} %>
+								</div>
 								<div class="pro-desc col-md-6" id="qnaList">					
 									<p class="qna-nickname"><%=qna.getUserNick() %>　<span class="qna-date"><%=qna.getQnaDate() %></span></p>
 									<p><%=qna.getQnaContent() %></p><br>														
@@ -716,6 +732,7 @@
     	var hostNum = $("#hostQnaNum").val();
     	var userNum = $("#userNum").val();
     	var bId = $("#bId").val();
+    	var profile = $("#profile").val();
     	var content = $("#qnaContent").val();
     	var userEmail = $("#userEmail").val();
     	var pName = $("#pName").val();
@@ -725,7 +742,7 @@
     	} else {
 	    	$.ajax({
 	    		url:"insertQna.qa",
-	    		data:{hostNum:hostNum, userNum:userNum, bId:bId, content:content, userEmail:userEmail, pName:pName},
+	    		data:{hostNum:hostNum, userNum:userNum, bId:bId, content:content, userEmail:userEmail, pName:pName, profile:profile},
 	    		success:function(data){
 	    				$replyTable = $("#qnaSelectTable");
 						$replyTable.html('');

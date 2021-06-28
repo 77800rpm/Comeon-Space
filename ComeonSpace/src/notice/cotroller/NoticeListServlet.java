@@ -63,7 +63,7 @@ public class NoticeListServlet extends HttpServlet {
 		
 		
 		request.setCharacterEncoding("UTF-8");
-		ArrayList<Notice> list = nService.selectNotice(pi);
+		ArrayList<Notice> list = nService.selectNotice();
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/views/notice/noticeList.jsp").forward(request, response);
