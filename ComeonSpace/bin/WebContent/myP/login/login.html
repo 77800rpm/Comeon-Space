@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/templatemo.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+<title>로그인</title>
+
+<style>
+	input, button{height: 50px !important;}
+	
+	/* 입력할 부분 클릭 시, 겉에 태두리 생기는 부분*/
+	.form-control:focus{color:#212529;background-color:#fff;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
+	
+	/* 로그인 버튼 */
+	.login{background: rgb(15, 103, 86, 30); color: white; font-weight: bold !important;}
+	.kakao{background: #F7E600; color: #3A1D1D; font-weight: bold !important;}
+	.naver{background: #2DB400; color: white; font-weight: bold !important;}
+	.signUp{background: WhiteSmoke; font-weight: bold !important;}
+	
+	hr{color: gray;}
+</style>
+</head>
+<body>
+	<br><br><br>
+
+	<!-- title -->
+	<div class="container">
+		<div class="row text-center mb-4">
+			<h1>Login</h1>
+		</div>
+	</div>
+	<!-- title -->
+
+	<!-- 이메일 로그인 -->
+	<form>
+	<div class="container">
+		<div class="col-md-4 m-auto">
+			<input type="text" class="form-control mt-1 mb-2" id="id" name="id" placeholder="아이디(이메일)" required>
+			<input type="text" class="form-control mt-1 mb-2" id="pwd" name="pwd" placeholder="비밀번호" required>
+			<input type="submit" class="form-control mt-1 login" id="pwd" value="로그인">
+		</div>
+	</div>
+	</form>
+	<!-- 이메일 로그인 -->
+	
+	<!-- 회원가입 / 소셜 로그인 -->
+	<form>
+	<div class="container">
+		<div class="col-md-4 m-auto">			
+			<button class="form-control mt-1 signUp" id="signUp">회원가입</button>
+			<br><hr><br>
+			<p class="text-center m-auto mb-3">SNS Login</p>
+			<button class="form-control mt-1 mb-2 kakao" id="kakao">카카오 로그인</button>
+			<button class="form-control mt-1 naver" id="naver">네이버 로그인</button>
+		</div>
+	</div>
+	</form>
+	<!-- 소셜 로그인 -->
+</body>
+</html>

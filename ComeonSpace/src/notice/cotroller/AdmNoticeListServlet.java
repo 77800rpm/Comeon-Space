@@ -15,7 +15,7 @@ import notice.model.vo.Notice;
 /**
  * Servlet implementation class AdmNoticeListServlet
  */
-@WebServlet("/list.no")
+@WebServlet("/admList.no")
 public class AdmNoticeListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,8 +35,8 @@ public class AdmNoticeListServlet extends HttpServlet {
 		ArrayList<Notice> list = new NoticeService().admselectList();
 		
 		request.setAttribute("list", list);
-//		request.getRequestDispatcher("WEB-INF/views/admin/page5_notice2.jsp").forward(request, response);
-		request.getRequestDispatcher("page5_notice2.jsp").forward(request, response);
+//		request.getRequestDispatcher("WEB-INF/views/admin/admNoticeList.jsp").forward(request, response);
+		request.getRequestDispatcher("admNoticeList.jsp").forward(request, response);
 	}
 
 	/**

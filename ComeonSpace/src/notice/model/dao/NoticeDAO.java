@@ -85,18 +85,16 @@ public class NoticeDAO {
 		ResultSet rset = null;
 		Notice no = null;
 		
-		String query = prop.getProperty("detailNotice");
+		String query = prop.getProperty("admDetailNotice");
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, num);
 			
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
-				no = new Notice(rset.getInt("BOARDNOTICE_NUM"),
-								rset.getString("BOARDNOTICE_TITLE"),
+				no = new Notice(rset.getString("BOARDNOTICE_TITLE"),
 								rset.getString("BOARDNOTICE_CONTENT"),
 								rset.getDate("BOARDNOTICE_DATE"));
-				no.setnWriter(rset.getString("BOARDNOTICE_WRITER"));
 			}
 			
 			
@@ -161,7 +159,7 @@ public class NoticeDAO {
 		ResultSet rset = null;
 		ArrayList<Notice> list = new ArrayList<Notice>();
 		
-		String query = prop.getProperty("selectNotice");
+		String query = prop.getProperty("admSelectNotice");
 		
 		try {
 			stmt = conn.createStatement();
@@ -170,11 +168,8 @@ public class NoticeDAO {
 			while(rset.next()) {
 				Notice no = new Notice(rset.getInt("BOARDNOTICE_NUM"),
 						rset.getString("BOARDNOTICE_TITLE"),
-						rset.getString("BOARDNOTICE_CONTENT"),
-						rset.getString("BOARDNOTICE_CATEGORY"),
-						rset.getInt("ADM_NUM"),
-						rset.getDate("BOARDNOTICE_DATE"));
-//				no.setnWriter(rset.getString("BOARDNOTICE_WRITER"));
+						rset.getDate("BOARDNOTICE_DATE"),
+						rset.getString("ADM_NAME"));
 				
 				list.add(no);
 			}
@@ -194,6 +189,7 @@ public class NoticeDAO {
 		int result = 0;
 		
 		String query = prop.getProperty("selectListCount");
+		
 		try {
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(query);
@@ -205,6 +201,74 @@ public class NoticeDAO {
 		} finally {
 			close(rset);
 			close(stmt);
+		}
+		
+		return result;
+	}
+	public int admInsertNotice(Connection conn, Notice n) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("admInsertNotice");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, n.getnTitle());
+			pstmt.setString(2, n.getnContent());
+			pstmt.setString(3, n.getAdmName());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public Notice admDetailNotice(Connection conn, int num) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Notice no = null;
+		
+		String query = prop.getProperty("admDetailNotice");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, num);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				no = new Notice();
+				no.setnNum(rset.getInt("BOARDNOTICE_NUM"));
+				no.setnTitle(rset.getString("BOARDNOTICE_TITLE"));
+				no.setnContent(rset.getString("BOARDNOTICE_CONTENT"));
+				no.setDate(rset.getDate("BOARDNOTICE_DATE"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return no;
+	}
+
+	public int admDeleteNotice(Connection conn, int num) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("admDeleteNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, num);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
 		
 		return result;

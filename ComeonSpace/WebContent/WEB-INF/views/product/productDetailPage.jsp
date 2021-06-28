@@ -3,6 +3,8 @@
 <%
 	int bId = (int)request.getAttribute("no");
 	Enroll p = (Enroll)request.getAttribute("product");
+	
+	Member loginUser = (Member)session.getAttribute("loginUser");
 
 	ArrayList<Qna> qnaList = (ArrayList)request.getAttribute("qnaList");
 	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList"); 
@@ -75,6 +77,7 @@
 	 a:link{ color: #0f6756; text-decoration: none;}
 	 a:visited{ color: #0f6756; text-decoration: none;}
 	 a:hover{ color: #0f6756; text-decoration: none;}
+
 	 
 </style>
 
@@ -111,6 +114,46 @@
 	.detailDiv:hover{cursor:pointer;}
 	.hiddenBtn{display:none;}
 	
+	#qna-nickname {
+		color: #0f6756 !important;
+		font-weight: 700;
+	}
+	
+	#qnaHost {
+		color: #0f6756 !important;	
+		font-weight: 700;		
+	    font-size: 20px !important;		
+	}
+	
+	#qna-date {
+		color: #829894 !important;
+		zoom : 80%;
+	}
+	
+	#qna-all-list {
+	 	font-family: 'Nanum Gothic', sans-serif !important;	
+	    font-size: 20px !important;	
+    }
+    
+    .qnaBtn {
+	   zoom: 90%;
+    }
+    
+    .qnaText {
+		resize:none;
+		line-height: 30px;
+		background-color: #eef4f3;   	
+		border: none;
+		border-radius: 10px;
+    
+    }
+    
+    .profile-size {
+    	zoom: 65%;
+    	object-fit: cover;
+		border-radius: 100%;
+    }
+	
 </style>
 	
 	<!-- 지도 api 스크립트 -->
@@ -123,7 +166,6 @@
 
 
 	<!-- Start Header -->
-    <%@ include file="../common/header.jsp" %>
     <!-- Close Header -->
 
     <!-- Modal -->
@@ -485,45 +527,48 @@
 				<div id="menu5">
 				<hr size="3px"><br><br>
 				<h3 class="bar-menu">Q&A</h3>
+				<br><br><br>
 				<%if(loginUser != null){ %>
 					<input type="hidden" id="userNum" value="<%=loginUser.getUserNum()%>">
 					<input type="hidden" id="userEmail" value="<%=loginUser.getUserEmail()%>">
 					<input type="hidden" id="pName" value="<%= p.getpName()%>">
 				<%} %>
-				<div>
-					<table id="qnaSelectTable">
+				<div id="qna-all-list">
+					<div id="qnaSelectTable">
 					<%if(qnaList.isEmpty()){ %>
-						<tr>
-							<td>등록된 Q&A가 없습니다.</td>
-						</tr>
+							<div>등록된 Q&A가 없습니다.</div>
 					<%} else {%>
 						<%for(Qna qna : qnaList){ %>
-							<tr>
-								<td width="20%"><%=qna.getUserNick() %></td>
-								<td colspan="2" width="71%"> : <%=qna.getQnaContent() %></td>
-								<td><%=qna.getQnaDate() %></td>
-							</tr>
+							<div class="row">
+								<div class="pro-photo col-md-1 profile-size"><img class="profile-size" src="resources/image/defaultProfile.png"></div>
+								<div class="pro-desc col-md-6" id="qnaList">					
+									<p id="qna-nickname"><%=qna.getUserNick() %>　<span id="qna-date"><%=qna.getQnaDate() %></span></p>
+									<p><%=qna.getQnaContent() %></p><br>																
+								</div>
+									
+							</div>	
 						<%} %>
 					<%} %>
-					</table>
+					</div>
 				</div>
-				<br>
+				<br><br>
 				<div>
+				<br>
 					<table>
 						<%if(loginUser != null){ %>
 							<tr>
-								<td>호스트에게 질문하기</td>
+								<td id="qnaHost">호스트에게 질문하기</td>
 							</tr>
 							<tr>
-								<td><textarea rows="1" cols="80" id="qnaContent" style="resize:none;"></textarea></td>
-								<td>&nbsp;<input type="button" id="qnaBtn" value="문의하기"></td>
+								<td><textarea rows="1" cols="80" id="qnaContent" class="qnaText"></textarea></td>
+								<td>&nbsp;<input type="button" id="browser5" class="qnaBtn" value="문의하기"></td>
 							</tr>
 						<%} %>
 					</table>
 				</div>
 				
 				</div>
-				<br><br><br><br>
+				<br><br>
 				<div id="menu6">
 				<hr size="3px"><br><br>
 				<h3 class="bar-menu">이용 후기</h3>
@@ -671,7 +716,7 @@
     	}
     })
     //Q&A 등록하기
-    $("#qnaBtn").on("click",function(){
+    $("#browser5").on("click",function(){
     	var hostNum = $("#hostQnaNum").val();
     	var userNum = $("#userNum").val();
     	var bId = $("#bId").val();
@@ -717,6 +762,7 @@
 <script>
 	<!-- 결제..!! -->
 	$('#buy').on('click', function(){
+		<%if(loginUser != null){ %>
 	   var IMP = window.IMP; // 생략해도 괜찮.
 	   IMP.init("imp14686250"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
 	
@@ -728,8 +774,8 @@
 	        buyer_email: '<%=loginUser.getUserEmail()%>',
 	        buyer_name: '<%=loginUser.getUserName()%>',
 	        buyer_tel: '<%=loginUser.getUserPhone()%>',
-	        buyer_addr: "(주)ComeOnSpace",
-	        buyer_postcode: "08208"
+	        buyer_addr: '<%= p.getpNum() %>',
+	        buyer_postcode: '<%= p.getUserNum() %>'
 	      }, function (rsp) { // callback
 	        if (rsp.success) {   // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
 	           
@@ -768,7 +814,11 @@
 	            alert(msg);
 	        }
 	      });
-	
+	<% } else { %>
+		var msg = '로그인이 필요합니다.';
+		
+		alert(msg);
+	<% } %>
 	});
 	</script>
 
