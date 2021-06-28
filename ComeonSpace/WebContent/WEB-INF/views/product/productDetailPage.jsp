@@ -37,8 +37,6 @@
 			}
 		}
 	}
-	
-	
 %>    
     
 <!DOCTYPE html>
@@ -69,85 +67,87 @@
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     
 
 <style type="text/css">
-	 a:link{ color: #0f6756; text-decoration: none;}
-	 a:visited{ color: #0f6756; text-decoration: none;}
-	 a:hover{ color: #0f6756; text-decoration: none;}
-	 
+    a:link{ color: #0f6756; text-decoration: none;}
+    a:visited{ color: #0f6756; text-decoration: none;}
+    a:hover{ color: #0f6756; text-decoration: none;}
+    
 </style>
 
 <style>
-	.bar-menu{color: #0f6756; font-weight: bold;}
-	#logoImg{width: 60px; height: auto;}
-	#menuImg{width: 40px; height: auto;}
-	.header-list{float: right; padding: 0px;}
- 	.nav-link{padding: 4px; font-size: 12px !important;}
- 	.main-login{
- 		background-color: green;
- 		border-radius: 5px 5px 5px 5px;
- 		color: white !important;
-	}
-	#search{border: none; border-bottom: 1px solid black;}
-	#searchImg{width:15px; height: auto;}	
-	.footer{text-align: center;}
-	.footer-list{margin: 6px;}
-	
-	
-	
-	/* 입력할 부분 클릭 시, 겉에 태두리 생기는 부분*/
-	textarea:focus{color:#212529;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
-	
-	/* 버튼 클릭 (편의시설/정기휴무일) 디자인 */
-	.btn-primary{color:DimGrey; background-color:white; border-color:lightgray;}
-	.btn-primary:hover{color:DimGrey; background-color:white; border-color:lightgray;}
-	input[type=checkbox]:checked + label {color:white; background-color:rgb(15, 103, 86);}
-	
-	/*체크박스를 다 안보이게*/
-	input[type=checkbox]{display:none;}
-	.detailDiv{display:inline-block;}
-	.detailDiv:hover{cursor:pointer;}
-	.hiddenBtn{display:none;}
-	
-	.qna-nickname {
-		color: #0f6756 !important;
-		font-weight: 700;
-	}
-	
-	
-	.qna-nickname-host {
-		color: #498579 !important;
-		font-weight: 700;
-	}
-	
-	#qnaHost {
-		color: #0f6756 !important;	
-		font-weight: 700;		
-	    font-size: 20px !important;		
-	}
-	
-	.qna-date {
-		color: #829894 !important;
-		zoom : 80%;
-	}
-	
-	#qna-all-list {
-	 	font-family: 'Nanum Gothic', sans-serif !important;	
-	    font-size: 18px !important;	
+   .bar-menu{color: #0f6756; font-weight: bold;}
+   #logoImg{width: 60px; height: auto;}
+   #menuImg{width: 40px; height: auto;}
+   .header-list{float: right; padding: 0px;}
+    .nav-link{padding: 4px; font-size: 12px !important;}
+    .main-login{
+       background-color: green;
+       border-radius: 5px 5px 5px 5px;
+       color: white !important;
+   }
+   #search{border: none; border-bottom: 1px solid black;}
+   #searchImg{width:15px; height: auto;}   
+   .footer{text-align: center;}
+   .footer-list{margin: 6px;}
+   
+   
+   
+   /* 입력할 부분 클릭 시, 겉에 태두리 생기는 부분*/
+   textarea:focus{color:#212529;border-color:rgb(15, 103, 86, 30);outline:0;box-shadow:0 0 0 .1rem rgb(15, 103, 86, 30)}
+   
+   /* 버튼 클릭 (편의시설/정기휴무일) 디자인 */
+   .btn-primary{color:DimGrey; background-color:white; border-color:lightgray;}
+   .btn-primary:hover{color:DimGrey; background-color:white; border-color:lightgray;}
+   input[type=checkbox]:checked + label {color:white; background-color:rgb(15, 103, 86);}
+   
+   /*체크박스를 다 안보이게*/
+   input[type=checkbox]{display:none;}
+   .detailDiv{display:inline-block;}
+   .detailDiv:hover{cursor:pointer;}
+   .hiddenBtn{display:none;}
+   
+   .qna-nickname {
+      color: #0f6756 !important;
+      font-weight: 700;
+   }
+   
+   
+   .qna-nickname-host {
+      color: #498579 !important;
+      font-weight: 700;
+   }
+   
+   #qnaHost {
+      color: #0f6756 !important;   
+      font-weight: 700;      
+       font-size: 20px !important;      
+   }
+   
+   .qna-date {
+      color: #829894 !important;
+      zoom : 80%;
+   }
+   
+   #qna-all-list {
+       font-family: 'Nanum Gothic', sans-serif !important;   
+       font-size: 18px !important;   
     }
     
     .qnaBtn {
-	   zoom: 90%;
+      zoom: 90%;
     }
     
     .qnaText {
-		resize:none;
-		line-height: 30px;
-		background-color: #eef4f3;   	
-		border: none;
-		border-radius: 10px;
+      resize:none;
+      line-height: 30px;
+      background-color: #eef4f3;      
+      border: none;
+      border-radius: 10px;
+      position: relative;
+      top: 4px;
     
     }
     
@@ -162,27 +162,27 @@
 		border-radius: 100%;
 		width: 200px; height: 200px;
     }
-	
+   
     
     .profile-size-host {
-    	zoom: 65%;
-    	object-fit: cover;
-		position: relative;
-		left: 100px;
+       zoom: 65%;
+       object-fit: cover;
+      position: relative;
+      left: 100px;
     }
-	
+   
 </style>
-	
-	<!-- 지도 api 스크립트 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1165f3d77895f712c2f9db5d4f67bb0d&libraries=services,clusterer,drawing"></script>
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	
+   
+   <!-- 지도 api 스크립트 -->
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1165f3d77895f712c2f9db5d4f67bb0d&libraries=services,clusterer,drawing"></script>
+   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   
 </head>
 
 <body>
 
 
-	<!-- Start Header -->
+   <!-- Start Header -->
     <!-- Close Header -->
 
     <!-- Modal -->
@@ -276,7 +276,7 @@
                                 <!--Third slide-->
                                 <div class="carousel-item">
                                     <div class="row">
-                      					 <div class="col-4">
+                                      <div class="col-4">
                                             <a href="#">
                                                 <img class="card-img img-fluid" src="<%= request.getContextPath() %>/img_upload/<%= fileList.get(1).getImgChange() %>" alt="Product Image 1">
                                             </a>
@@ -318,19 +318,19 @@
                             
                             
 
-							
+                     
                             </h1>
                             
                            
-                            <input type="hidden" value="<%= p.getpNum() %>">	
-                            <input type="hidden" value="<%= p.getUserNum() %>" name="hostNum" id="hostQnaNum">	
+                            <input type="hidden" value="<%= p.getpNum() %>">   
+                            <input type="hidden" value="<%= p.getUserNum() %>" name="hostNum" id="hostQnaNum">   
                             <input type="hidden" value="<%= bId %>" name="bId" id="bId">
                             
                             
-                            				                           
+                                                                   
                             <p class="location">
-							<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBSc1x%2Fbtq5M27RmQL%2FWqkF4T7WO9bBbBMfwp3690%2Fimg.png" width="25" height="25">
-							<span id="location-api"><%= p.getpLocation() %></span></p><input type = "hidden" id="api-adrr" value="<%= p.getpLocation() %>">
+                     <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBSc1x%2Fbtq5M27RmQL%2FWqkF4T7WO9bBbBMfwp3690%2Fimg.png" width="25" height="25">
+                     <span id="location-api"><%= p.getpLocation() %></span></p><input type = "hidden" id="api-adrr" value="<%= p.getpLocation() %>">
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
@@ -339,8 +339,8 @@
                                 <i class="fa fa-star text-secondary"></i>
                                 <span class="list-inline-item text-dark">평점 <b>4.8</b>　|　<b>36</b> 개의 후기</span>
                             </p>
-							
-							<br>
+                     
+                     <br>
 
                             <h6>한 줄 소개 :</h6>
                             <p><%= p.getpIntro() %></p>
@@ -357,7 +357,7 @@
                                 </li>
                             </ul>
 
-							<br>
+                     <br>
 
                             <form action="" method="GET">
                                 <input type="hidden" name="product-title" value="Activewear">
@@ -384,15 +384,15 @@
                                 
                                 <div>
                                 <hr><br>
-									<p class="total-price">선택 날짜 및 최종 금액</p>
-									<span class="dateResult">날짜를 지정해 주세요.</span><span> </span><span class="dateWeekResult"></span>
-									<br>
-									<span> 총 </span> <span
-										style="color: #0f6756; font-size: 150%; font-weight: bold"><%= p.getProductPrice() %></span>
-									<span> 원</span>
-								</div>
-								
-								
+                           <p class="total-price">선택 날짜 및 최종 금액</p>
+                           <span class="dateResult">날짜를 지정해 주세요.</span><span> </span><span class="dateWeekResult"></span>
+                           <br>
+                           <span> 총 </span> <span
+                              style="color: #0f6756; font-size: 150%; font-weight: bold"><%= p.getProductPrice() %></span>
+                           <span> 원</span>
+                        </div>
+                        
+                        
                                 <br>
                                 
                                 <div class="row pb-3">
@@ -419,90 +419,90 @@
     <section class="py-5">
         <div class="container">
             
-			<div id="menubar" class="text-center p-2 pb-3">
-				<br><br>
-				<span id="bt011"><a href="#menu1">공간 소개</a></span>
-				<b>　　　</b>
-				<span id="bt022"><a href="#menu2">편의 시설</a></span>
-				<b>　　　</b>
-				<span id="bt033"><a href="#menu3">유의 사항</a></span>
-				<b>　　　</b>
-				<span id="bt044"><a href="#menu4">오시는 길</a></span>
-				<b>　　　</b>
-				<span id="bt055"><a href="#menu5">Q&A</a></span>
-				<b>　　　</b>
-				<span id="bt066"><a href="#menu6">이용 후기</a></span>
-				<br><br>
-			</div>
+         <div id="menubar" class="text-center p-2 pb-3">
+            <br><br>
+            <span id="bt011"><a href="#menu1">공간 소개</a></span>
+            <b>　　　</b>
+            <span id="bt022"><a href="#menu2">편의 시설</a></span>
+            <b>　　　</b>
+            <span id="bt033"><a href="#menu3">유의 사항</a></span>
+            <b>　　　</b>
+            <span id="bt044"><a href="#menu4">오시는 길</a></span>
+            <b>　　　</b>
+            <span id="bt055"><a href="#menu5">Q&A</a></span>
+            <b>　　　</b>
+            <span id="bt066"><a href="#menu6">이용 후기</a></span>
+            <br><br>
+         </div>
 
-			<section>
-			
-				
-				<div id="menu1">
-				<hr size="3px"><br><br>
-				<h3 class="bar-menu">공간 소개</h3>
-				<br>
-				<pre id="p-Detail">
-				
+         <section>
+         
+            
+            <div id="menu1">
+            <hr size="3px"><br><br>
+            <h3 class="bar-menu">공간 소개</h3>
+            <br>
+            <pre id="p-Detail">
+            
 <%= p.getpDetail() %>
-				
-				</pre>
-				</div>
-				<br><br>
-				<div id="menu2">
-				<hr size="3px"><br><br>
-				<h3 class="bar-menu">편의 시설</h3>
-				<br>
+            
+            </pre>
+            </div>
+            <br><br>
+            <div id="menu2">
+            <hr size="3px"><br><br>
+            <h3 class="bar-menu">편의 시설</h3>
+            <br>
 
-				
-			<div class="row">
-				<div class="mb-3">
-				<label class="mb-2"></label><br>
-					<input type="checkbox" id="chk1" value="TV" name="facility" <%= checkedFacility[0] %> disabled>
-					<label for="chk1" class="btn btn-primary">TV</label>
-					<input type="checkbox" id="chk2" value="빔 프로젝트" name="facility" <%= checkedFacility[1] %> disabled>
-					<label for="chk2" class="btn btn-primary">빔 프로젝트</label>
-					<input type="checkbox" id="chk3" value="마이크" name="facility" <%= checkedFacility[2] %> disabled>
-					<label for="chk3" class="btn btn-primary">마이크</label>
-					<input type="checkbox" id="chk4" value="주차공간" name="facility" <%= checkedFacility[3] %> disabled>
-					<label for="chk4" class="btn btn-primary">주차공간</label>
-					<input type="checkbox" id="chk5" value="내부 화장실" name="facility" <%= checkedFacility[4] %> disabled>
-					<label for="chk5" class="btn btn-primary">내부 화장실</label>
-					<input type="checkbox" id="chk6" value="PC/노트북" name="facility" <%= checkedFacility[5] %> disabled>
-					<label for="chk6" class="btn btn-primary">PC/노트북</label>
-					<input type="checkbox" id="chk7" value="금연" name="facility" <%= checkedFacility[6] %> disabled>
-					<label for="chk7" class="btn btn-primary">금연</label>
-					<input type="checkbox" id="chk8" value="취사시설" name="facility" <%= checkedFacility[7] %> disabled>
-					<label for="chk8" class="btn btn-primary">취사시설</label>
-					<input type="checkbox" id="chk9" value="복사/인쇄기" name="facility" <%= checkedFacility[8] %> disabled>
-					<label for="chk9" class="btn btn-primary">복사/인쇄기</label>
-					<input type="checkbox" id="chk10" value="화이트보드" name="facility" <%= checkedFacility[9] %> disabled>
-					<label for="chk10" class="btn btn-primary">화이트보드</label>
-					<input type="checkbox" id="chk11" value="전신거울" name="facility" <%= checkedFacility[10] %> disabled>
-					<label for="chk11" class="btn btn-primary">전신거울</label>
-					<input type="checkbox" id="chk12" value="의자/테이블" name="facility" <%= checkedFacility[11] %> disabled>
-					<label for="chk12" class="btn btn-primary">의자/테이블</label>
-					<input type="checkbox" id="chk13" value="공용라운지" name="facility" <%= checkedFacility[12] %> disabled>
-					<label for="chk13" class="btn btn-primary">공용라운지</label>
-					<input type="checkbox" id="chk14" value="테라스/루트탑" name="facility" <%= checkedFacility[13] %> disabled>
-					<label for="chk14" class="btn btn-primary">테라스/루트탑</label>
-					<input type="checkbox" id="chk15" value="탈의실" name="facility" <%= checkedFacility[14] %> disabled>
-					<label for="chk15" class="btn btn-primary">탈의실</label>
-					<input type="checkbox" id="chk16" value="반려동물 동반가능" name="facility" <%= checkedFacility[15] %> disabled>
-					<label for="chk16" class="btn btn-primary">반려동물 동반가능</label>
-					<input type="checkbox" id="chk17" value="음식물 반입가능" name="facility" <%= checkedFacility[16] %> disabled>
-					<label for="chk17" class="btn btn-primary">음식물 반입가능</label>
-				</div>
-			</div>
-	
-				
-				</div>
-				<br><br>
-				<div id="menu3">
-				<hr size="3px"><br><br>
-				<h3 class="bar-menu">유의 사항</h3>
-				<br>
-				<pre>
+            
+         <div class="row">
+            <div class="mb-3">
+            <label class="mb-2"></label><br>
+               <input type="checkbox" id="chk1" value="TV" name="facility" <%= checkedFacility[0] %> disabled>
+               <label for="chk1" class="btn btn-primary">TV</label>
+               <input type="checkbox" id="chk2" value="빔 프로젝트" name="facility" <%= checkedFacility[1] %> disabled>
+               <label for="chk2" class="btn btn-primary">빔 프로젝트</label>
+               <input type="checkbox" id="chk3" value="마이크" name="facility" <%= checkedFacility[2] %> disabled>
+               <label for="chk3" class="btn btn-primary">마이크</label>
+               <input type="checkbox" id="chk4" value="주차공간" name="facility" <%= checkedFacility[3] %> disabled>
+               <label for="chk4" class="btn btn-primary">주차공간</label>
+               <input type="checkbox" id="chk5" value="내부 화장실" name="facility" <%= checkedFacility[4] %> disabled>
+               <label for="chk5" class="btn btn-primary">내부 화장실</label>
+               <input type="checkbox" id="chk6" value="PC/노트북" name="facility" <%= checkedFacility[5] %> disabled>
+               <label for="chk6" class="btn btn-primary">PC/노트북</label>
+               <input type="checkbox" id="chk7" value="금연" name="facility" <%= checkedFacility[6] %> disabled>
+               <label for="chk7" class="btn btn-primary">금연</label>
+               <input type="checkbox" id="chk8" value="취사시설" name="facility" <%= checkedFacility[7] %> disabled>
+               <label for="chk8" class="btn btn-primary">취사시설</label>
+               <input type="checkbox" id="chk9" value="복사/인쇄기" name="facility" <%= checkedFacility[8] %> disabled>
+               <label for="chk9" class="btn btn-primary">복사/인쇄기</label>
+               <input type="checkbox" id="chk10" value="화이트보드" name="facility" <%= checkedFacility[9] %> disabled>
+               <label for="chk10" class="btn btn-primary">화이트보드</label>
+               <input type="checkbox" id="chk11" value="전신거울" name="facility" <%= checkedFacility[10] %> disabled>
+               <label for="chk11" class="btn btn-primary">전신거울</label>
+               <input type="checkbox" id="chk12" value="의자/테이블" name="facility" <%= checkedFacility[11] %> disabled>
+               <label for="chk12" class="btn btn-primary">의자/테이블</label>
+               <input type="checkbox" id="chk13" value="공용라운지" name="facility" <%= checkedFacility[12] %> disabled>
+               <label for="chk13" class="btn btn-primary">공용라운지</label>
+               <input type="checkbox" id="chk14" value="테라스/루트탑" name="facility" <%= checkedFacility[13] %> disabled>
+               <label for="chk14" class="btn btn-primary">테라스/루트탑</label>
+               <input type="checkbox" id="chk15" value="탈의실" name="facility" <%= checkedFacility[14] %> disabled>
+               <label for="chk15" class="btn btn-primary">탈의실</label>
+               <input type="checkbox" id="chk16" value="반려동물 동반가능" name="facility" <%= checkedFacility[15] %> disabled>
+               <label for="chk16" class="btn btn-primary">반려동물 동반가능</label>
+               <input type="checkbox" id="chk17" value="음식물 반입가능" name="facility" <%= checkedFacility[16] %> disabled>
+               <label for="chk17" class="btn btn-primary">음식물 반입가능</label>
+            </div>
+         </div>
+   
+            
+            </div>
+            <br><br>
+            <div id="menu3">
+            <hr size="3px"><br><br>
+            <h3 class="bar-menu">유의 사항</h3>
+            <br>
+            <pre>
 1) 하루 단위로 예약 가능합니다.
 
 2) 예약은 선입금으로 진행되며, 예약된 사용 시간 전에 퇴실해도 잔여 시간은 환불되지 않습니다. 단, 인원이나 시간 추가시에는 사후 결제 가능합니다.
@@ -521,14 +521,14 @@
 
 9) 앞뒤의 이용자를 위해, 정시 입실 및 정시 퇴실해주셔야 합니다. 추가 이용을 원하실 때에는 문의 주시면 안내해 드리겠습니다.
 
-10) 퇴실 전 칠판, 책상, 의자, 쓰레기 등을 정리해주시고, 이용하신 전자기기와 조명을 꺼주셔야 합니다.						
-				</pre>
-				</div>
-				<br><br>
-				<div id="menu4">
-				<hr size="3px"><br><br>
-				<h3 class="bar-menu">오시는 길</h3>
-				<br>
+10) 퇴실 전 칠판, 책상, 의자, 쓰레기 등을 정리해주시고, 이용하신 전자기기와 조명을 꺼주셔야 합니다.                  
+            </pre>
+            </div>
+            <br><br>
+            <div id="menu4">
+            <hr size="3px"><br><br>
+            <h3 class="bar-menu">오시는 길</h3>
+            <br>
 
 
 <div id="map" style="width:100%;height:550px;"></div>
@@ -613,10 +613,10 @@
 그들에게 풍부하게 우는 그들은 피다. 그들에게 놀이 창공에 가는 천자만홍이 우리 바로 봄바람이다. 얼마나 설산에서 끓는 많이 그들에게 속잎나고, 그들을 그들은 사라지지 사막이다. 밥을 과실이 그들의 청춘은 노래하며 없으면, 용기가 하는 것이다. 그러므로 그림자는 풍부하게 그들에게 구하지 말이다. 장식하는 품고 뛰노는 심장의 찬미를 살았으며, 노년에게서 끓는다. 대중을 풀이 없으면 긴지라 황금시대다. 따뜻한 이상 뭇 반짝이는 이상을 때문이다. 산야에 맺어, 끓는 피고 이상 같으며, 가지에 위하여, 있으랴? 그들에게 목숨을 인생의 앞이 길을 용기가 지혜는 심장은 그들의 있는가? 살 소리다.이것은 있을 봄날의 가지에 있는가?
 
 영원히 고행을 어디 소담스러운 위하여, 군영과 인간이 교향악이다. 끓는 뭇 열락의 쓸쓸하랴? 이상의 이 반짝이는 너의 피어나기 같은 끓는 위하여서. 따뜻한 이 있는 크고 별과 것이다. 끓는 이상 새 맺어, 방지하는 역사를 굳세게 그리하였는가? 따뜻한 그들의 있는 동산에는 간에 것이다. 그림자는 같은 청춘의 천고에 주며, 길지 우리 사막이다. 그들에게 전인 긴지라 때문이다. 눈에 부패를 방황하였으며, 귀는 우는 것이다.보라, 든 행복스럽고 간에 보라.
-				</div>
-				<br><br><br><br><hr><br><br><br><br>
-			</section>
-		
+            </div>
+            <br><br><br><br><hr><br><br><br><br>
+         </section>
+      
 
 
         </div>
@@ -632,10 +632,10 @@
     <footer>
       <div class="footer">
       <hr>
-		<span class="footer-list"><a>회사소개</a></span>      
-		<span class="footer-list"><a>이용약관</a></span>      
-		<span class="footer-list"><a>메뉴얼</a></span>      
-		<span class="footer-list"><a>고객센터</a></span>      
+      <span class="footer-list"><a>회사소개</a></span>      
+      <span class="footer-list"><a>이용약관</a></span>      
+      <span class="footer-list"><a>메뉴얼</a></span>      
+      <span class="footer-list"><a>고객센터</a></span>      
       </div>
     </footer>
     <!-- End Footer -->
@@ -766,7 +766,7 @@
     	}	
     })
     
-	</script>
+   </script>
 
 
 <!-- 결제..!! -->
@@ -775,92 +775,92 @@
   <!-- iamport.payment.js -->
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
-	<!-- 결제..!! -->
-	$('#buy').on('click', function(){
-		<%if(loginUser != null){ %>
-	   var IMP = window.IMP; // 생략해도 괜찮.
-	   IMP.init("imp14686250"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
-	
-	      IMP.request_pay({   // IMP.request_pay(param, callback) 호출  // param
-	        pay_method: "kakaopay",
-	        merchant_uid: "merchant_" + new Date().getTime(),
-	        name: '<%= p.getpName() %>',
-	        amount: <%=p.getProductPrice()%>,
-	        buyer_email: '<%=loginUser.getUserEmail()%>',
-	        buyer_name: '<%=loginUser.getUserName()%>',
-	        buyer_tel: '<%=loginUser.getUserPhone()%>',
-	        buyer_addr: '<%= p.getpNum() %>',
-	        buyer_postcode: '<%= p.getUserNum() %>'
-	      }, function (rsp) { // callback
-	        if (rsp.success) {   // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-	           
-	             var msg = '결제가 완료되었습니다.';
-	             
-	             alert(msg);
-	
-	             //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-	             jQuery.ajax({
-	                url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
-	                type: 'POST',
-	                dataType: 'json',
-	                data: {
-	                   imp_uid : rsp.imp_uid
-	                   //기타 필요한 데이터가 있으면 추가 전달
-	                }
-	            }).done(function (data) {
-	              // 가맹점 서버 결제 API 성공시 로직
-	             if ( everythings_fine ) {
-	                var msg = '결제가 완료되었습니다.';
-	                   
-	                alert(msg);
-	             } else {
-	                //[3] 아직 제대로 결제가 되지 않았습니다.
-	                //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-	                var msg = '결제가 아직 완료되지 않았습니다.';
-	                
-	                alert(msg);
-	             }
-	          });  
-	        } else {
-	            // 결제 실패 시 로직
-	            var msg = '결제에 실패하였습니다.';
-	            msg += '에러내용 : ' + rsp.error_msg;
-	              
-	            alert(msg);
-	        }
-	      });
-	<% } else { %>
-		var msg = '로그인이 필요합니다.';
-		
-		alert(msg);
-	<% } %>
-	});
-	
-	
-	// 오늘 날짜
-	
-	var today = new Date();
-	today.setDate(today.getDate());
-	
-	// 최종 날짜
-	    $(document).ready(function(){
-	    	$("#dateselectbutton").change(function(){
-	    		var value = $(this).val();
-	    		console.log(value);
-	    		var weekName = new Array('일','월','화','수','목','금','토'); 
-	    		var day = new Date(value).getDay();
-	    		var dateWeek = weekName[day];
-	    		console.log(dateWeek);
-	    		
-				$(".dateResult").text(value);
-				$(".dateWeekResult").text("(" + dateWeek + ")");
-	    	});
-	    })
-	    
-		
-	</script>
-	
-	
+   <!-- 결제..!! -->
+   $('#buy').on('click', function(){
+      <%if(loginUser != null){ %>
+      var IMP = window.IMP; // 생략해도 괜찮.
+      IMP.init("imp14686250"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+   
+         IMP.request_pay({   // IMP.request_pay(param, callback) 호출  // param
+           pay_method: "kakaopay",
+           merchant_uid: "merchant_" + new Date().getTime(),
+           name: '<%= p.getpName() %>',
+           amount: <%=p.getProductPrice()%>,
+           buyer_email: '<%=loginUser.getUserEmail()%>',
+           buyer_name: '<%=loginUser.getUserName()%>',
+           buyer_tel: '<%=loginUser.getUserPhone()%>',
+           buyer_addr: '<%= p.getpNum() %>',
+           buyer_postcode: '<%= p.getUserNum() %>'
+         }, function (rsp) { // callback
+           if (rsp.success) {   // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
+              
+                var msg = '결제가 완료되었습니다.';
+                
+                alert(msg);
+   
+                //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+                jQuery.ajax({
+                   url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+                   type: 'POST',
+                   dataType: 'json',
+                   data: {
+                      imp_uid : rsp.imp_uid
+                      //기타 필요한 데이터가 있으면 추가 전달
+                   }
+               }).done(function (data) {
+                 // 가맹점 서버 결제 API 성공시 로직
+                if ( everythings_fine ) {
+                   var msg = '결제가 완료되었습니다.';
+                      
+                   alert(msg);
+                } else {
+                   //[3] 아직 제대로 결제가 되지 않았습니다.
+                   //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+                   var msg = '결제가 아직 완료되지 않았습니다.';
+                   
+                   alert(msg);
+                }
+             });  
+           } else {
+               // 결제 실패 시 로직
+               var msg = '결제에 실패하였습니다.';
+               msg += '에러내용 : ' + rsp.error_msg;
+                 
+               alert(msg);
+           }
+         });
+   <% } else { %>
+      var msg = '로그인이 필요합니다.';
+      
+      alert(msg);
+   <% } %>
+   });
+   
+   
+   // 오늘 날짜
+   
+   var today = new Date();
+   today.setDate(today.getDate());
+   
+   // 최종 날짜
+       $(document).ready(function(){
+          $("#dateselectbutton").change(function(){
+             var value = $(this).val();
+             console.log(value);
+             var weekName = new Array('일','월','화','수','목','금','토'); 
+             var day = new Date(value).getDay();
+             var dateWeek = weekName[day];
+             console.log(dateWeek);
+             
+            $(".dateResult").text(value);
+            $(".dateWeekResult").text("(" + dateWeek + ")");
+          });
+       })
+       
+      
+   </script>
+   
+   
 
 
 </body>
