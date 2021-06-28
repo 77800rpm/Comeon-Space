@@ -170,7 +170,6 @@ public class NoticeDAO {
 						rset.getString("BOARDNOTICE_TITLE"),
 						rset.getDate("BOARDNOTICE_DATE"),
 						rset.getString("ADM_NAME"));
-//				no.setnWriter(rset.getString("BOARDNOTICE_WRITER"));
 				
 				list.add(no);
 			}
@@ -184,6 +183,28 @@ public class NoticeDAO {
 		return list;
 	}
 
+	public int getListCount(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("selectListCount");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return result;
+	}
 	public int admInsertNotice(Connection conn, Notice n) {
 		PreparedStatement pstmt = null;
 		int result = 0;

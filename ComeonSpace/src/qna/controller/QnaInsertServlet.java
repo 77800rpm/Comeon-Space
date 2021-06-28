@@ -41,6 +41,7 @@ public class QnaInsertServlet extends HttpServlet {
 		int hostNum = Integer.parseInt(request.getParameter("hostNum"));
 		int userNum = Integer.parseInt(request.getParameter("userNum"));
 		int bId = Integer.parseInt(request.getParameter("bId"));
+		String userProfile = request.getParameter("profile");
 		String content = request.getParameter("content");
 		String userEmail = request.getParameter("userEmail");
 		String pName = request.getParameter("pName");
@@ -54,6 +55,7 @@ public class QnaInsertServlet extends HttpServlet {
 		q.setQnaContent(content);
 		q.setUserNick(member.getUserNic());
 		q.setpName(pName);
+		q.setUserProfile(userProfile);
 		
 		ArrayList<Qna> qList = new QnaService().insertQna(q);
 		
