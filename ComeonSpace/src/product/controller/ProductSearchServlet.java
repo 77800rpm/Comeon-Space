@@ -33,19 +33,16 @@ public class ProductSearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String f_location = request.getParameter("product_location");
-		String field = request.getParameter("field");
 		
 		ArrayList<Enroll> list = new ProductService().selectList();
-		ArrayList<Enroll> slist = new ProductService().selectList(f_location);
 		ArrayList<Img> fList = new ProductService().selectFList();
 		
+
 		String page = null;
 		if(list != null && fList != null) {
 			page = "WEB-INF/views/product/productSearchList.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("fList", fList);
-			request.setAttribute("slist", slist);
 			
 		} else {
 			page = "WEB-INF/views/common/errorPage.jsp";

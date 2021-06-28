@@ -90,11 +90,11 @@ public class ProductService {
 		return list;
 	}
 	
-	public ArrayList<Enroll> selectList(String product_location) {
+	public ArrayList<Enroll> selectList(String PRODUCT_LOCATION, String PRODUCT_CATEGORY, String PRODUCT_HOLIDAY) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Enroll> slist = new ProductDAO().selectList(product_location, conn);
+		ArrayList<Enroll> slist = new ProductDAO().selectList(PRODUCT_LOCATION, PRODUCT_CATEGORY, PRODUCT_HOLIDAY, conn);
 		
 		close(conn);
 		
