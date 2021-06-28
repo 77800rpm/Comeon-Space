@@ -712,6 +712,7 @@
 <script>
 	<!-- 결제..!! -->
 	$('#buy').on('click', function(){
+		<%if(loginUser != null){ %>
 	   var IMP = window.IMP; // 생략해도 괜찮.
 	   IMP.init("imp14686250"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
 	
@@ -723,7 +724,7 @@
 	        buyer_email: '<%=loginUser.getUserEmail()%>',
 	        buyer_name: '<%=loginUser.getUserName()%>',
 	        buyer_tel: '<%=loginUser.getUserPhone()%>',
-	        buyer_addr: "(주)ComeOnSpace",
+	        buyer_addr: "(주)컴온스페이스",
 	        buyer_postcode: "08208"
 	      }, function (rsp) { // callback
 	        if (rsp.success) {   // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
@@ -763,7 +764,11 @@
 	            alert(msg);
 	        }
 	      });
-	
+	<% } else { %>
+		var msg = '로그인이 필요합니다.';
+		
+		alert(msg);
+	<% } %>
 	});
 	</script>
 
