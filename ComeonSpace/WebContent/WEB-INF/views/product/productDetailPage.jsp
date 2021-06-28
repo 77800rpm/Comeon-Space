@@ -184,6 +184,7 @@
    
   	#logout, #login{
   		cursor: pointer;
+  		background-color: #0f6756 !important;  
   	}
 </style>
    
@@ -198,7 +199,7 @@
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
-			<a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" id="logoImg"></a>
+			<a class="navbar-brand" href="index.jsp"><img src="resources/image/logo.png" id="logoImg"></a>
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">

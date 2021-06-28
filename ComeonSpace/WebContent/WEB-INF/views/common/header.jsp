@@ -270,7 +270,7 @@
   </button>
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="index.jsp"><img src="assets/img/logo.png" id="logoImg"></a>
+    <a class="navbar-brand" href="index.jsp"><img src="resources/image/logo.png" id="logoImg"></a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
        <a class="nav-link" href="<%= request.getContextPath() %>/enrollMain.en">공간등록 <span class="sr-only">(current)</span></a>
