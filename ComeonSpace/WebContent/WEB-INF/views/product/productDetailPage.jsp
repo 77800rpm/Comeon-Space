@@ -374,7 +374,7 @@
                                 <div>
                                 <hr><br>
 									<p class="total-price">선택 날짜 및 최종 금액</p>
-									<span> 2021.05.20. (목)</span>
+									<span class="dateResult">날짜를 지정해 주세요.</span><span> </span><span class="dateWeekResult"></span>
 									<br>
 									<span> 총 </span> <span
 										style="color: #0f6756; font-size: 150%; font-weight: bold"><%= p.getProductPrice() %></span>
@@ -815,7 +815,35 @@
 		alert(msg);
 	<% } %>
 	});
+	
+	
+	// 오늘 날짜
+	
+	var today = new Date();
+
+	today.setDate(today.getDate());
+	
+	// 최종 날짜
+
+	    $(document).ready(function(){
+	    	$("#dateselectbutton").change(function(){
+	    		var value = $(this).val();
+	    		console.log(value);
+	    		var weekName = new Array('일','월','화','수','목','금','토'); 
+
+	    		var day = new Date(value).getDay();
+	    		var dateWeek = weekName[day];
+	    		console.log(dateWeek);
+	    		
+				$(".dateResult").text(value);
+				$(".dateWeekResult").text("(" + dateWeek + ")");
+	    	});
+	    })
+	    
+		
 	</script>
+	
+	
 
 
 </body>
