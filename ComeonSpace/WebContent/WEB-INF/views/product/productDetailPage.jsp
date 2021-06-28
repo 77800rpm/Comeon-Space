@@ -724,8 +724,8 @@
 	        buyer_email: '<%=loginUser.getUserEmail()%>',
 	        buyer_name: '<%=loginUser.getUserName()%>',
 	        buyer_tel: '<%=loginUser.getUserPhone()%>',
-	        buyer_addr: "(주)컴온스페이스",
-	        buyer_postcode: "08208"
+	        buyer_addr: '<%= p.getpNum() %>',
+	        buyer_postcode: '<%= p.getUserNum() %>'
 	      }, function (rsp) { // callback
 	        if (rsp.success) {   // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
 	           
