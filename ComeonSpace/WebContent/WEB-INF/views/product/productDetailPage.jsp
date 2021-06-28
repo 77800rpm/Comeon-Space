@@ -710,36 +710,7 @@
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
         } 
-<<<<<<< HEAD
     });  
-    
-    $(document).ready(function(){
-    	var content = $("#qnaContent").val();
-    	if(content == null || content == '' || content.equals('')){
-    		$(".qnaBtn").unbind();
-=======
-    });    
-	$("#qnaContent").on("change",function(){
-    	var length = $("#qnaContent").val().length;
-    	console.log(length);
-    	if(length == 0){
-    		$("#browser5").off();
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
-    	} else {
-<<<<<<< HEAD
-    		$(".qnaBtn").bind("click");
-=======
-    		$("#browser5").bind("click",function(){
-    			
-    		})
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
-    	}
-<<<<<<< HEAD
-    })
-=======
-	})
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
-    
     //Q&A 등록하기
     $("#browser5").on("click",function(){
     	var hostNum = $("#hostQnaNum").val();
@@ -758,22 +729,13 @@
 	    				$replyTable = $("#qnaSelectTable");
 						$replyTable.html('');
 						
-<<<<<<< HEAD
-// 						$tr.append($userNick);
-// 						$tr.append($contentTd);
-// 						$tr.append($dataTd);
-// 						$replyTable.append($tr);
 						var $startDiv = $("<div>").attr("class","row");
 						var $div = $("<div>").html("<img class='profile-size' src='resources/image/defaultProfile.png'>").attr("class","pro-photo col-md-1 profile-size");
 						var $div2 = $("<div>").html("<p class='qna-nickname'>"+data[i].userNick+"<span class='qna-date'>"+data[i].qnaDate+"<span></p><br><p>"+data[i].qnaContent+"</p>").attr("class","pro-desc col-md-6");
-// 						var $user = $("<div>").html
 						
 						$startDiv.append($div);
 						$startDiv.append($div2);
-// 						$startDiv.append($user);
 						$replyTable.append($startDiv);
-						
-						
 					}
 					$("#qnaContent").val('');
 					location.reload();
@@ -782,27 +744,6 @@
     		}
     			
     	}); 
-=======
-						for(var i in data){
-							var $startDiv = $("<div>").attr("class","row");
-							var $div = $("<div>").html("<img class='profile-size' src='resources/image/defaultProfile.png'>").attr("class","pro-photo col-md-1 profile-size");
-							var $div2 = $("<div>").html("<p class='qna-nickname'>"+data[i].userNick+"<span class='qna-date'>"+data[i].qnaDate+"<span></p><br><p>"+data[i].qnaContent+"</p>").attr("class","pro-desc col-md-6");
-							
-							$startDiv.append($div);
-							$startDiv.append($div2);
-							$replyTable.append($startDiv);
-							
-							
-						}
-						$("#qnaContent").val('');
-	    		}, error:function(data){
-	    			console.log("실패");
-	    		}
-	    			
-	    	}); 
-    	}
- 		   	
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
     })
     
 	</script>
