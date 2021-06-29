@@ -57,7 +57,7 @@
 						<td colspan="3">
 						<%= no.getnTitle() %>
 						<input type="hidden" value="<%= no.getnTitle() %>" name="title">	
-						<input type="hidden" value="<%= no.getnNum() %>" name="no">			
+						<input type="hidden" value="<%= no.getnNum() %>" name="no">
 					</tr>
 					<tr>
 						<th>작성자</th>

@@ -149,6 +149,11 @@ public class Notice {
 	public void setnWriter(String nWriter) {
 		this.nWriter = nWriter;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Notice [nNum=" + nNum + ", nWriter=" + nWriter + ", nTitle=" + nTitle + ", nContent=" + nContent
+				+ ", nCategory=" + nCategory + ", admNum=" + admNum + ", status=" + status + ", date=" + date
+				+ ", admName=" + admName + "]";
+	}
 }

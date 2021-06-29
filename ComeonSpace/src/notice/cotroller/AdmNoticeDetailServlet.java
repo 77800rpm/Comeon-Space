@@ -30,16 +30,20 @@ public class AdmNoticeDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		request.setCharacterEncoding("UTF-8");
-		int num = Integer.parseInt(request.getParameter("no"));
-		Notice no = new NoticeService().admDetailNotice(num);
+		String paramNo=request.getParameter("no");
 		
-		
-		if(no != null) {
-			request.setAttribute("no", no);
+		//공지사항 번호가 있는 경우에만 처리하도록
+		if(paramNo!=null && "".equals(paramNo)==false){
+			int num = Integer.parseInt(paramNo);
+			Notice notice = new NoticeService().admDetailNotice(num);
+			
+			request.setAttribute("notice", notice);
+			
+			System.out.println("공지사항 :"+notice);
 			request.getRequestDispatcher("WEB-INF/views/admin/admNoticeDetail.jsp").forward(request, response);
 		}
 	}
-				
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

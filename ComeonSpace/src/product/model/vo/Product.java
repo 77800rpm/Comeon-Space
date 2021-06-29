@@ -19,6 +19,34 @@ public class Product {
 	private Integer productLimit;
 	private String productHoliday;
 	
+	//이미지 정보 전용
+	/*
+	IMG_NUM		NUMBER
+	IMG_TITLE	VARCHAR2(50 BYTE)
+	IMG_LEVEL	NUMBER
+	IMG_CATEGORY	NUMBER
+	IMG_ORIGIN	VARCHAR2(1000 BYTE)
+	IMG_CHANGE	VARCHAR2(1000 BYTE)
+	IMG_PATH	VARCHAR2(1000 BYTE)
+	IMG_STATUS	VARCHAR2(10 BYTE)
+	IMG_BOARDID	NUMBER
+	USER_NUM	NUMBER
+	*/
+	private Integer imgNum;
+	private String imgTitle;
+	private Integer imgLevel;
+	private String imgCategory;
+	private String imgOrigin;
+	private String imgChange;
+	private String imgPath;
+	private String imgStatus;
+	private Integer imgBoardId;
+	private Integer imgUserNum;
+	
+	public Product(){
+		
+	}
+	
 	public Product(Integer productNum, String productName){
 		super();
 		this.productNum = productNum;
@@ -159,5 +187,87 @@ public class Product {
 				+ productApprove + ", productStatus=" + productStatus + ", userNum=" + userNum + ", latitude="
 				+ latitude + ", logitude=" + logitude + ", productLimit=" + productLimit + ", productHoliday="
 				+ productHoliday + "]";
+	}
+
+	
+	//IMG 전용
+	public Integer getImgNum() {
+		return imgNum;
+	}
+
+	public void setImgNum(Integer imgNum) {
+		this.imgNum = imgNum;
+	}
+
+	public String getImgTitle() {
+		return imgTitle;
+	}
+
+	public void setImgTitle(String imgTitle) {
+		this.imgTitle = imgTitle;
+	}
+
+	public Integer getImgLevel() {
+		return imgLevel;
+	}
+
+	public void setImgLevel(Integer imgLevel) {
+		this.imgLevel = imgLevel;
+	}
+
+	public String getImgCategory() {
+		return imgCategory;
+	}
+
+	public void setImgCategory(String imgCategory) {
+		this.imgCategory = imgCategory;
+	}
+
+	public String getImgOrigin() {
+		return imgOrigin;
+	}
+
+	public void setImgOrigin(String imgOrigin) {
+		this.imgOrigin = imgOrigin;
+	}
+
+	public String getImgChange() {
+		return imgChange;
+	}
+
+	public void setImgChange(String imgChange) {
+		this.imgChange = imgChange;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	public String getImgStatus() {
+		return imgStatus;
+	}
+
+	public void setImgStatus(String imgStatus) {
+		this.imgStatus = imgStatus;
+	}
+
+	public Integer getImgBoardId() {
+		return imgBoardId;
+	}
+
+	public void setImgBoardId(Integer imgBoardId) {
+		this.imgBoardId = imgBoardId;
+	}
+
+	public Integer getImgUserNum() {
+		return imgUserNum;
+	}
+
+	public void setImgUserNum(Integer imgUserNum) {
+		this.imgUserNum = imgUserNum;
 	}
 }

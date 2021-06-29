@@ -344,18 +344,51 @@ public class ProductDAO {
 		query = prop.getProperty("selectProductSpaceApproveList");
 		try {
 			/*페이지 번호 받을 수 있는 쿼리로 수정할 예정*/
+			int startPageRn=(pageNo-1)*10+1;
+			int endPageRn=startPageRn+10-1;
+			System.out.println("pageNo : "+pageNo);
+			System.out.println("startPageRn : "+startPageRn);
+			System.out.println("endPageRn : "+endPageRn);
+			
 			pstmt = conn.prepareStatement(query);
-	        //pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
-	        //pstmt.setString(2, "%"+PRODUCT_HOLIDAY+"%");
+	        pstmt.setInt(1, startPageRn);
+	        pstmt.setInt(2, endPageRn);
 	        rset = pstmt.executeQuery();
 	         
 	        while(rset.next()) {
-	            Product vo = new Product(rset.getInt("PRODUCT_NUM"), rset.getString("PRODUCT_NAME"));
+	            //Product vo = new Product(rset.getInt("PRODUCT_NUM"), rset.getString("PRODUCT_NAME"));
+	        	Product vo=new Product();
+	        	vo.setProductNum(rset.getInt("PRODUCT_NUM"));
+	        	vo.setProductName(rset.getString("PRODUCT_NAME"));
+	        	//private String imgOrigin;
+	        	vo.setImgOrigin(rset.getString("IMG_ORIGIN"));
+	        	vo.setImgChange(rset.getString("IMG_CHANGE"));
+	        	vo.setImgPath(rset.getString("IMG_PATH"));
 	            slist.add(vo);
 	         }
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return slist;
+	}
+	
+	//공간 승인/취소 리스트 총 갯수 가져오기
+	public Integer selectProductListCnt(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Integer listCnt=0;
+		String query = null;
+
+		query = prop.getProperty("selectProductSpaceApproveListCnt");
+		try {
+			pstmt = conn.prepareStatement(query);
+	        rset = pstmt.executeQuery();
+	        while(rset.next()) {
+	        	listCnt=rset.getInt("CNT");
+	         }
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return listCnt;
 	}
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="java.util.ArrayList, product.model.vo.Product"%>
+	import="java.util.ArrayList, product.model.vo.Product, java.util.HashMap"%>
 <% ArrayList<Product> list = (ArrayList)request.getAttribute("list"); %>
+<% HashMap<String, Object> pagingInfo = (HashMap<String, Object>)request.getAttribute("pagingInfo"); %>
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
@@ -34,10 +35,10 @@
 <!-- Second Photo Grid-->
   <div class="w3-row-padding w3-padding-16 w3-center">
   	<% for(Product prud:list){ %>
-  		<div class="w3-quarter">
+  		<a class="w3-quarter" href="">
     		<img src="../admin_jpg/space1.jpg" style="width:100%">
     		<h5><%= prud.getProductName() %></h5>
-    	</div>
+    	</a>
     <% } %>
     <!-- <div class="w3-quarter">
       <img src="../admin_jpg/space1.jpg" style="width:100%">
@@ -81,28 +82,42 @@
     </div> -->
   </div>
 
+	<%=pagingInfo %>
   <!-- Pagination -->
+  <% if(Integer.valueOf(pagingInfo.get("totalCount").toString()) > 0){ %>
+  	<% int startPage=Integer.valueOf(pagingInfo.get("startPage").toString()); %>
+    <% int endPage=Integer.valueOf(pagingInfo.get("endPage").toString()); %>
+    <% int nowPageNo=Integer.valueOf(pagingInfo.get("nowPageNo").toString()); %>
   <div class="w3-center w3-padding-25">
     <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">5</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+      <a href="<%= request.getContextPath() %>/spaceApproveList.bo?pageNo=1" class="w3-bar-item w3-button w3-hover-black">&lt;&lt;</a>
+      <a href="<%= request.getContextPath() %>/spaceApproveList.bo?pageNo=<%=startPage-1%>" class="w3-bar-item w3-button w3-hover-black">&lt;</a>
+		<% for(int p=startPage; p <= endPage; p++){ %>
+		<%		if(p == nowPageNo){ %>
+					<a href="<%= request.getContextPath() %>/spaceApproveList.bo?pageNo=<%=p%>" class="w3-bar-item w3-button w3-black"><%=p%></a>
+		<%		} else { %>
+					<a href="<%= request.getContextPath() %>/spaceApproveList.bo?pageNo=<%=p%>" class="w3-bar-item w3-button"><%=p%></a>
+		<%		} %>
+		<% 	} %>
+      <a href="<%= request.getContextPath() %>/spaceApproveList.bo?pageNo=<%=endPage+1 %>" class="w3-bar-item w3-button w3-hover-black">&gt;</a>
+      <a href="<%= request.getContextPath() %>/spaceApproveList.bo?pageNo=<%= pagingInfo.get("totalPageCount") %>" class="w3-bar-item w3-button w3-hover-black">&gt;&gt;</a>
     </div>
   </div>
+  <% } %>
+  <!--
+	<ul>
+		<li onclick="location.href='/community/forumBoardList.do?pageNo=1'"><button type="button" class="control prevAll">첫 페이지로 가기</button></li>
+		<li onclick="location.href='/community/forumBoardList.do?pageNo=${pagingInfo.startPage-1}'"><button type="button" class="control prev">이전 페이지로 가기</button></li>
+		<c:forEach var="no" begin="${pagingInfo.startPage}" end="${pagingInfo.endPage}" step="1">
+			<c:if test="${pagingInfo.nowPageNo eq no}"><li class="on" onclick="location.href='/community/forumBoardList.do?pageNo=${no}'"><button type="button">${no}</button></li></c:if>
+			<c:if test="${pagingInfo.nowPageNo ne no}"><li onclick="location.href='/community/forumBoardList.do?pageNo=${no}'"><button type="button">${no}</button></li></c:if>
+		</c:forEach>
+		<li onclick="location.href='/community/forumBoardList.do?pageNo=${pagingInfo.endPage+1}'"><button type="button" class="control next">다음 페이지로 가기</button></li>
+		<li onclick="location.href='/community/forumBoardList.do?pageNo=${pagingInfo.totalPageCnt}'"><button type="button" class="control nextAll">마지막 페이지로 가기</button></li>
+	</ul>
+  -->
   
   <hr id="about">
-
-<%=list%>
-
-
-
-
-
-
 </div>
 </div>  
 <%@ include file="../common/footer.jsp" %>    

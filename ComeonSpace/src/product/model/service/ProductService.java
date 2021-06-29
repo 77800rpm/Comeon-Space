@@ -107,4 +107,11 @@ public class ProductService {
 		close(conn);
 		return resultList;
 	}
+	
+	public Integer selectProductListCnt(){
+		Connection conn=getConnection();
+		Integer resultCnt=new ProductDAO().selectProductListCnt(conn);
+		close(conn);
+		return resultCnt;
+	}
 }
