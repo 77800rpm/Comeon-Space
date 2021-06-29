@@ -29,7 +29,7 @@ public class AdmNoticeDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int num = Integer.parseInt(request.getParameter("num"));
+		int num = Integer.parseInt(request.getParameter("no"));
 		System.out.println(num);
 		int result = new NoticeService().admDeleteNotice(num);
 		System.out.println(result);
