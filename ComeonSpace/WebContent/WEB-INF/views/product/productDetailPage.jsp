@@ -423,7 +423,7 @@
                         </div>
                            </form>
                            <% if(loginUser == null){ %>
- 							<input style="width: 30%" type="submit" class="btn btn-success btn-lg btn-reserv" name="goLogin" value="로그인"></button>
+ 							<input style="width: 30%" type="button" class="btn btn-success btn-lg btn-reserv" name="goLogin" value="로그인" id="goLogin"></button>
  							<%} else { %>
  							      <form action="<%=request.getContextPath()%>/realPay.me" method="post">
                                	   <input type="hidden" name="prodName" value="<%=p.getpName()%>" />
@@ -433,7 +433,7 @@
                                	   <input type="hidden" name="buyerPhone" value="<%=loginUser.getUserPhone()%>"/>
                                	   <input type="hidden" name="prodNum" value="<%=p.getpNum()%>"/>
                                	   <input type="hidden" name="hostNum" value="<%=p.getUserNum()%>"/>
-                               	   <input type="hidden" name="revDate" value="<%=dateWeek %>" />
+                               	   <input type="hidden" name="revDate" value="dateWeek" />
                                    <input style="width: 30%" type="submit" class="btn btn-success btn-lg btn-reserv" name="submit" value="예약"></button>
  								  </form>
  							<% } %>
@@ -821,79 +821,7 @@
     })
     
    </script>
-
-
-<!-- 결제..!! -->
-  <!-- jQuery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-  <!-- iamport.payment.js -->
-  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
-   <!-- 결제..!! -->
-   $('#buy').on('click', function(){
-      <%if(loginUser != null){ %>
-      var IMP = window.IMP; // 생략해도 괜찮.
-      IMP.init("imp14686250"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
-   
-         IMP.request_pay({   // IMP.request_pay(param, callback) 호출  // param
-           pay_method: "kakaopay",
-           merchant_uid: "merchant_" + new Date().getTime(),
-           name: '<%= p.getpName() %>',
-           amount: <%=p.getProductPrice()%>,
-           buyer_email: '<%=loginUser.getUserEmail()%>',
-           buyer_name: '<%=loginUser.getUserName()%>',
-           buyer_tel: '<%=loginUser.getUserPhone()%>',
-           buyer_addr: '<%= p.getpNum() %>',
-           buyer_postcode: '<%= p.getUserNum() %>'
-         }, function (rsp) { // callback
-           if (rsp.success) {   // 결제 성공 시: 결제 승인 또는 가상계좌 발급에 성공한 경우
-              
-                var msg = '결제가 완료되었습니다.';
-                
-                alert(msg);
-   
-                //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
-                jQuery.ajax({
-                   url: "pyments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
-                   type: 'POST',
-                   dataType: 'json',
-                   contextType: 'apllication/json; charset=UTF-8',
-                   data: {
-                      imp_uid : rsp.imp_uid,
-                      merchant_uid : rsp.merchant_uid,
-                      name : rsp.name,
-                   }
-               }).done(function (data) {
-                 // 가맹점 서버 결제 API 성공시 로직
-                 console.log(data);
-                if ( everythings_fine ) {
-                   var msg = '결제가 완료되었습니다.';
-                   var test = buyer_tel;
-                   console.log(test + "테스트 성공");
-                   
-                   alert(msg);
-                } else {
-                   //[3] 아직 제대로 결제가 되지 않았습니다.
-                   //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-                   var msg = '결제가 아직 완료되지 않았습니다.';
-                   
-                   alert(msg);
-                }
-             });  
-           } else {
-               // 결제 실패 시 로직
-               var msg = '결제에 실패하였습니다.';
-               msg += '에러내용 : ' + rsp.error_msg;
-                 
-               alert(msg);
-           }
-         });
-   <% } else { %>
-      var msg = '로그인이 필요합니다.';
-      
-      alert(msg);
-   <% } %>
-   });
    
    
    // 오늘 날짜
@@ -919,6 +847,11 @@
       
    </script>
    
+   <script>
+	$('#goLogin').on('click', function(){
+		location.href="<%= request.getContextPath() %>/loginForm.me";
+	});
+	</script>
    
 
 
