@@ -433,6 +433,7 @@
                                	   <input type="hidden" name="buyerPhone" value="<%=loginUser.getUserPhone()%>"/>
                                	   <input type="hidden" name="prodNum" value="<%=p.getpNum()%>"/>
                                	   <input type="hidden" name="hostNum" value="<%=p.getUserNum()%>"/>
+                               	   <input type="hidden" name="revDate" value="select-date" />
                                    <input style="width: 30%" type="submit" class="btn btn-success btn-lg btn-reserv" name="submit" value="예약"></button>
  								  </form>
  							<% } %>

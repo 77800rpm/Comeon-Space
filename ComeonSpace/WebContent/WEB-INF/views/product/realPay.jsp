@@ -6,8 +6,8 @@
 	String buyerEmail = (String)request.getAttribute("buyerEmail");
 	String buyerName = (String)request.getAttribute("buyerName");
 	String buyerPhone = (String)request.getAttribute("buyerPhone");
-	String prodNum = (String)request.getAttribute("prodNum");
-	String hostNum = (String)request.getAttribute("hostNum");
+	int prodNum = (int)request.getAttribute("prodNum");
+	int hostNum = (int)request.getAttribute("hostNum");
 	int totalPrice = (int)request.getAttribute("totalPrice");
 %>
 <!DOCTYPE html>
@@ -68,7 +68,8 @@ $(function(){
                 alert(msg);
              }
           });
-          
+		  //성공시 이동할 페이지
+		  location.href='<%=request.getContextPath()%>/search.pro';
         } else {
             // 결제 실패 시 로직
             var msg = '결제에 실패하였습니다.';

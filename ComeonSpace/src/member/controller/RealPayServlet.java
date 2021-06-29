@@ -1,11 +1,15 @@
 package member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import order.model.service.OrderService;
+import order.model.vo.Order;
 
 /**
  * Servlet implementation class RealPayServlet
@@ -30,17 +34,11 @@ public class RealPayServlet extends HttpServlet {
 		String buyerEmail = request.getParameter("buyerEmail");
 		String buyerName = request.getParameter("buyerName");
 		String buyerPhone = request.getParameter("buyerPhone");
-		String prodNum = request.getParameter("prodNum");
-		String hostNum = request.getParameter("hostNum");
+		String revDate = request.getParameter("revDate");
+		int prodNum = Integer.parseInt(request.getParameter("prodNum"));
+		int hostNum = Integer.parseInt(request.getParameter("hostNum"));
 		
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
-		
-		System.out.println(prodName);
-		System.out.println(buyerEmail);
-		System.out.println(buyerName);
-		System.out.println(buyerPhone);
-		System.out.println(prodNum);
-		System.out.println(hostNum);
 		
 		request.setAttribute("prodName", prodName);
 		request.setAttribute("buyerEmail", buyerEmail);
@@ -49,8 +47,21 @@ public class RealPayServlet extends HttpServlet {
 		request.setAttribute("prodNum", prodNum);
 		request.setAttribute("hostNum", hostNum);
 		request.setAttribute("totalPrice", totalPrice);
+		request.setAttribute("revDate", revDate);
+		
+		
+		
+		Order order = new Order(prodName, buyerEmail, buyerName, buyerPhone, prodNum, hostNum, totalPrice, revDate);
+		
+		int result = new OrderService().insertOrder(order);
+
+		
 		
 		request.getRequestDispatcher("/WEB-INF/views/product/realPay.jsp").forward(request, response);
+		
+		
+		
+		
 	}
 
 	/**
@@ -62,3 +73,4 @@ public class RealPayServlet extends HttpServlet {
 	}
 
 }
+
