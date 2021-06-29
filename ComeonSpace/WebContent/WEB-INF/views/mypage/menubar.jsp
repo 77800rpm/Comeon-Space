@@ -63,7 +63,7 @@
                  </a>
                  <ul id="collapseThree" class="collapse list-unstyled pl-3">
                      <li><a class="text-decoration-none list-text" href="#">예약현황</a></li>
-                     <li><a class="text-decoration-none list-text" href="#">후기</a></li>
+                     <li><a class="text-decoration-none list-text" href="#" id="mypReview">후기</a></li>
                  </ul>
              </li>
          </ul>
@@ -75,6 +75,10 @@
      	$("#qnaListBtn").on("click",function(){
      		location.href="<%=request.getContextPath()%>/qnaList.my";
      	})
+     	$("#mypReview").on("click",function(){
+     		location.href="<%=request.getContextPath()%>/qnaList.my";
+     	})
+
      </script>
 </body>
 </html>
