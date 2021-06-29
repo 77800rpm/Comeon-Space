@@ -34,8 +34,8 @@ public class FaqSelectServlet extends HttpServlet {
 		ArrayList<Faq> list = new FaqService().faqSelect();
 		
 		request.setAttribute("list", list);
-//		request.getRequestDispatcher("WEB-INF/views/admin/page4_board.jsp").forward(request, response);
-		request.getRequestDispatcher("admFaqList.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/admin/admFaqList.jsp").forward(request, response);
+//		request.getRequestDispatcher("admFaqList.jsp").forward(request, response);
 	
 	
 	}

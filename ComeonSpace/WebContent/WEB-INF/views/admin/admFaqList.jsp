@@ -80,8 +80,10 @@
 </div>
 
 	<div align="right">
-		<% if(loginUser != null && loginUser.getUserEmail().equals("admin123@cs.com")){ %>
-			<input type="button" onclick="location.href='admFaqWriteForm.jsp'" id="writeBoBtn" value="글쓰기">
+		<% if(loginUser != null 
+// 		&& loginUser.getUserEmail().equals("admin123@cs.com")
+		){ %>
+			<input type="button" onclick="location.href='writeFaqForm.bo'" id="writeBoBtn" value="글쓰기">
 		<% } %>			
 		</div>
 
@@ -112,30 +114,32 @@
 				var bId=$(this).parent().children().eq(0).text();
 				if('<%= loginUser %>' != 'null'){
 					location.href='<%= request.getContextPath() %>/faqDetail.bo?fo=' + bId;
-				} else {
-					alert('관리자만 이용할 수 있는 서비스입니다.');
-				}
+				} 
+// 				else {
+// 					alert('관리자만 이용할 수 있는 서비스입니다.');
+// 				}
 			})
 		});
 		
-    	$(function(){
-    		$("#selectUserBtn").on("click",function(){
-    			console.log(1)
-    			location.href="<%= request.getContextPath() %>/selectUser.me";
-    		});
-    	});
+//     	$(function(){
+//     		$("#selectUserBtn").on("click",function(){
+//     			console.log(1)
+<%--     			location.href="<%= request.getContextPath() %>/selectUser.me"; --%>
+//     		});
+//     	});
     	
-    	$(function(){
-    		$("#listBoBtn").on("click",function(){
-    			location.href="<%= request.getContextPath() %>/list.bo";
-    		});
-    	});
+//     	$(function(){
+//     		$("#listBoBtn").on("click",function(){
+<%--     			location.href="<%= request.getContextPath() %>/list.bo"; --%>
+//     		});
+//     	});
     	
-    	$(function(){
-    		$("#admListNoBtn").on("click",function(){
-    			location.href="<%= request.getContextPath() %>/admList.no";
-    		});
-    	});
+//     	$(function(){
+//     		$("#admListNoBtn").on("click",function(){
+<%--     			location.href="<%= request.getContextPath() %>/admList.no"; --%>
+//     		});
+//     	});
+
 	</script>
 <%@ include file="../common/footer.jsp" %>      
 </body>
