@@ -74,7 +74,8 @@ $(function(){
             // 결제 실패 시 로직
             var msg = '결제에 실패하였습니다.';
             msg += '에러내용 : ' + rsp.error_msg;
-              
+         	
+            location.href='<%=request.getContextPath()%>/search.pro';
             alert(msg);
         }
       });
