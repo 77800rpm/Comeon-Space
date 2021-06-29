@@ -53,8 +53,8 @@ Faq fo = new Faq();
 						<table>
 							<tr>
 								<th>제목</th>
-								<td colspan="3"><%= fo.getBoardFaqTitle() %><input type="hidden" name="title" value="">
-								<input type="hidden" value="<%= fo.getBoardFaqNum() %>" name="bId"></td>
+								<td colspan="3"><%= fo.getBoardFaqTitle() %><input type="hidden" name="title" value="<%= fo.getBoardFaqTitle() %>">
+								<input type="hidden" value="<%= fo.getBoardFaqNum() %>" name="fo"></td>
 							</tr>
 							<tr>
 								<th>내용</th>
@@ -82,7 +82,7 @@ Faq fo = new Faq();
          	
          	if(bool){
          				$("#admFaqDetailForm").attr('action', '<%= request.getContextPath()%>/admDeleteFaq.bo');
-         				$("#admFaqDetailForm").submit();
+         				$("#admFaqDetailForm").submit();									
          	}
      			
          		}

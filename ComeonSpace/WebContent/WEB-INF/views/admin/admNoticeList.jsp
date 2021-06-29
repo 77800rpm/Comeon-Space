@@ -76,8 +76,9 @@
 	</div>
 	
 	<div align="right">
-		<% if(loginUser != null && loginUser.getUserEmail().equals("admin123@cs.com")){ %>
-			<input type="button" onclick="location.href='admNoticeWriteForm.jsp'" id="writeNoBtn" value="글쓰기">
+<%-- 		<% if(loginUser != null && loginUser.getUserEmail().equals("admin123@cs.com")){ %> --%>
+		<% if(loginUser != null){ %>
+			<input type="button" onclick="location.href='admNoticeWriteForm.no'" id="writeNoBtn" value="글쓰기">
 		<% } %>			
 		</div>
 	
