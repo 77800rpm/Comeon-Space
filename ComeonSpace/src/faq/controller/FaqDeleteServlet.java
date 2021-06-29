@@ -1,6 +1,7 @@
 package faq.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import faq.model.service.FaqService;
-import notice.model.service.NoticeService;
+import faq.model.vo.Faq;
 
 /**
  * Servlet implementation class FaqDeleteServlet
@@ -30,10 +31,10 @@ public class FaqDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
 		int bId = Integer.parseInt(request.getParameter("fo"));
-		System.out.println(bId);
 		int result = new FaqService().admDeleteFaq(bId);
-		System.out.println(result);
+			
 		if(result > 0) {
 			response.sendRedirect("list.bo");
 		}

@@ -29,7 +29,7 @@ public class AdmWriteNoticeFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/admin/admNoticeWriteForm.jsp");
-//		RequestDispatcher view = request.getRequestDispatcher("admWriteNoticeForm.jsp");
+		
 		view.forward(request, response);
 	}
 

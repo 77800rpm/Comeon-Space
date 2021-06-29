@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" 
-	import="member.model.vo.Member"%>
-
+	import="member.model.vo.Member,java.util.ArrayList, notice.model.vo.Notice"%>
+<%
+	Notice no = (Notice) request.getAttribute("no");
+%>
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
@@ -51,10 +53,15 @@
 						<th>작성자</th>
 						<td>
 							<%= loginUser.getUserNic().equals("관리자") %>
-							<!-- 관리자 이름 가져오는 방법! -->
+							<!-- 관리자 이름 가져오기-->
+<%-- 							<%= no.getAdmName() %> --%>
+<%-- 							<input type="hidden" value="<%= no.getAdmName() %>" name="nickName"> --%>
 						</td>
 						<th>작성일</th>
-						<td><input type="date" name="date"></td>
+						<td>
+							
+						<input type="date" name="date">
+						</td>
 					</tr>
 							<tr>
 								<th>내용</th>

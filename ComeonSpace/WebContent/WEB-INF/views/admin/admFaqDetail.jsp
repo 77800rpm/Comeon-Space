@@ -7,7 +7,7 @@ ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list");
 <%
 FaqService fs = new FaqService();
 // ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
-Faq fo = new Faq();
+Faq fo = (Faq) request.getAttribute("fo");
 %>
 <!DOCTYPE html>
 <html>
@@ -53,7 +53,9 @@ Faq fo = new Faq();
 						<table>
 							<tr>
 								<th>제목</th>
-								<td colspan="3"><%= fo.getBoardFaqTitle() %><input type="hidden" name="title" value="<%= fo.getBoardFaqTitle() %>">
+								<td colspan="3">
+								<%= fo.getBoardFaqTitle() %>
+								<input type="hidden" name="title" value="<%= fo.getBoardFaqTitle() %>">
 								<input type="hidden" value="<%= fo.getBoardFaqNum() %>" name="fo"></td>
 							</tr>
 							<tr>
