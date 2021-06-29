@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import center.myQ.model.service.MyQuestionService;
 import center.myQ.model.vo.MyQuestion;
+import common.pageInfo.model.vo.PageInfo;
 import member.model.vo.Member;
 
 /**
@@ -34,16 +35,45 @@ public class MyQuestionViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int userNum = ((Member)session.getAttribute("loginUser")).getUserNum();
+		int userNum = 0;
 		
-		ArrayList<MyQuestion> list = new MyQuestionService().selectMyQ(userNum);
-		if(!list.isEmpty()) {
-			request.setAttribute("list", list);
-			request.getRequestDispatcher("WEB-INF/views/center/myQView.jsp").forward(request, response);
-		} else {
-			request.setAttribute("msg", "내 질문 조회에 실패하였습니다.");
-			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
+		if(((Member)session.getAttribute("loginUser")) != null) {
+			userNum = ((Member)session.getAttribute("loginUser")).getUserNum();
 		}
+		
+		int currentPage;
+		int listCount;
+		int maxPage;
+		int startPage;
+		int endPage;
+		int pageLimit;
+		int boardLimit;
+		
+		listCount = new MyQuestionService().selectListCount(userNum);
+		
+		currentPage = 1;
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		boardLimit = 10;
+		pageLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		startPage = ((currentPage -1)/pageLimit) * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		
+		ArrayList<MyQuestion> list = new MyQuestionService().selectMyQ(userNum, pi);
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("WEB-INF/views/center/myQView.jsp").forward(request, response);
 	
 	}
 

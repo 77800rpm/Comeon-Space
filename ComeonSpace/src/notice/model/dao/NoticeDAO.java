@@ -33,7 +33,7 @@ public class NoticeDAO {
 		ResultSet rset = null;
 		ArrayList<Notice> list = new ArrayList<Notice>();
 		
-		int startRow = (pi.getCurrentPage() - 1)*pi.getBoardLimit() + 1;
+		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 		int endRow = startRow + pi.getBoardLimit() - 1;
 		
 		String query = prop.getProperty("selectNotice");

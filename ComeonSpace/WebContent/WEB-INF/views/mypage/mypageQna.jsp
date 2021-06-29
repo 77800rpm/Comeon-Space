@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, qna.model.vo.Qna"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, qna.model.vo.Qna, common.pageInfo.model.vo.PageInfo"%>
 <%
 	ArrayList<Qna> hostList = (ArrayList)request.getAttribute("hostList");
 	ArrayList<Qna> userList = (ArrayList)request.getAttribute("userList");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int noStartPage = pi.getStartPage();
+	int noEndPage = pi.getEndPage();
+	int noCurrentPage = pi.getCurrentPage();
+	int noMaxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +48,7 @@
 	.h-inline{display:inline-block;}
 	.mypage-profile{display:inline-block;}
 	#noQnaTd{text-align: center;}
-	
+	#pageDiv{text-align: center;}
 </style>
 <header>
     <%@ include file="../common/header.jsp" %>
@@ -113,6 +119,41 @@
 							<%} %>
 						</table>
 					</div>
+							<!-- 페이징 시작 -->
+							<div id="pageDiv">
+								<!-- 맨 처음으로 -->
+								<button onclick="location.href='<%=request.getContextPath()%>/qnaList.my?currentPage=1'" class="btn btn-outline-success">맨처음</button>
+								<!-- 이전 페이지 -->
+								<button onclick="location.href='<%=request.getContextPath() %>/qnaList.my?currentPage=<%=noCurrentPage - 1%>'" id="beforeBtn" class="btn btn-outline-success">이전</button>
+								<script>
+									if(<%=noCurrentPage%> <= 1){
+										$("#beforeBtn").prop("disabled",true);
+									};
+								</script>
+								<!-- 숫자 페이지 -->
+								<%for(int p = noStartPage; p <= noEndPage; p++){ %>
+									<%if(noCurrentPage == p){ %>
+										<button disabled><%=p %></button>
+									<%} else { %>
+										<button onclick="location.href='<%=request.getContextPath()%>/qnaList.my?currentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
+									<%} %>
+								<%} %>
+								<!-- 다음 페이지 -->
+								<button onclick="location.href='<%=request.getContextPath()%>/qnaList.my?currentPage=<%=noCurrentPage + 1%>'" id="afterBtn" class="btn btn-outline-success">다음</button>
+								<script>
+						         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
+						         		$("#afterBtn").prop("disabled",true);
+						         	}
+						         </script>
+								<!-- 맨끝 으로 -->
+								<button onclick="location.href='<%=request.getContextPath() %>/qnaList.my?currentPage=<%=noMaxPage %>'" id="lastBtn"class="btn btn-outline-success">맨끝</button>
+								<script>
+						         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
+						         		$("#lastBtn").prop("disabled",true);
+						         	}
+						         </script>
+							</div>
+							<!-- 페이징 끝 -->
 					<div>
 						<br>
 						<br>

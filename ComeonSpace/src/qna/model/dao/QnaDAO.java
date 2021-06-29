@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import common.pageInfo.model.vo.PageInfo;
 import qna.model.vo.Qna;
 
 public class QnaDAO {
@@ -130,23 +131,28 @@ public class QnaDAO {
 		return list;
 	}
 
-	public ArrayList<Qna> selectAllQna(Connection conn, int hostNum) {
+	public ArrayList<Qna> selectAllQna(Connection conn, int hostNum, PageInfo pi) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Qna qna = null;
 		ArrayList<Qna> list = new ArrayList<Qna>();
 		
 		String query = prop.getProperty("selectAllQna");
+		
+		int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+		int endRow = startRow + pi.getBoardLimit() -1;
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, hostNum);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				qna = new Qna();
 				
 				qna.setQnaNum(rset.getInt("QUESTION_NUM"));
-				qna.setHostNum(rset.getInt("HOST_NUM"));
-				qna.setUserNum(rset.getInt("USER_NUM"));
+				qna.setHostNum(rset.getInt("H_NUM"));
+				qna.setUserNum(rset.getInt("U_NUM"));
 				qna.setpNum(rset.getInt("PRODUCT_NUM"));
 				qna.setUserNick(rset.getString("USER_NICK"));
 				qna.setQnaContent(rset.getString("QUESTION_CONTENT"));
@@ -230,23 +236,30 @@ public class QnaDAO {
 		return result;
 	}
 
-	public ArrayList<Qna> selectUserQna(Connection conn, int hostNum) {
+	public ArrayList<Qna> selectUserQna(Connection conn, int hostNum, PageInfo pi) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Qna qna = null;
 		ArrayList<Qna> list = new ArrayList<Qna>();
 		
 		String query = prop.getProperty("selectUserQna");
+		
+		int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+		int endRow = startRow + pi.getBoardLimit() -1;
+		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, hostNum);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rset = pstmt.executeQuery();
+			int i = 0;
 			while(rset.next()) {
 				qna = new Qna();
 				
 				qna.setQnaNum(rset.getInt("QUESTION_NUM"));
-				qna.setHostNum(rset.getInt("HOST_NUM"));
-				qna.setUserNum(rset.getInt("USER_NUM"));
+				qna.setHostNum(rset.getInt("H_NUM"));
+				qna.setUserNum(rset.getInt("U_NUM"));
 				qna.setpNum(rset.getInt("PRODUCT_NUM"));
 				qna.setUserNick(rset.getString("USER_NICK"));
 				qna.setQnaContent(rset.getString("QUESTION_CONTENT"));
@@ -257,8 +270,9 @@ public class QnaDAO {
 				qna.setpName(rset.getString("PRODUCT_NAME"));
 				
 				list.add(qna);
-				
 			}
+			System.out.println(list.size());
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -269,6 +283,54 @@ public class QnaDAO {
 	
 		
 		return list;
+	}
+
+	public int selectUserListCount(Connection conn, int hostNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("selectUserListCount");		
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, hostNum);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int selectHostListCount(Connection conn, int hostNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("selectHostListCount");		
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, hostNum);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 	

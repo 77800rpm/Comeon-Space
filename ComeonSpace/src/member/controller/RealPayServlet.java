@@ -35,6 +35,13 @@ public class RealPayServlet extends HttpServlet {
 		
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
 		
+		System.out.println(prodName);
+		System.out.println(buyerEmail);
+		System.out.println(buyerName);
+		System.out.println(buyerPhone);
+		System.out.println(prodNum);
+		System.out.println(hostNum);
+		
 		request.setAttribute("prodName", prodName);
 		request.setAttribute("buyerEmail", buyerEmail);
 		request.setAttribute("buyerName", buyerName);

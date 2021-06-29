@@ -95,19 +95,15 @@ public class MyQuestionInsertServlet extends HttpServlet {
 
 			if(img != null) {
 				if(result > 0) {
-					System.out.println("사진 있고 성공했을 때");
 					response.sendRedirect("centerView.ce");
 				} else {
-					System.out.println("사진 있고 실패했을 때");
 					request.setAttribute("msg", "문의 작성에 실패하였습니다.");
 					request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 				}
 			} else {
 				if(result > 0) {
-					System.out.println("사진없이 성공");
 					response.sendRedirect("centerView.ce");
 				} else {
-					System.out.println("사진도 없고 실패함");
 					request.setAttribute("msg", "문의 작성에 실패하였습니다.");
 					request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 				}

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import center.myQ.model.vo.MyQuestion;
+import common.pageInfo.model.vo.PageInfo;
 
 public class MyQuestionDAO {
 	
@@ -49,15 +50,20 @@ public class MyQuestionDAO {
 		return result;
 	}
 
-	public ArrayList<MyQuestion> selectMyQ(Connection conn, int userNum) {
+	public ArrayList<MyQuestion> selectMyQ(Connection conn, int userNum, PageInfo pi) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<MyQuestion> list = new ArrayList<MyQuestion>();
 		
+		int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;  
+		int endRow = startRow + pi.getBoardLimit() -1;
+
 		String query = prop.getProperty("selectMyQ");
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, userNum);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			
 			rset = pstmt.executeQuery();
 			
@@ -118,6 +124,31 @@ public class MyQuestionDAO {
 		}
 		
 		return my;
+	}
+
+	public int selectListCount(int userNum, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("selectListCount");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userNum);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+				
+		
+		return result;
 	}
 
 }

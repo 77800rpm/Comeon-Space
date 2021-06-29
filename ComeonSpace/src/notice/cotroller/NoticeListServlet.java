@@ -51,7 +51,7 @@ public class NoticeListServlet extends HttpServlet {
 		pageLimit = 10;
 		boardLimit = 10;
 		
-		maxPage = (int)Math.ceil((double)(listCount/boardLimit));
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
 		startPage = ((currentPage-1)/boardLimit) * pageLimit + 1;
 		endPage = startPage + boardLimit - 1;
