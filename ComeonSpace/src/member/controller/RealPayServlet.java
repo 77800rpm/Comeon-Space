@@ -50,7 +50,6 @@ public class RealPayServlet extends HttpServlet {
 		request.setAttribute("revDate", revDate);
 		
 		
-		
 		Order order = new Order(prodName, buyerEmail, buyerName, buyerPhone, prodNum, hostNum, totalPrice, revDate);
 		
 		int result = new OrderService().insertOrder(order);
