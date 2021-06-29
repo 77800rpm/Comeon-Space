@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, center.myQ.model.vo.MyQuestion"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, center.myQ.model.vo.MyQuestion, common.pageInfo.model.vo.PageInfo"%>
 <%
 	ArrayList<MyQuestion> list = (ArrayList)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int noStartPage = pi.getStartPage();
+	int noEndPage = pi.getEndPage();
+	int noCurrentPage = pi.getCurrentPage();
+	int noMaxPage = pi.getMaxPage();
 %>
 
 <!DOCTYPE html>
@@ -172,36 +178,48 @@ https://templatemo.com/tm-559-zay-shop
        				<%} %>
        			<%} else { %>
        				<tr>
-       					<td colspan="5">등록된 내 질문이 없습니다.</td>
+       					<td colspan="5" style="text-align:center;" id="noMyQ">등록된 내 질문이 없습니다.</td>
        				</tr>
        			<%} %>
        		</table>
-       		<ul class="pagination">
-	             <li class="page-item">
-	               <a class="page-link" href="#">&laquo;</a>
-	             </li>
-	             <li class="page-item">
-	               <a class="page-link" href="#">1</a>
-	             </li>
-	             <li class="page-item">
-	               <a class="page-link" href="#">2</a>
-	             </li>
-	             <li class="page-item">
-	               <a class="page-link" href="#">3</a>
-	             </li>
-	             <li class="page-item">
-	               <a class="page-link" href="#">4</a>
-	             </li>
-	             <li class="page-item">
-	               <a class="page-link" href="#">5</a>
-	             </li>
-	             <li class="page-item">
-	               <a class="page-link" href="#">&raquo;</a>
-	             </li>             
-	         </ul>
+       		<!-- 페이징 시작 -->
+			<div class="pageDiv">
+				<!-- 맨 처음으로 -->
+				<button onclick="location.href='<%=request.getContextPath()%>/myQView.ce?currentPage=1'" class="btn btn-outline-success">맨처음</button>
+				<!-- 이전 페이지 -->
+				<button onclick="location.href='<%=request.getContextPath() %>/myQView.ce?currentPage=<%=noCurrentPage - 1%>'" id="beforeBtn" class="btn btn-outline-success">이전</button>
+				<script>
+					if(<%=noCurrentPage%> <= 1){
+						$("#beforeBtn").prop("disabled",true);
+					};
+				</script>
+				<!-- 숫자 페이지 -->
+				<%for(int p = noStartPage; p <= noEndPage; p++){ %>
+					<%if(noCurrentPage == p){ %>
+						<button disabled><%=p %></button>
+					<%} else { %>
+						<button onclick="location.href='<%=request.getContextPath()%>/myQView.ce?currentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
+					<%} %>
+				<%} %>
+				<!-- 다음 페이지 -->
+				<button onclick="location.href='<%=request.getContextPath()%>/myQView.ce?currentPage=<%=noCurrentPage + 1%>'"id="afterBtn" class="btn btn-outline-success">다음</button>
+				<script>
+		         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
+		         		$("#afterBtn").prop("disabled",true);
+		         	}
+		         </script>
+				<!-- 맨끝 으로 -->
+				<button onclick="location.href='<%=request.getContextPath() %>/myQView.ce?currentPage=<%=noMaxPage %>'"id="lastBtn"class="btn btn-outline-success">맨끝</button>
+				<script>
+		         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
+		         		$("#lastBtn").prop("disabled",true);
+		         	}
+		         </script>
+			</div>
+			<!-- 페이징 끝 -->
        </div>
        <div id="test"></div>
-       <br>
+       <br><br><br><br><br>
     </section>
     <%@ include file="../common/footer.jsp" %>
 	<script>
@@ -214,6 +232,7 @@ https://templatemo.com/tm-559-zay-shop
 				var bId = $(this).parent().children().eq(0).text();
 				location.href="<%= request.getContextPath()%>/myQDetail.ce?bId=" + bId;
 			})
+			$("#noMyQ").unbind();
 		})
 		
 	</script>

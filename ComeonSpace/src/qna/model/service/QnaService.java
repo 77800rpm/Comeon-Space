@@ -5,6 +5,7 @@ import static common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import common.pageInfo.model.vo.PageInfo;
 import qna.model.dao.QnaDAO;
 import qna.model.vo.Qna;
 
@@ -35,9 +36,9 @@ public class QnaService {
 		return list;
 	}
 
-	public ArrayList<Qna> selectAllQna(int hostNum) {
+	public ArrayList<Qna> selectAllQna(int hostNum, PageInfo pi) {
 		Connection conn = getConnection();
-		ArrayList<Qna> list = new QnaDAO().selectAllQna(conn, hostNum);
+		ArrayList<Qna> list = new QnaDAO().selectAllQna(conn, hostNum, pi);
 		close(conn);
 		
 		return list;
@@ -64,13 +65,29 @@ public class QnaService {
 		return result;
 	}
 
-	public ArrayList<Qna> selectUserQna(int hostNum) {
+	public ArrayList<Qna> selectUserQna(int hostNum, PageInfo pi) {
 		Connection conn = getConnection();
-		ArrayList<Qna> list = new QnaDAO().selectUserQna(conn, hostNum);
+		ArrayList<Qna> list = new QnaDAO().selectUserQna(conn, hostNum, pi);
 		close(conn);
 		
 		return list;
 	}
+
+	public int selectUserListCount(int hostNum) {
+		Connection conn = getConnection();
+		int result = new QnaDAO().selectUserListCount(conn, hostNum);
+		close(conn);
+		
+		return result;
+	}
+
+	public int selectHostListCount(int hostNum) {
+		Connection conn = getConnection();
+		int result = new QnaDAO().selectHostListCount(conn,hostNum);
+		close(conn);
+		return result;
+	}
+
 
 
 

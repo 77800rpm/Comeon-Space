@@ -40,13 +40,16 @@ public class ProductDetailServlet extends HttpServlet {
 		
 		int no = Integer.parseInt(request.getParameter("no")); // 주소 no=?
 		
+		Img profile = null;
 		HttpSession session = request.getSession();
-		int userNum = ((Member)(session.getAttribute("loginUser"))).getUserNum();
+		if(session != null && (Member)(session.getAttribute("loginUser")) != null) {
+			int userNum = ((Member)(session.getAttribute("loginUser"))).getUserNum();
+			profile = new ImgService().selectMember(userNum);
+		}
 		
 		Enroll product = new ProductService().selectProduct(no);
 		
 		ProductService pService = new ProductService();
-		Img profile = new ImgService().selectMember(userNum);
 		ArrayList<Img> fileList = pService.selectThumbnail(no);
 		ArrayList<Qna> qnaList = new QnaService().selectQna(no);
 

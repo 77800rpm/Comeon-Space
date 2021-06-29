@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import center.myQ.model.dao.MyQuestionDAO;
 import center.myQ.model.vo.MyQuestion;
+import common.pageInfo.model.vo.PageInfo;
 import img.model.dao.ImgDAO;
 import img.model.vo.Img;
 
@@ -44,9 +45,9 @@ public class MyQuestionService {
 		return result;
 	}
 
-	public ArrayList<MyQuestion> selectMyQ(int userNum) {
+	public ArrayList<MyQuestion> selectMyQ(int userNum, PageInfo pi) {
 		Connection conn = getConnection();
-		ArrayList<MyQuestion> list = new MyQuestionDAO().selectMyQ(conn, userNum);
+		ArrayList<MyQuestion> list = new MyQuestionDAO().selectMyQ(conn, userNum, pi);
 		
 		close(conn);
 		
@@ -61,6 +62,13 @@ public class MyQuestionService {
 		return my;
 	}
 
+	public int selectListCount(int userNum) {
+		Connection conn = getConnection();
+		int result = new MyQuestionDAO().selectListCount(userNum, conn);
+		close(conn);
+		
+		return result;
+	}
 
 
 

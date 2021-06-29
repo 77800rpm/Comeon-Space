@@ -51,7 +51,7 @@ public class NoticeListServlet extends HttpServlet {
 		pageLimit = 10;
 		boardLimit = 10;
 		
-		maxPage = (int)Math.ceil((double)(listCount/boardLimit));
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
 		startPage = ((currentPage-1)/boardLimit) * pageLimit + 1;
 		endPage = startPage + boardLimit - 1;
@@ -61,10 +61,9 @@ public class NoticeListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
+		ArrayList<Notice> list = nService.selectNotice(pi);
 		
-		request.setCharacterEncoding("UTF-8");
-		ArrayList<Notice> list = nService.selectNotice();
-		
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/views/notice/noticeList.jsp").forward(request, response);
 		

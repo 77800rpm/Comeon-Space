@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice"%>
-<% ArrayList<Notice> list = (ArrayList)request.getAttribute("list"); %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice, common.pageInfo.model.vo.PageInfo"%>
+<%
+	ArrayList<Notice> list = (ArrayList)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int noCurrentPage = pi.getCurrentPage();
+	int noStartPage = pi.getStartPage();
+	int noEndPage = pi.getEndPage();
+	int noMaxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
@@ -110,6 +118,7 @@
 	#errorNotice{text-align: center; }
 	.body-div{margin-top: 50px;}
 	.center-body-div{margin-bottom: 100px;}
+	#pageDiv{text-align: center;}
 </style>
 
 <body>
@@ -167,8 +176,46 @@
 						<%		} %>
 						<%} %>
 	       		</table>
+	       		<div id="pageDiv">
+			       <%if(!list.isEmpty()){ %>
+			       		<!-- 페이징 시작 -->
+						<!-- 맨 처음으로 -->
+						<button onclick="location.href='<%=request.getContextPath()%>/centerView.ce?currentPage=1'" class="btn btn-outline-success">맨처음</button>
+						<!-- 이전 페이지 -->
+						<button onclick="location.href='<%=request.getContextPath() %>/centerView.ce?currentPage=<%=noCurrentPage - 1%>'" id="beforeBtn" class="btn btn-outline-success">이전</button>
+						<script>
+							if(<%=noCurrentPage%> <= 1){
+								$("#beforeBtn").prop("disabled",true);
+							}
+						</script>
+						<!-- 숫자 페이지 -->
+						<%for(int p = noStartPage; p <= noEndPage; p++){ %>
+							<%if(noCurrentPage == p){ %>
+								<button disabled><%=p %></button>
+							<%} else { %>
+								<button onclick="location.href='<%=request.getContextPath()%>/centerView.ce?currentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
+							<%} %>
+						<%} %>
+						<!-- 다음 페이지 -->
+						<button onclick="location.href='<%=request.getContextPath()%>/centerView.ce?currentPage=<%=noCurrentPage + 1%>'"id="afterBtn" class="btn btn-outline-success">다음</button>
+						<script>
+				         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
+				         		$("#afterBtn").prop("disabled",true);
+				         	}
+				         </script>
+						<!-- 맨끝 으로 -->
+						<button onclick="location.href='<%=request.getContextPath() %>/centerView.ce?currentPage=<%=noMaxPage %>'"id="lastBtn" class="btn btn-outline-success">맨끝</button>
+						<script>
+				         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
+				         		$("#lastBtn").prop("disabled",true);
+				         	}
+				         </script>
+						<!-- 페이징 끝 -->
+			       <%} %>
+				</div>
 	       </div>
 	       <div class="center-sideList"></div>
+				
 	       
 	       <script>
 	       		$(function(){
