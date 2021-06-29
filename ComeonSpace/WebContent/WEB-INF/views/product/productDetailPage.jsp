@@ -800,18 +800,23 @@
    
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
                 jQuery.ajax({
-                   url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+                   url: "pyments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
                    type: 'POST',
                    dataType: 'json',
+                   contextType: 'apllication/json; charset=UTF-8',
                    data: {
-                      imp_uid : rsp.imp_uid
-                      //기타 필요한 데이터가 있으면 추가 전달
+                      imp_uid : rsp.imp_uid,
+                      merchant_uid : rsp.merchant_uid,
+                      name : rsp.name,
                    }
                }).done(function (data) {
                  // 가맹점 서버 결제 API 성공시 로직
+                 console.log(data);
                 if ( everythings_fine ) {
                    var msg = '결제가 완료되었습니다.';
-                      
+                   var test = buyer_tel;
+                   console.log(test + "테스트 성공");
+                   
                    alert(msg);
                 } else {
                    //[3] 아직 제대로 결제가 되지 않았습니다.

@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import common.pageInfo.model.vo.PageInfo;
 import notice.model.vo.Notice;
 
 public class NoticeDAO {
@@ -27,16 +28,22 @@ public class NoticeDAO {
 		}
 	}
 	
-	public ArrayList<Notice> selectNotice(Connection conn) {
-		Statement stmt = null;
+	public ArrayList<Notice> selectNotice(Connection conn, PageInfo pi) {
+		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Notice> list = new ArrayList<Notice>();
+		
+		int startRow = (pi.getCurrentPage() - 1)*pi.getBoardLimit() + 1;
+		int endRow = startRow + pi.getBoardLimit() - 1;
 		
 		String query = prop.getProperty("selectNotice");
 		
 		try {
-			stmt = conn.createStatement();
-			rset = stmt.executeQuery(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				Notice no = new Notice(rset.getInt("BOARDNOTICE_NUM"),
@@ -53,7 +60,7 @@ public class NoticeDAO {
 			e.printStackTrace();
 		} finally {
 			close(rset);
-			close(stmt);
+			close(pstmt);
 		}
 		
 		return list;

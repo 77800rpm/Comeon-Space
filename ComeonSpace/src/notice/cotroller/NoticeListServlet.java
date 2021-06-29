@@ -61,10 +61,9 @@ public class NoticeListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
+		ArrayList<Notice> list = nService.selectNotice(pi);
 		
-		request.setCharacterEncoding("UTF-8");
-		ArrayList<Notice> list = nService.selectNotice();
-		
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/views/notice/noticeList.jsp").forward(request, response);
 		

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import common.pageInfo.model.vo.PageInfo;
 import faq.model.service.FaqService;
 import faq.model.vo.Faq;
 import img.model.service.ImgService;
@@ -43,6 +44,34 @@ public class CenterFormServlet extends HttpServlet {
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		Img profileImg = null;
 		
+		int currentPage;
+		int listCount;
+		int boardLimit;
+		int pageLimit;
+		int maxPage;
+		int startPage;
+		int endPage;
+		
+		listCount = new NoticeService().getListCount();
+		
+		currentPage = 1;
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		boardLimit = 10;
+		pageLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		startPage = ((currentPage -1)/pageLimit) * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
+	
 		if(loginUser != null) {
 			int userNum = loginUser.getUserNum();
 
@@ -50,8 +79,9 @@ public class CenterFormServlet extends HttpServlet {
 		}
 		
 		ArrayList<Faq> fList = new FaqService().faqSelect();
-		ArrayList<Notice> noList = new NoticeService().selectNotice();
+		ArrayList<Notice> noList = new NoticeService().selectNotice(pi);
 		
+		request.setAttribute("pi", pi);
 		request.setAttribute("fList", fList);
 		request.setAttribute("noList", noList);
 		request.setAttribute("prifileImg", profileImg);
