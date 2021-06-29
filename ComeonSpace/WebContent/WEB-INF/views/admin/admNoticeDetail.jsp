@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="java.util.ArrayList, notice.model.vo.Notice"%>
+	import="java.util.ArrayList, notice.model.vo.Notice" %>
 <%
-	ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
-%>
-<%
-	Notice no = (Notice) request.getAttribute("no");
+	Notice no = (Notice) request.getAttribute("notice");
 %>
 <!DOCTYPE html>
 <html>
@@ -29,35 +26,14 @@
 <body>
 	
 
-	<%@ include file=../common/header.jsp"%>
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%-- 	<%@ include file="../common/header.jsp" %> --%>
 	<!-- font -->
 	<div style="font-family: Sans-serif">
 
 		<!-- Sidebar -->
-		<div class="w3-sidebar w3-white w3-bar-block"
-			style="width: 25%; margin-left: 150px;">
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div style="margin-left: 150px">
-				<h5 class="w3-bar-item">
-					<b>회원관리</b>
-				</h5>
-				<a class="w3-bar-item w3-button">전체회원관리</a>
-				<h5 class="w3-bar-item">
-					<b>시설관리</b>
-				</h5>
-				<a href="#" class="w3-bar-item w3-button">공간승인/취소</a>
-				<h5 class="w3-bar-item">
-					<b>게시판 관리</b>
-				</h5>
-				<a href="#" class="w3-bar-item w3-button">게시글 관리</a> <a
-					href="<%=request.getContextPath()%>"
-					class="w3-bar-item w3-button">공지사항 관리</a>
-			</div>
-		</div>
+		<%@ include file="/WEB-INF/views/admin/admMenubar.jsp" %>
+		<%-- <%@ include file="admMenubar.jsp" %> --%>
 
 		<!-- Page Content -->
 		<div style="margin-left: 25%; margin-right: 100px; padding: 10%">
@@ -74,14 +50,14 @@
 				<br>
 
 				<div class="tableArea">
-				<form action ="<%= request.getContextPath()%>/admUpdateNotice.no" id="admNoticeDetailForm" method="post";>
+				<form action ="<%= request.getContextPath()%>/admUpdateNotice.no" id="admNoticeDetailForm" method="post">
 				<table>
 					<tr>
 						<th>제목</th>
 						<td colspan="3">
 						<%= no.getnTitle() %>
 						<input type="hidden" value="<%= no.getnTitle() %>" name="title">	
-						<input type="hidden" value="<%= no.getnNum() %>" name="num">			
+						<input type="hidden" value="<%= no.getnNum() %>" name="no">			
 					</tr>
 					<tr>
 						<th>작성자</th>
@@ -110,7 +86,7 @@
 			</div>
 			
 				<div align="center">
-					<input type="submit" id="updateAdmNoBtn" value="수정">
+<!-- 					<input type="submit" id="updateAdmNoBtn" value="수정"> -->
 					<input type="button" id="deleteAdmNoBtn" onclick="deleteAdm();" value="삭제">
 					<input type="button" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
 				</div>
@@ -119,7 +95,7 @@
 		</div>
 	</div>
 
-	<%@ include file="../common/footer.jsp"%>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 	 <script>
      	function deleteAdm(){

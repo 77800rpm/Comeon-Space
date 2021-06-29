@@ -31,32 +31,9 @@ Faq fo = new Faq();
 	<%@ include file="../common/header.jsp"%>
 
 	<div style="font-family: Sans-serif">
-		<!-- Sidebar -->
 
-		<div class="w3-sidebar w3-white w3-bar-block"
-			style="width: 25%; margin-left: 150px;">
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div style="margin-left: 150px">
-				<h5 class="w3-bar-item">
-					<b>회원관리</b>
-				</h5>
-				<a href="#" class="w3-bar-item w3-button">전체회원관리</a>
-				<h5 class="w3-bar-item">
-					<b>시설관리</b>
-				</h5>
-				<a href="#" class="w3-bar-item w3-button">공간승인/취소</a>
-				<h5 class="w3-bar-item">
-					<b>게시판 관리</b>
-				</h5>
-				<a href="<%=request.getContextPath()%>/faqSelect.me"
-					class="w3-bar-item w3-button">게시글 관리</a> <a href="#"
-					class="w3-bar-item w3-button">공지사항 관리</a>
-			</div>
-		</div>
+<!-- Sidebar -->
+<%@ include file="/WEB-INF/views/admin/admMenubar.jsp" %>
 
 		<!-- Page Content -->
 		<div style="margin-left: 25%; margin-right: 100px; padding: 10%">
@@ -76,8 +53,8 @@ Faq fo = new Faq();
 						<table>
 							<tr>
 								<th>제목</th>
-								<td colspan="3"><%= fo.getBoardFaqTitle() %><input type="hidden" name="title" value="">
-								<input type="hidden" value="<%= fo.getBoardFaqNum() %>" name="bId"></td>
+								<td colspan="3"><%= fo.getBoardFaqTitle() %><input type="hidden" name="title" value="<%= fo.getBoardFaqTitle() %>">
+								<input type="hidden" value="<%= fo.getBoardFaqNum() %>" name="fo"></td>
 							</tr>
 							<tr>
 								<th>내용</th>
@@ -105,7 +82,7 @@ Faq fo = new Faq();
          	
          	if(bool){
          				$("#admFaqDetailForm").attr('action', '<%= request.getContextPath()%>/admDeleteFaq.bo');
-         				$("#admFaqDetailForm").submit();
+         				$("#admFaqDetailForm").submit();									
          	}
      			
          		}

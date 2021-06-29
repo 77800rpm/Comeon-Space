@@ -39,7 +39,7 @@ public class FaqDetailServlet extends HttpServlet {
 		
 		if(fo != null) {
 			request.setAttribute("fo", fo);
-			request.getRequestDispatcher("admFaqDetail.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/views/admin/admFaqDetail.jsp").forward(request, response);
 		}
 	}
 

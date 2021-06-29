@@ -1,4 +1,4 @@
-package faq.controller;
+package product.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import faq.model.service.FaqService;
-import faq.model.vo.Faq;
+import product.model.service.ProductService;
+import product.model.vo.Product;
 
 /**
- * Servlet implementation class FaqSelectServlet
+ * Servlet implementation class ProductCategoryServlet
  */
-@WebServlet("/list.bo")
-public class FaqSelectServlet extends HttpServlet {
+@WebServlet("/spaceApproveList.bo")
+public class AdmProductSpaceApproveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqSelectServlet() {
+    public AdmProductSpaceApproveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +31,26 @@ public class FaqSelectServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Faq> list = new FaqService().faqSelect();
+		/*String category = request.getParameter("category");
+		System.out.println("카테고리 : " + category);
+		
+		ArrayList<Enroll> list = new ProductService().selectCategory(category);
+		ArrayList<Img> fList = new ProductService().selectFList();
 		
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("WEB-INF/views/admin/admFaqList.jsp").forward(request, response);
-//		request.getRequestDispatcher("admFaqList.jsp").forward(request, response);
-	
-	
+		request.setAttribute("fList", fList);*/
+		
+		System.out.println("승인 페이지 진입 완료");
+		
+		ArrayList<Product> list = new ProductService().selectProductList(0);
+		request.setAttribute("list", list);
+		
+		System.out.println("페이지 번호 : "+request.getParameter("pageNo"));
+		
+		//페이지 번호 null 인 경우 1로 설정하기
+		
+		request.getRequestDispatcher("WEB-INF/views/admin/admSpaceApprove.jsp").forward(request, response);
+		
 	}
 
 	/**

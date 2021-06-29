@@ -26,12 +26,7 @@ public class FaqWriteFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		request.getRequestDispatcher("WEB-INF/views/admin/page4_boardWriteForm.jsp").forward(request, response);;
-		
-		//화면 만 이동
-		
-		request.getRequestDispatcher("admFaqWriteForm.jsp").forward(request, response);;
-	
+		request.getRequestDispatcher("WEB-INF/views/admin/admFaqWriteForm.jsp").forward(request, response);;
 	
 	}
 

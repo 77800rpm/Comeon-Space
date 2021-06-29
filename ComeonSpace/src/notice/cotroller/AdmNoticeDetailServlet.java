@@ -28,17 +28,15 @@ public class AdmNoticeDetailServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		request.setCharacterEncoding("UTF-8");
 		int num = Integer.parseInt(request.getParameter("no"));
-		System.out.println(num);
 		Notice no = new NoticeService().admDetailNotice(num);
 		
 		
 		if(no != null) {
 			request.setAttribute("no", no);
-//			request.getRequestDispatcher("WEB-INF/views/notice/noticeDetail.jsp").forward(request, response);
-			request.getRequestDispatcher("admNoticeDetail.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/views/admin/admNoticeDetail.jsp").forward(request, response);
 		}
 	}
 				

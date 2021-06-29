@@ -1,17 +1,17 @@
 package product.model.service;
 
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
-
-import static common.JDBCTemplate.getConnection;
-import static common.JDBCTemplate.rollback;
 import static common.JDBCTemplate.close;
 import static common.JDBCTemplate.commit;
+import static common.JDBCTemplate.getConnection;
+import static common.JDBCTemplate.rollback;
+
+import java.sql.Connection;
+import java.util.ArrayList;
 
 import enroll.model.vo.Enroll;
 import img.model.vo.Img;
 import product.model.dao.ProductDAO;
+import product.model.vo.Product;
 
 public class ProductService {
 	
@@ -100,5 +100,11 @@ public class ProductService {
 		
 		return slist;
 	}
-
+	
+	public ArrayList<Product> selectProductList(Integer pageNo){
+		Connection conn=getConnection();
+		ArrayList<Product> resultList=new ProductDAO().selectProductList(pageNo, conn);
+		close(conn);
+		return resultList;
+	}
 }

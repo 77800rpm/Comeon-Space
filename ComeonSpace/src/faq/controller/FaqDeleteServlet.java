@@ -30,7 +30,7 @@ public class FaqDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int bId = Integer.parseInt(request.getParameter("bId"));
+		int bId = Integer.parseInt(request.getParameter("fo"));
 		System.out.println(bId);
 		int result = new FaqService().admDeleteFaq(bId);
 		System.out.println(result);

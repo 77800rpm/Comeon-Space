@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AdmWriteNoticeFormServlet
  */
-@WebServlet("/admWriteNoticeForm.no")
+@WebServlet("/admNoticeWriteForm.no")
 public class AdmWriteNoticeFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,8 +28,8 @@ public class AdmWriteNoticeFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/admin/admWriteNoticeForm.no.jsp");
-		RequestDispatcher view = request.getRequestDispatcher("admWriteNoticeForm.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/admin/admNoticeWriteForm.jsp");
+//		RequestDispatcher view = request.getRequestDispatcher("admWriteNoticeForm.jsp");
 		view.forward(request, response);
 	}
 

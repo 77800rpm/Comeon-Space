@@ -36,7 +36,7 @@ public class AdmNoticeUpdateFormServlet extends HttpServlet {
 		request.setAttribute("title", title);
 		request.setAttribute("content", content);
 		
-		request.getRequestDispatcher("admNoticeUpdateForm.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/admin/admNoticeUpdateForm.jsp").forward(request, response);
 	}
 
 	/**

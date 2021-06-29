@@ -40,8 +40,8 @@ public class AdminSelectUser extends HttpServlet {
 		}
 		else System.out.println(list.size());
 		request.setAttribute("list", list);
-//		request.getRequestDispatcher("WEB-INF/views/admin/page1_user.jsp").forward(request, response);
-		request.getRequestDispatcher("admSelectUser.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/views/admin/admSelectUser.jsp").forward(request, response);
+//		request.getRequestDispatcher("admSelectUser.jsp").forward(request, response);
 	}
 
 	/**

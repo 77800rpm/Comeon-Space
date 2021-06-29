@@ -47,9 +47,9 @@ https://templatemo.com/tm-559-zay-shop
       
       
       /* 폰트 지정. 주아체.            제발 다 적용되어줘... */
-     *{font-family: 'jua', sans-serif; !important}
+     *{font-family: 'jua', sans-serif;}
      #hotSpace{font-family: 'jua', sans-serif;}
-     a, p, h1, h2, h3{font-family: 'jua', sans-serif; !important}
+     a, p, h1, h2, h3{font-family: 'jua', sans-serif;}
       
     .footer{text-align: center;}
 	.footer-list{margin: 6px;} 
