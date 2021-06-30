@@ -34,7 +34,6 @@ public class ProductCategoryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String category = request.getParameter("category");
-		System.out.println("카테고리 : " + category);
 		
 		ArrayList<Enroll> list = new ProductService().selectCategory(category);
 		ArrayList<Img> fList = new ProductService().selectFList();
