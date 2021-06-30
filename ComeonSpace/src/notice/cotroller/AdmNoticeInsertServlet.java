@@ -35,7 +35,7 @@ public class AdmNoticeInsertServlet extends HttpServlet {
 		
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String userName = ((Member)request.getSession().getAttribute("loginUser")).getUserName();
+		String userName = request.getParameter("nickName");
 		
 		Notice n = new Notice();
 		n.setAdmName(userName);
@@ -46,6 +46,9 @@ public class AdmNoticeInsertServlet extends HttpServlet {
 		
 		if(result > 0) {
 			response.sendRedirect("admList.no");
+		} else {
+			request.setAttribute("msg", "공지사항 등록에 실패하였습니다.");
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 		}
 	}
 

@@ -1,4 +1,4 @@
-package notice.cotroller;
+package center;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
+import faq.model.service.FaqService;
+import faq.model.vo.Faq;
 
 /**
- * Servlet implementation class AdmNoticeDeleteServlet
+ * Servlet implementation class CenterFaqDetailServlet
  */
-@WebServlet("/admDeleteNotice.no")
-public class AdmNoticeDeleteServlet extends HttpServlet {
+@WebServlet("/faqDetail.ce")
+public class CenterFaqDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdmNoticeDeleteServlet() {
+    public CenterFaqDetailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,17 +29,19 @@ public class AdmNoticeDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		int num = Integer.parseInt(request.getParameter("num"));
-
-		int result = new NoticeService().admDeleteNotice(num);
+		int bId = Integer.parseInt(request.getParameter("fo"));
 		
-		if(result > 0) {
-			response.sendRedirect("admList.no");
+		Faq fo = new FaqService().admDetailFaq(bId);
+		
+		
+		if(fo != null) {
+			request.setAttribute("fo", fo);
+			request.getRequestDispatcher("WEB-INF/views/center/faqDetail.jsp").forward(request, response);
 		} else {
-			request.setAttribute("msg", "게시글 삭제에 실패하였습니다.");
+			request.setAttribute("msg", "FAQ 상세 조회에 실패하였습니다.");
 			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 		}
+		
 	}
 
 	/**

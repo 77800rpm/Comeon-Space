@@ -106,7 +106,7 @@ public class CenterFormServlet extends HttpServlet {
 		PageInfo fPi = new PageInfo(fCurrentPage, fListCount, fPageLimit, fBoardLimit, fMaxPage, fStartPage, fEndPage);
 	
 		
-		ArrayList<Faq> fList = new FaqService().faqSelect();
+		ArrayList<Faq> fList = new FaqService().faqSelect(fPi);
 		ArrayList<Notice> noList = new NoticeService().selectNotice(pi);
 		
 		request.setAttribute("fPi", fPi);

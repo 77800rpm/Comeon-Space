@@ -32,6 +32,7 @@ public class NoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Notice> list = new ArrayList<Notice>();
+		Notice no = null;
 		
 		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 		int endRow = startRow + pi.getBoardLimit() - 1;
@@ -46,13 +47,13 @@ public class NoticeDAO {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				Notice no = new Notice(rset.getInt("BOARDNOTICE_NUM"),
-						rset.getString("BOARDNOTICE_TITLE"),
-						rset.getString("BOARDNOTICE_CONTENT"),
-						rset.getString("BOARDNOTICE_CATEGORY"),
-						rset.getInt("ADM_NUM"),
-						rset.getDate("BOARDNOTICE_DATE"));
-				no.setnWriter(rset.getString("BOARDNOTICE_WRITER"));
+				no = new Notice();
+				no.setnNum(rset.getInt("BOARDNOTICE_NUM"));
+				no.setnTitle(rset.getString("BOARDNOTICE_TITLE"));
+				no.setnContent(rset.getString("BOARDNOTICE_CONTENT"));
+				no.setDate(rset.getDate("BOARDNOTICE_DATE"));
+				no.setStatus(rset.getString("NOTICE_STATUS"));
+				no.setAdmName(rset.getString("ADM_NAME"));
 				
 				list.add(no);
 			}
@@ -125,8 +126,7 @@ public class NoticeDAO {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, no.getnTitle());
 			pstmt.setString(2, no.getnContent());
-			pstmt.setString(3, no.getnCategory());
-			pstmt.setInt(4, no.getnNum());
+			pstmt.setInt(3, no.getnNum());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

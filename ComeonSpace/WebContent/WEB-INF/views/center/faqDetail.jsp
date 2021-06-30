@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="notice.model.vo.Notice"%>
-<% Notice no = (Notice)request.getAttribute("no"); %>
+    pageEncoding="UTF-8" import="faq.model.vo.Faq"%>
+<% Faq fo = (Faq)request.getAttribute("fo"); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,14 +105,7 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Start Section -->
     <section class="container center">
-       <div class="center-sideList center-align">
-       		<span class="sideList-top">고객센터</span><br>
-       		<span class="sideList"><a>문의하기</a></span><br>
-       		<span class="sideList"><a>공지사항</a></span><br>
-       		<span class="sideList"><a>FAQ</a></span><br>
-       		<span class="sideList"><a>내 질문</a></span><br>
-       		<span class="sideList"><a>회원탈퇴</a></span>
-       </div>
+		<%@ include file="centerMenubar.jsp" %>
        <div class="center-align center-vertical" id="center-qTitle">
        		<h2>공지사항</h2>
        </div>
@@ -126,21 +119,21 @@ https://templatemo.com/tm-559-zay-shop
        				</tr>
        				<tr>
        					<td>
-       						<%= no.getnNum() %>
-       						<input type="hidden" name="num" value="<%= no.getnNum() %>">
+       						<%= fo.getBoardFaqNum() %>
+       						<input type="hidden" name="num" value="<%= fo.getBoardFaqNum() %>">
        					</td>
        					<td>
-	       					<%= no.getnTitle() %>
-	       					<input type="hidden" name="title" value="<%= no.getnTitle() %>">	
+	       					<%= fo.getBoardFaqTitle() %>
+	       					<input type="hidden" name="title" value="<%= fo.getBoardFaqTitle() %>">	
 	       				</td>
        					<td>
-       						<%= no.getDate() %>
-       						<input type="hidden" name="date" value="<%= no.getDate() %>">
+       						<%= fo.getCreateDate() %>
+       						<input type="hidden" name="date" value="<%= fo.getCreateDate()%>">
        					</td>
        				</tr>
        				<tr>
        					<td colspan="3" id="FAQ-content">
-       					<p><%=no.getnContent() %><input type="hidden" name="content" value="<%= no.getnContent() %>"></p>
+       					<p><%=fo.getBoardFaqContent() %><input type="hidden" name="content" value="<%= fo.getBoardFaqContent() %>"></p>
        					</td>
        				</tr>
        				<tr>
@@ -154,15 +147,6 @@ https://templatemo.com/tm-559-zay-shop
        </div>
         <div id="test"></div>
        <%@ include file="../common/footer.jsp" %>
-     <script>
-     		$(function(){
-     			$("#deleteBtn").on("click",function(){
-         			if(confirm("정말 삭제하시겠습니까?")){
-         				$("#noticeDetailForm").attr('action', '<%= request.getContextPath()%>/deleteNotice.no');
-         			}
-         		})
-     		})
-     </script>
     </section>
 </body>
 

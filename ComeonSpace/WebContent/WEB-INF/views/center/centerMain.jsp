@@ -13,10 +13,10 @@
 	int noCurrentPage = pi.getCurrentPage();
 	int noMaxPage = pi.getMaxPage();
 	
-	int fStartPage = pi.getStartPage();
-	int fEndPage = pi.getEndPage();
-	int fCurrentPage = pi.getCurrentPage();
-	int fMaxPage = pi.getMaxPage();
+	int fStartPage = fPi.getStartPage();
+	int fEndPage = fPi.getEndPage();
+	int fCurrentPage = fPi.getCurrentPage();
+	int fMaxPage = fPi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,7 +161,7 @@ https://templatemo.com/tm-559-zay-shop
 							<td><%= f.getBoardFaqTitle() %></td>
 							<td>Comeon Space</td>
 							<td><%= f.getCreateDate() %></td>
-							<td><%= f.getBoardFaqContent() %></td>
+							<td><%= f.getBoardCount() %></td>
 						</tr>
 					<%} %>
 				<%} else {%>
@@ -225,7 +225,7 @@ https://templatemo.com/tm-559-zay-shop
 						<tr id="noticeTable">
 							<td><%= n.getnNum() %></td>
 							<td><%= n.getnTitle() %></td>
-							<td><%= n.getnWriter() %></td>
+							<td>Comeon Space</td>
 							<td><%= n.getDate() %></td>
 						</tr>
 					<%} %>

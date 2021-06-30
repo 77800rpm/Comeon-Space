@@ -1,12 +1,14 @@
 package faq.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import faq.model.service.FaqService;
 import faq.model.vo.Faq;
 
 /**
@@ -28,17 +30,24 @@ public class FaqUpdateForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int bId = Integer.parseInt(request.getParameter("fo"));
 		String title = request.getParameter("title");
-//		String date = request.getParameter("date");
 		String content = request.getParameter("content");
 		
 		Faq fo = new Faq();
 		fo.setBoardFaqTitle(title);
-//		fo.setCreateDate(date);
 		fo.setBoardFaqContent(content);
+		fo.setBoardFaqNum(bId);
 		
-		request.setAttribute("fo", fo);
-		request.getRequestDispatcher("boardDetail.jsp").forward(request, response);
+		int result = new FaqService().updateFaq(fo);
+		
+		if(result > 0) {
+			response.sendRedirect("list.bo");
+		} else {
+			request.setAttribute("msg", "FAQ 수정에 실패하였습니다.");
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
+		}
+
 	}
 
 	/**

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import faq.model.service.FaqService;
 import faq.model.vo.Faq;
+import jdk.jfr.internal.RequestEngine;
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
 
@@ -33,14 +34,16 @@ public class FaqDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		int bId = Integer.parseInt(request.getParameter("fo"));
-		System.out.println(bId);
+		
 		Faq fo = new FaqService().admDetailFaq(bId);
 		
-		request.getParameter("fo").trim();
 		
 		if(fo != null) {
 			request.setAttribute("fo", fo);
 			request.getRequestDispatcher("WEB-INF/views/admin/admFaqDetail.jsp").forward(request, response);
+		} else {
+			request.setAttribute("msg", "FAQ 상세 조회에 실패하였습니다.");
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 		}
 	}
 

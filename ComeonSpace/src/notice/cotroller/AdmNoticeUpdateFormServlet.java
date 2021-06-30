@@ -1,16 +1,20 @@
 package notice.cotroller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import notice.model.service.NoticeService;
+import notice.model.vo.Notice;
+
 /**
  * Servlet implementation class AdmNoticeUpdateFormServlet
  */
-@WebServlet("/admUpdateNoticeForm.no")
+@WebServlet("/admUpdateNotice.no")
 public class AdmNoticeUpdateFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,11 +36,21 @@ public class AdmNoticeUpdateFormServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		request.setAttribute("num", num);
-		request.setAttribute("title", title);
-		request.setAttribute("content", content);
+		Notice no = new Notice();
+		no.setnNum(num);
+		no.setnTitle(title);
+		no.setnContent(content);
 		
-		request.getRequestDispatcher("WEB-INF/views/admin/admNoticeUpdateForm.jsp").forward(request, response);
+		int result = new NoticeService().updateNotice(no);
+		
+		if(result > 0) {
+			response.sendRedirect("admList.no");
+		} else {
+			request.setAttribute("msg", "공지사항 수정에 실패하였습니다.");
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
+		}
+		
+		
 	}
 
 	/**

@@ -40,7 +40,6 @@ public class AdmNoticeDetailServlet extends HttpServlet {
 			Notice notice = new NoticeService().admDetailNotice(num);
 			request.setAttribute("notice", notice);
 			
-			System.out.println("공지사항 :"+notice);
 			request.getRequestDispatcher("WEB-INF/views/admin/admNoticeDetail.jsp").forward(request, response);
 		}
 	}
