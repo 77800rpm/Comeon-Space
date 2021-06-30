@@ -57,10 +57,6 @@ public class ProductSearchCategoryServlet extends HttpServlet {
 		
 		ArrayList<Enroll> list = new ProductService().selectList(PRODUCT_LOCATION, PRODUCT_CATEGORY, PRODUCT_HOLIDAY);
 		ArrayList<Img> fList = new ProductService().selectFList();
-		
-		System.out.println(PRODUCT_LOCATION);
-		System.out.println(PRODUCT_CATEGORY);
-		System.out.println(PRODUCT_HOLIDAY);
 				
 		String page = null;
 		if(list != null && fList != null) {
