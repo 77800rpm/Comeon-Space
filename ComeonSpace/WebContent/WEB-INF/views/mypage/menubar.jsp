@@ -79,6 +79,7 @@
      	})
      	$("#salesHistory").on("click",function(){
      		location.href="<%=request.getContextPath()%>/salesHistory.my";
+     	})	
      	$("#mypOrderList").on("click",function(){
      		location.href="<%=request.getContextPath()%>/orderList.my";
      	})

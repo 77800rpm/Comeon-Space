@@ -83,6 +83,7 @@ public class OrderDAO {
 				order.setProdNum(rset.getInt("PROD_NUM"));
 				order.setTotalPrice(rset.getInt("TOTAL_PRICE"));
 				order.setRevDate(rset.getString("REV_DATE"));
+				order.setOrderDate(rset.getDate("ORDER_DATE"));
 				
 				list.add(order);
 			}
@@ -120,6 +121,7 @@ public class OrderDAO {
 				order.setProdNum(rset.getInt("PROD_NUM"));
 				order.setTotalPrice(rset.getInt("TOTAL_PRICE"));
 				order.setRevDate(rset.getString("REV_DATE"));
+				order.setOrderDate(rset.getDate("ORDER_DATE"));
 			}
 					
 		} catch (SQLException e) {

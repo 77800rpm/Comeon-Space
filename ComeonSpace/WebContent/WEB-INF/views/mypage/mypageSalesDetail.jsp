@@ -125,7 +125,7 @@
 			    			<tr>
 			    				<td class="td-menu" >상세 내용</td>
 			            		<td class="td-content td-content-detail">
-					            		<%=order.getRevDate() %><br>
+					            		이용 날짜 : <%=order.getRevDate() %><br>
 					            		인원　:　5 명
 			            		</td>
 			    			</tr>
@@ -138,7 +138,7 @@
 					        </tr>
 					        <tr>
 					        	<td class="td-menu" >결제 일시</td>
-					        	<td><%=order.getRevDate() %></td>
+					        	<td><%=order.getOrderDate() %></td>
 					        </tr>
 					        <tr>
 					        	<td class="td-menu" >결제 수단</td>

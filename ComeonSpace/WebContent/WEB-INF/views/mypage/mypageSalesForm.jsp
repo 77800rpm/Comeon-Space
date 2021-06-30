@@ -127,11 +127,11 @@
 						    <thead class="thead-light mytable-color">
 						      <tr>
 						        <th><input type="checkbox" class="checkbox-select" value="something"></th>
-						        <th>번호</th>
-						        <th>구매 일자</th>
-						        <th>구매 상품 정보</th>
-						        <th>결제 금액</th>
-						        <th>비고</th>
+						        <th width="10%">번호</th>
+						        <th width="15%">구매 일자</th>
+						        <th width="50%">구매 상품 정보</th>
+						        <th width="15%">결제 금액</th>
+						        <th width="10%">비고</th>
 						      </tr>
 						    </thead>
 						    <tbody>
@@ -140,7 +140,7 @@
 								      <tr>
 								        <td class="hh-content"><input type="checkbox" name="selectCheck" class="checkbox-select" value="<%=o.getOrderNum()%>"></td>
 								      	<td class="hh-content"><%= o.getOrderNum() %></td>
-								        <td class="hh-content"><%=o.getRevDate() %></td>
+								        <td class="hh-content"><%=o.getOrderDate() %></td>
 								        <td style="width:400px;">
 								        	<p style="color: #0f6756; font-size: 105%; font-weight: bold"><%=o.getProdName() %></p>
 											<p>구매자 : <%=o.getBuyerName() %></p>
@@ -199,9 +199,6 @@
         </div>
     </div>
 
-
-
-    
 </body>
 <script>
 	$("#tableArea input[type=button]").on("click",function(){
