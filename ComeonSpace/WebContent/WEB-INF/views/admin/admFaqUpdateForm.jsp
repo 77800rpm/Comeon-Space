@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.ArrayList, faq.model.vo.Faq "
 	import="faq.model.service.*"%>
-<% 
-ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); 
-%>
+<%-- <% ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); %> --%>
 <%
-FaqService fs = new FaqService();
-// ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
-Faq fo = (Faq) request.getAttribute("fo");
+	FaqService fs = new FaqService();
+ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 %>
 <!DOCTYPE html>
 <html>
@@ -32,7 +29,6 @@ Faq fo = (Faq) request.getAttribute("fo");
 
 	<div style="font-family: Sans-serif">
 
-<!-- Sidebar -->
 <%@ include file="/WEB-INF/views/admin/admMenubar.jsp" %>
 
 		<!-- Page Content -->
@@ -45,32 +41,26 @@ Faq fo = (Faq) request.getAttribute("fo");
 			<div>
 
 				<h5 style="padding: 1%">
-					<b>게시글 상세보기</b>
+					<b>게시글 작성</b>
 				</h5>
 
 				<div class="tableArea">
-					<form action="<%=request.getContextPath()%>/faqDetail.bo" id="admFaqDetailForm" method="post">
+					<form action="<%=request.getContextPath()%>/faqInsert.bo"
+						method="post">
 						<table>
 							<tr>
 								<th>제목</th>
-								<td colspan="3">
-								<%= fo.getBoardFaqTitle() %>
-								<input type="hidden" name="title" value="<%= fo.getBoardFaqTitle() %>">
-								<input type="hidden" value="<%= fo.getBoardFaqNum() %>" name="fo"></td>
-								
-								
-<%-- 								<%= fo.getBoardFaqNum() %> --%>
+								<td colspan="3"><input type="text" size="100" name="title"></td>
 							</tr>
 							<tr>
 								<th>내용</th>
 								<td colspan="3"><textarea rows="15" cols="100"
-										name="content" style="resize: none;" readonly><%= fo.getBoardFaqContent() %></textarea></td>
+										name="content" style="resize: none;"></textarea></td>
 							</tr>
 						</table>
 						<br>
 						<div align="center">
-							<input type="submit" id="faqDeleteBtn" onclick="faqDelete();" value="삭제">
-							<input type="submit" id="faqUpdateBtn" value="수정">
+							<input type="submit" id="insertBtn" value="등록하기">
 							<input type="button" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
 						</div>
 					</form>
@@ -80,26 +70,6 @@ Faq fo = (Faq) request.getAttribute("fo");
 
 	</div>
 	<%@ include file="../common/footer.jsp"%>
-	
-	<script>
-     	function faqDelete(){
-         	var bool = confirm("정말 삭제하시겠습니까?");
-         	
-         	if(bool){
-         				$("#admFaqDetailForm").attr('action', '<%= request.getContextPath()%>/admDeleteFaq.bo');
-         				$("#admFaqDetailForm").submit();									
-         	}
-     			
-         		}
-     	// 게시글 수정
-     	$(function(){
-    		$("#faqUpdateBtn").on("click",function(){
-    			location.href="<%= request.getContextPath() %>/boardUpdateForm.bo";
-    		});
-    	});
-     </script>
-	
-	
 </body>
 
 </html>

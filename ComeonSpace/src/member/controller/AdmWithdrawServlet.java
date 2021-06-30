@@ -1,27 +1,27 @@
-package faq.controller;
+package member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import faq.model.service.FaqService;
-import faq.model.vo.Faq;
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
- * Servlet implementation class FaqDeleteServlet
+ * Servlet implementation class AdmWithdrawServlet
  */
-@WebServlet("/admDeleteFaq.bo")
-public class FaqDeleteServlet extends HttpServlet {
+@WebServlet("/withdraw.me")
+public class AdmWithdrawServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FaqDeleteServlet() {
+    public AdmWithdrawServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +31,20 @@ public class FaqDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		int userNum = Integer.parseInt(request.getParameter("userNum"));
 		
-		int bId = Integer.parseInt(request.getParameter("fo"));
+		System.out.println(userNum);
+		int result = new MemberService().admDeleteMember(userNum);
 		
-		int result = new FaqService().admDeleteFaq(bId);
-			
+		request.getParameter("userNum").trim();
+		
 		if(result > 0) {
-			response.sendRedirect("list.bo");
+			response.sendRedirect("selectUser.me");
+		} else {
+			request.setAttribute("msg", "강제 탈퇴 실패");
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 		}
-		
+
 	}
 
 	/**

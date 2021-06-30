@@ -318,5 +318,26 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int admDeleteMember(Connection conn, int userNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("admDeleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userNum);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
 	
 }

@@ -130,6 +130,21 @@ public class MemberService {
 		return result;
 	}
 
+	public int admDeleteMember(int userNum) {
+		Connection conn = getConnection();
+		
+		int result = new MemberDAO().admDeleteMember(conn, userNum);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+		
+		return result;
+	}
+
 
 
 	

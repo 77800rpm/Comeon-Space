@@ -53,7 +53,8 @@
   <h5 style="padding:1%"><b>전체회원관리</b></h5>
   	<br>
 
-<div>           
+<div>
+  <form action="<%=request.getContextPath()%>/selectUser.me" id="admWithdrawList" method="post">         
   <table class="table table-bordered table-sm" style="text-align:center;">
   	<% if(list == null){ %>
    		<thead class="w3-light-grey">
@@ -85,12 +86,14 @@
 		        <td><%= m.getUserNic() %></td>
 		        <td><%= m.getUserPhone() %></td>
 		        <td>
-		        </td>
+		        <input type="button" value="강제탈퇴" id="withdraw">
+		        <input type="hidden" value="<%= m.getUserNum() %>" name="userNum"></td>
 		      </tr>
    			<% } %>
    		</tbody>
       <% } %>
    </table>
+   	</form>
 	</div>
 </div>
 
@@ -111,8 +114,19 @@
 </div>
 
 <%@ include file="../common/footer.jsp" %>
-
-<!-- </form> -->
+	
+	
+	<script>
+     	function faqDelete(){
+         	var bool = confirm("정말 탈퇴시키겠습니까?");
+         	
+         	if(bool){
+         				$("#admWithdrawList").attr('action', '<%= request.getContextPath()%>/withdraw.me');
+         				$("#admWithdrawList").submit();									
+         	}
+     			
+         		}
+     </script>
 </body>
 
 </html>

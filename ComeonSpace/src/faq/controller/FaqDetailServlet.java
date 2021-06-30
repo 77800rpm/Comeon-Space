@@ -36,6 +36,7 @@ public class FaqDetailServlet extends HttpServlet {
 		System.out.println(bId);
 		Faq fo = new FaqService().admDetailFaq(bId);
 		
+		request.getParameter("fo").trim();
 		
 		if(fo != null) {
 			request.setAttribute("fo", fo);
