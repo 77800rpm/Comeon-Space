@@ -6,6 +6,7 @@ import static common.JDBCTemplate.getConnection;
 import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import order.model.dao.OrderDAO;
 import order.model.vo.Order;
@@ -25,4 +26,15 @@ public class OrderService {
 		
 		return result;
 	}
+
+	public ArrayList<Order> selectList() {
+		
+			Connection conn = getConnection();
+			
+			ArrayList<Order> list = new OrderDAO().selectList(conn);
+			
+			close(conn);
+			
+			return list;
+		}
 }

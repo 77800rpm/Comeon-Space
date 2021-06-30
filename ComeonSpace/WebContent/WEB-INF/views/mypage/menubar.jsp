@@ -62,7 +62,7 @@
                      <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                  </a>
                  <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                     <li><a class="text-decoration-none list-text" href="#">예약현황</a></li>
+                     <li><a class="text-decoration-none list-text" href="#" id="mypOrderList">예약현황</a></li>
                      <li><a class="text-decoration-none list-text" href="#" id="mypReview">후기</a></li>
                  </ul>
              </li>
@@ -77,6 +77,9 @@
      	})
      	$("#mypReview").on("click",function(){
      		location.href="<%=request.getContextPath()%>/qnaList.my";
+     	})
+     	$("#mypOrderList").on("click",function(){
+     		location.href="<%=request.getContextPath()%>/orderList.my";
      	})
 
      </script>
