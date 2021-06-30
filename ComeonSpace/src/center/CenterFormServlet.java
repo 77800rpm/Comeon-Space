@@ -43,6 +43,11 @@ public class CenterFormServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		Img profileImg = null;
+		if(loginUser != null) {
+			int userNum = loginUser.getUserNum();
+
+			profileImg = new ImgService().selectMember(userNum);
+		}
 		
 		int currentPage;
 		int listCount;
@@ -72,15 +77,39 @@ public class CenterFormServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
 	
-		if(loginUser != null) {
-			int userNum = loginUser.getUserNum();
-
-			profileImg = new ImgService().selectMember(userNum);
+		int fCurrentPage;
+		int fListCount;
+		int fBoardLimit;
+		int fPageLimit;
+		int fMaxPage;
+		int fStartPage;
+		int fEndPage;
+		
+		fListCount = new NoticeService().getListCount();
+		
+		fCurrentPage = 1;
+		if(request.getParameter("fCurrentPage") != null) {
+			fCurrentPage = Integer.parseInt(request.getParameter("fCurrentPage"));
 		}
+		
+		fBoardLimit = 10;
+		fPageLimit = 10;
+		
+		fMaxPage = (int)Math.ceil((double)fListCount / fBoardLimit);
+		
+		fStartPage = ((fCurrentPage -1)/fPageLimit) * fPageLimit + 1;
+		fEndPage = fStartPage + fPageLimit - 1;
+		if(fEndPage > fMaxPage) {
+			fEndPage = fMaxPage;
+		}
+		
+		PageInfo fPi = new PageInfo(fCurrentPage, fListCount, fPageLimit, fBoardLimit, fMaxPage, fStartPage, fEndPage);
+	
 		
 		ArrayList<Faq> fList = new FaqService().faqSelect();
 		ArrayList<Notice> noList = new NoticeService().selectNotice(pi);
 		
+		request.setAttribute("fPi", fPi);
 		request.setAttribute("pi", pi);
 		request.setAttribute("fList", fList);
 		request.setAttribute("noList", noList);

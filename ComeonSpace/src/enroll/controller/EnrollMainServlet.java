@@ -60,6 +60,7 @@ public class EnrollMainServlet extends HttpServlet {
 		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		ArrayList<Notice> list = new NoticeService().selectNotice(pi);
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/views/enroll/enrollMain.jsp").forward(request, response);
 	}

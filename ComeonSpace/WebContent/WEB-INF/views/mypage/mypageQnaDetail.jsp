@@ -84,7 +84,7 @@
 									<td colspan="3"><textarea rows="10" cols="95" name="answerContent" id="qnaContent" style="resize:none;"><%if(q.getQnaAnswer() == null){%><%} else {%><%=q.getQnaAnswer() %><%} %></textarea></td>
 								</tr>
 								<tr>
-									<td colspan="4" style="text-align:center"><input type="submit" value="답변하기">&nbsp;&nbsp;&nbsp;<input type="button" id="goMainBtn" value="목록으로"></td>
+									<td colspan="4" style="text-align:center"><input type="submit" class="btn btn-outline-success" value="답변하기">&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-outline-success" id="goMainBtn" value="목록으로"></td>
 								</tr>
 							<%} else {%>
 								<tr>
@@ -102,7 +102,7 @@
 									<td colspan="3"><textarea rows="10" cols="95" name="answerContent" id="qnaContent" style="resize:none;" readonly><%if(q.getQnaAnswer() == null){%><%} else {%><%=q.getQnaAnswer() %><%} %></textarea></td>
 								</tr>
 								<tr>
-									<td colspan="4" style="text-align:center"><input type="button" id="goMainBtn" value="목록으로"></td>
+									<td colspan="4" style="text-align:center"><input type="button" class="btn btn-outline-success" id="goMainBtn" value="목록으로"></td>
 								</tr>
 							
 							<%} %>
