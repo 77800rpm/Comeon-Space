@@ -51,9 +51,8 @@
                      <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                  </a>
                  <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                     <li><a class="text-decoration-none list-text" href="#">예약현황</a></li>
+                     <li><a class="text-decoration-none list-text" href="#" id="salesHistory">판매 결제내역</a></li>
                      <li><a class="text-decoration-none list-text" href="#">작성된 후기</a></li>
-                     <li><a class="text-decoration-none list-text" href="#">결제내역</a></li>
                  </ul>
              </li>
              <li class="pb-3">
@@ -78,6 +77,9 @@
      	$("#mypReview").on("click",function(){
      		location.href="<%=request.getContextPath()%>/qnaList.my";
      	})
+     	$("#salesHistory").on("click",function(){
+     		location.href="<%=request.getContextPath()%>/salesHistory.my";
+     	})	
      	$("#mypOrderList").on("click",function(){
      		location.href="<%=request.getContextPath()%>/orderList.my";
      	})

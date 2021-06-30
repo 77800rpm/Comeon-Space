@@ -82,6 +82,12 @@
 		bottom: 10px;
 	}
 	
+	.review-Write {
+		position: relative;
+		top: 10px;
+		right: 2px;
+	}
+	
 </style>
 <header>
     <%@ include file="../common/header.jsp" %>
@@ -102,25 +108,25 @@
 						<br>
 						<hr><br>
 						    <div class="row">
-						        <div class="intro-name col-sm-5"><span style="color:#0f6756; font-weight:bold; font-size:150%; "><%= loginUser.getUserNic() %></span><span class="intro-font1"> 님<br>안녕하세요!</span></div>
+						        <div class="intro-name col-sm-5"><span style="color:#0f6756; font-weight:bold; font-size:120%; "><%= loginUser.getUserNic() %></span><span class="intro-font1"> 님<br>안녕하세요!</span></div>
 						        <div class="intro-before col-sm-2"><span class="intro-font">이용 전</span><br><span class="intro-font intro-font-count">N</span><span class="intro-font2"> 개</span></div>
 						        <div class="intro-after col-sm-2"><span class="intro-font">이용 완료</span><br><span class="intro-font intro-font-count">N</span><span class="intro-font2"> 개</span></div>
 						        <div class="intro-review col-sm-2"><span class="intro-font">구매 후기</span><br><span class="intro-font intro-font-count">N</span><span class="intro-font2"> 개</span></div>
 						    </div>
 						<br><hr>
 						<br><br><br>
-						<h5>예약 현황 전체 보기 </h5>
+						<h5>예약 현황 전체 보기</h5>
+						<br>
 					</div>
                 </div>
                 
                 
 					<div class="container">
 						<form name="체크박스" action="#">
-						<button type="button" class="btn btn-success btn-sm" id="select-delete">선택 삭제</button>
-						  <table class="table box">
+						  <table class="table box" id="tableArea">
 						    <thead class="thead-light mytable-color">
 						      <tr>
-						        <th><input type="checkbox" class="checkbox-select" value="something"></th>
+						        <th>no</th>
 						        <th>구매 일자</th>
 						        <th>구매 상품 정보</th>
 						        <th>결제 금액</th>
@@ -136,18 +142,18 @@
 							<% } else { %>
 							<% 		for(Order or : list) { %>
 						      <tr>
-						        <td class="hh-content"><input type="checkbox" class="checkbox-select" value="something"></td>
+								<td class="hh-content"><%= or.getOrderNum() %></td>
 						        <td class="hh-content"><%= or.getOrderDate() %></td>
 						        <td>
 						        	<br>
-						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold"><%= or.getProdName() %></p>
+						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= or.getProdName() %></p>
 						            <p><%= or.getRevDate() %></p>
 						        </td>
 						        <td class="hh-content"><b><%= or.getTotalPrice() %></b> 원</td>
 						        <td>   
 						        	<br>
-						        	<p>이용 완료</p>
-						        	<p><button type="button" class="btn btn-success btn-sm" id="review-Write">후기 쓰기</button></p>
+						        	이용 완료<br>
+						        	<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
 						        </td>
 						      </tr>
 						    <% 		} %>
@@ -175,10 +181,21 @@
     <!-- End Script -->
     
     <script>
- 	$("#review-Write").on("click",function(){
- 		location.href="<%=request.getContextPath()%>/writeReview.my";
+    
+    
+ 	$("#tableArea button[type=button]").on("click",function(){
+ 		var num = $(this).parent().parent().children('td').eq(0).text();
+ 		location.href="<%=request.getContextPath()%>/writeReview.my?no="+num;
  	});
+ 	
+ 	
+	$(".proName").on("click",function(){
+		var num = $(this).parent().parent().children('td').eq(0).text();
+		location.href="<%= request.getContextPath()%>/orderDetail.my?no="+num;
+	});
+	
     </script>
+    
 </body>
 <footer>
 	<%@ include file="../common/footer.jsp" %>

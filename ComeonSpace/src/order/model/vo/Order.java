@@ -3,6 +3,7 @@ package order.model.vo;
 import java.sql.Date;
 
 public class Order {
+	private int orderNum;
 	private String prodName;
 	private int totalPrice;
 	private String buyerEmail;
@@ -12,9 +13,22 @@ public class Order {
 	private int prodNum;
 	private int hostNum;
 	private Date orderDate;
-	private int orderNum;
 	
 	public Order() {}
+	
+	public Order(int orderNum, String prodName, int totalPrice, String buyerEmail, String buyerName, String buyerPhone,
+			String revDate, int prodNum, int hostNum) {
+		super();
+		this.orderNum = orderNum;
+		this.prodName = prodName;
+		this.totalPrice = totalPrice;
+		this.buyerEmail = buyerEmail;
+		this.buyerName = buyerName;
+		this.buyerPhone = buyerPhone;
+		this.revDate = revDate;
+		this.prodNum = prodNum;
+		this.hostNum = hostNum;
+	}
 
 	public Order(String prodName, String buyerEmail, String buyerName, String buyerPhone,
 			int prodNum, int hostNum, int totalPrice, String revDate) {
@@ -29,8 +43,6 @@ public class Order {
 		this.hostNum = hostNum;
 	}
 	
-	
-
 
 	public Order(String prodName, int totalPrice, String buyerEmail, String buyerName, String buyerPhone,
 			String revDate, int prodNum, int hostNum, Date orderDate, int orderNum) {
