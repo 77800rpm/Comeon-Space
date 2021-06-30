@@ -51,4 +51,14 @@ public class OrderService {
 		return result;
 	}
 
+	public ArrayList<Order> selectList() {
+		
+			Connection conn = getConnection();
+			
+			ArrayList<Order> list = new OrderDAO().selectList(conn);
+			
+			close(conn);
+			
+			return list;
+		}
 }

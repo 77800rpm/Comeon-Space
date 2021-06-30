@@ -1,5 +1,7 @@
 package order.model.vo;
 
+import java.sql.Date;
+
 public class Order {
 	private int orderNum;
 	private String prodName;
@@ -10,6 +12,7 @@ public class Order {
 	private String revDate;
 	private int prodNum;
 	private int hostNum;
+	private Date orderDate;
 	
 	public Order() {}
 	
@@ -41,11 +44,32 @@ public class Order {
 	}
 	
 
-	public int getOrderNum() {
-		return orderNum;
+	public Order(String prodName, int totalPrice, String buyerEmail, String buyerName, String buyerPhone,
+			String revDate, int prodNum, int hostNum, Date orderDate, int orderNum) {
+		super();
+		this.prodName = prodName;
+		this.totalPrice = totalPrice;
+		this.buyerEmail = buyerEmail;
+		this.buyerName = buyerName;
+		this.buyerPhone = buyerPhone;
+		this.revDate = revDate;
+		this.prodNum = prodNum;
+		this.hostNum = hostNum;
+		this.orderDate = orderDate;
+		this.orderNum = orderNum;
 	}
 
-	public void setOrderNum(int orderNum) {
+	
+	
+	public Order(String prodName, int totalPrice, String buyerName, String revDate, int prodNum, Date orderDate,
+			int orderNum) {
+		super();
+		this.prodName = prodName;
+		this.totalPrice = totalPrice;
+		this.buyerName = buyerName;
+		this.revDate = revDate;
+		this.prodNum = prodNum;
+		this.orderDate = orderDate;
 		this.orderNum = orderNum;
 	}
 
@@ -113,10 +137,31 @@ public class Order {
 		this.hostNum = hostNum;
 	}
 
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public int getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(int orderNum) {
+		this.orderNum = orderNum;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [prodName=" + prodName + ", totalPrice=" + totalPrice + ", buyerEmail=" + buyerEmail
 				+ ", buyerName=" + buyerName + ", buyerPhone=" + buyerPhone + ", revDate=" + revDate + ", prodNum="
-				+ prodNum + ", hostNum=" + hostNum + "]";
+				+ prodNum + ", hostNum=" + hostNum + ", orderDate=" + orderDate + ", orderNum=" + orderNum + "]";
 	}
+
+
+	
+	
 }

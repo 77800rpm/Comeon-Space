@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -153,5 +154,39 @@ public class OrderDAO {
 		
 		
 		return result;
+	}
+	
+	public ArrayList<Order> selectList(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		ArrayList<Order> list = new ArrayList<Order>();
+	
+		String query = prop.getProperty("selectOrderList");
+		
+		try {
+			stmt = conn.createStatement();			
+			rset = stmt.executeQuery(query);
+			
+			while(rset.next()) {
+				Order or = new Order(rset.getString("PROD_NAME"),
+									   rset.getInt("TOTAL_PRICE"),
+									   rset.getString("BUYER_NAME"),
+									   rset.getString("REV_DATE"),
+									   rset.getInt("PROD_NUM"),
+									   rset.getDate("ORDER_DATE"),
+									   rset.getInt("ORDER_NUM"));
+				list.add(or);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+
+		return list;
 	}
 }
