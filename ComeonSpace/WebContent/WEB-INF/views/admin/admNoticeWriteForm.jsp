@@ -57,11 +57,11 @@
 							<%= no.getAdmName() %>
 							<input type="hidden" value="<%= no.getAdmName() %>" name="nickName">
 						</td>
-						<th>작성일</th>
-						<td>
-							
-						<input type="date" name="date">
-						</td>
+<!-- 						<th>작성일</th> -->
+<!-- 						<td> -->
+<%-- 							<%= no.getDate() %> --%>
+<!-- 						<input type="date" name="date"> -->
+<!-- 						</td> -->
 					</tr>
 							<tr>
 								<th>내용</th>

@@ -250,6 +250,7 @@ public class NoticeDAO {
 				no.setnTitle(rset.getString("BOARDNOTICE_TITLE"));
 				no.setnContent(rset.getString("BOARDNOTICE_CONTENT"));
 				no.setDate(rset.getDate("BOARDNOTICE_DATE"));
+				no.setAdmName(rset.getString("ADM_NAME"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

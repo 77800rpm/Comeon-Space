@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="java.util.ArrayList, notice.model.vo.Notice" %>
-<%
-	Notice no = (Notice) request.getAttribute("notice");
-%>
+<% Notice no = (Notice) request.getAttribute("notice"); %>
+<% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list"); %>
 <!DOCTYPE html>
 <html>
 
@@ -52,6 +51,7 @@
 				<div class="tableArea">
 				<form action ="<%= request.getContextPath()%>/admUpdateNotice.no" id="admNoticeDetailForm" method="post">
 				<table>
+						
 					<tr>
 						<th>제목</th>
 						<td colspan="3">
@@ -79,6 +79,7 @@
 							<textarea name="content" cols="80" rows="15" style="resize:none;" readonly><%= no.getnContent() %></textarea>
 						</td>
 					</tr>
+					
 				</table>
 			</form>
 				
