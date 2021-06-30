@@ -121,12 +121,9 @@
                		<br><br><hr><br>
                		<h3 class="review-title">판매 결제 내역</h3>
                 	<br><hr><br>	
-						<form name="체크박스" action="#">
-						<button type="button" class="btn btn-success btn-sm" id="select-delete">선택 삭제</button>
 						  <table class="table box" id="tableArea">
 						    <thead class="thead-light mytable-color">
 						      <tr>
-						        <th><input type="checkbox" class="checkbox-select" value="something"></th>
 						        <th width="10%">번호</th>
 						        <th width="15%">구매 일자</th>
 						        <th width="50%">구매 상품 정보</th>
@@ -138,7 +135,6 @@
 						    	<%if(!list.isEmpty()){ %>
 							      <%for(Order o : list){ %>
 								      <tr>
-								        <td class="hh-content"><input type="checkbox" name="selectCheck" class="checkbox-select" value="<%=o.getOrderNum()%>"></td>
 								      	<td class="hh-content"><%= o.getOrderNum() %></td>
 								        <td class="hh-content"><%=o.getOrderDate() %></td>
 								        <td style="width:400px;">
@@ -191,7 +187,6 @@
 						         </script>
 							</div>
 							<!-- 페이징 끝 -->
-						 </form>
 					<br>
 					</div>
             </div>
@@ -205,6 +200,8 @@
 		var num = $(this).parent().parent().children().eq(1).text();
 		location.href="<%= request.getContextPath()%>/salesDetail.my?no="+num;
 	})
+	
+	
 </script>
 <footer>
 	<%@ include file="../common/footer.jsp" %>

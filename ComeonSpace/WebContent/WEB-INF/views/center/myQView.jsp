@@ -119,6 +119,7 @@ https://templatemo.com/tm-559-zay-shop
      .section-div{padding-top: 1rem; padding-bottom: 1rem;}
     #tableTop{background: #E3F8E7;} 
     #test{clear:both;}
+    #pageDiv{text-align: center;}
 	
 </style>
 
@@ -183,7 +184,7 @@ https://templatemo.com/tm-559-zay-shop
        			<%} %>
        		</table>
        		<!-- 페이징 시작 -->
-			<div class="pageDiv">
+			<div id="pageDiv">
 				<!-- 맨 처음으로 -->
 				<button onclick="location.href='<%=request.getContextPath()%>/myQView.ce?currentPage=1'" class="btn btn-outline-success">맨처음</button>
 				<!-- 이전 페이지 -->

@@ -91,9 +91,9 @@
 											<td><%=q.getQnaDate() %></td>
 											<td>
 												<%if(q.getQnaAnswer() == null){ %>
-													답변대기
+													<p class="text-black-50">답변대기</p>
 												<%} else {%>
-													<input type="button" value="답변보기" class="ansBtn">
+													<input type="button" value="답변보기" class="ansBtn btn btn-outline-success btn-sm">
 												<%} %>
 											</td>
 										</tr>
@@ -112,7 +112,11 @@
 											<td><%=q.getpName() %></td>
 											<td><%=q.getQnaContent() %></td>
 											<td><%=q.getQnaDate() %></td>
-											<td><input type="button" value="답변하기" class="ansBtn"></td>
+											<%if(q.getQnaAnswer() != null){ %>
+												<td><input type="button" value="답변확인" class="ansBtn btn btn-outline-success"></td>
+											<%} else {%>
+												<td><input type="button" value="답변하기" class="ansBtn btn btn-outline-warning"></td>
+											<%} %>
 										</tr>
 									<%} %>
 								<%} %>
