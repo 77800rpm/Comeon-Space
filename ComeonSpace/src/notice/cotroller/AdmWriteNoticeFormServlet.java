@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.vo.Member;
+import notice.model.vo.Notice;
+
 /**
  * Servlet implementation class AdmWriteNoticeFormServlet
  */
@@ -29,6 +32,12 @@ public class AdmWriteNoticeFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/admin/admNoticeWriteForm.jsp");
+		
+		String admName = ((Member)request.getSession().getAttribute("loginUser")).getUserDiv();
+		Notice no = new Notice();
+		no.setAdmName(admName);
+		
+		request.setAttribute("no", no);
 		
 		view.forward(request, response);
 	}

@@ -52,10 +52,10 @@
 							<tr>
 						<th>작성자</th>
 						<td>
-							<%= loginUser.getUserNic().equals("관리자") %>
-							<!-- 관리자 이름 가져오기-->
-<%-- 							<%= no.getAdmName() %> --%>
-<%-- 							<input type="hidden" value="<%= no.getAdmName() %>" name="nickName"> --%>
+<%-- 							<%= loginUser.getUserNic().equals("관리자") %> --%>
+							<!-- 관리자 이름 가져오기 하면 화면 하얀색으로만 뜸...왜?-->
+							<%= no.getAdmName() %>
+							<input type="hidden" value="<%= no.getAdmName() %>" name="nickName">
 						</td>
 						<th>작성일</th>
 						<td>
