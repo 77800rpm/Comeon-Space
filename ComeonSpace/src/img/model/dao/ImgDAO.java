@@ -271,6 +271,31 @@ public class ImgDAO {
 		return imgList;
 	}
 
+	public int insertReview(Connection conn, Img img) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("insertReview");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, img.getUserNum());
+			pstmt.setString(2, img.getImgOrigin());
+			pstmt.setString(3, img.getImgChange());
+			pstmt.setString(4, img.getImgPath());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
 
 
 }
