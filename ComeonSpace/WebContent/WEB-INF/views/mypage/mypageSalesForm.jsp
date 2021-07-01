@@ -118,7 +118,7 @@
                     	마이페이지
                 </div>
                 <div class="container">
-               		<br><br><hr><br>
+               		<hr><br>
                		<h3 class="review-title">판매 결제 내역</h3>
                 	<br><hr><br>	
 						  <table class="table box" id="tableArea">
@@ -155,9 +155,9 @@
 						  <!-- 페이징 시작 -->
 							<div id="pageDiv">
 								<!-- 맨 처음으로 -->
-								<button onclick="location.href='<%=request.getContextPath()%>/qnaList.my?currentPage=1'" class="btn btn-outline-success">맨처음</button>
+								<button onclick="location.href='<%=request.getContextPath()%>/salesHistory.my?currentPage=1'" class="btn btn-outline-success">맨처음</button>
 								<!-- 이전 페이지 -->
-								<button onclick="location.href='<%=request.getContextPath() %>/qnaList.my?currentPage=<%=noCurrentPage - 1%>'" id="beforeBtn" class="btn btn-outline-success">이전</button>
+								<button onclick="location.href='<%=request.getContextPath() %>/salesHistory.my?currentPage=<%=noCurrentPage - 1%>'" id="beforeBtn" class="btn btn-outline-success">이전</button>
 								<script>
 									if(<%=noCurrentPage%> <= 1){
 										$("#beforeBtn").prop("disabled",true);
@@ -166,20 +166,20 @@
 								<!-- 숫자 페이지 -->
 								<%for(int p = noStartPage; p <= noEndPage; p++){ %>
 									<%if(noCurrentPage == p){ %>
-										<button disabled><%=p %></button>
+										<button class="ansBtn btn btn-outline-success btn-sm" disabled><%=p %></button>
 									<%} else { %>
-										<button onclick="location.href='<%=request.getContextPath()%>/qnaList.my?currentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
+										<button onclick="location.href='<%=request.getContextPath()%>/salesHistory.my?currentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
 									<%} %>
 								<%} %>
 								<!-- 다음 페이지 -->
-								<button onclick="location.href='<%=request.getContextPath()%>/qnaList.my?currentPage=<%=noCurrentPage + 1%>'" id="afterBtn" class="btn btn-outline-success">다음</button>
+								<button onclick="location.href='<%=request.getContextPath()%>/salesHistory.my?currentPage=<%=noCurrentPage + 1%>'" id="afterBtn" class="btn btn-outline-success">다음</button>
 								<script>
 						         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
 						         		$("#afterBtn").prop("disabled",true);
 						         	}
 						         </script>
 								<!-- 맨끝 으로 -->
-								<button onclick="location.href='<%=request.getContextPath() %>/qnaList.my?currentPage=<%=noMaxPage %>'" id="lastBtn"class="btn btn-outline-success">맨끝</button>
+								<button onclick="location.href='<%=request.getContextPath() %>/salesHistory.my?currentPage=<%=noMaxPage %>'" id="lastBtn"class="btn btn-outline-success">맨끝</button>
 								<script>
 						         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
 						         		$("#lastBtn").prop("disabled",true);

@@ -75,7 +75,7 @@
      		location.href="<%=request.getContextPath()%>/qnaList.my";
      	})
      	$("#mypReview").on("click",function(){
-     		location.href="<%=request.getContextPath()%>/qnaList.my";
+     		location.href="<%=request.getContextPath()%>/reviewList.my";
      	})
      	$("#salesHistory").on("click",function(){
      		location.href="<%=request.getContextPath()%>/salesHistory.my";

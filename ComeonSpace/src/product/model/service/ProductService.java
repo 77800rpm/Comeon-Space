@@ -8,6 +8,7 @@ import static common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import common.pageInfo.model.vo.PageInfo;
 import enroll.model.vo.Enroll;
 import img.model.vo.Img;
 import product.model.dao.ProductDAO;
@@ -115,11 +116,19 @@ public class ProductService {
 		return resultCnt;
 	}
 
-	public ArrayList<Enroll> selectEnroll(int userNum) {
+	public ArrayList<Enroll> selectEnroll(int userNum, PageInfo pi) {
 		Connection conn = getConnection();
-		ArrayList<Enroll> list = new ProductDAO().selectEnroll(conn, userNum);
+		ArrayList<Enroll> list = new ProductDAO().selectEnroll(conn, userNum, pi);
 		close(conn);
 		return list;
+	}
+
+	public int getListCount(int userNum) {
+		Connection conn = getConnection();
+		int result = new ProductDAO().getListCount(conn, userNum);
+		close(conn);
+		
+		return result;
 	}
 
 }

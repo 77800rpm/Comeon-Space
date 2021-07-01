@@ -52,8 +52,14 @@
 		font-size: 13px !important;
 	}
 	.content-div{margin-bottom: 10px;}
-	
-	
+	#centerDiv{display:inline-block; width:70%;}
+	#titleH3{text-align: center;}
+	.contentRowDiv{padding-left: 20px;}
+	.tableTitle{height: 70px;}
+	.tableStar{height: 50px;}
+	.tableContent{height: 200px;}
+	.tableBlank{height: 40px;}
+	table tr td{border:1px solid black;}
 </style>
 <header>
     <%@ include file="../common/header.jsp" %>
@@ -65,61 +71,34 @@
 			<!-- 메뉴바 시작 -->
             <%@include file="menubar.jsp" %>
 			<!-- 메뉴바 끝 -->
-            <div class="col-lg-9">
-                <div class="myP-main h2">
-                    	마이페이지
-                </div>
-                
-            <div class="col-lg-9">
-                <div class="myP-main h2">
-                    	작성된 후기
-                </div>
-                <div class="review-img" style="border: 1px solid black;">
-                	<img src="../resources/image/logo.png">
-                </div>
-                <br>
-                <div class="content-div">
-                	<div>별점 평가</div>
-                	<div class="review-content">
-                		생각보다 시설이 좋아서 리뷰 남겨요
-                	</div>
-                	<input type="button" class="review-btn" value="답글달기">
-                </div>
-                <div class="content-div">
-                	<div>별점 평가</div>
-                	<div class="review-content">
-                		생각보다 시설이 좋아서 리뷰 남겨요
-                	</div>
-                	<input type="button" class="review-btn" value="답글달기">
-                </div>
-                <div class="content-div">
-                	<div>별점 평가</div>
-                	<div class="review-content">
-                		생각보다 시설이 좋아서 리뷰 남겨요
-                	</div>
-                	<input type="button" class="review-btn" value="답글달기">
-                </div>
-                <div class="content-div">
-                	<div>별점 평가</div>
-                	<div class="review-content">
-                		생각보다 시설이 좋아서 리뷰 남겨요
-                	</div>
-                	<input type="button" class="review-btn" value="답글달기">
-                </div>
-                
-            </div>
-
-        </div>
-    </div>
-
-    
-    <!-- Start Script -->
-    <script src="../assets/js/jquery-1.11.0.min.js"></script>
-    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/templatemo.js"></script>
-    <script src="../assets/js/custom.js"></script>
-    <!-- End Script -->
+        	<div class="container" id="centerDiv">
+        		<hr><br>
+        		<h3 id="titleH3">나의 리뷰 관리</h3>
+        		<br><hr><br>
+				<div class="row contentRowDiv">
+					<table>
+						<tr>
+							<td class="tableTitle" colspan="3">제목이 들어갈곳</td>
+							<td rowspan="3">사진이 들어갈 곳</td>
+						</tr>
+						<tr>
+							<td class="tableStar">별점 들어갈 곳</td>
+							<td>날짜 들어갈 곳</td>
+							<td>작성 됨</td>
+						</tr>
+						<tr>
+							<td colspan="3" class="tableContent">내용이 들어갈 곳</td>
+						</tr>
+						<tr class="tableBlank"></tr>
+					</table>
+				</div>
+	    	</div>
+		</div>
+	</div>
+    <br><br><br>
 </body>
+<footer>
+	<%@ include file="../common/footer.jsp" %>
+</footer>
 
 </html>

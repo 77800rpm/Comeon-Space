@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import common.pageInfo.model.vo.PageInfo;
 import enroll.model.vo.Enroll;
 import img.model.service.ImgService;
 import img.model.vo.Img;
@@ -41,9 +42,38 @@ public class MypageEnrollSpaceServlet extends HttpServlet {
 			userNum = ((Member)session.getAttribute("loginUser")).getUserNum();
 		}
 		
-		ArrayList<Enroll> list = new ProductService().selectEnroll(userNum);
+		int currentPage;
+		int listCount;
+		int boardLimit;
+		int pageLimit;
+		int maxPage;
+		int startPage;
+		int endPage;
+		
+		listCount = new ProductService().getListCount(userNum);
+		
+		currentPage = 1;
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		boardLimit = 10;
+		pageLimit = 10;
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		startPage = ((currentPage -1) / pageLimit) * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		
+		ArrayList<Enroll> list = new ProductService().selectEnroll(userNum, pi);
 		ArrayList<Img> imgList = new ImgService().selectEnroll(userNum);
 		
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.setAttribute("imgList", imgList);
 		

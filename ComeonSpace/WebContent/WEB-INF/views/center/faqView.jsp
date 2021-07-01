@@ -191,7 +191,7 @@
 						<!-- 숫자 페이지 -->
 						<%for(int p = fStartPage; p <= fEndPage; p++){ %>
 							<%if(fCurrentPage == p){ %>
-								<button disabled><%=p %></button>
+								<button class="ansBtn btn btn-outline-success btn-sm" disabled><%=p %></button>
 							<%} else { %>
 								<button onclick="location.href='<%=request.getContextPath()%>/centerView.ce?fCurrentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
 							<%} %>

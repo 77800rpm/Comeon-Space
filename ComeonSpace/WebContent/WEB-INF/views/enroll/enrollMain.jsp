@@ -158,7 +158,7 @@
 			<!-- 숫자 페이지 -->
 			<%for(int p = noStartPage; p <= noEndPage; p++){ %>
 				<%if(noCurrentPage == p){ %>
-					<button disabled><%=p %></button>
+					<button class="ansBtn btn btn-outline-success btn-sm" disabled><%=p %></button>
 				<%} else { %>
 					<button onclick="location.href='<%=request.getContextPath()%>/qnaList.my?currentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
 				<%} %>

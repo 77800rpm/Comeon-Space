@@ -46,8 +46,6 @@
 		border-top-right-radius: 5px;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
-		position: absolute;
-		left: 60%;
 		transform: translate(-50%, -50%);
 	}
 	#btn_green2{
@@ -55,8 +53,6 @@
 		border-top-right-radius: 5px;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
-		position: absolute;
-		left: 65%;
 		transform: translate(-50%, -50%);
 	}
 	
@@ -66,6 +62,7 @@
 		color: white;
 		padding: 5px;
 	}
+	#btn_group{text-align:center; margin-left: 150px;}
 	
 	#btn_group button:hover{
 		color: white;
@@ -101,89 +98,90 @@
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">
-
-   
-			<%@ include file="menubar.jsp" %>
-            <div class="col-lg-9">
-                <div class="myP-main h2">
-                    	마이페이지
-                </div>
-                <div class="row">
-                	<div class="col-lg-1"></div>
-        		    <div class="col-lg-8">
-	      		    <form onsubmit="return sumbit();" method="post" encType="multipart/form-data" action="<%=request.getContextPath()%>/updateProfile.my">
-        		    	<fieldset>
-        		    		<div class="form-group" style="text-align: left"> 
-      							<label for="InputEmail" class="form-label mt-4">이메일</label>
-      							<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="userEmail" readonly value="<%=m.getUserEmail() %>"/>
-      							<small id="emailHelp" class="form-text text-muted">이메일은 로그인시 사용됩니다.</small>
-    						</div>
-    						
-   						   <div class="form-group">
-								<fieldset disabled>
-   								<label class="form-label" for="user_name">이름</label>
-								<input class="form-control" id="user_name" type="text" value="<%= m.getUserName()%>" disabled/>
-								</fieldset>
-						   </div>
+	
+	   
+				<%@ include file="menubar.jsp" %>
+	            <div class="col-lg-9">
+	                <div class="myP-main h2">
+	                    	마이페이지
+	                </div>
+	                <div class="row">
+	                	<div class="col-lg-1"></div>
+	        		    <div class="col-lg-8">
+		      		    <form onsubmit="return sumbit();" method="post" encType="multipart/form-data" action="<%=request.getContextPath()%>/updateProfile.my">
+	        		    	<fieldset>
+	        		    		<div class="form-group" style="text-align: left"> 
+	      							<label for="InputEmail" class="form-label mt-4">이메일</label>
+	      							<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="userEmail" readonly value="<%=m.getUserEmail() %>"/>
+	      							<small id="emailHelp" class="form-text text-muted">이메일은 로그인시 사용됩니다.</small>
+	    						</div>
+	    						
+	   						   <div class="form-group">
+									<fieldset disabled>
+	   								<label class="form-label" for="user_name">이름</label>
+									<input class="form-control" id="user_name" type="text" value="<%= m.getUserName()%>" disabled/>
+									</fieldset>
+							   </div>
+								   
+							   <div class="form-group">
+							   	<label for="InputPhone" class="form-label mt-4">전화번호</label>
+							   	<input type="tel" class="form-control" name="userPhone" id="InputPhone" value="<%=m.getUserPhone()%>"/>
+							   	<small id="phoneHelp" class="form-text text-muted">조건 : ( - )제외 입력</small>
+							   </div>
+							   <br>
+		        				<div class="form-group">
+		        					<label for="profileBox" class="form-label mt-4"></label>
+		        					<%if(img != null){ %>
+										<img src="<%=request.getContextPath()%>/img_upload/<%=img.getImgChange()%>" id='profileImg' width="250px" height="200px"/>        					
+		        					<%} else {%>
+		        						<img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" id='profileImg' width="250px" height="200px"/>
+		        					<%} %>
+		        				</div>
+		        				
+		        				<div class="form-group">
+		      						<label for="formFile" class="form-label mt-3">프로필 사진 업로드</label>
+		      						<input class="form-control" type="file" id="formFile" name="profileImgUpdate" onchange="changeImg(this)"/>
+		    					</div>
+		        				<div class="form-group has-success">
+		  							<label class="form-label mt-3" for="inputValid">닉네임 설정</label>
+		  							<input type="text" name="userNick" value=<%=m.getUserNic() %> class="form-control" id="inputNick"/>
+		  							<div id="checkNickName"></div>
+								</div>
+								   
+							   <br/><hr/><hr/>
+								   
+							   <div class="form-group">
+							   	<label for="InputPassword" class="form-label mt-4">기존 비밀번호</label>
+							   	<input type="password" name="userPwd" class="form-control" id="inputPassword" required placeholder="기존 비밀번호 입력"/>
+							   	<div id="checkPwdResult"></div>
+							   </div>
 							   
-						   <div class="form-group">
-						   	<label for="InputPhone" class="form-label mt-4">전화번호</label>
-						   	<input type="tel" class="form-control" name="userPhone" id="InputPhone" value="<%=m.getUserPhone()%>"/>
-						   	<small id="phoneHelp" class="form-text text-muted">조건 : ( - )제외 입력</small>
-						   </div>
-						   <br>
-	        				<div class="form-group">
-	        					<label for="profileBox" class="form-label mt-4"></label>
-	        					<%if(img != null){ %>
-									<img src="<%=request.getContextPath()%>/img_upload/<%=img.getImgChange()%>" id='profileImg' width="250px" height="200px"/>        					
-	        					<%} else {%>
-	        						<img src="<%= request.getContextPath()%>/resources/image/defaultProfile.png" id='profileImg' width="250px" height="200px"/>
-	        					<%} %>
-	        				</div>
-	        				
-	        				<div class="form-group">
-	      						<label for="formFile" class="form-label mt-3">프로필 사진 업로드</label>
-	      						<input class="form-control" type="file" id="formFile" name="profileImgUpdate" onchange="changeImg(this)"/>
-	    					</div>
-	        				<div class="form-group has-success">
-	  							<label class="form-label mt-3" for="inputValid">닉네임 설정</label>
-	  							<input type="text" name="userNick" value=<%=m.getUserNic() %> class="form-control" id="inputNick"/>
-	  							<div id="checkNickName"></div>
-							</div>
-							   
-						   <br/><hr/><hr/>
-							   
-						   <div class="form-group">
-						   	<label for="InputPassword" class="form-label mt-4">기존 비밀번호</label>
-						   	<input type="password" name="userPwd" class="form-control" id="inputPassword" required placeholder="기존 비밀번호 입력"/>
-						   	<div id="checkPwdResult"></div>
-						   </div>
-						   
-						   <div class="form-group">
-						   	<label for="InputNewPassword" class="form-label mt-4">새로운 비밀번호</label>
-						   	<input type="password" class="form-control" id="inputnNew" name="newPwd" onchange="pwd();" placeholder="새로운 비밀번호 입력"/>
-						   	<div id="newPwdResult"></div>
-						   </div>
-							   
-						   <div class="form-group">
-						   	 <label for="confirmPassword" class="form-label mt-4">비밀번호 확인</label>
-						   	 <input type="password" class="form-control" id="confirmPassword" placeholder="비밀번호 확인"/>
-						   	 <div id="checkNewPwdResult"></div>
-						   </div>
-    							
-   							<br/>
-    							
-  							<div id="btn_group">
-   							<br/>
-   								<button type="submit" id="btn_green">수정하기</button>
-   								<button type="button" id="btn_green2">취소</button>
-   							</div>
-       			    	</fieldset>
-        			</form>
-        		 
-                </div>
-            </div>
-        </div>
+							   <div class="form-group">
+							   	<label for="InputNewPassword" class="form-label mt-4">새로운 비밀번호</label>
+							   	<input type="password" class="form-control" id="inputnNew" name="newPwd" onchange="pwd();" placeholder="새로운 비밀번호 입력"/>
+							   	<div id="newPwdResult"></div>
+							   </div>
+								   
+							   <div class="form-group">
+							   	 <label for="confirmPassword" class="form-label mt-4">비밀번호 확인</label>
+							   	 <input type="password" class="form-control" id="confirmPassword" placeholder="비밀번호 확인"/>
+							   	 <div id="checkNewPwdResult"></div>
+							   </div>
+	    							
+	   							<br/>
+	    							
+	  							<div id="btn_group">
+	   							<br/>
+	   								<button type="submit" id="btn_green">수정하기</button>
+	   								<button type="button" id="btn_green2" onclick="location.href='javascript:history.go(-1)'">취소</button>
+	   							</div>
+	       			    	</fieldset>
+	        			</form>
+	        		 
+	                </div>
+	            </div>
+	        </div>
+	    </div>
     </div>
     <br><br><br>
     <script>
