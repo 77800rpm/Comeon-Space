@@ -421,6 +421,8 @@ public class ProductDAO {
 	        	//썸네일 정보
 	        	product.setImgChange(rset.getString("IMG_CHANGE"));
 	         }
+	        
+	        System.out.println("DB에서 가져온 PRODUCT : "+product);
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -491,5 +493,40 @@ public class ProductDAO {
 			close(pstmt);
 		}
 		return list;
+	}
+	
+	//공간 승인 처리
+	public Integer updateProductApproveSuccess(Integer productNum, Connection conn) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateProductSpaceApprove");	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, productNum);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	//공간 삭제 처리
+	public Integer updateProductSpaceDelete(Integer productNum, Connection conn){
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateProductSpaceDelete");	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, productNum);
+			result = pstmt.executeUpdate();
+			System.out.println("삭제 여부 :"+result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }

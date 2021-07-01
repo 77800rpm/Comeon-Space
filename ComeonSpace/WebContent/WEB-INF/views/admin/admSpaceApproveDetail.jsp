@@ -83,8 +83,8 @@
 					목록은 Product_approve가 N인거 사진이라 내용 가져와서 List로 뿌리고 
 					승인시 product_approve가 'Y'으로 바뀌게하기,
 					취소시엔 삭제되게 하기-->
-				<input class="w3-button w3-teal w3-round-xlarge" id="faqDeleteBtn" onclick=""type="button" value="승인">
-				<input class="w3-button w3-red w3-round-xlarge" id="cancelBtn" onclick=""type="button" value="삭제">
+				<a href="<%=request.getContextPath()%>/spaceApproveSuccess.bo?productNum=<%=product.getProductNum()%>">승인</a>
+				<a href="<%=request.getContextPath()%>/spaceApproveDelete.bo?productNum=<%=product.getProductNum()%>">삭제</a>
 			</div>
 		</form>
 	</div>

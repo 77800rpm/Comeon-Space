@@ -54,10 +54,17 @@ public class Member {
 		this.userDiv = userDiv;
 	}
 
-
-	
 	public Member(String userEmail, String userName, String userNic, String userPhone) {
 		super();
+		this.userEmail = userEmail;
+		this.userName = userName;
+		this.userNic = userNic;
+		this.userPhone = userPhone;
+	}
+	
+	public Member(Integer userNum, String userEmail, String userName, String userNic, String userPhone) {
+		super();
+		this.userNum=userNum;
 		this.userEmail = userEmail;
 		this.userName = userName;
 		this.userNic = userNic;

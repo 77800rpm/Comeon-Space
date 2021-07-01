@@ -87,11 +87,10 @@
 		        <td><%= m.getUserNic() %></td>
 		        <td><%= m.getUserPhone() %></td>
 		        <td>
-		        <input type="button" value="탈퇴" id="withdraw" onclick="withboard()">
-		        <input type="hidden" value="<%= m.getUserNum() %>" name="userNum"></td>
-		        <%= m.getUserNum() %>
-		        <%= m.getUserNum() %>
-		        <%= m.getUserNum() %>
+		        	<% if("admin".equals(m.getUserDiv())==false){ %>
+		        		<a href="<%= request.getContextPath()%>/admDeleteMember.me?userNum=<%=m.getUserNum()%>">회원 탈퇴</a>
+		        	<% } %>
+		        </td>
 		      </tr>
    			<% } %>
    		</tbody>
@@ -118,19 +117,7 @@
 </div>
 
 <%@ include file="../common/footer.jsp" %>
-	
-	
-	<script>
-     	function withboard(){
-         	var bool = confirm("강제 탈퇴시키겠습니까?");
-         	
-         	if(bool){
-         				$("#admWithdrawList").attr('action', '<%= request.getContextPath()%>/admDeleteMember.me');
-         				$("#admWithdrawList").submit();									
-         	}
-     			
-         		}     	
-     </script>
+	<script></script>
 </body>
 
 </html>
