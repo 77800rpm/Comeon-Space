@@ -95,7 +95,7 @@
 <div class="insert">
 <p><%=buyerName %> 님의 <%=orderNum %>번째 예약 '<%=prodName %>' 후기 작성</p>
 
-  <form action="<%=request.getContextPath()%>/insertReview.re" method="post">
+  <form action="<%=request.getContextPath()%>/insertReview.re" method="post" enctype="multipart/form-data">
     <input class="title" type="text" name="revTitle" placeholder="제목"/>
     <textarea class="content" name="revContent" placeholder="후기(100자 이내로 작성해주세요!)"></textarea>
     <label>사진 선택 : </label><input type="file" name="uploadFile" accept=".jpg, .png">

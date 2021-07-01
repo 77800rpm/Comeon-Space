@@ -49,7 +49,7 @@ public class InsertReviewServlet extends HttpServlet {
 			
 			int maxSize = 1024*1024*10;
 			String root = request.getSession().getServletContext().getRealPath("/");
-			String savePath = root + "thumbnail_uploadFiles/";
+			String savePath = root + "/img_upload/";
 			
 			System.out.println(savePath);
 			
@@ -66,7 +66,7 @@ public class InsertReviewServlet extends HttpServlet {
 			
 			Enumeration<String> files = multipartRequest.getFileNames();
 			
-			while(files.hasMoreElements()) {
+			if(files.hasMoreElements()) {
 				String name = files.nextElement();
 				
 				
@@ -82,42 +82,28 @@ public class InsertReviewServlet extends HttpServlet {
 				img.setImgPath(savePath);
 				img.setImgOrigin(originFiles.get(i));
 				img.setImgChange(saveFiles.get(i));
-				img.setImgCategory(4);
+				img.setImgCategory(3);
 				img.setUserNum(userNum);
-				
-				if(i == originFiles.size() - 1) {
-					img.setImgLevel(0);
-				} else {
-					img.setImgLevel(1);
-				}
-				
+								
 				fileList.add(img);
 			}
 			
-			String buyerName = request.getParameter("buyerName");
-			String prodName = request.getParameter("prodName");
+			String buyerName = multipartRequest.getParameter("buyerName");
+			String prodName = multipartRequest.getParameter("prodName");
 
-			int prodNum = Integer.parseInt(request.getParameter("prodNum"));
-			int orderNum = Integer.parseInt(request.getParameter("orderNum"));
+			int prodNum = Integer.parseInt(multipartRequest.getParameter("prodNum"));
+			int orderNum = Integer.parseInt(multipartRequest.getParameter("orderNum"));
 			
 			String revContent = multipartRequest.getParameter("revContent");
 			String revTitle = multipartRequest.getParameter("revTitle");
 			
 			request.setAttribute("userNum", userNum);
-			request.setAttribute("buyerNic", buyerNic);
-			request.setAttribute("buyerName", buyerName);
-			request.setAttribute("prodName", prodName);
-//			request.setAttribute("revDate", revDate);
-			request.setAttribute("revContent", revContent);
-			request.setAttribute("revTitle", revTitle);
-			request.setAttribute("prodNum", prodNum);
-			request.setAttribute("orderNum", orderNum);
 			
 			Review review = new Review(userNum, prodNum, orderNum, buyerName, buyerNic, revContent, revTitle, prodName);
 			
 			int result = new ReviewService().insertReview(review);
 			
-			request.getRequestDispatcher("/WEB-INF/views/mypage/myPageOrderList.jsp").forward(request, response);
+			response.sendRedirect("orderList.my");
 
 		}
 	}
