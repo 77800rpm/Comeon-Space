@@ -27,7 +27,7 @@ public class ReviewDAO {
 	public int insertReview(Connection conn, Review review) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
+		 
 		String query = prop.getProperty("insertReview");
 		
 		try {
@@ -40,6 +40,7 @@ public class ReviewDAO {
 			pstmt.setString(6, review.getRevContent());
 			pstmt.setString(7, review.getRevTitle());
 			pstmt.setString(8, review.getProdName());
+			pstmt.setInt(9, review.getReviewNum());
 			
 			result = pstmt.executeUpdate();
 			

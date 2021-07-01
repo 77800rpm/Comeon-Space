@@ -101,7 +101,7 @@ public class InsertReviewServlet extends HttpServlet {
 			
 			Review review = new Review(userNum, prodNum, orderNum, buyerName, buyerNic, revContent, revTitle, prodName);
 			
-			int result = new ReviewService().insertReview(review);
+			int result = new ReviewService().insertReview(review, fileList);
 			
 			response.sendRedirect("orderList.my");
 
