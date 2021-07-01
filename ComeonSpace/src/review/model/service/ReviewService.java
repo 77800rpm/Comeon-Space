@@ -25,4 +25,11 @@ public class ReviewService {
 		
 		return result;
 	}
+
+	public int getListCount(int userNum) {
+		Connection conn = getConnection();
+		int result = new ReviewDAO().getListCount(conn, userNum);
+		close(conn);
+		return result;
+	}
 }
