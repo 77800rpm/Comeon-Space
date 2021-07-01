@@ -14,7 +14,7 @@
 <html lang="en">
 
 <head>
-    <title>Zay Shop - Product Listing Page</title>
+    <title>Comeon Space - 나의 문의 내역</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
