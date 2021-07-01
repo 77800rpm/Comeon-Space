@@ -14,14 +14,14 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class AdmWithdrawServlet
  */
-@WebServlet("/withdraw.me")
-public class AdmWithdrawServlet extends HttpServlet {
+@WebServlet("/admDeleteMember.me")
+public class AdmDeleteMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdmWithdrawServlet() {
+    public AdmDeleteMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

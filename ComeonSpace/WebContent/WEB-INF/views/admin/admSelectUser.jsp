@@ -117,7 +117,7 @@
 	
 	
 	<script>
-     	function faqDelete(){
+     	function withdraw(){
          	var bool = confirm("강제 탈퇴시키겠습니까?");
          	
          	if(bool){
@@ -125,7 +125,7 @@
          				$("#admWithdrawList").submit();									
          	}
      			
-         		}
+         		}     	
      </script>
 </body>
 
