@@ -11,8 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import common.pageInfo.model.vo.PageInfo;
 import enroll.model.vo.Enroll;
 import img.model.vo.Img;
+import review.model.vo.Review;
 
 public class ImgDAO {
 	private Properties prop = new Properties();
@@ -301,15 +303,42 @@ public class ImgDAO {
 		return result;
 	}
 
-	public ArrayList<Img> selectReview(Connection conn, int userNum) {
+	public ArrayList<Img> selectReview(Connection conn, int userNum, ArrayList<Review> re) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Img> list = new ArrayList<Img>();
 		Img img = null;
 		
 		String query = prop.getProperty("selectReview");
-		
-		
+		for(int i = 0; i < re.size(); i++) {
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, userNum);
+				pstmt.setInt(2, re.get(i).getReviewNum());
+				
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					img = new Img();
+					img.setImgNum(rset.getInt("IMG_NUM"));
+					img.setImgLevel(rset.getInt("IMG_LEVEL"));
+					img.setImgCategory(rset.getInt("IMG_CATEGORY"));
+					img.setImgOrigin(rset.getString("IMG_ORIGIN"));
+					img.setImgChange(rset.getString("IMG_CHANGE"));
+					img.setImgPath(rset.getString("IMG_PATH"));
+					img.setImgBoardId(rset.getInt("IMG_BOARDID"));
+					img.setUserNum(rset.getInt("USER_NUM"));
+					
+					list.add(img);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+		}
 		return list;
 	}
 

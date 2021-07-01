@@ -8,9 +8,11 @@ import static common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import common.pageInfo.model.vo.PageInfo;
 import enroll.model.vo.Enroll;
 import img.model.dao.ImgDAO;
 import img.model.vo.Img;
+import review.model.vo.Review;
 
 public class ImgService {
 
@@ -82,13 +84,16 @@ public class ImgService {
 
 
 
-	public ArrayList<Img> selectReview(int userNum) {
+	public ArrayList<Img> selectReview(int userNum, ArrayList<Review> re) {
 		Connection conn = getConnection();
-		ArrayList<Img> img = new ImgDAO().selectReview(conn, userNum);
+		ArrayList<Img> img = new ImgDAO().selectReview(conn, userNum, re);
 		close(conn);
 		
 		return img;
 	}
+
+
+
 
 
 

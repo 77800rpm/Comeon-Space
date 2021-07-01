@@ -8,6 +8,7 @@ import static common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import common.pageInfo.model.vo.PageInfo;
 import img.model.dao.ImgDAO;
 import img.model.vo.Img;
 import review.model.dao.ReviewDAO;
@@ -38,5 +39,13 @@ public class ReviewService {
 		close(conn);
 		return result;
 	}
+
+	public ArrayList<Review> selectReview(int userNum, PageInfo pi) {
+		Connection conn = getConnection();
+		ArrayList<Review> list = new ReviewDAO().selectReview(conn, userNum, pi);
+		close(conn);
+		return list;
+	}
+
 	
 }
