@@ -64,6 +64,7 @@
 	.tableBlank{height: 40px;}
 	.tdImg{max-width: 100%; max-height:100%; }
 	.titleTd{font-size: 30px;}
+	.titleTd:hover{cursor:pointer; border-bottom: 1px solid black;}
 	.underTitleTd{font-size: 23px;}
 	.starSpan{color: green;}
 	.dateTd{color: gray;}
@@ -88,7 +89,9 @@
 							<%for(int i = 0; i < list.size(); i++){ %>
 								<tr>
 									<td class="tableTitle" >
-										<span class="titleTd"><%=list.get(i).getProdName()%>[<%=list.get(i).getRevTitle() %>]</span><br>
+										<input type="hidden" id="pNum" value=<%=list.get(i).getProdNum() %>>
+										<span class="titleTd"><%=list.get(i).getProdName()%>[<%=list.get(i).getRevTitle() %>]</span>
+										<br>
 										<span class="underTitleTd starSpan">
 											<%if(list.get(i).getStar() == 0){ %>
 												☆☆☆☆☆
@@ -126,6 +129,12 @@
 	</div>
     <br><br><br>
 </body>
+<script>
+	$(".titleTd").on("click",function(){
+		var num = $(this).prev('input').val();
+		location.href="<%=request.getContextPath()%>/productDetail.no?no=" + num;
+	})
+</script>
 <footer>
 	<%@ include file="../common/footer.jsp" %>
 </footer>
