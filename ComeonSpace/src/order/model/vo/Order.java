@@ -9,7 +9,7 @@ public class Order {
 	private String buyerEmail;
 	private String buyerName;
 	private String buyerPhone;
-	private String revDate;
+	private Date revDate;
 	private int prodNum;
 	private int hostNum;
 	private Date orderDate;
@@ -17,7 +17,7 @@ public class Order {
 	public Order() {}
 	
 	public Order(int orderNum, String prodName, int totalPrice, String buyerEmail, String buyerName, String buyerPhone,
-			String revDate, int prodNum, int hostNum) {
+			Date revDate, int prodNum, int hostNum) {
 		super();
 		this.orderNum = orderNum;
 		this.prodName = prodName;
@@ -31,7 +31,7 @@ public class Order {
 	}
 
 	public Order(String prodName, String buyerEmail, String buyerName, String buyerPhone,
-			int prodNum, int hostNum, int totalPrice, String revDate) {
+			int prodNum, int hostNum, int totalPrice, Date revDate) {
 		super();
 		this.prodName = prodName;
 		this.totalPrice = totalPrice;
@@ -39,13 +39,12 @@ public class Order {
 		this.buyerName = buyerName;
 		this.buyerPhone = buyerPhone;
 		this.revDate = revDate;
-		this.prodNum = prodNum;
 		this.hostNum = hostNum;
 	}
 	
 
 	public Order(String prodName, int totalPrice, String buyerEmail, String buyerName, String buyerPhone,
-			String revDate, int prodNum, int hostNum, Date orderDate, int orderNum) {
+			Date revDate, int prodNum, int hostNum, Date orderDate, int orderNum) {
 		super();
 		this.prodName = prodName;
 		this.totalPrice = totalPrice;
@@ -61,7 +60,7 @@ public class Order {
 
 	
 	
-	public Order(String prodName, int totalPrice, String buyerName, String revDate, int prodNum, Date orderDate,
+	public Order(String prodName, int totalPrice, String buyerName, Date revDate, int prodNum, Date orderDate,
 			int orderNum) {
 		super();
 		this.prodName = prodName;
@@ -113,11 +112,11 @@ public class Order {
 		this.buyerPhone = buyerPhone;
 	}
 
-	public String getRevDate() {
+	public Date getRevDate() {
 		return revDate;
 	}
 
-	public void setRevDate(String revDate) {
+	public void setRevDate(Date revDate) {
 		this.revDate = revDate;
 	}
 

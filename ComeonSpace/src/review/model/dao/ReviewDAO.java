@@ -8,8 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import common.pageInfo.model.vo.PageInfo;
 import review.model.vo.Review;
 
 public class ReviewDAO {
@@ -74,5 +76,47 @@ public class ReviewDAO {
 		}
 		
 		return result;
+	}
+	public ArrayList<Review> selectReview(Connection conn, int userNum, PageInfo pi) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Review> list = new ArrayList<Review>();
+		Review re = null;
+		
+		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+		int endRow = startRow + pi.getBoardLimit() - 1;
+		
+		String query = prop.getProperty("selectReview");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userNum);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				re = new Review();
+				re.setReviewNum(rset.getInt("REVIEW_NUM"));
+				re.setUserNum(rset.getInt("USER_NUM"));
+				re.setProdNum(rset.getInt("PROD_NUM"));
+				re.setOrderNum(rset.getInt("ORDER_NUM"));
+				re.setBuyerName(rset.getString("USER_NAME"));
+				re.setBuyerNic(rset.getString("USER_NIC"));
+				re.setRevContent(rset.getString("REVIEW_CONTENT"));
+				re.setRevTitle(rset.getString("REVIEW_TITLE"));
+				re.setProdName(rset.getString("PROD_NAME"));
+				re.setRevDate(rset.getDate("REVIEW_DATE"));
+				re.setStar(rset.getInt("REVIEW_STAR"));
+				
+				list.add(re);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 }

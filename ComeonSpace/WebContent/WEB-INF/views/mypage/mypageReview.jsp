@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
-
+    pageEncoding="UTF-8" import="java.util.ArrayList, img.model.vo.Img, review.model.vo.Review"%>
+<%
+	ArrayList<Review> list = (ArrayList)request.getAttribute("re");
+	ArrayList<Img> img = (ArrayList)request.getAttribute("img");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +62,12 @@
 	.tableStar{height: 50px;}
 	.tableContent{height: 200px;}
 	.tableBlank{height: 40px;}
-	table tr td{border:1px solid black;}
+	.tdImg{max-width: 100%; max-height:100%; }
+	.titleTd{font-size: 30px;}
+	.titleTd:hover{cursor:pointer; border-bottom: 1px solid black;}
+	.underTitleTd{font-size: 23px;}
+	.starSpan{color: green;}
+	.dateTd{color: gray;}
 </style>
 <header>
     <%@ include file="../common/header.jsp" %>
@@ -77,19 +85,43 @@
         		<br><hr><br>
 				<div class="row contentRowDiv">
 					<table>
-						<tr>
-							<td class="tableTitle" colspan="3">제목이 들어갈곳</td>
-							<td rowspan="3">사진이 들어갈 곳</td>
-						</tr>
-						<tr>
-							<td class="tableStar">별점 들어갈 곳</td>
-							<td>날짜 들어갈 곳</td>
-							<td>작성 됨</td>
-						</tr>
-						<tr>
-							<td colspan="3" class="tableContent">내용이 들어갈 곳</td>
-						</tr>
-						<tr class="tableBlank"></tr>
+						<%if(!list.isEmpty()){ %>
+							<%for(int i = 0; i < list.size(); i++){ %>
+								<tr>
+									<td class="tableTitle" >
+										<input type="hidden" id="pNum" value=<%=list.get(i).getProdNum() %>>
+										<span class="titleTd"><%=list.get(i).getProdName()%>[<%=list.get(i).getRevTitle() %>]</span>
+										<br>
+										<span class="underTitleTd starSpan">
+											<%if(list.get(i).getStar() == 0){ %>
+												☆☆☆☆☆
+											<%} else if(list.get(i).getStar() ==1){ %>
+												★☆☆☆☆
+											<%} else if(list.get(i).getStar() ==2){ %>
+												★★☆☆☆
+											<%} else if(list.get(i).getStar() ==3){ %>
+												★★★☆☆
+											<%} else if(list.get(i).getStar() ==4){ %>
+												★★★★☆
+											<%} else if(list.get(i).getStar() ==5){ %>
+												★★★★★
+											<%} %>
+										</span>
+										<span class="dateTd"><%=list.get(i).getRevDate() %> <small>작성됨</small></span>
+										<br><br>
+										<span><%=list.get(i).getRevContent() %></span>
+									</td>
+									<%for(int j = 0; j < img.size(); j++){ %>
+										<%if(list.get(i).getReviewNum() == img.get(j).getImgBoardId()) {%>
+											<td width="35%;">
+												<img class="tdImg" src="<%=request.getContextPath()%>/img_upload/<%=img.get(j).getImgChange()%>">
+											</td>
+										<%} %>
+									<%} %>
+								</tr>
+								<tr class="tableBlank"></tr>
+							<%} %>
+						<%} %>
 					</table>
 				</div>
 	    	</div>
@@ -97,6 +129,12 @@
 	</div>
     <br><br><br>
 </body>
+<script>
+	$(".titleTd").on("click",function(){
+		var num = $(this).prev('input').val();
+		location.href="<%=request.getContextPath()%>/productDetail.no?no=" + num;
+	})
+</script>
 <footer>
 	<%@ include file="../common/footer.jsp" %>
 </footer>

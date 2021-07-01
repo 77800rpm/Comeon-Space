@@ -15,6 +15,7 @@ import img.model.service.ImgService;
 import img.model.vo.Img;
 import member.model.vo.Member;
 import review.model.service.ReviewService;
+import review.model.vo.Review;
 
 /**
  * Servlet implementation class ReviewListServlet
@@ -65,9 +66,12 @@ public class ReviewListServlet extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<Img> img = new ImgService().selectReview(userNum);
+		ArrayList<Review> re = new ReviewService().selectReview(userNum, pi);
+		ArrayList<Img> img = new ImgService().selectReview(userNum, re);
 		
-		
+		request.setAttribute("pi", pi);
+		request.setAttribute("re", re);
+		request.setAttribute("img", img);
 		
 		request.getRequestDispatcher("WEB-INF/views/mypage/mypageReview.jsp").forward(request, response);
 	}
