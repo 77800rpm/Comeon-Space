@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.ArrayList, faq.model.vo.Faq "
 	import="faq.model.service.*"%>
-<%-- <% ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); %> --%>
-<%
-	FaqService fs = new FaqService();
-ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
-%>
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
@@ -60,8 +55,8 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 						</table>
 						<br>
 						<div align="center">
-							<input type="submit" id="insertBtn" value="등록하기">
-							<input type="button" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
+							<input type="submit" id="insertBtn" class="btn btn-outline-secondary" value="등록하기">&nbsp;&nbsp;
+							<input type="button" onclick="location.href='javascript:history.go(-1);'" class="btn btn-outline-secondary" id="cancelBtn" value="취소">
 						</div>
 					</form>
 				</div>

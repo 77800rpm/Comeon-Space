@@ -80,7 +80,7 @@
 					</div>
 					
 					<div align="right" >
-						<input type="button" onclick="location.href='admNoticeWriteForm.no'" id="writeNoBtn" value="글쓰기">
+						<input type="button" class="btn btn-outline-secondary" onclick="location.href='admNoticeWriteForm.no'" id="writeNoBtn" value="글쓰기">
 					</div>
 				   <%if(!list.isEmpty()){ %>
 						<!-- 페이징 시작 -->

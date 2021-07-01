@@ -199,6 +199,40 @@ public class ImgDAO {
 		return result;
 	}
 
+	public ArrayList<Img> selectEnroll(Connection conn, int userNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Img> imgList = new ArrayList<Img>();
+		Img img = null;
+		
+		String query = prop.getProperty("selectEnroll");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userNum);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				img = new Img();
+				img.setImgNum(rset.getInt("IMG_NUM"));
+				img.setImgLevel(rset.getInt("IMG_LEVEL"));
+				img.setImgCategory(rset.getInt("IMG_CATEGORY"));
+				img.setImgOrigin(rset.getString("IMG_ORIGIN"));
+				img.setImgChange(rset.getString("IMG_CHANGE"));
+				img.setImgPath(rset.getString("IMG_PATH"));
+				img.setImgBoardId(rset.getInt("IMG_BOARDID"));
+				img.setUserNum(rset.getInt("USER_NUM"));
+				
+				imgList.add(img);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return imgList;
+	}
+
 
 
 }

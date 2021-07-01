@@ -52,7 +52,7 @@
                  </a>
                  <ul id="collapseTwo" class="collapse list-unstyled pl-3">
                      <li><a class="text-decoration-none list-text" href="#" id="salesHistory">판매 결제내역</a></li>
-                     <li><a class="text-decoration-none list-text" href="#">작성된 후기</a></li>
+                     <li><a class="text-decoration-none list-text" href="#" id="myEnrollSpace">내 공간</a></li>
                  </ul>
              </li>
              <li class="pb-3">
@@ -82,6 +82,9 @@
      	})	
      	$("#mypOrderList").on("click",function(){
      		location.href="<%=request.getContextPath()%>/orderList.my";
+     	})
+     	$("#myEnrollSpace").on("click",function(){
+     		location.href="<%=request.getContextPath()%>/enrollSpace.my";
      	})
 
      </script>

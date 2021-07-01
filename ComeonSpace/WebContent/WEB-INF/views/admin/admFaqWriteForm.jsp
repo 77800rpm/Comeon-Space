@@ -60,7 +60,7 @@
 						</table>
 						<br>
 						<div align="center">
-							<input type="submit" id="insertBtn" value="등록하기">
+							<input type="submit" id="insertBtn" class="btn btn-outline-secondary" value="등록하기">
 							<input type="button" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
 						</div>
 					</form>

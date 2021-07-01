@@ -391,4 +391,43 @@ public class ProductDAO {
 		}
 		return listCnt;
 	}
+
+
+	public ArrayList<Enroll> selectEnroll(Connection conn, int userNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Enroll> list = new ArrayList<Enroll>();
+		Enroll en = null;
+		
+		String query = prop.getProperty("selectEnroll");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userNum);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				en = new Enroll();
+				en.setpNum(rset.getInt("PRODUCT_NUM"));
+				en.setpName(rset.getString("PRODUCT_NAME"));
+				en.setProductPrice(rset.getInt("PRODUCT_PRICE"));
+				en.setpCategory(rset.getString("PRODUCT_CATEGORY"));
+				en.setpIntro(rset.getString("PRODUCT_INTRO"));
+				en.setpDetail(rset.getString("PRODUCT_DETAIL"));
+				en.setpLocation(rset.getString("PRODUCT_LOCATION"));
+				en.setpFacility(rset.getString("PRODUCT_FAC"));
+				en.setUserNum(rset.getInt("USER_NUM"));
+				en.setpLimit(rset.getInt("PRODUCT_LIMIT"));
+				en.setHoliday(rset.getString("PRODUCT_HOLIDAY"));
+				
+				list.add(en);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return list;
+	}
 }
