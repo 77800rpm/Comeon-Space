@@ -1,6 +1,8 @@
 package member.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,10 +36,23 @@ public class RealPayServlet extends HttpServlet {
 		String buyerEmail = request.getParameter("buyerEmail");
 		String buyerName = request.getParameter("buyerName");
 		String buyerPhone = request.getParameter("buyerPhone");
-		String revDate = request.getParameter("revDate");
-		String selectDate = request.getParameter("selectDate");
+		String revDate1 = request.getParameter("select-date");
 		
-		System.out.println(selectDate);
+		System.out.println(revDate1);
+		
+		Date revDate = null;
+		if(revDate1.equals("")) {
+			revDate = new Date(new GregorianCalendar().getTimeInMillis());
+		}else {
+			String[] dateArr = ((String) revDate1).split("-");
+			int year = Integer.parseInt(dateArr[0]);
+			int month = Integer.parseInt(dateArr[1])-1;
+			int day = Integer.parseInt(dateArr[2]);
+			
+			revDate = new Date(new GregorianCalendar(year, month, day).getTimeInMillis());
+			
+		}
+
 		
 		
 		int prodNum = Integer.parseInt(request.getParameter("prodNum"));

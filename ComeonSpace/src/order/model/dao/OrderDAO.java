@@ -40,7 +40,7 @@ public class OrderDAO {
 			pstmt.setString(2, order.getBuyerName());
 			pstmt.setString(3, order.getBuyerPhone());
 			pstmt.setString(4, order.getProdName());
-			pstmt.setString(5, order.getRevDate());
+			pstmt.setDate(5, order.getRevDate());
 			pstmt.setInt(6, order.getHostNum());
 			pstmt.setInt(7, order.getProdNum());
 			pstmt.setInt(8, order.getTotalPrice());
@@ -82,7 +82,7 @@ public class OrderDAO {
 				order.setProdName(rset.getString("PROD_NAME"));
 				order.setProdNum(rset.getInt("PROD_NUM"));
 				order.setTotalPrice(rset.getInt("TOTAL_PRICE"));
-				order.setRevDate(rset.getString("REV_DATE"));
+				order.setRevDate(rset.getDate("REV_DATE"));
 				order.setOrderDate(rset.getDate("ORDER_DATE"));
 				
 				list.add(order);
@@ -120,7 +120,7 @@ public class OrderDAO {
 				order.setProdName(rset.getString("PROD_NAME"));
 				order.setProdNum(rset.getInt("PROD_NUM"));
 				order.setTotalPrice(rset.getInt("TOTAL_PRICE"));
-				order.setRevDate(rset.getString("REV_DATE"));
+				order.setRevDate(rset.getDate("REV_DATE"));
 				order.setOrderDate(rset.getDate("ORDER_DATE"));
 			}
 					
@@ -210,7 +210,7 @@ public class OrderDAO {
 				order.setProdName(rset.getString("PROD_NAME"));
 				order.setProdNum(rset.getInt("PROD_NUM"));
 				order.setTotalPrice(rset.getInt("TOTAL_PRICE"));
-				order.setRevDate(rset.getString("REV_DATE"));
+				order.setRevDate(rset.getDate("REV_DATE"));
 				order.setOrderDate(rset.getDate("ORDER_DATE"));
 				
 				list.add(order);
@@ -247,7 +247,7 @@ public class OrderDAO {
 				order.setProdName(rset.getString("PROD_NAME"));
 				order.setProdNum(rset.getInt("PROD_NUM"));
 				order.setTotalPrice(rset.getInt("TOTAL_PRICE"));
-				order.setRevDate(rset.getString("REV_DATE"));
+				order.setRevDate(rset.getDate("REV_DATE"));
 				order.setOrderDate(rset.getDate("ORDER_DATE"));
 			}
 					

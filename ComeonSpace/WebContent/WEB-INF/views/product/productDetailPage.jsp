@@ -389,7 +389,7 @@
 
                      <br>
 
-                            <form action="" method="GET">
+                            <form action="<%=request.getContextPath()%>/realPay.me" method="post">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-auto">
@@ -421,12 +421,10 @@
                               style="color: #0f6756; font-size: 150%; font-weight: bold"><%= p.getProductPrice() %></span>
                            <span> 원</span>
                         </div>
-                           </form>
+                           
                            <% if(loginUser == null){ %>
  							<input style="width: 30%" type="button" class="btn btn-success btn-lg btn-reserv" name="goLogin" value="로그인" id="goLogin"></button>
  							<%} else { %>
- 							      <form action="<%=request.getContextPath()%>/realPay.me" method="post">
- 							       <input type="hidden" name="selectDate" value="2021-10-11">
                                	   <input type="hidden" name="prodName" value="<%=p.getpName()%>" />
                                	   <input type="hidden" name="totalPrice" value="<%=p.getProductPrice()%>" />
                                	   <input type="hidden" name="buyerEmail" value="<%=loginUser.getUserEmail()%>"/>
@@ -434,7 +432,7 @@
                                	   <input type="hidden" name="buyerPhone" value="<%=loginUser.getUserPhone()%>"/>
                                	   <input type="hidden" name="prodNum" value="<%=p.getpNum()%>"/>
                                	   <input type="hidden" name="hostNum" value="<%=p.getUserNum()%>"/>
-                               	   <input type="hidden" name="revDate" value="dateWeek" />
+                               	   <input type="hidden" name="revDate1" value="select-date" />
                                    <input style="width: 30%" type="submit" class="btn btn-success btn-lg btn-reserv" name="submit" value="예약"></button>
  								  </form>
  							<% } %>
