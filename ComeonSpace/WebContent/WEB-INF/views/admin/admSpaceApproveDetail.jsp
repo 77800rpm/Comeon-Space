@@ -72,7 +72,7 @@
 					<th>공간 상세 이미지 : </th>
 					<td>
 						<% for(int i=0; i<productImgList.size(); i++){ %>
-							<img src="<%=request.getContextPath()%>/<%=productImgList.get(i).getImgChange() %>" style="margin-left:10px; max-width:100px; max-height:100px">
+							<img src="<%=request.getContextPath()%>/img_upload/<%=productImgList.get(i).getImgChange() %>" style="margin-left:10px; max-width:100px; max-height:100px">
 						<% } %>
 					</td>
 				</tr>
