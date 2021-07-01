@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.pageInfo.model.vo.PageInfo;
 import notice.model.service.NoticeService;
 import notice.model.vo.Notice;
 
@@ -32,8 +33,37 @@ public class AdmNoticeListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("UTF-8");
-		ArrayList<Notice> list = new NoticeService().admselectList();
 		
+		int currentPage;
+		int listCount;
+		int boardLimit;
+		int pageLimit;
+		int maxPage;
+		int startPage;
+		int endPage;
+		
+		listCount = new NoticeService().getListCount();
+		
+		currentPage = 1;
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		boardLimit = 10;
+		pageLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		startPage = ((currentPage -1)/pageLimit) * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
+		ArrayList<Notice> list = new NoticeService().selectNotice(pi);
+		
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/views/admin/admNoticeList.jsp").forward(request, response);
 //		request.getRequestDispatcher("admNoticeList.jsp").forward(request, response);

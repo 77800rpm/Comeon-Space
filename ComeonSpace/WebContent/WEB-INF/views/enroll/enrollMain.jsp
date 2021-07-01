@@ -52,7 +52,9 @@
                     <small>모임 | 촬영 | 스터디 | 연습실 | 행사장 | 공유 오피스 등 다양한 공간 등록 가능</small><br><br>
 <!-- 	                <button id="enrollButton">공간 등록</button>  -->
 					<input type="button" id="enrollButton" value="공간 등록">
-					<input type="hidden" id="userDiv" value="<%=loginUser.getUserDiv()%>">					
+					<%if(loginUser != null){ %>
+						<input type="hidden" id="userDiv" value="<%=loginUser.getUserDiv()%>">					
+					<%} %>
 	                <!-- input으로 하면 나머지 디자인 CSS는 되지만, font 크기나 굵기 변경 X
 	                	  정보를 가져가거나 저장하지 않고, 그냥 페이지 이동이니까 괜찮지 않을까?-->               	 
                 </div>

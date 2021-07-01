@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.ArrayList, faq.model.vo.Faq "
-	import="faq.model.service.*"%>
+	import="faq.model.service.*, common.pageInfo.model.vo.PageInfo"%>
 <%-- <% ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); %> --%>
 <%
-	ArrayList<Faq> list = (ArrayList)request.getAttribute("list");
+	ArrayList<Faq> list = (ArrayList) request.getAttribute("list");
+PageInfo fPi = (PageInfo) request.getAttribute("fPi");
+
+int fStartPage = fPi.getStartPage();
+int fEndPage = fPi.getEndPage();
+int fCurrentPage = fPi.getCurrentPage();
+int fMaxPage = fPi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -22,7 +28,9 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<style>
+	#pageDiv{text-align:center;}
+</style>
 <body>
 	<%@ include file="../common/header.jsp"%>
 
@@ -36,18 +44,18 @@
 
 
 		<!-- Page Content -->
+		<form action="<%=request.getContextPath() %>/writeFaqForm.bo" method="post">
 		<div style="margin-left: 15%; margin-right: 100px; padding: 10%">
 
 			<div class="w3-bottombar w3-border-teal" style="text-align: center;">
 				<h2>관리자 페이지</h2>
 			</div>
-
+			<hr>
 			<div>
 
 				<h5 style="padding: 1%">
 					<b>게시글 관리</b>
 				</h5>
-
 				<div>
 					<table class="table table-bordered table-sm"
 						style="text-align: center;" id="listArea">
@@ -88,36 +96,79 @@
 							}
 						%>
 					</table>
-				</div>
-			</div>
-
-			<div align="right">
-				<%
-					if (loginUser != null
-				// 		&& loginUser.getUserEmail().equals("admin123@cs.com")
-				) {
-				%>
-				<input type="button" onclick="location.href='writeFaqForm.bo'"
-					id="writeBoBtn" value="글쓰기">
-				<%
-					}
-				%>
-			</div>
-
-
-			<!-- page-button -->
-			<div class="w3-center">
-				<div class="w3-bar">
-					<a href="#" class="w3-bar-item w3-button">&laquo;</a> <a href="#"
-						class="w3-button w3-teal">1</a> <a href="#" class="w3-button">2</a>
-					<a href="#" class="w3-button">3</a> <a href="#" class="w3-button">4</a>
-					<a href="#" class="w3-button">5</a> <a href="#" class="w3-button">&raquo;</a>
+					<div align="right">
+						<input type="submit" id="writeBoBtn" value="글쓰기">
+					</div>
+					
+					<%
+						if (!list.isEmpty()) {
+					%>
+					<!-- 페이징 시작 -->
+					<div id="pageDiv">
+						<!-- 맨 처음으로 -->
+						<button
+							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=1'"
+							class="btn btn-outline-success">맨처음</button>
+						<!-- 이전 페이지 -->
+						<button
+							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=fCurrentPage - 1%>'"
+							id="beforeBtn" class="btn btn-outline-success">이전</button>
+						<script>
+							if(<%=fCurrentPage%> <= 1){
+								$("#beforeBtn").prop("disabled",true);
+							};
+						</script>
+						<!-- 숫자 페이지 -->
+						<%
+							for (int p = fStartPage; p <= fEndPage; p++) {
+						%>
+						<%
+							if (fCurrentPage == p) {
+						%>
+						<button disabled><%=p%></button>
+						<%
+							} else {
+						%>
+						<button
+							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=p%>'"
+							class="btn btn-outline-success"><%=p%></button>
+						<%
+							}
+						%>
+						<%
+							}
+						%>
+						<!-- 다음 페이지 -->
+						<button
+							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=fCurrentPage + 1%>'"
+							id="afterBtn" class="btn btn-outline-success">다음</button>
+						<script>
+			         	if(<%=fCurrentPage%> >= <%=fMaxPage%>){
+			         		$("#afterBtn").prop("disabled",true);
+			         	}
+		         	</script>
+						<!-- 맨끝 으로 -->
+						<button
+							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=fMaxPage%>'"
+							id="lastBtn" class="btn btn-outline-success">맨끝</button>
+						<script>
+			         	if(<%=fCurrentPage%> >= <%=fMaxPage%>){
+			         		$("#lastBtn").prop("disabled",true);
+			         	}
+		         	</script>
+					</div>
+					<!-- 페이징 끝 -->
+					<%
+						}
+					%>
 				</div>
 			</div>
 
 		</div>
+		</form>
 
 	</div>
+	
 	<script>
 		$(function(){
 			$('#listArea td').mouseenter(function(){
@@ -139,7 +190,7 @@
 //     		$("#selectUserBtn").on("click",function(){
 //     			console.log(1)
 <%--     			location.href="<%= request.getContextPath() %>/selectUser.me"; --%>
-//     		});
+//      		});
 //     	});
     	
 //     	$(function(){

@@ -105,14 +105,9 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Start Section -->
     <section class="container center">
-       <div class="center-sideList center-align">
-       		<span class="sideList-top">고객센터</span><br>
-       		<span class="sideList"><a>문의하기</a></span><br>
-       		<span class="sideList"><a>공지사항</a></span><br>
-       		<span class="sideList"><a>FAQ</a></span><br>
-       		<span class="sideList"><a>내 질문</a></span><br>
-       		<span class="sideList"><a>회원탈퇴</a></span>
-       </div>
+		<%if(loginUser != null){ %>
+			<%@ include file="../center/centerMenubar.jsp" %>
+		<%} %>
        <div class="center-align center-vertical" id="center-qTitle">
        		<h2>공지사항</h2>
        </div>

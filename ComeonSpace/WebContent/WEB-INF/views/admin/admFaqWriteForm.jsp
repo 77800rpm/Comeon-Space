@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.ArrayList, faq.model.vo.Faq "
 	import="faq.model.service.*"%>
-<%-- <% ArrayList<Faq> list = (ArrayList<Faq>)request.getAttribute("list"); %> --%>
-<%
-	FaqService fs = new FaqService();
-ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
-%>
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
@@ -30,31 +25,6 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 	<div style="font-family: Sans-serif">
 		<!-- Sidebar -->
 
-<!-- 		<div class="w3-sidebar w3-white w3-bar-block" -->
-<!-- 			style="width: 25%; margin-left: 150px;"> -->
-<!-- 			<br> -->
-<!-- 			<br> -->
-<!-- 			<br> -->
-<!-- 			<br> -->
-<!-- 			<br> -->
-<!-- 			<div style="margin-left: 150px"> -->
-<!-- 				<h5 class="w3-bar-item"> -->
-<!-- 					<b>회원관리</b> -->
-<!-- 				</h5> -->
-<!-- 				<a href="#" class="w3-bar-item w3-button">전체회원관리</a> -->
-<!-- 				<h5 class="w3-bar-item"> -->
-<!-- 					<b>시설관리</b> -->
-<!-- 				</h5> -->
-<!-- 				<a href="#" class="w3-bar-item w3-button">공간승인/취소</a> -->
-<!-- 				<h5 class="w3-bar-item"> -->
-<!-- 					<b>게시판 관리</b> -->
-<!-- 				</h5> -->
-<%-- 				<a href="<%=request.getContextPath()%>/faqSelect.me" --%>
-<!-- 					class="w3-bar-item w3-button">게시글 관리</a> <a href="#" -->
-<!-- 					class="w3-bar-item w3-button">공지사항 관리</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-
 <!-- Sidebar -->
 <%@ include file="/WEB-INF/views/admin/admMenubar.jsp" %>
 
@@ -62,7 +32,7 @@ ArrayList<Faq> list = (ArrayList<Faq>) fs.faqSelect();
 
 
 		<!-- Page Content -->
-		<div style="margin-left: 25%; margin-right: 100px; padding: 10%">
+		<div style="margin-left: 15%; margin-right: 100px; padding: 10%">
 
 			<div class="w3-bottombar w3-border-teal" style="text-align: center;">
 				<h2>관리자 페이지</h2>
