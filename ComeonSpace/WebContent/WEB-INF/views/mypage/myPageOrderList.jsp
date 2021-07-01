@@ -229,7 +229,7 @@
     
  	$("#tableArea button[type=button]").on("click",function(){
  		var num = $(this).parent().parent().children('td').eq(0).text();
- 		location.href="<%=request.getContextPath()%>/writeReview.my?no="+num;
+ 		location.href="<%=request.getContextPath()%>/writeReview.re?no="+num;
  	});
  	
  	
