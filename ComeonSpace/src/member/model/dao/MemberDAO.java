@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import common.pageInfo.model.vo.PageInfo;
 import common.wrapper.SignUpWrapper;
 import img.model.vo.Img;
 import member.model.vo.Member;
@@ -212,6 +213,43 @@ public class MemberDAO {
 		}
 		return selectUser;
 	}
+	//+페이징 
+//	public ArrayList<Member> adminSelectUser(Connection conn, PageInfo fPi) {
+//		PreparedStatement pstmt = null;
+//		ResultSet rset = null;
+//		ArrayList<Member> selectUser = new ArrayList<Member>();
+//		
+//		int startRow = (fPi.getCurrentPage() - 1) * fPi.getBoardLimit() + 1;
+//		int endRow = startRow + fPi.getBoardLimit() - 1;
+//		
+//		String query = prop.getProperty("adminSelectUser");
+//		
+//		try {
+//			pstmt = conn.prepareStatement(query);
+//			pstmt.setInt(1, startRow);
+//			pstmt.setInt(2, endRow);
+//			
+//			rset = pstmt.executeQuery();
+//			selectUser = new ArrayList<Member>();
+//			while(rset.next()) {
+//				Member m=new Member();
+//				m.setUserNum(rset.getInt("USER_NUM"));
+//				m.setUserEmail(rset.getString("USER_EMAIL"));
+//				m.setUserName(rset.getString("USER_NAME"));
+//				m.setUserNic(rset.getString("USER_NIC"));
+//				m.setUserPhone(rset.getString("USER_PHONE"));
+//				m.setUserDiv(rset.getString("USER_DIV"));
+//				selectUser.add(m);
+//			} 
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rset);
+//			close(pstmt);
+//		}
+//		return selectUser;
+//	}
 
 
 
@@ -347,6 +385,29 @@ public class MemberDAO {
 		
 		return result;
 	}
+	//관리자페이지 전체회원조회 페이징
+//	public int getListCount(Connection conn) {
+//		Statement stmt = null;
+//		ResultSet rset = null;
+//		int result = 0;
+//		
+//		String query = prop.getProperty("selectListCount");
+//		
+//		try {
+//			stmt = conn.createStatement();
+//			rset = stmt.executeQuery(query);
+//			if(rset.next()) {
+//				result = rset.getInt(1);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rset);
+//			close(stmt);
+//		}
+//		
+//		return result;
+//	}
 
 	
 }

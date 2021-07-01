@@ -8,9 +8,11 @@ import static common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import common.pageInfo.model.vo.PageInfo;
 import img.model.vo.Img;
 import member.model.dao.MemberDAO;
 import member.model.vo.Member;
+import notice.model.dao.NoticeDAO;
 import product.model.dao.ProductDAO;
 
 public class MemberService {
@@ -83,6 +85,17 @@ public class MemberService {
 		return selectUser;
 	}
 	
+	//  관리자 회원조회관리 페이징
+//	public ArrayList<Member> adminSelectUser(PageInfo fPi) {
+//		Connection conn = getConnection();
+//		
+//		ArrayList<Member> selectUser = new MemberDAO().adminSelectUser(conn, fPi);
+//		
+//		close(conn);
+//		
+//		return selectUser;
+//	}
+	
 	
 	
 	
@@ -149,6 +162,13 @@ public class MemberService {
 		
 		return result;
 	}
+	//관리자 전체회원조회 페이징
+//	public int getListCount() {
+//		Connection conn = getConnection();
+//		int result = new MemberDAO().getListCount(conn);
+//		close(conn);
+//		return result;
+//	}
 
 
 

@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.Member"
-    import="member.model.service.*, java.util.HashMap" %>
+    import="member.model.service.*, common.pageInfo.model.vo.PageInfo" %>
 <% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); %>
-<% HashMap<String, Object> pagingInfo = (HashMap<String, Object>)request.getAttribute("pagingInfo"); %>
+<%--
+ PageInfo fPi = (PageInfo) request.getAttribute("fPi");
+
+ int fStartPage = fPi.getStartPage(); 
+ int fEndPage = fPi.getEndPage(); 
+ int fCurrentPage = fPi.getCurrentPage(); 
+ int fMaxPage = fPi.getMaxPage(); 
+--%>
+
 <!DOCTYPE html>
 <html>
 
@@ -17,6 +25,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+#pageDiv{text-align:center;}
+</style>
 
 <body>
 
@@ -72,7 +84,7 @@
 		        <td><%= m.getUserPhone() %></td>
 		        <td>
 		        	<% if("admin".equals(m.getUserDiv())==false){ %>
-		        		<a href="<%= request.getContextPath()%>/admDeleteMember.me?userNum=<%=m.getUserNum()%>">회원 탈퇴</a>
+		        		<a href="<%= request.getContextPath()%>/admDeleteMember.me?userNum=<%=m.getUserNum()%>">강제탈퇴</a>
 		        	<% } %>
 		        </td>
 		      </tr>
@@ -96,6 +108,66 @@
   <a href="#" class="w3-button">&raquo;</a>
 </div>
 </div>
+
+					
+<!-- 					페이징 시작 -->
+<!-- 					<div id="pageDiv"> -->
+<!-- 						맨 처음으로 -->
+<!-- 						<button -->
+<%-- 							onclick="location.href='<%=request.getContextPath()%>/list.bo?selectUser.me=1'" --%>
+<!-- 							class="btn btn-outline-success">맨처음</button> -->
+<!-- 						이전 페이지 -->
+<!-- 						<button -->
+<%-- 							onclick="location.href='<%=request.getContextPath()%>/list.bo?selectUser.me=<%=fCurrentPage - 1%>'" --%>
+<!-- 							id="beforeBtn" class="btn btn-outline-success">이전</button> -->
+<!-- 						<script> -->
+<%-- 							if(<%=fCurrentPage%> <= 1){ --%>
+// 								$("#beforeBtn").prop("disabled",true);
+// 							};
+<!-- 						</script> -->
+<!-- 						숫자 페이지 -->
+<%-- 						<% --%>
+// 							for (int p = fStartPage; p <= fEndPage; p++) {
+<%-- 						%> --%>
+<%-- 						<% --%>
+// 							if (fCurrentPage == p) {
+<%-- 						%> --%>
+<%-- 						<button disabled><%=p%></button> --%>
+<%-- 						<% --%>
+// 							} else {
+<%-- 						%> --%>
+<!-- 						<button -->
+<%-- 							onclick="location.href='<%=request.getContextPath()%>/list.bo?selectUser.me=<%=p%>'" --%>
+<%-- 							class="btn btn-outline-success"><%=p%></button> --%>
+<%-- 						<% --%>
+// 							}
+<%-- 						%> --%>
+<%-- 						<% --%>
+// 							}
+<%-- 						%> --%>
+<!-- 						다음 페이지 -->
+<!-- 						<button -->
+<%-- 							onclick="location.href='<%=request.getContextPath()%>/list.bo?selectUser.me=<%=fCurrentPage + 1%>'" --%>
+<!-- 							id="afterBtn" class="btn btn-outline-success">다음</button> -->
+<!-- 						<script> -->
+<%-- 			         	if(<%=fCurrentPage%> >= <%=fMaxPage%>){ --%>
+// 			         		$("#afterBtn").prop("disabled",true);
+// 			         	}
+<!-- 		         	</script> -->
+<!-- 						맨끝 으로 -->
+<!-- 						<button -->
+<%-- 							onclick="location.href='<%=request.getContextPath()%>/list.bo?selectUser.me=<%=fMaxPage%>'" --%>
+<!-- 							id="lastBtn" class="btn btn-outline-success">맨끝</button> -->
+<!-- 						<script> -->
+<%-- 			         	if(<%=fCurrentPage%> >= <%=fMaxPage%>){ --%>
+// 			         		$("#lastBtn").prop("disabled",true);
+// 			         	}
+<!-- 		         	</script> -->
+<!-- 					</div> -->
+<!-- 					페이징 끝 -->
+<%-- 					<% --%>
+// 						}
+<%-- 					%> --%>
 
 
 

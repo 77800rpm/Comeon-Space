@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.PagingUtil;
+import common.pageInfo.model.vo.PageInfo;
+import faq.model.service.FaqService;
+import faq.model.vo.Faq;
 import member.model.service.MemberService;
 import member.model.vo.Member;
+import notice.model.service.NoticeService;
 import product.model.service.ProductService;
 import product.model.vo.Product;
 
@@ -45,7 +49,40 @@ public class AdminSelectUser extends HttpServlet {
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/views/admin/admSelectUser.jsp").forward(request, response);
 
-		
+		//페이징
+//		int fCurrentPage;
+//		int fListCount;
+//		int fBoardLimit;
+//		int fPageLimit;
+//		int fMaxPage;
+//		int fStartPage;
+//		int fEndPage;
+//		
+//		fListCount = new MemberService().getListCount();
+//		
+//		fCurrentPage = 1;
+//		if(request.getParameter("fCurrentPage") != null) {
+//			fCurrentPage = Integer.parseInt(request.getParameter("fCurrentPage"));
+//		}
+//		
+//		fBoardLimit = 10;
+//		fPageLimit = 10;
+//		
+//		fMaxPage = (int)Math.ceil((double)fListCount / fBoardLimit);
+//		
+//		fStartPage = ((fCurrentPage -1)/fPageLimit) * fPageLimit + 1;
+//		fEndPage = fStartPage + fPageLimit - 1;
+//		if(fEndPage > fMaxPage) {
+//			fEndPage = fMaxPage;
+//		}
+//		
+//		PageInfo fPi = new PageInfo(fCurrentPage, fListCount, fPageLimit, fBoardLimit, fMaxPage, fStartPage, fEndPage);
+//		
+//		ArrayList<Member> list = new MemberService().adminSelectUser(fPi);
+//		
+//		request.setAttribute("fPi", fPi);
+//		request.setAttribute("list", list);
+//		request.getRequestDispatcher("WEB-INF/views/admin/admSelectUser.jsp").forward(request, response);
 	
 		
 	}
