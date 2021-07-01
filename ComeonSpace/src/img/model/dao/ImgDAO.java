@@ -301,6 +301,18 @@ public class ImgDAO {
 		return result;
 	}
 
+	public ArrayList<Img> selectReview(Connection conn, int userNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Img> list = new ArrayList<Img>();
+		Img img = null;
+		
+		String query = prop.getProperty("selectReview");
+		
+		
+		return list;
+	}
+
 
 
 }

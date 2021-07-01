@@ -82,5 +82,15 @@ public class ImgService {
 
 
 
+	public ArrayList<Img> selectReview(int userNum) {
+		Connection conn = getConnection();
+		ArrayList<Img> img = new ImgDAO().selectReview(conn, userNum);
+		close(conn);
+		
+		return img;
+	}
+
+
+
 
 }
