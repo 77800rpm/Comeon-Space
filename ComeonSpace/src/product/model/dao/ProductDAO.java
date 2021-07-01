@@ -143,7 +143,7 @@ public class ProductDAO {
 										rset.getString("product_fac"),
 										rset.getInt("product_count"),
 										rset.getString("product_holiday"));
-					  product.setUserNum(rset.getInt("USER_NUM"));
+					  	product.setUserNum(rset.getInt("USER_NUM"));
 			}
 
 		} catch (SQLException e) {

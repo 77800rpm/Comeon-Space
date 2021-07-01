@@ -16,6 +16,9 @@ import java.sql.Date;
 		private String revContent;	// 리뷰 내용
 		private String revTitle;	// 공간 명
 		private String prodName;	// 공간 명
+		private Date revDate;
+		private int star;
+		
 		
 		public Review() {}
 
@@ -30,6 +33,41 @@ import java.sql.Date;
 			this.revContent = revContent;
 			this.revTitle = revTitle;
 			this.prodName = prodName;
+		}
+		
+		
+		public Review(int reviewNum, int userNum, int prodNum, int orderNum, String buyerName, String buyerNic,
+				String revContent, String revTitle, String prodName, Date revDate, int star) {
+			super();
+			this.reviewNum = reviewNum;
+			this.userNum = userNum;
+			this.prodNum = prodNum;
+			this.orderNum = orderNum;
+			this.buyerName = buyerName;
+			this.buyerNic = buyerNic;
+			this.revContent = revContent;
+			this.revTitle = revTitle;
+			this.prodName = prodName;
+			this.revDate = revDate;
+			this.star = star;
+		}
+		
+		
+		
+		public Date getRevDate() {
+			return revDate;
+		}
+
+		public void setRevDate(Date revDate) {
+			this.revDate = revDate;
+		}
+
+		public int getStar() {
+			return star;
+		}
+
+		public void setStar(int star) {
+			this.star = star;
 		}
 
 		public int getReviewNum() {

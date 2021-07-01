@@ -96,15 +96,21 @@ public class InsertReviewServlet extends HttpServlet {
 			
 			String revContent = multipartRequest.getParameter("revContent");
 			String revTitle = multipartRequest.getParameter("revTitle");
+			int star = Integer.parseInt(multipartRequest.getParameter("star"));
 			
-			request.setAttribute("userNum", userNum);
 			
 			Review review = new Review(userNum, prodNum, orderNum, buyerName, buyerNic, revContent, revTitle, prodName);
+			review.setStar(star);
 			
 			int result = new ReviewService().insertReview(review, fileList);
 			
-			response.sendRedirect("orderList.my");
-
+			if(result > 0) {
+				response.sendRedirect("orderList.my");
+			} else {
+				request.setAttribute("msg", "리뷰 등록에 실패하였습니다.");
+				request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
+			}
+ 
 		}
 	}
 

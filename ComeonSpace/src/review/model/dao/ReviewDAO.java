@@ -40,7 +40,7 @@ public class ReviewDAO {
 			pstmt.setString(6, review.getRevContent());
 			pstmt.setString(7, review.getRevTitle());
 			pstmt.setString(8, review.getProdName());
-			pstmt.setInt(9, review.getReviewNum());
+			pstmt.setInt(9, review.getStar());
 			
 			result = pstmt.executeUpdate();
 			
