@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import img.model.vo.Img;
 import member.model.dao.MemberDAO;
 import member.model.vo.Member;
+import product.model.dao.ProductDAO;
 
 public class MemberService {
 
@@ -71,7 +72,7 @@ public class MemberService {
 		
 	}
 	
-	// 관리자페이지 - 회원조회관리
+	 //관리자페이지 - 회원조회관리
 	public ArrayList<Member> adminSelectUser() {
 		Connection conn = getConnection();
 		
@@ -81,6 +82,10 @@ public class MemberService {
 		
 		return selectUser;
 	}
+	
+	
+	
+	
 
 	public Member selectMember(String userEmail) {
 		Connection conn = getConnection();

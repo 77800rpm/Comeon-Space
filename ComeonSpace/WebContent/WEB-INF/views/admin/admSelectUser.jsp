@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.Member"
-    import="member.model.service.*" %>
+    import="member.model.service.*, java.util.HashMap" %>
 <% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); %>
-
-<%-- <% MemberService ms = new MemberService(); --%>
-<%--    ArrayList<Member> list = (ArrayList<Member>)ms.adminSelectUser(); %> --%>
+<% HashMap<String, Object> pagingInfo = (HashMap<String, Object>)request.getAttribute("pagingInfo"); %>
 <!DOCTYPE html>
 <html>
 
@@ -101,17 +99,19 @@
 </div>
 
 <!-- page-button -->
-<div class="w3-center">
-<div class="w3-bar">
-  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
-  <a href="#" class="w3-button w3-teal">1</a>
-  <a href="#" class="w3-button">2</a>
-  <a href="#" class="w3-button">3</a>
-  <a href="#" class="w3-button">4</a>
-  <a href="#" class="w3-button">5</a>
-  <a href="#" class="w3-button">&raquo;</a>
-</div>
-</div>
+<!-- <div class="w3-center"> -->
+<!-- <div class="w3-bar"> -->
+<!--   <a href="#" class="w3-bar-item w3-button">&laquo;</a> -->
+<!--   <a href="#" class="w3-button w3-teal">1</a> -->
+<!--   <a href="#" class="w3-button">2</a> -->
+<!--   <a href="#" class="w3-button">3</a> -->
+<!--   <a href="#" class="w3-button">4</a> -->
+<!--   <a href="#" class="w3-button">5</a> -->
+<!--   <a href="#" class="w3-button">&raquo;</a> -->
+<!-- </div> -->
+<!-- </div> -->
+
+
 
 </div>
 </div>

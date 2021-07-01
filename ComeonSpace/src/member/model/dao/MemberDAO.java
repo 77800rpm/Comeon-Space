@@ -214,6 +214,7 @@ public class MemberDAO {
 	}
 
 
+
 	public Member selectMember(Connection conn, String userEmail) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;

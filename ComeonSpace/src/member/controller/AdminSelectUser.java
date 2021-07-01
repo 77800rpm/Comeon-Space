@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.PagingUtil;
 import member.model.service.MemberService;
 import member.model.vo.Member;
+import product.model.service.ProductService;
+import product.model.vo.Product;
 
 /**
  * Servlet implementation class AdminSelectUser
@@ -41,7 +44,10 @@ public class AdminSelectUser extends HttpServlet {
 		else System.out.println(list.size());
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/views/admin/admSelectUser.jsp").forward(request, response);
-//		request.getRequestDispatcher("admSelectUser.jsp").forward(request, response);
+
+		
+	
+		
 	}
 
 	/**
