@@ -392,7 +392,73 @@ public class ProductDAO {
 		}
 		return listCnt;
 	}
+	
+	//공간 승인/취소 상세정보 가져오기
+	public Product selectProductDetail(Integer productNum, Connection conn){
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Product product = null;
+		String query = prop.getProperty("selectProductSpaceApproveDetail");
+		try {
+			pstmt = conn.prepareStatement(query);
+	        pstmt.setInt(1, productNum);
+	        rset = pstmt.executeQuery();
+	         
+	        while(rset.next()) {
+	        	product=new Product();
+	        	//공간 정보
+	        	product.setProductNum(rset.getInt("product_num"));
+	        	product.setProductName(rset.getString("product_name"));
+	        	product.setProductLimit(rset.getInt("product_limit"));
+	        	product.setProductPrice(rset.getInt("product_price"));
+	        	product.setProductCategory(rset.getString("product_category"));
+	        	product.setProductIntro(rset.getString("product_intro"));
+	        	product.setProductDetail(rset.getString("Product_detail"));
+	        	product.setProductLocation(rset.getString("product_location"));
+	        	product.setProductFac(rset.getString("product_fac"));
+	        	product.setProductCount(rset.getInt("product_count"));
+	        	product.setProductHoliday(rset.getString("product_holiday"));
+	        	product.setUserNum(rset.getInt("USER_NUM"));
+	        	//썸네일 정보
+	        	product.setImgChange(rset.getString("IMG_CHANGE"));
+	         }
+	        
+	        System.out.println("DB에서 가져온 PRODUCT : "+product);
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return product;
+	}
+	
+	
+	//공간 승인/취소 상세정보 이미지 리스트 가져오기
+	public ArrayList<Img> selectProductImgList(Integer productNum, Connection conn){
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Img> slist = new ArrayList<Img>();
+		String query = null;
 
+		query = prop.getProperty("selectProductImgList");
+		try {
+			pstmt = conn.prepareStatement(query);
+	        pstmt.setInt(1, productNum);
+	        rset = pstmt.executeQuery();
+	         
+	        while(rset.next()) {
+	        	Img vo=new Img();
+	        	vo.setImgOrigin(rset.getString("IMG_ORIGIN"));
+	        	vo.setImgChange(rset.getString("IMG_CHANGE"));
+	        	vo.setImgPath(rset.getString("IMG_PATH"));
+	            slist.add(vo);
+	         }
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return slist;
+	}
 
 	public ArrayList<Enroll> selectEnroll(Connection conn, int userNum, PageInfo pi) {
 		PreparedStatement pstmt = null;
@@ -433,8 +499,6 @@ public class ProductDAO {
 			close(rset);
 			close(pstmt);
 		}
-		
-		
 		return list;
 	}
 
@@ -459,7 +523,41 @@ public class ProductDAO {
 			close(rset);
 			close(pstmt);
 		}
+		return result;
+	}
 
+	//공간 승인 처리
+	public Integer updateProductApproveSuccess(Integer productNum, Connection conn) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateProductSpaceApprove");	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, productNum);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	//공간 삭제 처리
+	public Integer updateProductSpaceDelete(Integer productNum, Connection conn){
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = prop.getProperty("updateProductSpaceDelete");	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, productNum);
+			result = pstmt.executeUpdate();
+			System.out.println("삭제 여부 :"+result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 		return result;
 	}
 }

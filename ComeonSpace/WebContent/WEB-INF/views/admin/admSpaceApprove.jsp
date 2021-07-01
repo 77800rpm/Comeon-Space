@@ -15,7 +15,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<style>
+	.imgListBox {}
+	.imgListBox a {}
+	.imgListBox a img {}
+	.imgListBox a h5 {}
+</style>
 <body>
 <%@ include file="../common/header.jsp" %>
 <!-- font -->
@@ -33,10 +38,10 @@
   <h5><b>공간 승인/취소</b></h5>
 
 <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center">
+  <div class="w3-row-padding w3-padding-16 w3-center imgListBox">
   	<% for(Product prud:list){ %>
-  		<a class="w3-quarter" href="">
-    		<img src="../img_upload" style="width:100%">
+  		<a class="w3-quarter"  href="<%=request.getContextPath() %>/spaceApproveDetail.bo?productNum=<%=prud.getProductNum()%>">
+    		<img src="<%=request.getContextPath() %>/img_upload/<%=prud.getImgChange() %>" style="width:100%">
     		<h5><%= prud.getProductName() %></h5>
     	</a>
     <% } %>

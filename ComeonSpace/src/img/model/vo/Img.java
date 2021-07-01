@@ -119,6 +119,11 @@ public class Img {
 	public void setImgBoardId(int imgBoardId) {
 		this.imgBoardId = imgBoardId;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Img [imgNum=" + imgNum + ", userNum=" + userNum + ", imgLevel=" + imgLevel + ", imgCategory="
+				+ imgCategory + ", imgOrigin=" + imgOrigin + ", imgChange=" + imgChange + ", imgPath=" + imgPath
+				+ ", status=" + status + ", imgBoardId=" + imgBoardId + "]";
+	}
 }

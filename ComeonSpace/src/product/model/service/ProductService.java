@@ -115,6 +115,20 @@ public class ProductService {
 		close(conn);
 		return resultCnt;
 	}
+	
+	public Product selectProductDetail(Integer productNum){
+		Connection conn=getConnection();
+		Product product=new ProductDAO().selectProductDetail(productNum, conn);
+		close(conn);
+		return product;
+	}
+	
+	public ArrayList<Img> selectProductImgList(Integer productNum){
+		Connection conn=getConnection();
+		ArrayList<Img> productImgList=new ProductDAO().selectProductImgList(productNum, conn);
+		close(conn);
+		return productImgList;
+	}
 
 	public ArrayList<Enroll> selectEnroll(int userNum, PageInfo pi) {
 		Connection conn = getConnection();
@@ -131,4 +145,18 @@ public class ProductService {
 		return result;
 	}
 
+	
+	public Integer updateProductApproveSuccess(Integer productNum){
+		Connection conn = getConnection();
+		Integer successCnt=new ProductDAO().updateProductApproveSuccess(productNum, conn);
+		close(conn);
+		return successCnt;
+	}
+	
+	public Integer updateProductSpaceDelete(Integer productNum){
+		Connection conn = getConnection();
+		Integer deleteCnt=new ProductDAO().updateProductSpaceDelete(productNum, conn);
+		close(conn);
+		return deleteCnt;
+	}
 }

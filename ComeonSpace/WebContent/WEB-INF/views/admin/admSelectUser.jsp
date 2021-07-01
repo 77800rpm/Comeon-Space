@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.Member"
     import="member.model.service.*" %>
-<%--<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); --%>
-<% MemberService ms = new MemberService();
-   ArrayList<Member> list = (ArrayList<Member>)ms.adminSelectUser(); %>
+<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); %>
+
+<%-- <% MemberService ms = new MemberService(); --%>
+<%--    ArrayList<Member> list = (ArrayList<Member>)ms.adminSelectUser(); %> --%>
 <!DOCTYPE html>
 <html>
 
@@ -86,8 +87,10 @@
 		        <td><%= m.getUserNic() %></td>
 		        <td><%= m.getUserPhone() %></td>
 		        <td>
-		        <input type="button" value="탈퇴" id="withdraw">
-		        <input type="hidden" value="<%= m.getUserNum() %>" name="userNum"></td>
+		        	<% if("admin".equals(m.getUserDiv())==false){ %>
+		        		<a href="<%= request.getContextPath()%>/admDeleteMember.me?userNum=<%=m.getUserNum()%>">회원 탈퇴</a>
+		        	<% } %>
+		        </td>
 		      </tr>
    			<% } %>
    		</tbody>
@@ -114,19 +117,7 @@
 </div>
 
 <%@ include file="../common/footer.jsp" %>
-	
-	
-	<script>
-     	function withdraw(){
-         	var bool = confirm("강제 탈퇴시키겠습니까?");
-         	
-         	if(bool){
-         				$("#admWithdrawList").attr('action', '<%= request.getContextPath()%>/admDeleteMember.me');
-         				$("#admWithdrawList").submit();									
-         	}
-     			
-         		}     	
-     </script>
+	<script></script>
 </body>
 
 </html>

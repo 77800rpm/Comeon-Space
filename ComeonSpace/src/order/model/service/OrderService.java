@@ -51,11 +51,11 @@ public class OrderService {
 		return result;
 	}
 
-	public ArrayList<Order> selectList(String userName) {
+	public ArrayList<Order> selectList(String userName, PageInfo pi) {
 		
 			Connection conn = getConnection();
 			
-			ArrayList<Order> list = new OrderDAO().selectList(conn, userName);
+			ArrayList<Order> list = new OrderDAO().selectList(conn, userName, pi);
 			
 			close(conn);
 			
@@ -69,5 +69,13 @@ public class OrderService {
 		close(conn);
 		return order;
 		
+	}
+
+	public int getGuestListCount(String userName) {
+		Connection conn = getConnection();
+		int result = new OrderDAO().getGuestListCount(conn, userName);
+		
+		close(conn);
+		return result;
 	}
 }

@@ -33,10 +33,9 @@ public class AdmDeleteMemberServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		int userNum = Integer.parseInt(request.getParameter("userNum"));
 		
-		System.out.println(userNum);
+		System.out.println("유저번호 : "+userNum);
 		int result = new MemberService().admDeleteMember(userNum);
 		
-		request.getParameter("userNum").trim();
 		
 		if(result > 0) {
 			response.sendRedirect("selectUser.me");
@@ -51,8 +50,7 @@ public class AdmDeleteMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

@@ -38,7 +38,8 @@ public class ProductSearchCategoryServlet extends HttpServlet {
 		String PRODUCT_CATEGORY = request.getParameter("PRODUCT_CATEGORY");
 		String PRODUCT_HOLIDAY = request.getParameter("PRODUCT_HOLIDAY");		
 		
-		
+		String search_date = request.getParameter("search-date");
+
 		String ALL_PRODUCT_LOCATION = "";
 		if(PRODUCT_LOCATION.equals("모든지역")) {
 			ALL_PRODUCT_LOCATION = PRODUCT_CATEGORY;

@@ -426,6 +426,7 @@
  							<input style="width: 30%" type="button" class="btn btn-success btn-lg btn-reserv" name="goLogin" value="로그인" id="goLogin"></button>
  							<%} else { %>
  							      <form action="<%=request.getContextPath()%>/realPay.me" method="post">
+ 							       <input type="hidden" name="selectDate" value="2021-10-11">
                                	   <input type="hidden" name="prodName" value="<%=p.getpName()%>" />
                                	   <input type="hidden" name="totalPrice" value="<%=p.getProductPrice()%>" />
                                	   <input type="hidden" name="buyerEmail" value="<%=loginUser.getUserEmail()%>"/>
@@ -842,8 +843,8 @@
             $(".dateResult").text(value);
             $(".dateWeekResult").text("(" + dateWeek + ")");
           });
-       })
-       
+       });
+  
       
    </script>
    
