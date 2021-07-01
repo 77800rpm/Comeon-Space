@@ -121,7 +121,7 @@
          	var bool = confirm("강제 탈퇴시키겠습니까?");
          	
          	if(bool){
-         				$("#admWithdrawList").attr('action', '<%= request.getContextPath()%>/withdraw.me');
+         				$("#admWithdrawList").attr('action', '<%= request.getContextPath()%>/admDeleteMember.me');
          				$("#admWithdrawList").submit();									
          	}
      			
