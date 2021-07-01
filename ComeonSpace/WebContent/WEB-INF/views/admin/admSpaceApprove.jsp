@@ -35,21 +35,17 @@
 <div class="w3-bottombar w3-border-teal" style="text-align:center;">
   <h2>관리자 페이지</h2>
   </div><br>
-  <h5><b>공간 승인/취소</b></h5>
 
 <!-- Second Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center imgListBox">
+  <h5><b>공간 승인/취소</b></h5>
+  <div class="w3-row-padding w3-padding-16 w3-left w3-container">
   	<% for(Product prud:list){ %>
   		<a class="w3-quarter"  href="<%=request.getContextPath() %>/spaceApproveDetail.bo?productNum=<%=prud.getProductNum()%>">
-    		<img src="<%=request.getContextPath() %>/img_upload/<%=prud.getImgChange() %>" style="width:100%">
+    		<img src="<%=request.getContextPath() %>/img_upload/<%=prud.getImgChange() %>" style="width:200px; height:200px" class="w3-hover-opacity w3-card-3">
     		<h5><%= prud.getProductName() %></h5>
     	</a>
     <% } %>
-    <!-- <div class="w3-quarter">
-      <img src="../admin_jpg/space1.jpg" style="width:100%">
-      <h5>메종블랑쉬 스튜디오</h5>
-      <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>
-    </div> -->
+
   </div>
 
 	<%=pagingInfo %>
