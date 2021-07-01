@@ -105,9 +105,11 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Start Section -->
     <section class="container center">
-		<%@ include file="centerMenubar.jsp" %>
+    	<%if(loginUser != null){ %>
+			<%@ include file="centerMenubar.jsp" %>
+    	<%} %>
        <div class="center-align center-vertical" id="center-qTitle">
-       		<h2>공지사항</h2>
+       		<h2>자주 묻는 질문</h2>
        </div>
        <div class="center-content center-align center-vertical">
        		<form action="updateNoticeForm.no" id="noticeDetailForm">

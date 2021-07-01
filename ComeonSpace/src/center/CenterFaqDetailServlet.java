@@ -29,7 +29,7 @@ public class CenterFaqDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int bId = Integer.parseInt(request.getParameter("fo"));
+		int bId = Integer.parseInt(request.getParameter("no"));
 		
 		Faq fo = new FaqService().admDetailFaq(bId);
 		

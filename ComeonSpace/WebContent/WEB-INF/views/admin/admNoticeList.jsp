@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice"%>
-<% ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list"); %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, notice.model.vo.Notice, common.pageInfo.model.vo.PageInfo"%>
+<% 
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list"); 
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int noStartPage = pi.getStartPage();
+	int noEndPage = pi.getEndPage();
+	int noCurrentPage = pi.getCurrentPage();
+	int noMaxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +24,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
+	#pageDiv{text-align:center;}
 </style>
 <body>
 <%-- <form action="<%= request.getContextPath() %>/selectUser.me"> --%>
@@ -73,6 +82,43 @@
 					<div align="right" >
 						<input type="button" onclick="location.href='admNoticeWriteForm.no'" id="writeNoBtn" value="글쓰기">
 					</div>
+				   <%if(!list.isEmpty()){ %>
+						<!-- 페이징 시작 -->
+						<div id="pageDiv">
+							<!-- 맨 처음으로 -->
+							<button onclick="location.href='<%=request.getContextPath()%>/admList.no?currentPage=1'" class="btn btn-outline-success">맨처음</button>
+							<!-- 이전 페이지 -->
+							<button onclick="location.href='<%=request.getContextPath() %>/admList.no?currentPage=<%=noCurrentPage - 1%>'" id="beforeBtn" class="btn btn-outline-success">이전</button>
+							<script>
+								if(<%=noCurrentPage%> <= 1){
+									$("#beforeBtn").prop("disabled",true);
+								};
+							</script>
+							<!-- 숫자 페이지 -->
+							<%for(int p = noStartPage; p <= noEndPage; p++){ %>
+								<%if(noCurrentPage == p){ %>
+									<button disabled><%=p %></button>
+								<%} else { %>
+									<button onclick="location.href='<%=request.getContextPath()%>/admList.no?currentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
+								<%} %>
+							<%} %>
+							<!-- 다음 페이지 -->
+							<button onclick="location.href='<%=request.getContextPath()%>/admList.no?currentPage=<%=noCurrentPage + 1%>'"id="afterBtn" class="btn btn-outline-success">다음</button>
+							<script>
+					         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
+					         		$("#afterBtn").prop("disabled",true);
+					         	}
+				         	</script>
+							<!-- 맨끝 으로 -->
+							<button onclick="location.href='<%=request.getContextPath() %>/centerView.ce?currentPage=<%=noMaxPage %>'" id="lastBtn" class="btn btn-outline-success">맨끝</button>
+							<script>
+					         	if(<%=noCurrentPage%> >= <%=noMaxPage%>){
+					         		$("#lastBtn").prop("disabled",true);
+					         	}
+				         	</script>
+						</div>
+						<!-- 페이징 끝 -->
+					<%} %>
 				
 				
 			</div>
