@@ -66,7 +66,7 @@ public class InsertReviewServlet extends HttpServlet {
 			
 			Enumeration<String> files = multipartRequest.getFileNames();
 			
-			while(files.hasMoreElements()) {
+			if(files.hasMoreElements()) {
 				String name = files.nextElement();
 				
 				
@@ -75,23 +75,22 @@ public class InsertReviewServlet extends HttpServlet {
 					originFiles.add(multipartRequest.getOriginalFileName(name));
 				}
 			}
-			ArrayList<Img> fileList = new ArrayList<Img>();
-			
-			for(int i = originFiles.size()-1; i >= 0; i--) {
-				Img img = new Img();
-				img.setImgPath(savePath);
-				img.setImgOrigin(originFiles.get(i));
-				img.setImgChange(saveFiles.get(i));
-				img.setImgCategory(4);
-				img.setUserNum(userNum);
-				
-				if(i == originFiles.size() - 1) {
-					img.setImgLevel(0);
-				} else {
-					img.setImgLevel(1);
+			ArrayList<Img> list = new ArrayList<Img>();
+			if(originFiles != null) {
+				for(int i = originFiles.size()-1; i >= 0; i--) {
+						Img img = new Img();
+						img.setImgPath(savePath);
+						img.setImgOrigin(originFiles.get(i));
+						img.setImgChange(saveFiles.get(i));
+						
+						if(i == 0) {
+							img.setImgLevel(1);
+						} else if(i == 1) {
+							img.setImgLevel(2);
+						}
+						
+						list.add(img);
 				}
-				
-				fileList.add(img);
 			}
 			
 			String buyerName = request.getParameter("buyerName");
