@@ -143,7 +143,7 @@ public class ProductDAO {
 										rset.getString("product_fac"),
 										rset.getInt("product_count"),
 										rset.getString("product_holiday"));
-					  product.setUserNum(rset.getInt("USER_NUM"));
+					  	product.setUserNum(rset.getInt("USER_NUM"));
 			}
 
 		} catch (SQLException e) {
@@ -347,9 +347,9 @@ public class ProductDAO {
 			/*페이지 번호 받을 수 있는 쿼리로 수정할 예정*/
 			int startPageRn=(pageNo-1)*10+1;
 			int endPageRn=startPageRn+10-1;
-			System.out.println("pageNo : "+pageNo);
-			System.out.println("startPageRn : "+startPageRn);
-			System.out.println("endPageRn : "+endPageRn);
+//			System.out.println("pageNo : "+pageNo);
+//			System.out.println("startPageRn : "+startPageRn);
+//			System.out.println("endPageRn : "+endPageRn);
 			
 			pstmt = conn.prepareStatement(query);
 	        pstmt.setInt(1, startPageRn);

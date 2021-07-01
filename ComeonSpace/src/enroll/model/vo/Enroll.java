@@ -55,6 +55,28 @@ public class Enroll {
 		this.holiday = holiday;
 	}
 
+	
+	
+	
+	public Enroll(int pNum, String pName, int pLimit, int productPrice, String pCategory, String pIntro, String pDetail,
+			String pLocation, String pFacility, int pCount, String pApprove, String status, String holiday) {
+		super();
+		this.pNum = pNum;
+		this.pName = pName;
+		this.pLimit = pLimit;
+		this.productPrice = productPrice;
+		this.pCategory = pCategory;
+		this.pIntro = pIntro;
+		this.pDetail = pDetail;
+		this.pLocation = pLocation;
+		this.pFacility = pFacility;
+		this.pCount = pCount;
+		this.pApprove = pApprove;
+		this.status = status;
+		this.holiday = holiday;
+	}
+
+
 	public Enroll(int pNum, String pName, int productPrice, String pCategory, String pIntro, String pLocation,
 			int pCount) {
 		super();
@@ -65,6 +87,20 @@ public class Enroll {
 		this.pIntro = pIntro;
 		this.pLocation = pLocation;
 		this.pCount = pCount;
+	}
+	
+	
+	public Enroll(int pNum, String pName, int productPrice, String pCategory, String pIntro, String pLocation,
+			int pCount, String pApprove) {
+		super();
+		this.pNum = pNum;
+		this.pName = pName;
+		this.productPrice = productPrice;
+		this.pCategory = pCategory;
+		this.pIntro = pIntro;
+		this.pLocation = pLocation;
+		this.pCount = pCount;
+		this.pApprove = pApprove;
 	}
 	
 
