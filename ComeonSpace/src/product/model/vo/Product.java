@@ -20,18 +20,6 @@ public class Product {
 	private String productHoliday;
 	
 	//이미지 정보 전용
-	/*
-	IMG_NUM		NUMBER
-	IMG_TITLE	VARCHAR2(50 BYTE)
-	IMG_LEVEL	NUMBER
-	IMG_CATEGORY	NUMBER
-	IMG_ORIGIN	VARCHAR2(1000 BYTE)
-	IMG_CHANGE	VARCHAR2(1000 BYTE)
-	IMG_PATH	VARCHAR2(1000 BYTE)
-	IMG_STATUS	VARCHAR2(10 BYTE)
-	IMG_BOARDID	NUMBER
-	USER_NUM	NUMBER
-	*/
 	private Integer imgNum;
 	private String imgTitle;
 	private Integer imgLevel;
@@ -178,17 +166,6 @@ public class Product {
 	public void setProductHoliday(String productHoliday) {
 		this.productHoliday = productHoliday;
 	}
-	@Override
-	public String toString() {
-		return "Product [productNum=" + productNum + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", productCategory=" + productCategory + ", productIntro=" + productIntro + ", productDetail="
-				+ productDetail + ", productLocation=" + productLocation + ", productFac=" + productFac
-				+ ", productCount=" + productCount + ", productVisit=" + productVisit + ", productApprove="
-				+ productApprove + ", productStatus=" + productStatus + ", userNum=" + userNum + ", latitude="
-				+ latitude + ", logitude=" + logitude + ", productLimit=" + productLimit + ", productHoliday="
-				+ productHoliday + "]";
-	}
-
 	
 	//IMG 전용
 	public Integer getImgNum() {
@@ -269,5 +246,19 @@ public class Product {
 
 	public void setImgUserNum(Integer imgUserNum) {
 		this.imgUserNum = imgUserNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productNum=" + productNum + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", productCategory=" + productCategory + ", productIntro=" + productIntro + ", productDetail="
+				+ productDetail + ", productLocation=" + productLocation + ", productFac=" + productFac
+				+ ", productCount=" + productCount + ", productVisit=" + productVisit + ", productApprove="
+				+ productApprove + ", productStatus=" + productStatus + ", userNum=" + userNum + ", latitude="
+				+ latitude + ", logitude=" + logitude + ", productLimit=" + productLimit + ", productHoliday="
+				+ productHoliday + ", imgNum=" + imgNum + ", imgTitle=" + imgTitle + ", imgLevel=" + imgLevel
+				+ ", imgCategory=" + imgCategory + ", imgOrigin=" + imgOrigin + ", imgChange=" + imgChange
+				+ ", imgPath=" + imgPath + ", imgStatus=" + imgStatus + ", imgBoardId=" + imgBoardId + ", imgUserNum="
+				+ imgUserNum + "]";
 	}
 }

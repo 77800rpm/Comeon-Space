@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, member.model.vo.Member"
     import="member.model.service.*" %>
-<%--<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); --%>
-<% MemberService ms = new MemberService();
-   ArrayList<Member> list = (ArrayList<Member>)ms.adminSelectUser(); %>
+<% ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list"); %>
+
+<%-- <% MemberService ms = new MemberService(); --%>
+<%--    ArrayList<Member> list = (ArrayList<Member>)ms.adminSelectUser(); %> --%>
 <!DOCTYPE html>
 <html>
 
@@ -86,8 +87,11 @@
 		        <td><%= m.getUserNic() %></td>
 		        <td><%= m.getUserPhone() %></td>
 		        <td>
-		        <input type="button" value="탈퇴" id="withdraw">
+		        <input type="button" value="탈퇴" id="withdraw" onclick="withboard()">
 		        <input type="hidden" value="<%= m.getUserNum() %>" name="userNum"></td>
+		        <%= m.getUserNum() %>
+		        <%= m.getUserNum() %>
+		        <%= m.getUserNum() %>
 		      </tr>
    			<% } %>
    		</tbody>
@@ -117,7 +121,7 @@
 	
 	
 	<script>
-     	function withdraw(){
+     	function withboard(){
          	var bool = confirm("강제 탈퇴시키겠습니까?");
          	
          	if(bool){

@@ -114,4 +114,18 @@ public class ProductService {
 		close(conn);
 		return resultCnt;
 	}
+	
+	public Product selectProductDetail(Integer productNum){
+		Connection conn=getConnection();
+		Product product=new ProductDAO().selectProductDetail(productNum, conn);
+		close(conn);
+		return product;
+	}
+	
+	public ArrayList<Img> selectProductImgList(Integer productNum){
+		Connection conn=getConnection();
+		ArrayList<Img> productImgList=new ProductDAO().selectProductImgList(productNum, conn);
+		close(conn);
+		return productImgList;
+	}
 }

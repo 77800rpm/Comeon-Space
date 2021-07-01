@@ -36,7 +36,7 @@ public class AdmDeleteMemberServlet extends HttpServlet {
 		System.out.println(userNum);
 		int result = new MemberService().admDeleteMember(userNum);
 		
-		request.getParameter("userNum").trim();
+//		request.getParameter("userNum").trim();
 		
 		if(result > 0) {
 			response.sendRedirect("selectUser.me");
