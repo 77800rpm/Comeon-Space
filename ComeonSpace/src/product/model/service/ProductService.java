@@ -135,4 +135,18 @@ public class ProductService {
 		close(conn);
 		return list;
 	}
+	
+	public Integer updateProductApproveSuccess(Integer productNum){
+		Connection conn = getConnection();
+		Integer successCnt=new ProductDAO().updateProductApproveSuccess(productNum, conn);
+		close(conn);
+		return successCnt;
+	}
+	
+	public Integer updateProductSpaceDelete(Integer productNum){
+		Connection conn = getConnection();
+		Integer deleteCnt=new ProductDAO().updateProductSpaceDelete(productNum, conn);
+		close(conn);
+		return deleteCnt;
+	}
 }
