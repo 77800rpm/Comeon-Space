@@ -26,7 +26,7 @@
 
 
 <!-- Page Content -->
-<div style="margin-left:25%; margin-right:50px; padding:10%">
+<div style="margin-left:15%; margin-right:50px; padding:10%">
 <div class="w3-bottombar w3-border-teal" style="text-align:center;">
   <h2>관리자 페이지</h2>
   </div><br>
@@ -36,46 +36,11 @@
   <div class="w3-row-padding w3-padding-16 w3-center">
   	<% for(Product prud:list){ %>
   		<a class="w3-quarter" href="">
-    		<img src="../admin_jpg/space1.jpg" style="width:100%">
+    		<img src="../img_upload" style="width:100%">
     		<h5><%= prud.getProductName() %></h5>
     	</a>
     <% } %>
     <!-- <div class="w3-quarter">
-      <img src="../admin_jpg/space1.jpg" style="width:100%">
-      <h5>메종블랑쉬 스튜디오</h5>
-      <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="../admin_jpg/space2.jpg" style="width:100%">
-      <h5>2인 독립 오피스</h5>
-      <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="../admin_jpg/space3.jpg" style="width:100%">
-      <h5>한성대역 다목적홀</h5>
-      <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="../admin_jpg/space1.jpg" style="width:100%">
-      <h5>메종블랑쉬 스튜디오</h5>
-      <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="../admin_jpg/space1.jpg" style="width:100%">
-      <h5>메종블랑쉬 스튜디오</h5>
-      <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="../admin_jpg/space1.jpg" style="width:100%">
-      <h5>메종블랑쉬 스튜디오</h5>
-      <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>
-    </div>
-    <div class="w3-quarter">
-      <img src="../admin_jpg/space1.jpg" style="width:100%">
-      <h5>메종블랑쉬 스튜디오</h5>
-      <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>
-    </div>
-    <div class="w3-quarter">
       <img src="../admin_jpg/space1.jpg" style="width:100%">
       <h5>메종블랑쉬 스튜디오</h5>
       <p>간단한 설명이나 호스트 이름쓰거나 안쓰거나</p>

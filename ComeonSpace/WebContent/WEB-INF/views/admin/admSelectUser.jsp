@@ -42,7 +42,7 @@
 <%@ include file="/WEB-INF/views/admin/admMenubar.jsp" %>
 
 <!-- Page Content -->
-<div style="margin-left:25%; margin-right:100px; padding:10%">
+<div style="margin-left:15%; margin-right:100px; padding:10%">
 
 <div class="w3-bottombar w3-border-teal" style="text-align:center;">
   <h2>관리자 페이지</h2>
@@ -75,7 +75,7 @@
 		        <th>이메일</th>
 		        <th>닉네임</th>
 		        <th>핸드폰번호</th>
-		        <th>탈퇴</th>
+		        <th>강제탈퇴</th>
 		      </tr>
 		 </thead>
 		 <tbody>
@@ -86,7 +86,7 @@
 		        <td><%= m.getUserNic() %></td>
 		        <td><%= m.getUserPhone() %></td>
 		        <td>
-		        <input type="button" value="강제탈퇴" id="withdraw">
+		        <input type="button" value="탈퇴" id="withdraw">
 		        <input type="hidden" value="<%= m.getUserNum() %>" name="userNum"></td>
 		      </tr>
    			<% } %>
@@ -118,7 +118,7 @@
 	
 	<script>
      	function faqDelete(){
-         	var bool = confirm("정말 탈퇴시키겠습니까?");
+         	var bool = confirm("강제 탈퇴시키겠습니까?");
          	
          	if(bool){
          				$("#admWithdrawList").attr('action', '<%= request.getContextPath()%>/withdraw.me');
