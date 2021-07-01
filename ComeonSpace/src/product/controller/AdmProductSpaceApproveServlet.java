@@ -48,9 +48,9 @@ public class AdmProductSpaceApproveServlet extends HttpServlet {
 		Integer pageNo=1;
 		if(request.getParameter("pageNo")!=null && "".equals(request.getParameter("pageNo").toString())==false){ //페이지번호가 null이 아니고, "" 빈 문자열이 아니라면
 			pageNo=Integer.valueOf(request.getParameter("pageNo"));
-			System.out.println("1. pageNo : "+pageNo);
+//			System.out.println("1. pageNo : "+pageNo);
 			pageNo=(pageNo==0)?1:pageNo; //페이지 번호가 0일 경우 1로 바꿔주고, 아니면 그대로 pageNo 사용
-			System.out.println("2. pageNo : "+pageNo);
+//			System.out.println("2. pageNo : "+pageNo);
 		}
 		ProductService productService=new ProductService();
 		ArrayList<Product> list = productService.selectProductList(pageNo);
@@ -60,7 +60,7 @@ public class AdmProductSpaceApproveServlet extends HttpServlet {
 		
 		PagingUtil paging=new PagingUtil(pageNo,listCnt, 10);
 		request.setAttribute("pagingInfo", paging.getPagingInfo());
-		System.out.println("페이징 정보 :"+paging.getPagingInfo());
+//		System.out.println("페이징 정보 :"+paging.getPagingInfo());
 		
 		request.getRequestDispatcher("WEB-INF/views/admin/admSpaceApprove.jsp").forward(request, response);
 		

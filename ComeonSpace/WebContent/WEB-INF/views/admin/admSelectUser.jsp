@@ -19,25 +19,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <body>
-<%-- <form action="<%= request.getContextPath() %>/selectUser.me"> --%>
 
 <%@ include file="../common/header.jsp" %>
 <!-- font -->
 <div style="font-family:Sans-serif">
 
-<!-- Sidebar -->
-<%-- <div class="w3-sidebar w3-white w3-bar-block" style="width:25%; margin-left:150px; ">
- 	 <br><br><br><br><br>
-  <div style="margin-left:150px">
-	  <h5 class="w3-bar-item"><b>회원관리</b></h5>
-	  <a href="<%= request.getContextPath() %>/selectUser.me" class="w3-bar-item w3-button">전체회원관리</a>
-	  <h5 class="w3-bar-item"><b>시설관리</b></h5>
-	  <a href="#" class="w3-bar-item w3-button">공간승인/취소</a>
-	  <h5 class="w3-bar-item"><b>게시판 관리</b></h5>
-	  <a href="#" class="w3-bar-item w3-button">게시글 관리</a>
-	  <a href="#" class="w3-bar-item w3-button">공지사항 관리</a>
-  </div>
-</div> --%>
 <%@ include file="/WEB-INF/views/admin/admMenubar.jsp" %>
 
 <!-- Page Content -->
@@ -99,17 +85,17 @@
 </div>
 
 <!-- page-button -->
-<!-- <div class="w3-center"> -->
-<!-- <div class="w3-bar"> -->
-<!--   <a href="#" class="w3-bar-item w3-button">&laquo;</a> -->
-<!--   <a href="#" class="w3-button w3-teal">1</a> -->
-<!--   <a href="#" class="w3-button">2</a> -->
-<!--   <a href="#" class="w3-button">3</a> -->
-<!--   <a href="#" class="w3-button">4</a> -->
-<!--   <a href="#" class="w3-button">5</a> -->
-<!--   <a href="#" class="w3-button">&raquo;</a> -->
-<!-- </div> -->
-<!-- </div> -->
+<div class="w3-center">
+<div class="w3-bar">
+  <a href="#" class="w3-bar-item w3-button">&laquo;</a>
+  <a href="#" class="w3-button w3-teal">1</a>
+  <a href="#" class="w3-button">2</a>
+  <a href="#" class="w3-button">3</a>
+  <a href="#" class="w3-button">4</a>
+  <a href="#" class="w3-button">5</a>
+  <a href="#" class="w3-button">&raquo;</a>
+</div>
+</div>
 
 
 
