@@ -92,6 +92,8 @@
 						            <input type="hidden" class="enrollNum" value="<%=e.getpNum()%>">
 								</div>
 							<%} %>
+						<%} else { %>
+							<h4 style="text-align:center;">" 등록한 공간이 없습니다 "</h4>
 						<%} %>
 					</div>
 				</div>
