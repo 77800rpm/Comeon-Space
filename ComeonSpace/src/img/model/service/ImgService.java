@@ -8,6 +8,7 @@ import static common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import enroll.model.vo.Enroll;
 import img.model.dao.ImgDAO;
 import img.model.vo.Img;
 
@@ -69,6 +70,16 @@ public class ImgService {
 		close(conn);
 		return imgList;
 	}
+
+
+
+	public ArrayList<Img> selectEnroll(ArrayList<Enroll> topList) {
+		Connection conn = getConnection();
+		ArrayList<Img> topImg = new ImgDAO().selectEnroll(conn, topList);
+		close(conn);
+		return topImg;
+	}
+
 
 
 

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import enroll.model.vo.Enroll;
 import img.model.vo.Img;
 
 public class ImgDAO {
@@ -230,6 +231,43 @@ public class ImgDAO {
 			close(pstmt);
 		}
 		
+		return imgList;
+	}
+
+	public ArrayList<Img> selectEnroll(Connection conn, ArrayList<Enroll> topList) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Img> imgList = new ArrayList<Img>();
+		Img img = null;
+		
+		String query = prop.getProperty("selectTopImg");
+		
+		for(int i = 0; i < topList.size(); i++) {
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, topList.get(i).getpNum());
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					img = new Img();
+					img.setImgNum(rset.getInt("IMG_NUM"));
+					img.setImgLevel(rset.getInt("IMG_LEVEL"));
+					img.setImgCategory(rset.getInt("IMG_CATEGORY"));
+					img.setImgOrigin(rset.getString("IMG_ORIGIN"));
+					img.setImgChange(rset.getString("IMG_CHANGE"));
+					img.setImgPath(rset.getString("IMG_PATH"));
+					img.setImgBoardId(rset.getInt("IMG_BOARDID"));
+					img.setUserNum(rset.getInt("USER_NUM"));
+					
+					imgList.add(img);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+		}
+			
 		return imgList;
 	}
 

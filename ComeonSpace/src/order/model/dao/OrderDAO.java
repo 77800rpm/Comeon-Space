@@ -261,4 +261,30 @@ public class OrderDAO {
 		return order;
 	}
 
+	public int[] getTop3(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		int[] result = new int[3];
+		int i = 0;
+		String query = prop.getProperty("getTop3");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			
+			while(rset.next()) {
+				result[i] = rset.getInt("PROD_NUM");
+				i++;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+		
+		return result;
+	}
+
 }

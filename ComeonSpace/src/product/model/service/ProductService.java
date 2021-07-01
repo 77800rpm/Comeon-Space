@@ -159,4 +159,12 @@ public class ProductService {
 		close(conn);
 		return deleteCnt;
 	}
+
+	public ArrayList<Enroll> selectTop3(int[] top3) {
+		Connection conn = getConnection();
+		ArrayList<Enroll> topList = new ProductDAO().selectTop3(conn, top3);
+		close(conn);
+		return topList;
+	}
+
 }

@@ -78,4 +78,11 @@ public class OrderService {
 		close(conn);
 		return result;
 	}
+
+	public int[] getTop3() {
+		Connection conn = getConnection();
+		int[] result = new OrderDAO().getTop3(conn);
+		close(conn);
+		return result;
+	}
 }

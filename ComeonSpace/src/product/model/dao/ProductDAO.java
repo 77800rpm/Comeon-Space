@@ -560,4 +560,50 @@ public class ProductDAO {
 		}
 		return result;
 	}
+
+
+	public ArrayList<Enroll> selectTop3(Connection conn, int[] top3) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Enroll> topList = new ArrayList<Enroll>();
+		Enroll en = null;
+		
+		String query = prop.getProperty("selectTop3");
+		
+		for(int i = 0; i < top3.length; i++) {
+			if(top3[i] != 0) {
+				try {
+					pstmt = conn.prepareStatement(query);
+					pstmt.setInt(1, top3[i]);
+					
+					rset = pstmt.executeQuery();
+					if(rset.next()) {
+						en = new Enroll();
+						en.setpNum(rset.getInt("PRODUCT_NUM"));
+						en.setpName(rset.getString("PRODUCT_NAME"));
+						en.setProductPrice(rset.getInt("PRODUCT_PRICE"));
+						en.setpCategory(rset.getString("PRODUCT_CATEGORY"));
+						en.setpIntro(rset.getString("PRODUCT_INTRO"));
+						en.setpDetail(rset.getString("PRODUCT_DETAIL"));
+						en.setpLocation(rset.getString("PRODUCT_LOCATION"));
+						en.setpFacility(rset.getString("PRODUCT_FAC"));
+						en.setUserNum(rset.getInt("USER_NUM"));
+						en.setpLimit(rset.getInt("PRODUCT_LIMIT"));
+						en.setHoliday(rset.getString("PRODUCT_HOLIDAY"));
+						
+						topList.add(en);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					close(rset);
+					close(pstmt);
+				}
+				
+			}
+			
+		}
+		
+		return topList;
+	}
 }

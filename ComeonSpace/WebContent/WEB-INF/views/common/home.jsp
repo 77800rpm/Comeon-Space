@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll"%>
-<% ArrayList<Enroll> list = (ArrayList)request.getAttribute("list"); %>
+    pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll, img.model.vo.Img"%>
+<% 
+	ArrayList<Enroll> list = (ArrayList)request.getAttribute("list"); 
+	ArrayList<Enroll> topList = (ArrayList)request.getAttribute("topList"); 
+	ArrayList<Img> topImg = (ArrayList)request.getAttribute("topImg"); 
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -168,28 +173,24 @@ https://templatemo.com/tm-559-zay-shop
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
-                <h5 class="text-center mt-3 mb-3">서교 레트로스페이스</h5>
-                
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
-                <h2 class="h5 text-center mt-3 mb-3">신도림 레오의 스튜디오</h2>
-                
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
-                <h2 class="h5 text-center mt-3 mb-3">성수 원데이노마드</h2>
-            </div>
+        <div class="row" id="top3Div">
+        	<%if(!topList.isEmpty()){ %>
+				<%for(int i = 0; i < topList.size(); i++){ %>
+					<div class="col-12 col-md-4 p-5 mt-3">
+		            	<input type="hidden" name="top1" value="<%=topList.get(i).getpNum()%>">
+		                <a href="#"><img src="<%=request.getContextPath() %>/img_upload/<%=topImg.get(i).getImgChange() %>" class="rounded-circle img-fluid border"></a> <!-- 이미지에 해당 공간 경로 링크 적용 -->
+		                <h5 class="text-center mt-3 mb-3"><%=topList.get(i).getpName() %></h5>
+		                <h6 class="text-center mt-3 mb-3">카테고리 : <%=topList.get(i).getpCategory() %></h6>
+		            </div>
+				<%} %>        	
+        	<%}else { %>
+        		<h2>아직 이용된 공간이 없습니다</h2>
+        		<h4>Comeon Space에 등록된 다양한 공간을 즐겨보세요!!</h4>
+        	<%} %>
         </div>
     </section>
     <!-- 이달의 인기 공간 끝 -->
 	
-	
-	
-
 
 
     <!-- 카테고리 시작 -->
@@ -574,6 +575,12 @@ https://templatemo.com/tm-559-zay-shop
 			location.href="<%=request.getContextPath()%>/search.ca?category="+category;
 		})
 	})
+	
+	$("#top3Div a").on("click",function(){
+		var num = $(this).prev('input').val();
+		location.href="<%=request.getContextPath()%>/productDetail.no?no=" + num;
+	})
+	
 </script>
 </body>
 </html>

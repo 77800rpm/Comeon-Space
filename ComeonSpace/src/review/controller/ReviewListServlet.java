@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import common.pageInfo.model.vo.PageInfo;
 import member.model.vo.Member;
 
 /**
@@ -43,7 +44,7 @@ public class ReviewListServlet extends HttpServlet {
 		
 		listCount = new ReviewService().getListCount(userNum);
 		
-		boardLimit = 3;
+		boardLimit = 4;
 		pageLimit = 10;
 		
 		currentPage = 1;
@@ -51,6 +52,14 @@ public class ReviewListServlet extends HttpServlet {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);		
+		
+		startPage = ((currentPage -1)/ pageLimit) * pageLimit + 1;
+		endPage = startPage + pageLimit -1;
+		
+		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		
+		
 		
 		
 		request.getRequestDispatcher("WEB-INF/views/mypage/mypageReview.jsp").forward(request, response);

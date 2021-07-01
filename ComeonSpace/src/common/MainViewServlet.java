@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import enroll.model.vo.Enroll;
+import img.model.service.ImgService;
+import img.model.vo.Img;
+import order.model.service.OrderService;
 import product.model.service.ProductService;
 
 /**
@@ -32,7 +35,12 @@ public class MainViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Enroll> list = new ProductService().mainCategory();
+		int[] top3 = new OrderService().getTop3();
+		ArrayList<Enroll> topList = new ProductService().selectTop3(top3);
+		ArrayList<Img> topImg = new ImgService().selectEnroll(topList);
 		
+		request.setAttribute("topImg", topImg);
+		request.setAttribute("topList", topList);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("test.jsp").forward(request, response);
 	}
