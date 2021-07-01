@@ -158,6 +158,30 @@ public class OrderDAO {
 		return result;
 	}
 	
+	public int getGuestListCount(Connection conn, String userName) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		
+		String query = prop.getProperty("getGuestListCount");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userName);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		
+		return result;
+	}	
+	
 	public ArrayList<Order> selectList(Connection conn, String userName, PageInfo pi) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -166,7 +190,8 @@ public class OrderDAO {
 		
 		int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
 		int endRow = startRow + pi.getBoardLimit() -1;
-				
+	
+		
 		String query = prop.getProperty("selectOrderList");
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -197,8 +222,6 @@ public class OrderDAO {
 			close(rset);
 			close(pstmt);
 		}
-				
-		
 		
 		return list;
 	}
@@ -238,27 +261,4 @@ public class OrderDAO {
 		return order;
 	}
 
-	public int getHostListCount(Connection conn, String userName) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		int result = 0;
-		
-		String query = prop.getProperty("getGuestListCount");
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, userName);
-			rset = pstmt.executeQuery();
-			if(rset.next()) {
-				result = rset.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		
-		return result;
-	}
 }

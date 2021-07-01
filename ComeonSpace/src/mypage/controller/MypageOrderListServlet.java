@@ -50,6 +50,7 @@ public class MypageOrderListServlet extends HttpServlet {
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
+
 		
 		boardLimit = 10;
 		pageLimit = 10;

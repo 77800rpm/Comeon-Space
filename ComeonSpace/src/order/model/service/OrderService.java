@@ -73,7 +73,7 @@ public class OrderService {
 
 	public int getGuestListCount(String userName) {
 		Connection conn = getConnection();
-		int result = new OrderDAO().getHostListCount(conn, userName);
+		int result = new OrderDAO().getGuestListCount(conn, userName);
 		
 		close(conn);
 		return result;
