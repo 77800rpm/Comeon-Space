@@ -97,7 +97,7 @@ int fMaxPage = fPi.getMaxPage();
 						%>
 					</table>
 					<div align="right">
-						<input type="submit" id="writeBoBtn" value="글쓰기">
+						<input type="submit" id="writeBoBtn" class="btn btn-outline-secondary" value="글쓰기">
 					</div>
 					
 					<%

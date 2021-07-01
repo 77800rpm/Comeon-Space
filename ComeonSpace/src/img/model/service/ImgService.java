@@ -62,4 +62,14 @@ public class ImgService {
 	}
 
 
+
+	public ArrayList<Img> selectEnroll(int userNum) {
+		Connection conn = getConnection();
+		ArrayList<Img> imgList = new ImgDAO().selectEnroll(conn, userNum);
+		close(conn);
+		return imgList;
+	}
+
+
+
 }

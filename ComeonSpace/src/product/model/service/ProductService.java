@@ -128,4 +128,11 @@ public class ProductService {
 		close(conn);
 		return productImgList;
 	}
+
+	public ArrayList<Enroll> selectEnroll(int userNum) {
+		Connection conn = getConnection();
+		ArrayList<Enroll> list = new ProductDAO().selectEnroll(conn, userNum);
+		close(conn);
+		return list;
+	}
 }

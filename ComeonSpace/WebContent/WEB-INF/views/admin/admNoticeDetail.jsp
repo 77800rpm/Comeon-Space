@@ -88,9 +88,9 @@
 			</div>
 			<br>
 			<div align="center">
-				<input type="submit" id="updateAdmNoBtn" class="btn btn-outline-success" value="수정">&nbsp;&nbsp;
-				<input type="button" id="deleteAdmNoBtn" class="btn btn-outline-success" onclick="deleteAdm();" value="삭제">&nbsp;&nbsp;
-				<input type="button" onclick="location.href='javascript:history.go(-1);'" class="btn btn-outline-success" id="cancelBtn" value="취소">
+				<input type="submit" id="updateAdmNoBtn" class="btn btn-outline-secondary" value="수정">&nbsp;&nbsp;
+				<input type="button" id="deleteAdmNoBtn" class="btn btn-outline-secondary" onclick="deleteAdm();" value="삭제">&nbsp;&nbsp;
+				<input type="button" onclick="location.href='javascript:history.go(-1);'" class="btn btn-outline-secondary" id="cancelBtn" value="취소">
 			</div>
 
 

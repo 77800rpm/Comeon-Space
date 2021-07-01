@@ -66,9 +66,9 @@
 						</table>
 						<br>
 						<div align="center">
-							<input type="button" id="faqDeleteBtn" onclick="faqDelete();" value="삭제">
-							<input type="submit" id="faqUpdateBtn" value="수정">
-							<input type="button" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
+							<input type="button" id="faqDeleteBtn" class="btn btn-outline-secondary" onclick="faqDelete();" value="삭제">&nbsp;
+							<input type="submit" id="faqUpdateBtn" class="btn btn-outline-secondary" value="수정">&nbsp;
+							<input type="button" class="btn btn-outline-secondary" onclick="location.href='javascript:history.go(-1);'" id="cancelBtn" value="취소">
 						</div>
 					</form>
 				</div>
