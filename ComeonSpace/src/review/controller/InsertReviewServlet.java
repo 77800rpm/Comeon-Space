@@ -98,6 +98,7 @@ public class InsertReviewServlet extends HttpServlet {
 			String revTitle = multipartRequest.getParameter("revTitle");
 			
 			request.setAttribute("userNum", userNum);
+			
 			Review review = new Review(userNum, prodNum, orderNum, buyerName, buyerNic, revContent, revTitle, prodName);
 			
 			int result = new ReviewService().insertReview(review);
