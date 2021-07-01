@@ -32,6 +32,17 @@ public class ReviewDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, review.getUserNum());
+			pstmt.setInt(2, review.getProdNum());
+			pstmt.setInt(3, review.getOrderNum());
+			pstmt.setString(4, review.getBuyerName());
+			pstmt.setString(5, review.getBuyerNic());
+			pstmt.setString(6, review.getRevContent());
+			pstmt.setString(7, review.getRevTitle());
+			pstmt.setString(8, review.getProdName());
+			
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
