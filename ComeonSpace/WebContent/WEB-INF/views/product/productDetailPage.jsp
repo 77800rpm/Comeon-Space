@@ -842,8 +842,8 @@
             $(".dateResult").text(value);
             $(".dateWeekResult").text("(" + dateWeek + ")");
           });
-       })
-       
+       });
+  
       
    </script>
    
