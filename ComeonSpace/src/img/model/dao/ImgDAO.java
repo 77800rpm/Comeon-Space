@@ -271,20 +271,25 @@ public class ImgDAO {
 		return imgList;
 	}
 
-	public int insertReview(Connection conn, Img img) {
+	public int insertReview(Connection conn, ArrayList<Img> fileList) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
 		String query = prop.getProperty("insertReview");
-		
 		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, img.getUserNum());
-			pstmt.setString(2, img.getImgOrigin());
-			pstmt.setString(3, img.getImgChange());
-			pstmt.setString(4, img.getImgPath());
-			
-			result = pstmt.executeUpdate();
+			for(int i = 0; i < fileList.size(); i++) {
+				Img img = fileList.get(i);
+				
+				pstmt = conn.prepareStatement(query);
+				
+				pstmt.setInt(1, img.getImgCategory());
+				pstmt.setInt(2, img.getUserNum());
+				pstmt.setString(3, img.getImgOrigin());
+				pstmt.setString(4, img.getImgChange());
+				pstmt.setString(5, img.getImgPath());
+				
+				result += pstmt.executeUpdate();
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
