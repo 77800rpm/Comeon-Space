@@ -77,8 +77,6 @@ public class MypageOrderListServlet extends HttpServlet {
 		ArrayList<Review> rList = new ReviewService().selectList(userName, pi);
 		
 
-
-
         // 오늘 날짜
 		long miliseconds = System.currentTimeMillis();
         Date today = new Date(miliseconds);
