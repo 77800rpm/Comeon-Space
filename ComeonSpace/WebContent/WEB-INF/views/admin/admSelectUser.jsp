@@ -124,13 +124,7 @@ int fMaxPage = fPi.getMaxPage();
 					</form>
 				</div>
 			</div>
-			<% for(Member m : list){ %>
-		<%=m.getUserPhone()%>
-		<%=m.getUserPhone()%>
-		<%=m.getUserPhone()%>
-		<% } %>
 			
-			<%=fPi%>
 			<%
 				if (!list.isEmpty()) {
 			%>
