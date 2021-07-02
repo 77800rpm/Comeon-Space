@@ -76,7 +76,20 @@ public class MypageOrderListServlet extends HttpServlet {
 		
 		ArrayList<Review> rList = new ReviewService().selectList(userName, pi);
 		
-
+		int[] check = new int[list.size()];
+		for(int i = 0; i < list.size(); i++) {
+			for(int j = 0; j < rList.size(); j++) {
+				if(list.get(i).getOrderNum() == rList.get(j).getOrderNum()) {
+					check[i] = rList.get(j).getOrderNum();
+				}
+			}
+		}
+		
+		for(int i : check) {
+			System.out.println(i);
+		}
+		
+		
         // 오늘 날짜
 		long miliseconds = System.currentTimeMillis();
         Date today = new Date(miliseconds);
