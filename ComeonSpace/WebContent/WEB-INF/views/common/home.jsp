@@ -211,9 +211,8 @@ https://templatemo.com/tm-559-zay-shop
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">스튜디오</text></svg>
+            <img src="assets/img/studio.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">스튜디오/조명 맛집은 어디?📸</p>
@@ -237,10 +236,11 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">스터디룸</text></svg>
+             <img src="assets/img/studyCafe.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
-              <p class="card-text">스터디룸/절대 집중!👩‍🎓</p>
+              <p class="card-text">스터디카페/절대 집중!👩‍🎓</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>
@@ -261,7 +261,8 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">공연장</text></svg>
+            <img src="assets/img/concertHall.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">공연장/꿈을 펼쳐봐!🤟🏼</p>
@@ -286,7 +287,8 @@ https://templatemo.com/tm-559-zay-shop
 
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">회의실</text></svg>
+             <img src="assets/img/meetingRoom.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">회의실/아이디어를 쥐어짜보게..💡</p>
@@ -310,7 +312,8 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">공유주방</text></svg>
+             <img src="assets/img/shareKitchen.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">공유주방/갖고 싶은 잇템 다 있는<br> 우리의 주방👩🏼‍🍳</p>
@@ -334,7 +337,8 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">오피스</text></svg>
+            <img src="assets/img/office.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">오피스/눈치 X 독립오피스부터 카페<br> 같은 공유오피스까지!👨🏼‍💻</p>
@@ -359,7 +363,8 @@ https://templatemo.com/tm-559-zay-shop
 
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">다목적홀</text></svg>
+             <img src="assets/img/multiHall.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">다목적홀/소규모 강연👩‍🏫부터<br>내 작품 전시👨‍🎨까지 다 가능!</p>
