@@ -342,6 +342,43 @@ public class ImgDAO {
 		return list;
 	}
 
+	public ArrayList<Img> detailReview(Connection conn, ArrayList<Review> reList) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Img> list = new ArrayList<Img>();
+		Img img = null;
+		
+		String query = prop.getProperty("detailReview");
+		for(int i = 0; i < reList.size(); i++) {
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setInt(1, reList.get(i).getReviewNum());
+				rset = pstmt.executeQuery();
+				if(rset.next()) {
+					img = new Img();
+					img.setImgNum(rset.getInt("IMG_NUM"));
+					img.setImgLevel(rset.getInt("IMG_LEVEL"));
+					img.setImgCategory(rset.getInt("IMG_CATEGORY"));
+					img.setImgOrigin(rset.getString("IMG_ORIGIN"));
+					img.setImgChange(rset.getString("IMG_CHANGE"));
+					img.setImgPath(rset.getString("IMG_PATH"));
+					img.setImgBoardId(rset.getInt("IMG_BOARDID"));
+					img.setUserNum(rset.getInt("USER_NUM"));
+					
+					list.add(img);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+		}
+		
+		
+		return list;
+	}
+
 
 
 }

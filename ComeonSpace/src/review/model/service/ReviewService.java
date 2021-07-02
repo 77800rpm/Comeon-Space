@@ -47,5 +47,37 @@ public class ReviewService {
 		return list;
 	}
 
+	public ArrayList<Review> detailReview(int no) {
+		Connection conn = getConnection();
+		ArrayList<Review> list = new ReviewDAO().detailReview(conn, no);
+		close(conn);
+		return list;
+	}
+
+	public int updateAddCount(int rNum) {
+		Connection conn = getConnection();
+		int result = new ReviewDAO().updateAddCount(conn, rNum);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	public int updateDecreaseCount(int rNum) {
+		Connection conn = getConnection();
+		int result = new ReviewDAO().updateDecreaseCount(conn, rNum);
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
 	
 }

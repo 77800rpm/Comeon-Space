@@ -17,6 +17,8 @@ import member.model.vo.Member;
 import product.model.service.ProductService;
 import qna.model.service.QnaService;
 import qna.model.vo.Qna;
+import review.model.service.ReviewService;
+import review.model.vo.Review;
 
 /**
  * Servlet implementation class ProductDetailServlet
@@ -52,12 +54,17 @@ public class ProductDetailServlet extends HttpServlet {
 		ProductService pService = new ProductService();
 		ArrayList<Img> fileList = pService.selectThumbnail(no);
 		ArrayList<Qna> qnaList = new QnaService().selectQna(no);
+		
+		ArrayList<Review> reList = new ReviewService().detailReview(no);
+		ArrayList<Img> reImg = new ImgService().detailReview(reList);
 
 		String page = null;
 		
 		if(product != null) {
 			page = "WEB-INF/views/product/productDetailPage.jsp";
 			
+			request.setAttribute("reImg", reImg);
+			request.setAttribute("reList", reList);
 			request.setAttribute("img", profile);
 			request.setAttribute("qnaList", qnaList);
 			request.setAttribute("no", no);

@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, img.model.vo.*, java.util.ArrayList, member.model.vo.Member, qna.model.vo.Qna" %>
+    pageEncoding="UTF-8" import="enroll.model.vo.Enroll, img.model.vo.*, java.util.ArrayList, 
+    							member.model.vo.Member, qna.model.vo.Qna, review.model.vo.Review" %>
 <%
 	int bId = (int)request.getAttribute("no");
 	Enroll p = (Enroll)request.getAttribute("product");
 	Member loginUser = (Member)session.getAttribute("loginUser");
 
 	ArrayList<Qna> qnaList = (ArrayList)request.getAttribute("qnaList");
-	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList"); 
+	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList");
+	ArrayList<Review> reList = (ArrayList)request.getAttribute("reList");
+	ArrayList<Img> reImg = (ArrayList)request.getAttribute("reImg");
 	Img titleImg = fileList.get(0);
 	Img profile = (Img)request.getAttribute("img");
 	
@@ -188,6 +191,19 @@
   		cursor: pointer;
   		background-color: #0f6756 !important;  
   	}
+/*   	리뷰테이블 css */
+  	.tableTitle{height: 70px;}
+	.tableStar{height: 50px;}
+	.tableContent{height: 200px;}
+	.tableBlank{height: 40px;}
+	.tdImg{max-width: 100%; max-height:100%; }
+	.titleTd{font-size: 30px;}
+	.underTitleTd{font-size: 23px;}
+	.starSpan{color: green;}
+	.dateTd{color: gray;}
+	#reviewTable{width: 60%; margin-left: 20px;}
+	.heartTd{font-size: 22px; font-weight: lighter; color:red;}
+	.heartTd:hover{cursor:pointer;}
 </style>
    
    <!-- 지도 api 스크립트 -->
@@ -639,21 +655,46 @@
 				
 				<br>
 				
-				밥을 청춘의 인간의 가진 얼음과 커다란 운다. 트고, 발휘하기 없는 못할 그러므로 못할 같지 영원히 있다. 생의 얼마나 커다란 실현에 힘차게 하였으며, 원질이 영원히 것이다. 방황하여도,
-				이것은 우리의 피고, 봄바람이다. 같은 무엇이 천지는 황금시대다. 창공에 긴지라 천지는 미묘한 그것을 우리 없는 길을 투명하되 피다. 위하여서, 피고 것이다.보라, 이상의 기관과 위하여, 이것이다.
-				못할 풀이 피고, 그들의 설산에서 봄바람을 피가 이는 심장의 것이다. 그들은 공자는 끝에 구하지 가치를 풍부하게 바이며, 가슴에 말이다. 이것을 발휘하기 피고, 별과 봄바람이다. 심장의 못하다 위하여,
-				피어나는 것이다.보라, 사는가 운다. 능히 발휘하기 꽃 풀밭에 것이다.보라, 노래하며 거선의 없으면 창공에 약동하다. 용기가 우리의 끓는 듣기만 같이, 돋고, 이는 그것은 교향악이다. 품으며,
-				같이 피는 설레는 그리하였는가? 피어나는 찬미를 우리 불어 없으면 이것이다. 방지하는 바이며, 무한한 말이다. 따뜻한 장식하는 그들의 온갖 이상의 발휘하기 가는 심장의 교향악이다. 구하지 든 트고,
-				무엇을 실로 것이다. 그들을 대한 인생의 그들은 아름다우냐? 싶이 수 아름답고 쓸쓸한 할지니, 피어나는 불러 부패뿐이다. 오직 하여도 같은 무엇을 사라지지 있는가? 두손을 밝은 장식하는 오아이스도 같이,
-				약동하다. 위하여, 가는 생의 내려온 생생하며, 쓸쓸하랴? 그들의 투명하되 귀는 사는가 시들어 청춘 피고 미묘한 부패뿐이다. 보이는 인생에 이성은 크고 사라지지 그들의 하여도 가는 사막이다.
-				피가 같이 발휘하기 품으며, 구하지 과실이 그들에게 위하여서, 그리하였는가? 이상 방황하였으며, 그들은 쓸쓸하랴? 고동을 노년에게서 석가는 끝까지 웅대한 보이는 꽃이 황금시대를 아니다.
-				노래하며 인생의 살 고동을 미묘한 청춘의 공자는 같이, 보는 봄바람이다. 열락의 대한 그들을 피에 놀이 얼마나 시들어 칼이다. 그들에게 풍부하게 우는 그들은 피다.
-				그들에게 놀이 창공에 가는 천자만홍이 우리 바로 봄바람이다. 얼마나 설산에서 끓는 많이 그들에게 속잎나고, 그들을 그들은 사라지지 사막이다. 밥을 과실이 그들의 청춘은 노래하며 없으면, 용기가 하는 것이다.
-				그러므로 그림자는 풍부하게 그들에게 구하지 말이다. 장식하는 품고 뛰노는 심장의 찬미를 살았으며, 노년에게서 끓는다. 대중을 풀이 없으면 긴지라 황금시대다. 따뜻한 이상 뭇 반짝이는 이상을 때문이다.
-				산야에 맺어, 끓는 피고 이상 같으며, 가지에 위하여, 있으랴? 그들에게 목숨을 인생의 앞이 길을 용기가 지혜는 심장은 그들의 있는가? 살 소리다.이것은 있을 봄날의 가지에 있는가?
-				영원히 고행을 어디 소담스러운 위하여, 군영과 인간이 교향악이다. 끓는 뭇 열락의 쓸쓸하랴? 이상의 이 반짝이는 너의 피어나기 같은 끓는 위하여서. 따뜻한 이 있는 크고 별과 것이다. 
-				는 이상 새 맺어, 방지하는 역사를 굳세게 그리하였는가? 따뜻한 그들의 있는 동산에는 간에 것이다. 그림자는 같은 청춘의 천고에 주며, 길지 우리 사막이다. 그들에게 전인 긴지라 때문이다.
-				눈에 부패를 방황하였으며, 귀는 우는 것이다.보라, 든 행복스럽고 간에 보라.
+				<table id="reviewTable">
+						<%if(!reList.isEmpty()){ %>
+							<%for(int i = 0; i < reList.size(); i++){ %>
+								<tr>
+									<td class="tableTitle" >
+										<input type="hidden" id="rNum" value=<%=reList.get(i).getReviewNum() %>>
+										<span class="titleTd"><%=reList.get(i).getProdName()%>[<%=reList.get(i).getRevTitle() %>]</span>
+										<br>
+										<span class="underTitleTd starSpan">
+											<%if(reList.get(i).getStar() == 0){ %>
+												☆☆☆☆☆
+											<%} else if(reList.get(i).getStar() ==1){ %>
+												★☆☆☆☆
+											<%} else if(reList.get(i).getStar() ==2){ %>
+												★★☆☆☆
+											<%} else if(reList.get(i).getStar() ==3){ %>
+												★★★☆☆
+											<%} else if(reList.get(i).getStar() ==4){ %>
+												★★★★☆
+											<%} else if(reList.get(i).getStar() ==5){ %>
+												★★★★★
+											<%} %>
+										</span>
+										<span class="dateTd"><%=reList.get(i).getRevDate() %> <small>작성됨</small></span>
+										<span class="heartTd">♡</span>
+										<br><br>
+										<span><%=reList.get(i).getRevContent() %></span>
+									</td>
+									<%for(int j = 0; j < reImg.size(); j++){ %>
+										<%if(reList.get(i).getReviewNum() == reImg.get(j).getImgBoardId()) {%>
+											<td width="35%;">
+												<img class="tdImg" src="<%=request.getContextPath()%>/img_upload/<%=reImg.get(j).getImgChange()%>">
+											</td>
+										<%} %>
+									<%} %>
+								</tr>
+								<tr class="tableBlank"></tr>
+							<%} %>
+						<%} %>
+					</table>
             
             </div>
             <br><br><br><br><hr><br><br><br><br>
@@ -812,11 +853,39 @@
 					$("#qnaContent").val('');
 					location.reload();
     			}, error:function(data){
-    				console.log("실패");
     			}
     			
     		}); 
     	}	
+    })
+    
+    var i = 0;
+    
+    $(".heartTd").on("click",function(){
+    	i++;
+    	var check = i % 2;
+    	var rNum = $("#rNum").val();
+    	
+    	if(check == 1){
+    		$(this).text('♥');
+    		$.ajax({
+    			url:"updateCount.re",
+    			data:{check:check, rNum:rNum},
+    			success:function(data){
+    				console.log('카운드 증가');
+    			}
+    		});
+    	} else {
+    		$(this).text('♡');
+    		$(this).text('♥');
+    		$.ajax({
+    			url:"updateCount.re",
+    			data:{check:check, rNum:rNum},
+    			success:function(data){
+    				console.log('카운드 감소');
+    			}
+    		});
+    	}
     })
     
    </script>
@@ -832,11 +901,9 @@
        $(document).ready(function(){
           $("#dateselectbutton").change(function(){
              var value = $(this).val();
-             console.log(value);
              var weekName = new Array('일','월','화','수','목','금','토'); 
              var day = new Date(value).getDay();
              var dateWeek = weekName[day];
-             console.log(dateWeek);
              
             $(".dateResult").text(value);
             $(".dateWeekResult").text("(" + dateWeek + ")");

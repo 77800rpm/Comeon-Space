@@ -119,4 +119,77 @@ public class ReviewDAO {
 		
 		return list;
 	}
+	public ArrayList<Review> detailReview(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Review> list = new ArrayList<Review>();
+		Review re = null;
+		
+		String query = prop.getProperty("detailReview");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				re = new Review();
+				re.setReviewNum(rset.getInt("REVIEW_NUM"));
+				re.setUserNum(rset.getInt("USER_NUM"));
+				re.setProdNum(rset.getInt("PROD_NUM"));
+				re.setOrderNum(rset.getInt("ORDER_NUM"));
+				re.setBuyerName(rset.getString("USER_NAME"));
+				re.setBuyerNic(rset.getString("USER_NIC"));
+				re.setRevContent(rset.getString("REVIEW_CONTENT"));
+				re.setRevTitle(rset.getString("REVIEW_TITLE"));
+				re.setProdName(rset.getString("PROD_NAME"));
+				re.setRevDate(rset.getDate("REVIEW_DATE"));
+				re.setStar(rset.getInt("REVIEW_STAR"));
+				
+				list.add(re);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	public int updateAddCount(Connection conn, int rNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateAddCount");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, rNum);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	public int updateDecreaseCount(Connection conn, int rNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = prop.getProperty("updateDecreaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, rNum);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
