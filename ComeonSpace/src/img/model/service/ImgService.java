@@ -103,7 +103,12 @@ public class ImgService {
 
 
 
-
+	public Img selectTop(Review review) {
+		Connection conn = getConnection();
+		Img img = new ImgDAO().selectTop(conn,review);
+		close(conn);
+		return img;
+	}
 
 
 

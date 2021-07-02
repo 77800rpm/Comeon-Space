@@ -204,6 +204,7 @@
 	#reviewTable{width: 60%; margin-left: 20px;}
 	.heartTd{font-size: 22px; font-weight: lighter; color:red;}
 	.heartTd:hover{cursor:pointer;}
+	#noTableTd{font-size: 20px;}
 </style>
    
    <!-- 지도 api 스크립트 -->
@@ -693,6 +694,10 @@
 								</tr>
 								<tr class="tableBlank"></tr>
 							<%} %>
+						<%} else {%>
+							<tr>
+								<td id="noTableTd">등록된 이용후기가 없습니다.</td>
+							</tr>
 						<%} %>
 					</table>
             
@@ -877,7 +882,6 @@
     		});
     	} else {
     		$(this).text('♡');
-    		$(this).text('♥');
     		$.ajax({
     			url:"updateCount.re",
     			data:{check:check, rNum:rNum},

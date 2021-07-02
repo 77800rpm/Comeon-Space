@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll, img.model.vo.Img"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll, img.model.vo.Img, review.model.vo.Review"%>
 <% 
 	ArrayList<Enroll> list = (ArrayList)request.getAttribute("list"); 
 	ArrayList<Enroll> topList = (ArrayList)request.getAttribute("topList"); 
-	ArrayList<Img> topImg = (ArrayList)request.getAttribute("topImg"); 
+	ArrayList<Img> topImg = (ArrayList)request.getAttribute("topImg");
+	Review review = (Review)request.getAttribute("review");
+	Img reImg = (Img)request.getAttribute("reImg");
 
 %>
 <!DOCTYPE html>
@@ -531,7 +533,7 @@ https://templatemo.com/tm-559-zay-shop
         <!-- 슬라이드 쇼 -->
         <div class="carousel-item active">
         <!--가로-->
-        <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth1.jpg" alt="First slide">
+        <img class="d-block w-100" height=300px; src="<%=request.getContextPath() %>/img_upload/<%=reImg.getImgChange() %>" alt="First slide">
         <div class="carousel-caption d-none d-md-block"> <h5>후암주방</h5> <p>후암동 공유주방</p> </div> </div>
         <div class="carousel-item"> <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth2.jpg" alt="Second slide"> </div>
         <div class="carousel-item"> <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth3.jpg" alt="Third slide"> </div>
