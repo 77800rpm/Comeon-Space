@@ -17,8 +17,8 @@
 #nick123 {color: rgb(244,162,1);}
 
 
-    *{font-family: 'jua', sans-serif; !important}
-    a, p, h1, h2, h3{font-family: 'jua', sans-serif; !important}
+    *{font-family: 'jua', sans-serif;}
+    a, p, h1, h2, h3{font-family: 'jua', sans-serif;}
 
 
 .progress {
