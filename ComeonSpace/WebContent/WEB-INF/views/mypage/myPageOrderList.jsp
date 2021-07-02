@@ -156,7 +156,7 @@
 						        <td>
 						        	<br>
 						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= or.getProdName() %></p>
-						            <p><%= or.getRevDate() %></p>
+						            <p><%= or.getOrderDate() %></p>
 						        </td>
 						        <td class="hh-content"><b><%= or.getTotalPrice() %></b> 원</td>
 						        <td>   

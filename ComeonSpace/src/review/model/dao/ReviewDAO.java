@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -191,5 +192,35 @@ public class ReviewDAO {
 			close(pstmt);
 		}
 		return result;
+	}
+	public Review selectTop(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		Review re = null;
+		
+		String query = prop.getProperty("selectTop");
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				re = new Review();
+				re.setReviewNum(rset.getInt("REVIEW_NUM"));
+				re.setUserNum(rset.getInt("USER_NUM"));
+				re.setProdNum(rset.getInt("PROD_NUM"));
+				re.setOrderNum(rset.getInt("ORDER_NUM"));
+				re.setBuyerName(rset.getString("USER_NAME"));
+				re.setBuyerNic(rset.getString("USER_NIC"));
+				re.setRevContent(rset.getString("REVIEW_CONTENT"));
+				re.setRevTitle(rset.getString("REVIEW_TITLE"));
+				re.setProdName(rset.getString("PROD_NAME"));
+				re.setRevDate(rset.getDate("REVIEW_DATE"));
+				re.setStar(rset.getInt("REVIEW_STAR"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}				
+		
+		return re;
 	}
 }
