@@ -163,7 +163,7 @@
     }
     
     .profile-size {
-    	zoom: 60%;
+    	zoom: 70%;
     	object-fit: cover;
 		border-radius: 100%;
     }
@@ -197,6 +197,7 @@
 	.bar-menu{
 	  font-family: 'Black Han Sans', sans-serif !important;
 	  font-size: 40px !important;
+	  font-weight: 300 !important;
 	}
 	
 	
@@ -204,6 +205,11 @@
 	  font-family: 'Black Han Sans', sans-serif !important;
 	  font-size: 30px !important;
 	  font-weight: 300 !important;
+	}
+	
+	.tdImg{
+		position: relative;
+		left: 150px;
 	}
 	
    
@@ -478,17 +484,17 @@
             
          <div id="menubar" class="text-center p-2 pb-3">
             <br><br>
-            <span id="bt011"><a href="#menu1">공간 소개</a></span>
+            <span id="bt011"><a href="#menu1" class="bar-menu">공간 소개</a></span>
             <b>　　　</b>
-            <span id="bt022"><a href="#menu2">편의 시설</a></span>
+            <span id="bt022"><a href="#menu2" class="bar-menu">편의 시설</a></span>
             <b>　　　</b>
-            <span id="bt033"><a href="#menu3">유의 사항</a></span>
+            <span id="bt033"><a href="#menu3" class="bar-menu">유의 사항</a></span>
             <b>　　　</b>
-            <span id="bt044"><a href="#menu4">오시는 길</a></span>
+            <span id="bt044"><a href="#menu4" class="bar-menu">오시는 길</a></span>
             <b>　　　</b>
-            <span id="bt055"><a href="#menu5">Q&A</a></span>
+            <span id="bt055"><a href="#menu5" class="bar-menu">Q&A</a></span>
             <b>　　　</b>
-            <span id="bt066"><a href="#menu6">이용 후기</a></span>
+            <span id="bt066"><a href="#menu6" class="bar-menu">이용 후기</a></span>
             <br><br>
          </div>
 
@@ -509,7 +515,7 @@
             <div id="menu2">
             <hr size="3px"><br><br>
             <h3 class="bar-menu">편의 시설</h3>
-            <br>
+            <br><br><br>
 
             
          <div class="row">
@@ -551,7 +557,8 @@
                <label for="chk17" class="btn btn-primary">음식물 반입가능</label>
             </div>
          </div>
-   
+   			
+   			<br><br>
             
             </div>
             <br><br>
@@ -560,6 +567,9 @@
             <h3 class="bar-menu">유의 사항</h3>
             <br>
             <pre>
+            
+            
+            
 1) 하루 단위로 예약 가능합니다.
 
 2) 예약은 선입금으로 진행되며, 예약된 사용 시간 전에 퇴실해도 잔여 시간은 환불되지 않습니다. 단, 인원이나 시간 추가시에는 사후 결제 가능합니다.
@@ -578,7 +588,8 @@
 
 9) 앞뒤의 이용자를 위해, 정시 입실 및 정시 퇴실해주셔야 합니다. 추가 이용을 원하실 때에는 문의 주시면 안내해 드리겠습니다.
 
-10) 퇴실 전 칠판, 책상, 의자, 쓰레기 등을 정리해주시고, 이용하신 전자기기와 조명을 꺼주셔야 합니다.                  
+10) 퇴실 전 칠판, 책상, 의자, 쓰레기 등을 정리해주시고, 이용하신 전자기기와 조명을 꺼주셔야 합니다.      
+            
             </pre>
             </div>
             <br><br>
@@ -662,15 +673,15 @@
 				
 				<br>
 				
-				<table id="reviewTable">
+				<table id="reviewTable" style="position: relative; right: 25px;">
 						<%if(!reList.isEmpty()){ %>
 							<%for(int i = 0; i < reList.size(); i++){ %>
 								<tr>
-									<td class="tableTitle" >
+									<td class="tableTitle" style="position: relative; bottom: 20px;">
 										<input type="hidden" id="rNum" value=<%=reList.get(i).getReviewNum() %>>
-										<span class="titleTd"><%=reList.get(i).getProdName()%>[<%=reList.get(i).getRevTitle() %>]</span>
+										<span class="titleTd" style="zoom: 70%;">[<%=reList.get(i).getRevTitle()%>]</span>
 										<br>
-										<span class="underTitleTd starSpan">
+										<span class="underTitleTd starSpan" style="color:#0f6756;">
 											<%if(reList.get(i).getStar() == 0){ %>
 												☆☆☆☆☆
 											<%} else if(reList.get(i).getStar() ==1){ %>
@@ -683,32 +694,34 @@
 												★★★★☆
 											<%} else if(reList.get(i).getStar() ==5){ %>
 												★★★★★
-											<%} %>
+											<%} %>	
 										</span>
-										<span class="dateTd"><%=reList.get(i).getRevDate() %> <small>작성됨</small></span>
-										<span class="heartTd">♡</span>
+										<span class="dateTd"><span style="zoom: 70%;"><%=reList.get(i).getRevDate() %></span><span style="zoom: 110%; color: black;"> <%= reList.get(i).getBuyerNic() %></span><small> 님에 의해 작성됨</small></span>
+										<span class="heartTd" style="zoom: 150%;">♡</span>
 										<br><br>
-										<span><%=reList.get(i).getRevContent() %></span>
+										<span style="zoom: 110%;"><%=reList.get(i).getRevContent() %></span>
 									</td>
 									<%for(int j = 0; j < reImg.size(); j++){ %>
 										<%if(reList.get(i).getReviewNum() == reImg.get(j).getImgBoardId()) {%>
 											<td width="35%;">
-												<img class="tdImg" src="<%=request.getContextPath()%>/img_upload/<%=reImg.get(j).getImgChange()%>">
+												<img class="tdImg card-img img-fluid" src="<%=request.getContextPath()%>/img_upload/<%=reImg.get(j).getImgChange()%>">
 											</td>
 										<%} %>
 									<%} %>
 								</tr>
-								<tr class="tableBlank"></tr>
+								<tr class="tableBlank"></tr>							
 							<%} %>
 						<%} else {%>
 							<tr>
 								<td id="noTableTd">등록된 이용후기가 없습니다.</td>
 							</tr>
 						<%} %>
+						
 					</table>
             
             </div>
-            <br><br><br><br><hr><br><br><br><br>
+            
+            <br><br><br><br><hr><br><br>
          </section>
       
 
@@ -731,19 +744,6 @@
 	</a>
 </div>
 
-
-
-    <!-- Start Footer -->
-    <footer>
-      <div class="footer">
-      <hr>
-      <span class="footer-list"><a>회사소개</a></span>      
-      <span class="footer-list"><a>이용약관</a></span>      
-      <span class="footer-list"><a>메뉴얼</a></span>      
-      <span class="footer-list"><a>고객센터</a></span>      
-      </div>
-    </footer>
-    <!-- End Footer -->
 
     <!-- Start Script -->
     <script src="assets/js/jquery-1.11.0.min.js"></script>
@@ -932,4 +932,8 @@
 
 
 </body>
+
+<footer>
+	<%@ include file="../common/footer.jsp" %>
+</footer>
 </html>

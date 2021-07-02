@@ -15,6 +15,16 @@
 	int noEndPage = pi.getEndPage();
 	int noCurrentPage = pi.getCurrentPage();
 	int noMaxPage = pi.getMaxPage();
+	
+	int[] check = new int[list.size()];
+	for(int h = 0; h < list.size(); h++){
+		for(int k = 0; k < rList.size(); k++){
+			if(list.get(h).getOrderNum() == rList.get(k).getOrderNum()){
+				check[h] = rList.get(k).getOrderNum();
+			}
+		}
+	}
+	
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -174,7 +184,11 @@
 						        	<%if(cList.get(i).equals("1")){ %>
 						        						           						        	
 						        	이용 완료<br>
-						        	<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
+						        		<%if(check[i] == 0){ %>
+								        	<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
+						        		<%} else { %>
+						        			<button type="button" class="btn btn-success btn-sm review-Write" style="background-color: gray !important;" disabled>작성완료</button>
+						        		<%} %>
 						        	
 						        	<% } else { %>
 						        	

@@ -75,10 +75,10 @@
 						</table>
 						<br>
 						<div align="center">
-							<input type="submit" id="insertBtn" value="등록">&nbsp;&nbsp;
+							<input type="submit" class="btn btn-success btn-sm review-Write" id="insertBtn" value="등록">&nbsp;&nbsp;
 							<input type="button"
 								onclick="location.href='javascript:history.go(-1);'"
-								id="cancelBtn" value="취소">
+								id="cancelBtn" class="btn btn-success btn-sm review-Write" value="취소">
 						</div>
 					</form>
 				</div>
