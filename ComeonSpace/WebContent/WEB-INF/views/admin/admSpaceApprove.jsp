@@ -24,23 +24,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<style>
-.imgListBox {
-	
-}
 
-.imgListBox a {
-	
-}
-
-.imgListBox a img {
-	
-}
-
-.imgListBox a h5 {
-	
-}
-</style>
 <body>
 	<%@ include file="../common/header.jsp"%>
 	<!-- font -->
@@ -48,7 +32,6 @@
 
 		<!-- Sidebar -->
 		<%@ include file="/WEB-INF/views/admin/admMenubar.jsp"%>
-
 
 		<!-- Page Content -->
 		<div style="margin-left: 15%; margin-right: 50px; padding: 10%">
@@ -61,8 +44,19 @@
 			<h5>
 				<b>공간 승인/취소</b>
 			</h5>
-<!-- 			<div class="w3-row-padding w3-padding-16 w3-left w3-container"> -->
 			<div class="w3-row-padding w3-padding-6 w3-container">
+				<%
+					if (list.isEmpty()) {
+				%>
+				<h3 style="text-align: center;">존재하는 공간이 없습니다.</h3>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<%
+					} else {
+				%>
 				<%
 					for (Product prud : list) {
 				%>
@@ -73,14 +67,16 @@
 					style="width: 200px; height: 200px"
 					class="w3-hover-opacity w3-card-3">
 					<h5><%=prud.getProductName()%></h5>
-				</a>
+				
+					</a>
 				<%
 					}
 				%>
-
+				<%
+					}
+				%>
 			</div>
 
-<%-- 			<%=pagingInfo%> --%>
 			<!-- Pagination -->
 			<%
 				if (Integer.valueOf(pagingInfo.get("totalCount").toString()) > 0) {
@@ -98,9 +94,9 @@
 				<div class="w3-bar">
 					<a
 						href="<%=request.getContextPath()%>/spaceApproveList.bo?pageNo=1"
-						class="w3-bar-item w3-button w3-hover-black">&lt;&lt;</a> <a
+						class="btn btn-outline-success">맨처음</a> <a
 						href="<%=request.getContextPath()%>/spaceApproveList.bo?pageNo=<%=startPage - 1%>"
-						class="w3-bar-item w3-button w3-hover-black">&lt;</a>
+						class="btn btn-outline-success">이전</a>
 					<%
 						for (int p = startPage; p <= endPage; p++) {
 					%>
@@ -109,13 +105,13 @@
 					%>
 					<a
 						href="<%=request.getContextPath()%>/spaceApproveList.bo?pageNo=<%=p%>"
-						class="w3-bar-item w3-button w3-black"><%=p%></a>
+						class="btn btn-outline"><%=p%></a>
 					<%
 						} else {
 					%>
 					<a
 						href="<%=request.getContextPath()%>/spaceApproveList.bo?pageNo=<%=p%>"
-						class="w3-bar-item w3-button"><%=p%></a>
+						class="btn btn-outline-success"><%=p%></a>
 					<%
 						}
 					%>
@@ -124,15 +120,14 @@
 					%>
 					<a
 						href="<%=request.getContextPath()%>/spaceApproveList.bo?pageNo=<%=endPage + 1%>"
-						class="w3-bar-item w3-button w3-hover-black">&gt;</a> <a
+						class="btn btn-outline-success">다음</a> <a
 						href="<%=request.getContextPath()%>/spaceApproveList.bo?pageNo=<%=pagingInfo.get("totalPageCount")%>"
-						class="w3-bar-item w3-button w3-hover-black">&gt;&gt;</a>
+						class="btn btn-outline-success">맨끝</a>
 				</div>
 			</div>
 			<%
 				}
 			%>
-
 			<hr id="about">
 		</div>
 	</div>

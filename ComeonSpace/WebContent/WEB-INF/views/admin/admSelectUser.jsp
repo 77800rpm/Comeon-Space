@@ -2,16 +2,14 @@
 	pageEncoding="UTF-8"
 	import="java.util.ArrayList, member.model.vo.Member"
 	import="member.model.service.*, common.pageInfo.model.vo.PageInfo"%>
-<%
-	ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list");
-%>
-<%
-	PageInfo fPi = (PageInfo) request.getAttribute("fPi");
+<% ArrayList<Member> list = (ArrayList<Member>) request.getAttribute("list"); %>
+<% PageInfo fPi = (PageInfo) request.getAttribute("fPi");
 
 int fStartPage = fPi.getStartPage();
 int fEndPage = fPi.getEndPage();
 int fCurrentPage = fPi.getCurrentPage();
 int fMaxPage = fPi.getMaxPage();
+
 %>
 
 <!DOCTYPE html>
@@ -34,33 +32,25 @@ int fMaxPage = fPi.getMaxPage();
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
-#pageDiv {
-	text-align: center;
-}
+#pageDiv {text-align: center;}
 </style>
 
 <body>
-
 	<%@ include file="../common/header.jsp"%>
 	<!-- font -->
 	<div style="font-family: Sans-serif">
-
 		<%@ include file="/WEB-INF/views/admin/admMenubar.jsp"%>
-
 		<!-- Page Content -->
 		<div style="margin-left: 15%; margin-right: 100px; padding: 10%">
-
 			<div class="w3-bottombar w3-border-teal" style="text-align: center;">
 				<h2>관리자 페이지</h2>
 			</div>
-
 			<div>
 				<br>
 				<h5 style="padding: 1%">
 					<b>전체회원관리</b>
 				</h5>
 				<br>
-
 				<div>
 					<form action="<%=request.getContextPath()%>/selectUser.me"
 						id="admWithdrawList" method="post">
@@ -128,12 +118,12 @@ int fMaxPage = fPi.getMaxPage();
 			<%
 				if (!list.isEmpty()) {
 			%>
-			<div class="w3-center">
-				<div class="w3-bar">
+		 			<div class="w3-center w3-bar" >
+<!-- 		 			<div class="w3-bar"> -->
 					<a href="<%=request.getContextPath()%>/selectUser.me?CurrentPage=1"
-						class="w3-bar-item w3-button">&lt;&lt;</a> <a
+						class="btn btn-outline-success">맨처음</a> <a
 						href="<%=request.getContextPath()%>/selectUser.me?fCurrentPage=<%=fCurrentPage - 1%>"
-						class="w3-bar-item w3-button" id="beforeBtn">&lt;</a>
+						class="btn btn-outline-success" id="beforeBtn">이전</a>
 					<script>
 						if (
 					<%=fCurrentPage%>
@@ -151,12 +141,12 @@ int fMaxPage = fPi.getMaxPage();
 
 
 					<a href="<%=request.getContextPath()%>/selectUser.me?pageNo=<%=p%>"
-						class="w3-button w3-teal"><%=p%></a>
+						class="btn btn-outline"><%=p%></a>
 					<%
 						} else {
 					%>
 					<a href="<%=request.getContextPath()%>/selectUser.me?pageNo=<%=p%>"
-						class="w3-button"><%=p%></a>
+						class="btn btn-outline-success"><%=p%></a>
 					<%
 						}
 					%>
@@ -165,7 +155,7 @@ int fMaxPage = fPi.getMaxPage();
 					%>
 					<a
 						href="<%=request.getContextPath()%>/selectUser.me?fCurrentPage=<%=fCurrentPage + 1%>"
-						class="w3-button" id="afterBtn">&gt;</a>
+						class="btn btn-outline-success" id="afterBtn">다음</a>
 					<script>
 						if (
 					<%=fCurrentPage%>
@@ -177,7 +167,7 @@ int fMaxPage = fPi.getMaxPage();
 					</script>
 					<a
 						href="<%=request.getContextPath()%>/selectUser.me?fCurrentPage=<%=fMaxPage%>"
-						class="w3-button" id="lastBtn">&gt;&gt;</a>
+						class="btn btn-outline-success" id="lastBtn">맨끝</a>
 					<script>
 						if (
 					<%=fCurrentPage%>
@@ -187,15 +177,13 @@ int fMaxPage = fPi.getMaxPage();
 							$("#lastBtn").prop("disabled", true);
 						}
 					</script>
-				</div>
 				<%
 					}
 				%>
+<!-- 				</div> -->
 			</div>
-
 		</div>
 	</div>
-
 	<%@ include file="../common/footer.jsp"%>
 	<script></script>
 </body>
