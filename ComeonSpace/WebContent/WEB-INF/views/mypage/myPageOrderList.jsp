@@ -8,6 +8,9 @@
 	
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	
+	String before = (String)request.getAttribute("before");
+	String after = (String)request.getAttribute("after");
+	
 	int noStartPage = pi.getStartPage();
 	int noEndPage = pi.getEndPage();
 	int noCurrentPage = pi.getCurrentPage();
@@ -121,9 +124,10 @@
 						<hr><br>
 						    <div class="row">
 						        <div class="intro-name col-sm-5"><span style="color:#0f6756; font-weight:bold; font-size:120%; "><%= loginUser.getUserNic() %></span><span class="intro-font1"> 님<br>안녕하세요!</span></div>
-						        <div class="intro-before col-sm-2"><span class="intro-font">이용 전</span><br><span class="intro-font intro-font-count">N</span><span class="intro-font2"> 개</span></div>
-						        <div class="intro-after col-sm-2"><span class="intro-font">이용 완료</span><br><span class="intro-font intro-font-count">N</span><span class="intro-font2"> 개</span></div>
-						        <div class="intro-review col-sm-2"><span class="intro-font">구매 후기</span><br><span class="intro-font intro-font-count">N</span><span class="intro-font2"> 개</span></div>
+						        <div class="intro-before col-sm-1"><span class="intro-font"></span><br><span class="intro-font intro-font-count"></span><span class="intro-font2"></span></div>
+						        <div class="intro-before col-sm-2"><span class="intro-font">이용 전</span><br><span class="intro-font intro-font-count"><%= before %></span><span class="intro-font2"> 개</span></div>
+						        <div class="intro-after col-sm-2"><span class="intro-font">이용 완료</span><br><span class="intro-font intro-font-count"><%= after %></span><span class="intro-font2"> 개</span></div>
+						        
 						    </div>
 						<br><hr>
 						<br><br><br>
@@ -161,9 +165,6 @@
 
 						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= list.get(i).getProdName() %></p>
 						            <p><%= list.get(i).getRevDate() %></p>
-
-						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= list.get(i).getProdName() %></p>
-						            <p><%= list.get(i).getOrderDate() %></p>
 
 						        </td>
 						        <td class="hh-content"><b><%= list.get(i).getTotalPrice() %></b> 원</td>

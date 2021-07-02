@@ -98,11 +98,15 @@ public class MypageOrderListServlet extends HttpServlet {
 			compareList.add(compare);
 		}		
         
-		int count1 = Collections.frequency(list, "1");
-		int count2 = Collections.frequency(list, "0");
-		int count3 = Collections.frequency(list, "-1");
+		int count1 = Collections.frequency(compareList, "1");
+		int count2 = Collections.frequency(compareList, "0");
+		int count3 = Collections.frequency(compareList, "-1");
+		int count4 = count2 + count3;
 		
-		System.out.println("1의 개수 : " + count1 + "0의 개수 : " + count2 + "-1의 개수 : " + count3);
+		String before = Integer.toString(count1);
+		String after = Integer.toString(count4);
+		
+		System.out.println("1의 개수 : " + count1 + ", 0의 개수 : " + count2 + ", -1의 개수 : " + count3);
 
 
 //		System.out.println(compareList);
@@ -118,6 +122,9 @@ public class MypageOrderListServlet extends HttpServlet {
 			request.setAttribute("list", list);
 			request.setAttribute("rList", rList);
 			request.setAttribute("compareList", compareList);
+			request.setAttribute("pi", pi);
+			request.setAttribute("before", before);
+			request.setAttribute("after", after);
 			request.setAttribute("pi", pi);
 		} else {
 			page = "WEB-INF/views/common/errorPage.jsp";
