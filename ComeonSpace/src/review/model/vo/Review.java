@@ -18,6 +18,8 @@ import java.sql.Date;
 		private String prodName;	// 공간 명
 		private Date revDate;
 		private int star;
+		private double avgStar;
+		private int countReview;
 		
 		
 		public Review() {}
@@ -52,8 +54,41 @@ import java.sql.Date;
 			this.star = star;
 		}
 		
+		public Review(int reviewNum, int userNum, int prodNum, int orderNum, String buyerName, String buyerNic,
+				String revContent, String revTitle, String prodName, Date revDate, int star, double avgStar,
+				int countReview) {
+			super();
+			this.reviewNum = reviewNum;
+			this.userNum = userNum;
+			this.prodNum = prodNum;
+			this.orderNum = orderNum;
+			this.buyerName = buyerName;
+			this.buyerNic = buyerNic;
+			this.revContent = revContent;
+			this.revTitle = revTitle;
+			this.prodName = prodName;
+			this.revDate = revDate;
+			this.star = star;
+			this.avgStar = avgStar;
+			this.countReview = countReview;
+		}
 		
-		
+		public double getAvgStar() {
+			return avgStar;
+		}
+
+		public void setAvgStar(double avgStar) {
+			this.avgStar = avgStar;
+		}
+
+		public int getCountReview() {
+			return countReview;
+		}
+
+		public void setCountReview(int countReview) {
+			this.countReview = countReview;
+		}
+
 		public Date getRevDate() {
 			return revDate;
 		}
@@ -148,5 +183,6 @@ import java.sql.Date;
 					+ orderNum + ", buyerName=" + buyerName + ", buyerNic=" + buyerNic + ", revContent=" + revContent
 					+ ", revTitle=" + revTitle + ", prodName=" + prodName + "]";
 		}
+
 		
 }

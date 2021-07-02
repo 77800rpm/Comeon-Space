@@ -13,6 +13,8 @@
 	Img titleImg = fileList.get(0);
 	Img profile = (Img)request.getAttribute("img");
 	
+	Review score = (Review)request.getAttribute("score");
+	
 	String[] checkedFacility = new String[17];
 	String facilityStr = p.getpFacility();
 	
@@ -369,12 +371,26 @@
                      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBSc1x%2Fbtq5M27RmQL%2FWqkF4T7WO9bBbBMfwp3690%2Fimg.png" width="25" height="25">
                      <span id="location-api"><%= p.getpLocation() %></span></p><input type = "hidden" id="api-adrr" value="<%= p.getpLocation() %>">
                             <p class="py-2">
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">평점 <b>4.8</b>　|　<b>36</b> 개의 후기</span>
+                                <%if(score != null){ %>
+	                                <%for(int i = 0; i < 5; i++){ %>
+	                                	<%if(i <= Math.round(score.getAvgStar())){ %>
+	                                		<i class="fa fa-star text-warning"></i>
+	                                	<%} else { %>
+			                                <i class="fa fa-star text-secondary"></i>
+	                                	<%} %>
+	                                <%} %>
+                                <%} else { %>
+                                	<%for(int i = 0; i < 5; i++){ %>
+		                                <i class="fa fa-star text-secondary"></i>
+                                	<%} %>
+                                <%} %>
+                                <span class="list-inline-item text-dark">평점 
+	                                <%if(score!=null){ %>
+	                                	<b><%=score.getAvgStar() %></b>　|　<b><%=score.getCountReview() %></b> 개의 후기
+	                                <%} else {%>
+										<b>0</b> | <b>0</b> 개의 후기                              
+	                                <%} %>
+                                </span>
                             </p>
                      
                      <br>

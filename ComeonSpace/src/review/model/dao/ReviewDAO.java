@@ -223,4 +223,29 @@ public class ReviewDAO {
 		
 		return re;
 	}
+	public Review scoreRe(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Review scoreRe = null;
+		
+		String query = prop.getProperty("scoreRe");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				scoreRe = new Review();
+				scoreRe.setAvgStar(rset.getDouble("A_STAR"));
+				scoreRe.setCountReview(rset.getInt("COUNT"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return scoreRe;
+	}
 }

@@ -57,12 +57,14 @@ public class ProductDetailServlet extends HttpServlet {
 		
 		ArrayList<Review> reList = new ReviewService().detailReview(no);
 		ArrayList<Img> reImg = new ImgService().detailReview(reList);
-
+		
+		Review score = new ReviewService().scoreRe(no);
 		String page = null;
 		
 		if(product != null) {
 			page = "WEB-INF/views/product/productDetailPage.jsp";
 			
+			request.setAttribute("score", score);
 			request.setAttribute("reImg", reImg);
 			request.setAttribute("reList", reList);
 			request.setAttribute("img", profile);
