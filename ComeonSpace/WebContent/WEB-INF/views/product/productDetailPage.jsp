@@ -4,7 +4,7 @@
 <%
 	int bId = (int)request.getAttribute("no");
 	Enroll p = (Enroll)request.getAttribute("product");
-	Member loginUser = (Member)session.getAttribute("loginUser");
+
 
 	ArrayList<Qna> qnaList = (ArrayList)request.getAttribute("qnaList");
 	ArrayList<Img> fileList = (ArrayList)request.getAttribute("fileList");
@@ -62,9 +62,13 @@
     
     <!-- 내 웹 폰트 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
@@ -187,6 +191,20 @@
     	zoom: 150%;
     }
    
+
+	.bar-menu{
+	  font-family: 'Black Han Sans', sans-serif !important;
+	  font-size: 40px !important;
+	}
+	
+	
+	#menubar{
+	  font-family: 'Black Han Sans', sans-serif !important;
+	  font-size: 30px !important;
+	  font-weight: 300 !important;
+	}
+	
+   
   	#logout, #login{
   		cursor: pointer;
   		background-color: #0f6756 !important;  
@@ -212,41 +230,13 @@
    
 </head>
 
+<header>
+    <%@ include file="../common/header.jsp" %>
+</header>
+
+
 <body>
 
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-			<a class="navbar-brand" href="index.jsp"><img src="resources/image/logo.png" id="logoImg"></a>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav header-list">
-                        <li class="nav-item">                
-                        <li class="nav-item">
-                            <a class="nav-link" href="search.pro">공간보기 |</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="enrollMain.en">공간등록 |</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= request.getContextPath() %>/centerView.ce">고객센터 |</a>
-                        </li>                       
-                        <li class="nav-item">
-                       <% if(loginUser == null){ %> 
-                            <a class="nav-link main-login" id="login">로그인</a>
-                       <% } else { %>
-                       		<a class="nav-link main-login btn-member-logout" id="logout">로그아웃</a>
-                       <% } %>     
-                        </li>
-                                        
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-    <!-- Close Header -->	
 
 
 

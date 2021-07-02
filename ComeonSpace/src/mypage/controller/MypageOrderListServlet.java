@@ -68,15 +68,16 @@ public class MypageOrderListServlet extends HttpServlet {
 			
 		
 		ArrayList<Order> list = new OrderService().selectList(userName, pi);
-		
+
 		String page = null;
+		
 		if(list != null) {
 			page = "WEB-INF/views/mypage/myPageOrderList.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);
 		} else {
 			page = "WEB-INF/views/common/errorPage.jsp";
-			request.setAttribute("msg", "공지사항 조회에 실패하였습니다.");
+			request.setAttribute("msg", "마이페이지 조회에 실패하였습니다.");
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);
