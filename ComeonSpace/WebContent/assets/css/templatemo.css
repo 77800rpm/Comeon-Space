@@ -39,12 +39,6 @@ b {
   transform: rotate(-0.1deg);
 }
 
-#menubar{
-  font-family: 'Jua', sans-serif !important;
-  font-size: 30px !important;
-  font-weight: 300 !important;
-}
-
 #jemok{
   font-family: 'Jua', sans-serif !important;
   font-size: 30px !important;
@@ -52,11 +46,6 @@ b {
   color: #0f6756;
 }
 
-.bar-menu{
-  font-family: 'Jua', sans-serif !important;
-  font-size: 30px !important;
-  font-weight: 300 !important;	
-}
 
 .total-price{
   font-family: 'Roboto', sans-serif;

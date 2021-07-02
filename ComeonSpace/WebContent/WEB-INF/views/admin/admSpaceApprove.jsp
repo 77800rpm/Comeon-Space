@@ -61,7 +61,8 @@
 			<h5>
 				<b>공간 승인/취소</b>
 			</h5>
-			<div class="w3-row-padding w3-padding-16 w3-left w3-container">
+<!-- 			<div class="w3-row-padding w3-padding-16 w3-left w3-container"> -->
+			<div class="w3-row-padding w3-padding-6 w3-container">
 				<%
 					for (Product prud : list) {
 				%>

@@ -27,10 +27,9 @@
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css"> 
     
-    
-        <!-- Load map styles -->
+       <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -99,7 +98,7 @@ https://templatemo.com/tm-559-zay-shop
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
-                                <h1 style="color: rgb(15, 103, 86)">뒷마당 스페이스<br> 05/10~06/10</h1>
+                                <h1 style="color: rgb(15, 103, 86)">뒷마당 스페이스<br> 07/10~08/10</h1>
                                 <h3 class="h2">런칭 기념 얼리버드 특가!</h3>
                                 <p>
                                                                         호스트 박신우님의 취향이 곳곳에 있는 <a rel="sponsored" style="color: rgb(15, 103, 86)" href="https://templatemo.com" target="_blank">뒷마당 스페이스</a>가 오픈했습니다! 
