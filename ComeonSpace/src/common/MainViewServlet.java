@@ -14,6 +14,8 @@ import img.model.service.ImgService;
 import img.model.vo.Img;
 import order.model.service.OrderService;
 import product.model.service.ProductService;
+import review.model.service.ReviewService;
+import review.model.vo.Review;
 
 /**
  * Servlet implementation class MainViewServlet
@@ -39,6 +41,11 @@ public class MainViewServlet extends HttpServlet {
 		ArrayList<Enroll> topList = new ProductService().selectTop3(top3);
 		ArrayList<Img> topImg = new ImgService().selectEnroll(topList);
 		
+		Review review = new ReviewService().selectTop();
+		Img reImg = new ImgService().selectTop(review);
+		
+		request.setAttribute("reImg", reImg);
+		request.setAttribute("review", review);
 		request.setAttribute("topImg", topImg);
 		request.setAttribute("topList", topList);
 		request.setAttribute("list", list);

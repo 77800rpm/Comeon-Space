@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll, img.model.vo.Img"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, enroll.model.vo.Enroll, img.model.vo.Img, review.model.vo.Review"%>
 <% 
 	ArrayList<Enroll> list = (ArrayList)request.getAttribute("list"); 
 	ArrayList<Enroll> topList = (ArrayList)request.getAttribute("topList"); 
-	ArrayList<Img> topImg = (ArrayList)request.getAttribute("topImg"); 
+	ArrayList<Img> topImg = (ArrayList)request.getAttribute("topImg");
+	Review review = (Review)request.getAttribute("review");
+	Img reImg = (Img)request.getAttribute("reImg");
 
 %>
 <!DOCTYPE html>
@@ -25,10 +27,9 @@
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css"> 
     
-    
-        <!-- Load map styles -->
+       <!-- Load map styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -97,7 +98,7 @@ https://templatemo.com/tm-559-zay-shop
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
-                                <h1 style="color: rgb(15, 103, 86)">뒷마당 스페이스<br> 05/10~06/10</h1>
+                                <h1 style="color: rgb(15, 103, 86)">뒷마당 스페이스<br> 07/10~08/10</h1>
                                 <h3 class="h2">런칭 기념 얼리버드 특가!</h3>
                                 <p>
                                                                         호스트 박신우님의 취향이 곳곳에 있는 <a rel="sponsored" style="color: rgb(15, 103, 86)" href="https://templatemo.com" target="_blank">뒷마당 스페이스</a>가 오픈했습니다! 
@@ -212,9 +213,8 @@ https://templatemo.com/tm-559-zay-shop
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">스튜디오</text></svg>
+            <img src="assets/img/studio.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">스튜디오/조명 맛집은 어디?📸</p>
@@ -238,10 +238,11 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">스터디룸</text></svg>
+             <img src="assets/img/studyCafe.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
-              <p class="card-text">스터디룸/절대 집중!👩‍🎓</p>
+              <p class="card-text">스터디카페/절대 집중!👩‍🎓</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary categoryBtn">View</button>
@@ -262,7 +263,8 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">공연장</text></svg>
+            <img src="assets/img/concertHall.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">공연장/꿈을 펼쳐봐!🤟🏼</p>
@@ -287,7 +289,8 @@ https://templatemo.com/tm-559-zay-shop
 
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">회의실</text></svg>
+             <img src="assets/img/meetingRoom.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">회의실/아이디어를 쥐어짜보게..💡</p>
@@ -311,7 +314,8 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">공유주방</text></svg>
+             <img src="assets/img/shareKitchen.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">공유주방/갖고 싶은 잇템 다 있는<br> 우리의 주방👩🏼‍🍳</p>
@@ -335,7 +339,8 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">오피스</text></svg>
+            <img src="assets/img/office.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">오피스/눈치 X 독립오피스부터 카페<br> 같은 공유오피스까지!👨🏼‍💻</p>
@@ -360,7 +365,8 @@ https://templatemo.com/tm-559-zay-shop
 
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">다목적홀</text></svg>
+             <img src="assets/img/multiHall.png" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Placeholder: assets/img/recommend_prod_01.jpg " preserveAspectRatio="xMidYMid slice" focusable="false">
 
             <div class="card-body">
               <p class="card-text">다목적홀/소규모 강연👩‍🏫부터<br>내 작품 전시👨‍🎨까지 다 가능!</p>
@@ -520,48 +526,30 @@ https://templatemo.com/tm-559-zay-shop
 	<div class="container">
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-5">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script> $('.carousel').carousel({ interval: 2000  }) </script> <div class="container"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚜️이 달의 리뷰⚜️</h2></div>
-        <div id="demo" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-        
-        <!-- 슬라이드 쇼 -->
-        <div class="carousel-item active">
-        <!--가로-->
-        <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth1.jpg" alt="First slide">
-        <div class="carousel-caption d-none d-md-block"> <h5>후암주방</h5> <p>후암동 공유주방</p> </div> </div>
-        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth2.jpg" alt="Second slide"> </div>
-        <div class="carousel-item"> <img class="d-block w-100" height=300px; src="assets/img/reviewofthemonth3.jpg" alt="Third slide"> </div>
-        <!-- / 슬라이드 쇼 끝 -->
-        
-        <!-- 왼쪽 오른쪽 화살표 버튼 -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span><!-- <span>Previous</span> --></a>
-        <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span><!-- <span>Next</span> --> </a>
-        <!-- / 화살표 버튼 끝 -->
-        
-        <!-- 인디케이터 -->
-        <ul class="carousel-indicators"> <li data-target="#demo" data-slide-to="0" class="active"></li>
-        <!--0번부터시작-->
-        <li data-target="#demo" data-slide-to="1"></li> <li data-target="#demo" data-slide-to="2"></li>
-     	</ul>
-        <!-- 인디케이터 끝 --> </div>
+        	<div class="col-md-5">
+	        <script> $('.carousel').carousel({ interval: 2000  }) </script> <div class="container"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚜️이 달의 리뷰⚜️</h2></div>
+        		<div id="demo" class="carousel slide" data-ride="carousel">
+			        <div class="carousel-inner">
+			        
+				        <img class="d-block w-100" height=300px; src="<%=request.getContextPath() %>/img_upload/<%=reImg.getImgChange() %>" alt="First slide">
+				        
+				        <!-- 인디케이터 -->
+			         </div>
+			        <!-- 인디케이터 끝 -->
 		
-    </div>
-</div>
+   				</div>
+			</div>
 
 		<div class="col-md-1"><br><br><br><br><br><br>
         </div>
         
-        <div class="col-md-5"><br><br><br><br><br><br>   
-        	<h5>'HealthyK' 님의 리뷰</h5>       	
+        <div class="col-md-5"><br><br><br><br>
+        	<h3>[<%=review.getProdName() %>]</h3>
+        	<h4> '<%=review.getRevTitle() %>'</h4>
+        	<br>
+        	<h5>'<%=review.getBuyerNic() %>' 님의 리뷰</h5>       	
         	<p>
-        		후암주방 잘 이용하고 갑니다!
-				여자친구와 기념일때 와서 요리<br>만드는데, 덕분에 좋은 추억 남기고 가요.
-				주변에서 재료를<br>구매하는데, 후암주방이용하러 왔다고 하니까 잘해주시더라고요.<br>
-				공간도 좋고 동네도 좋고 너무 좋았습니다 ^^
+				<%=review.getRevContent() %>
         	</p>
         </div>
 </div>

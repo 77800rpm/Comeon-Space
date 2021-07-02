@@ -379,6 +379,37 @@ public class ImgDAO {
 		return list;
 	}
 
+	public Img selectTop(Connection conn, Review review) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Img img = null;
+		
+		String query = prop.getProperty("detailReview");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, review.getReviewNum());
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				img = new Img();
+				img.setImgNum(rset.getInt("IMG_NUM"));
+				img.setImgLevel(rset.getInt("IMG_LEVEL"));
+				img.setImgCategory(rset.getInt("IMG_CATEGORY"));
+				img.setImgOrigin(rset.getString("IMG_ORIGIN"));
+				img.setImgChange(rset.getString("IMG_CHANGE"));
+				img.setImgPath(rset.getString("IMG_PATH"));
+				img.setImgBoardId(rset.getInt("IMG_BOARDID"));
+				img.setUserNum(rset.getInt("USER_NUM"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return img;
+	}
+
 
 
 }

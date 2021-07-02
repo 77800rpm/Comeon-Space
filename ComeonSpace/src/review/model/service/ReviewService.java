@@ -79,5 +79,12 @@ public class ReviewService {
 		return result;
 	}
 
+	public Review selectTop() {
+		Connection conn =getConnection();
+		Review review = new ReviewDAO().selectTop(conn);
+		close(conn);
+		return review;
+	}
+
 	
 }
