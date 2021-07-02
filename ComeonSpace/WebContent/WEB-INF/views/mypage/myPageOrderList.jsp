@@ -174,7 +174,8 @@
 						        	<%if(cList.get(i).equals("1")){ %>
 						        						           						        	
 						        	이용 완료<br>
-						        	<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
+						        	
+						        		<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
 						        	
 						        	<% } else { %>
 						        	
