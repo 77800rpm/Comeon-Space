@@ -103,39 +103,42 @@
 							<h4 style="text-align:center;">" 등록한 공간이 없습니다 "</h4>
 						<%} %>
 					</div>
-					<!-- 페이징 시작 -->
-					<div id="pageDiv">
-						<!-- 맨처음으로 -->
-						<button class="ansBtn btn btn-outline-success btn-sm" onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=1'">맨처음</button>
-						<!-- 이전 페이지 -->
-						<button class="ansBtn btn btn-outline-success btn-sm" id="beforeBtn"onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=<%=currentPage -1%>'">이전</button>
-						<script>
-							if(<%=currentPage%> <= 1){
-								$("#beforeBtn").prop("disabled",true);
-							}
-						</script>
-						<!-- 숫자 페이징 -->
-						<%for(int p = startPage; p <= endPage; p++){ %>
-							<%if(currentPage == p) {%>
-								<button class="ansBtn btn btn-outline-success btn-sm" disabled><%=p %></button>
-							<%} else {%>
-								<button class="ansBtn btn btn-outline-success btn-sm" onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=<%=p%>'"><%=p %></button>
+					<%if(!list.isEmpty()){ %>
+						<!-- 페이징 시작 -->
+						<div id="pageDiv">
+							<!-- 맨처음으로 -->
+							<button class="ansBtn btn btn-outline-success btn-sm" onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=1'">맨처음</button>
+							<!-- 이전 페이지 -->
+							<button class="ansBtn btn btn-outline-success btn-sm" id="beforeBtn"onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=<%=currentPage -1%>'">이전</button>
+							<script>
+								if(<%=currentPage%> <= 1){
+									$("#beforeBtn").prop("disabled",true);
+								}
+							</script>
+							<!-- 숫자 페이징 -->
+							<%for(int p = startPage; p <= endPage; p++){ %>
+								<%if(currentPage == p) {%>
+									<button class="ansBtn btn btn-outline-success btn-sm" disabled><%=p %></button>
+								<%} else {%>
+									<button class="ansBtn btn btn-outline-success btn-sm" onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=<%=p%>'"><%=p %></button>
+								<%} %>
 							<%} %>
-						<%} %>
-						<!-- 다음 페이지 -->
-						<button class="ansBtn btn btn-outline-success btn-sm" id="afterBtn" onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=<%=currentPage + 1%>'">다음</button>
-						<script>
-							if(<%=currentPage%> >= <%=maxPage%>){
-								$("#afterBtn").prop("disabled",true);
-							}
-						</script>
-						<button class="ansBtn btn btn-outline-success btn-sm" id="endBtn" onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=<%=maxPage%>'">맨끝</button>
-						<script>
-							if(<%=currentPage%> == <%=maxPage%>){
-								$("#endBtn").prop("disabled",true);
-							}
-						</script>
-					</div>
+							<!-- 다음 페이지 -->
+							<button class="ansBtn btn btn-outline-success btn-sm" id="afterBtn" onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=<%=currentPage + 1%>'">다음</button>
+							<script>
+								if(<%=currentPage%> >= <%=maxPage%>){
+									$("#afterBtn").prop("disabled",true);
+								}
+							</script>
+							<button class="ansBtn btn btn-outline-success btn-sm" id="endBtn" onclick="location.href='<%=request.getContextPath()%>/enrollSpace.my?currentPage=<%=maxPage%>'">맨끝</button>
+							<script>
+								if(<%=currentPage%> == <%=maxPage%>){
+									$("#endBtn").prop("disabled",true);
+								}
+							</script>
+						</div>
+						<!-- 페이징 끝 -->
+					<%} %>
 <!-- 					enrollSpace.my -->
 					
 				</div>

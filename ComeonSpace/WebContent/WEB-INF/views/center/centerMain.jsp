@@ -145,7 +145,7 @@ https://templatemo.com/tm-559-zay-shop
 	        </div>
         <%} %>
         <div class="center-FAQ">
-        	<span class="center-board-title">FAQ 게시판</span><br>
+        	<span class="center-board-title">FAQ 게시판</span><br><br>
         	<table class="table table-striped" id="listArea2">
 				<tr>
 					<th>번호</th>

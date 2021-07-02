@@ -128,7 +128,9 @@
 										<%} %>
 									<%} %>
 								</tr>
-								<tr class="tableBlank"></tr>
+								<tr class="tableBlank">
+									<td style="width:100%; font-weight:lighter;">-</td>
+								</tr>
 							<%} %>
 						<%} %>
 					</table>
