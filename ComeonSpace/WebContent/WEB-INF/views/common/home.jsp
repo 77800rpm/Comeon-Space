@@ -530,9 +530,11 @@ https://templatemo.com/tm-559-zay-shop
 	        <script> $('.carousel').carousel({ interval: 2000  }) </script> <div class="container"><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚜️이 달의 리뷰⚜️</h2></div>
         		<div id="demo" class="carousel slide" data-ride="carousel">
 			        <div class="carousel-inner">
-			        
-				        <img class="d-block w-100" height=300px; src="<%=request.getContextPath() %>/img_upload/<%=reImg.getImgChange() %>" alt="First slide">
-				        
+			        	<%if(review != null){ %>
+					        <img class="d-block w-100" height=300px; src="<%=request.getContextPath() %>/img_upload/<%=reImg.getImgChange() %>" alt="First slide">
+			        	<%} else{ %>
+							<h4>[여러분의 리뷰를 기다리고 있습니다.]</h4> 	
+			        	<%} %>
 				        <!-- 인디케이터 -->
 			         </div>
 			        <!-- 인디케이터 끝 -->
@@ -542,16 +544,22 @@ https://templatemo.com/tm-559-zay-shop
 
 		<div class="col-md-1"><br><br><br><br><br><br>
         </div>
-        
-        <div class="col-md-5"><br><br><br><br>
-        	<h3>[<%=review.getProdName() %>]</h3>
-        	<h4> '<%=review.getRevTitle() %>'</h4>
-        	<br>
-        	<h5>'<%=review.getBuyerNic() %>' 님의 리뷰</h5>       	
-        	<p>
-				<%=review.getRevContent() %>
-        	</p>
-        </div>
+        <%if(review != null){ %>
+	        <div class="col-md-5"><br><br><br><br>
+	        	<h3>[<%=review.getProdName() %>]</h3>
+	        	<h4> '<%=review.getRevTitle() %>'</h4>
+	        	<br>
+	        	<h5>'<%=review.getBuyerNic() %>' 님의 리뷰</h5>       	
+	        	<p>
+					<%=review.getRevContent() %>
+	        	</p>
+	        </div>
+        <%} else {%>
+	        <div class="col-md-5"><br><br><br><br>
+	        	<h3>아직 등록된 리뷰가 없습니다.</h3>
+	        	<h5>Comeon Space에 등록된 다양한 공간을 이용하고 후기를 남겨주세요.</h5>
+	        </div>
+        <%} %>
 </div>
 </div>
 	<!-- 이 달의 리뷰 끝 -->
