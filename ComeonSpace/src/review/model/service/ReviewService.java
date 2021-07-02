@@ -86,5 +86,13 @@ public class ReviewService {
 		return review;
 	}
 
+	public Review scoreRe(int no) {
+		Connection conn = getConnection();
+		Review score = new ReviewDAO().scoreRe(conn,no);
+		close(conn);
+		
+		return score;
+	}
+
 	
 }
