@@ -42,7 +42,10 @@ public class MainViewServlet extends HttpServlet {
 		ArrayList<Img> topImg = new ImgService().selectEnroll(topList);
 		
 		Review review = new ReviewService().selectTop();
-		Img reImg = new ImgService().selectTop(review);
+		Img reImg = null;
+		if(review != null) {
+			reImg = new ImgService().selectTop(review);
+		}
 		
 		request.setAttribute("reImg", reImg);
 		request.setAttribute("review", review);
