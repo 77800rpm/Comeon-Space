@@ -193,7 +193,7 @@ public class ReviewDAO {
 		}
 		return result;
 	}
-<<<<<<< HEAD
+
 	public ArrayList<Review> selectList(Connection conn, String userName, PageInfo pi) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -235,7 +235,8 @@ public class ReviewDAO {
 		}
 		
 		return list;
-=======
+	}
+	
 	public Review selectTop(Connection conn) {
 		Statement stmt = null;
 		ResultSet rset = null;
@@ -290,6 +291,5 @@ public class ReviewDAO {
 		}
 		
 		return scoreRe;
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
 	}
 }

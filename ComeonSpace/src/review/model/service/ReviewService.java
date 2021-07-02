@@ -79,13 +79,14 @@ public class ReviewService {
 		return result;
 	}
 
-<<<<<<< HEAD
 	public ArrayList<Review> selectList(String userName, PageInfo pi) {
 		Connection conn = getConnection();
 		ArrayList<Review> list = new ReviewDAO().selectList(conn, userName, pi);
 		close(conn);
 		return list;
-=======
+
+	}
+	
 	public Review selectTop() {
 		Connection conn =getConnection();
 		Review review = new ReviewDAO().selectTop(conn);
@@ -99,7 +100,6 @@ public class ReviewService {
 		close(conn);
 		
 		return score;
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
 	}
 
 	

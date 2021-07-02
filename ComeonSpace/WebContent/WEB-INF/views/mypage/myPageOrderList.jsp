@@ -158,13 +158,13 @@
 						        <td class="hh-content"><%= list.get(i).getOrderDate() %></td>
 						        <td>
 						        	<br>
-<<<<<<< HEAD
+
 						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= list.get(i).getProdName() %></p>
 						            <p><%= list.get(i).getRevDate() %></p>
-=======
-						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= or.getProdName() %></p>
-						            <p><%= or.getOrderDate() %></p>
->>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
+
+						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= list.get(i).getProdName() %></p>
+						            <p><%= list.get(i).getOrderDate() %></p>
+
 						        </td>
 						        <td class="hh-content"><b><%= list.get(i).getTotalPrice() %></b> 원</td>
 						        <td>

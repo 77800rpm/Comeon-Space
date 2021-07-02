@@ -3,6 +3,7 @@ package mypage.controller;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -97,6 +98,12 @@ public class MypageOrderListServlet extends HttpServlet {
 			compareList.add(compare);
 		}		
         
+		int count1 = Collections.frequency(list, "1");
+		int count2 = Collections.frequency(list, "0");
+		int count3 = Collections.frequency(list, "-1");
+		
+		System.out.println("1의 개수 : " + count1 + "0의 개수 : " + count2 + "-1의 개수 : " + count3);
+
 
 //		System.out.println(compareList);
 		
