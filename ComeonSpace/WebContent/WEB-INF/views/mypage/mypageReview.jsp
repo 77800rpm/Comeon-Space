@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, img.model.vo.Img, review.model.vo.Review"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, img.model.vo.Img, review.model.vo.Review, common.pageInfo.model.vo.PageInfo"%>
 <%
 	ArrayList<Review> list = (ArrayList)request.getAttribute("re");
 	ArrayList<Img> img = (ArrayList)request.getAttribute("img");
-%>
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int currentPage = pi.getCurrentPage();
+	int maxPage = pi.getMaxPage();
+%>	
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,6 +75,8 @@
 	.underTitleTd{font-size: 23px;}
 	.starSpan{color: green;}
 	.dateTd{color: gray;}
+	
+	#pageDiv{text-align:center;}
 </style>
 <header>
     <%@ include file="../common/header.jsp" %>
@@ -123,6 +132,41 @@
 							<%} %>
 						<%} %>
 					</table>
+					<!-- 페이징 시작 -->
+					<div id="pageDiv">
+						<!-- 맨 처음으로 -->
+						<button onclick="location.href='<%=request.getContextPath()%>/reviewList.my?currentPage=1'" class="btn btn-outline-success">맨처음</button>
+						<!-- 이전 페이지 -->
+						<button onclick="location.href='<%=request.getContextPath() %>/reviewList.my?currentPage=<%=currentPage - 1%>'" id="beforeBtn" class="btn btn-outline-success">이전</button>
+						<script>
+							if(<%=currentPage%> <= 1){
+								$("#beforeBtn").prop("disabled",true);
+							};
+						</script>
+						<!-- 숫자 페이지 -->
+						<%for(int p = startPage; p <= endPage; p++){ %>
+							<%if(currentPage == p){ %>
+								<button class="ansBtn btn btn-outline-success btn-sm" disabled><%=p %></button>
+							<%} else { %>
+								<button onclick="location.href='<%=request.getContextPath()%>/reviewList.my?currentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
+							<%} %>
+						<%} %>
+						<!-- 다음 페이지 -->
+						<button onclick="location.href='<%=request.getContextPath()%>/reviewList.my?currentPage=<%=currentPage + 1%>'" id="afterBtn" class="btn btn-outline-success">다음</button>
+						<script>
+				         	if(<%=currentPage%> >= <%=maxPage%>){
+				         		$("#afterBtn").prop("disabled",true);
+				         	}
+				         </script>
+						<!-- 맨끝 으로 -->
+						<button onclick="location.href='<%=request.getContextPath() %>/reviewList.my?currentPage=<%=maxPage %>'" id="lastBtn"class="btn btn-outline-success">맨끝</button>
+						<script>
+				         	if(<%=currentPage%> >= <%=maxPage%>){
+				         		$("#lastBtn").prop("disabled",true);
+				         	}
+				         </script>
+					</div>
+					<!-- 페이징 끝 -->
 				</div>
 	    	</div>
 		</div>

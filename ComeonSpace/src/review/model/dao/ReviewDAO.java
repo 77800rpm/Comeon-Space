@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -192,6 +193,7 @@ public class ReviewDAO {
 		}
 		return result;
 	}
+<<<<<<< HEAD
 	public ArrayList<Review> selectList(Connection conn, String userName, PageInfo pi) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -233,5 +235,61 @@ public class ReviewDAO {
 		}
 		
 		return list;
+=======
+	public Review selectTop(Connection conn) {
+		Statement stmt = null;
+		ResultSet rset = null;
+		Review re = null;
+		
+		String query = prop.getProperty("selectTop");
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				re = new Review();
+				re.setReviewNum(rset.getInt("REVIEW_NUM"));
+				re.setUserNum(rset.getInt("USER_NUM"));
+				re.setProdNum(rset.getInt("PROD_NUM"));
+				re.setOrderNum(rset.getInt("ORDER_NUM"));
+				re.setBuyerName(rset.getString("USER_NAME"));
+				re.setBuyerNic(rset.getString("USER_NIC"));
+				re.setRevContent(rset.getString("REVIEW_CONTENT"));
+				re.setRevTitle(rset.getString("REVIEW_TITLE"));
+				re.setProdName(rset.getString("PROD_NAME"));
+				re.setRevDate(rset.getDate("REVIEW_DATE"));
+				re.setStar(rset.getInt("REVIEW_STAR"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}				
+		
+		return re;
+	}
+	public Review scoreRe(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Review scoreRe = null;
+		
+		String query = prop.getProperty("scoreRe");
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				scoreRe = new Review();
+				scoreRe.setAvgStar(rset.getDouble("A_STAR"));
+				scoreRe.setCountReview(rset.getInt("COUNT"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return scoreRe;
+>>>>>>> branch 'main' of https://github.com/seunghyun93/Comeon-Space.git
 	}
 }

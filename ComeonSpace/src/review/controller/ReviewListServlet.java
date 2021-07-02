@@ -52,8 +52,8 @@ public class ReviewListServlet extends HttpServlet {
 		
 		listCount = new ReviewService().getListCount(userNum);
 		
-		boardLimit = 4;
-		pageLimit = 10;
+		boardLimit = 3;
+		pageLimit = 5;
 		
 		currentPage = 1;
 		if(request.getParameter("currentPage") != null) {
@@ -63,6 +63,9 @@ public class ReviewListServlet extends HttpServlet {
 		
 		startPage = ((currentPage -1)/ pageLimit) * pageLimit + 1;
 		endPage = startPage + pageLimit -1;
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
 		
 		PageInfo pi = new PageInfo(currentPage, listCount, pageLimit, boardLimit, maxPage, startPage, endPage);
 		

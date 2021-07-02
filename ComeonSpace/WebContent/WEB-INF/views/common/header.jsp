@@ -294,11 +294,12 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    
     	<div class="row justify-content-between">
 			<div class="col-auto">
-	      <input type="text" placeholder="어떤 장소를 찾으시나요?" aria-label="Search">
-       <button id="main-search" type="submit">검색</button>
+       <button type="button" class="nav-link main-login" id="main-search">공간 보기 👀</button>
    			</div>
 		</div>
 	</div>
