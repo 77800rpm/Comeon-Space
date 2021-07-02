@@ -53,9 +53,11 @@ public class RealPayServlet extends HttpServlet {
 			
 		}
 
-		
+		System.out.println(revDate);
 		
 		int prodNum = Integer.parseInt(request.getParameter("prodNum"));
+		System.out.println(prodNum);
+		
 		int hostNum = Integer.parseInt(request.getParameter("hostNum"));
 		
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));

@@ -40,6 +40,7 @@ public class Order {
 		this.buyerPhone = buyerPhone;
 		this.revDate = revDate;
 		this.hostNum = hostNum;
+		this.prodNum = prodNum;
 	}
 	
 

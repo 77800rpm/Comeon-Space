@@ -94,6 +94,15 @@ public class ImgService {
 
 
 
+	public ArrayList<Img> detailReview(ArrayList<Review> reList) {
+		Connection conn = getConnection();
+		ArrayList<Img> list = new ImgDAO().detailReview(conn, reList);
+		close(conn);
+		return list;
+	}
+
+
+
 
 
 
