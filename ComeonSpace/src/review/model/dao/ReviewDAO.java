@@ -192,4 +192,46 @@ public class ReviewDAO {
 		}
 		return result;
 	}
+	public ArrayList<Review> selectList(Connection conn, String userName, PageInfo pi) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Review> list = new ArrayList<Review>();
+		Review re = null;
+		
+		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+		int endRow = startRow + pi.getBoardLimit() - 1;
+		
+		String query = prop.getProperty("selectReview2");
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userName);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				re = new Review();
+				re.setReviewNum(rset.getInt("REVIEW_NUM"));
+				re.setUserNum(rset.getInt("USER_NUM"));
+				re.setProdNum(rset.getInt("PROD_NUM"));
+				re.setOrderNum(rset.getInt("ORDER_NUM"));
+				re.setBuyerName(rset.getString("USER_NAME"));
+				re.setBuyerNic(rset.getString("USER_NIC"));
+				re.setRevContent(rset.getString("REVIEW_CONTENT"));
+				re.setRevTitle(rset.getString("REVIEW_TITLE"));
+				re.setProdName(rset.getString("PROD_NAME"));
+				re.setRevDate(rset.getDate("REVIEW_DATE"));
+				re.setStar(rset.getInt("REVIEW_STAR"));
+				
+				list.add(re);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 }

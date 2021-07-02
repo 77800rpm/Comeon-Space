@@ -79,5 +79,12 @@ public class ReviewService {
 		return result;
 	}
 
+	public ArrayList<Review> selectList(String userName, PageInfo pi) {
+		Connection conn = getConnection();
+		ArrayList<Review> list = new ReviewDAO().selectList(conn, userName, pi);
+		close(conn);
+		return list;
+	}
+
 	
 }

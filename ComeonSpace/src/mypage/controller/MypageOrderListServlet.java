@@ -1,7 +1,9 @@
 package mypage.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +16,8 @@ import common.pageInfo.model.vo.PageInfo;
 import member.model.vo.Member;
 import order.model.service.OrderService;
 import order.model.vo.Order;
+import review.model.service.ReviewService;
+import review.model.vo.Review;
 
 /**
  * Servlet implementation class MypageOrderListServlet
@@ -68,12 +72,45 @@ public class MypageOrderListServlet extends HttpServlet {
 			
 		
 		ArrayList<Order> list = new OrderService().selectList(userName, pi);
+		
+		ArrayList<Review> rList = new ReviewService().selectList(userName, pi);
+		
 
+
+
+        // 오늘 날짜
+		long miliseconds = System.currentTimeMillis();
+        Date today = new Date(miliseconds);
+
+        
+        
+        String compare = "";
+
+        ArrayList<String> compareList = new ArrayList<String>();
+        
+		for(int i = 0; i <list.size(); i++) {
+			
+			compare = Integer.toString(today.compareTo(list.get(i).getRevDate()));
+			
+			System.out.println(list.get(i).getRevDate() + "와 오늘을 비교한 반환값 : " + compare);
+			
+			compareList.add(compare);
+		}		
+        
+
+//		System.out.println(compareList);
+		
+//		System.out.println(compareList.get(0));
+//		System.out.println(compareList.get(1));
+//		System.out.println(compareList.get(2));
+		
 		String page = null;
 		
 		if(list != null) {
 			page = "WEB-INF/views/mypage/myPageOrderList.jsp";
 			request.setAttribute("list", list);
+			request.setAttribute("rList", rList);
+			request.setAttribute("compareList", compareList);
 			request.setAttribute("pi", pi);
 		} else {
 			page = "WEB-INF/views/common/errorPage.jsp";

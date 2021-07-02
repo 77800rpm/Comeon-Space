@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, order.model.vo.Order, common.pageInfo.model.vo.PageInfo"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, order.model.vo.Order, java.sql.Date, review.model.vo.Review, common.pageInfo.model.vo.PageInfo"%>
 <%
-	ArrayList<Order> list = (ArrayList)request.getAttribute("list");
 
+	ArrayList<Order> list = (ArrayList)request.getAttribute("list");
+	ArrayList<Review> rList = (ArrayList)request.getAttribute("rList");
+	ArrayList<String> cList = (ArrayList)request.getAttribute("compareList");
+	
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	
 	int noStartPage = pi.getStartPage();
@@ -149,20 +152,32 @@
 								<td colspan="5">존재하는 결제 내역이 없습니다.</td>
 							</tr>
 							<% } else { %>
-							<% 		for(Order or : list) { %>
+							<% 		for(int i = 0; i < list.size(); i++) { %>
 						      <tr>
-								<td class="hh-content"><%= or.getOrderNum() %></td>
-						        <td class="hh-content"><%= or.getOrderDate() %></td>
+								<td class="hh-content"><%= list.get(i).getOrderNum() %></td>
+						        <td class="hh-content"><%= list.get(i).getOrderDate() %></td>
 						        <td>
 						        	<br>
-						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= or.getProdName() %></p>
-						            <p><%= or.getRevDate() %></p>
+						        	<p style="color: #0f6756; font-size: 125%; font-weight: bold; cursor: pointer;" class="proName"><%= list.get(i).getProdName() %></p>
+						            <p><%= list.get(i).getRevDate() %></p>
 						        </td>
-						        <td class="hh-content"><b><%= or.getTotalPrice() %></b> 원</td>
-						        <td>   
+						        <td class="hh-content"><b><%= list.get(i).getTotalPrice() %></b> 원</td>
+						        <td>
 						        	<br>
+						        	
+						        	<%if(cList.get(i).equals("1")){ %>
+						        						           						        	
 						        	이용 완료<br>
 						        	<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
+						        	
+						        	<% } else { %>
+						        	
+						        	&nbsp;이용 전<br>
+						        	<button type="button" class="btn btn-success btn-sm review-Write" style="background-color: gray !important;" disabled>후기 쓰기</button>
+						        	
+						        	<% } %>
+						        	
+						        	
 						        </td>
 						      </tr>
 						    <% 		} %>
@@ -237,6 +252,7 @@
 		var num = $(this).parent().parent().children('td').eq(0).text();
 		location.href="<%= request.getContextPath()%>/orderDetail.my?no="+num;
 	});
+		
 	
     </script>
     
