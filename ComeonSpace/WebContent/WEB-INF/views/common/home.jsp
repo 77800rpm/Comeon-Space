@@ -533,7 +533,10 @@ https://templatemo.com/tm-559-zay-shop
 			        	<%if(review != null){ %>
 					        <img class="d-block w-100" height=300px; src="<%=request.getContextPath() %>/img_upload/<%=reImg.getImgChange() %>" alt="First slide">
 			        	<%} else{ %>
-							<h4>[여러분의 리뷰를 기다리고 있습니다.]</h4> 	
+			        		<br>
+							<h4 style="margin-left: 30px;">[여러분의 리뷰를 기다리고 있습니다.]</h4>
+							<br>
+	        				<h5 style="margin-left: 47px;">Comeon Space에 등록된 다양한 공간을 이용하고 후기를 남겨주세요.</h5> 	
 			        	<%} %>
 				        <!-- 인디케이터 -->
 			         </div>
@@ -556,8 +559,7 @@ https://templatemo.com/tm-559-zay-shop
 	        </div>
         <%} else {%>
 	        <div class="col-md-5"><br><br><br><br>
-	        	<h3>아직 등록된 리뷰가 없습니다.</h3>
-	        	<h5>Comeon Space에 등록된 다양한 공간을 이용하고 후기를 남겨주세요.</h5>
+	        	
 	        </div>
         <%} %>
 </div>
