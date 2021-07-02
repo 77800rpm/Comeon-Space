@@ -54,6 +54,7 @@ public class FaqSelectServlet extends HttpServlet {
 		fMaxPage = (int)Math.ceil((double)fListCount / fBoardLimit);
 		
 		fStartPage = ((fCurrentPage -1)/fPageLimit) * fPageLimit + 1;
+		
 		fEndPage = fStartPage + fPageLimit - 1;
 		if(fEndPage > fMaxPage) {
 			fEndPage = fMaxPage;

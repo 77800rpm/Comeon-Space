@@ -99,68 +99,43 @@ int fMaxPage = fPi.getMaxPage();
 					<div align="right">
 						<input type="submit" id="writeBoBtn" class="btn btn-outline-secondary" value="글쓰기">
 					</div>
-					
-					<%
-						if (!list.isEmpty()) {
-					%>
-					<!-- 페이징 시작 -->
-					<div id="pageDiv">
-						<!-- 맨 처음으로 -->
-						<button
-							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=1'"
-							class="btn btn-outline-success">맨처음</button>
-						<!-- 이전 페이지 -->
-						<button
-							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=fCurrentPage - 1%>'"
-							id="beforeBtn" class="btn btn-outline-success">이전</button>
-						<script>
-							if(<%=fCurrentPage%> <= 1){
-								$("#beforeBtn").prop("disabled",true);
-							};
-						</script>
-						<!-- 숫자 페이지 -->
-						<%
-							for (int p = fStartPage; p <= fEndPage; p++) {
-						%>
-						<%
-							if (fCurrentPage == p) {
-						%>
-						<button disabled><%=p%></button>
-						<%
-							} else {
-						%>
-						<button
-							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=p%>'"
-							class="btn btn-outline-success"><%=p%></button>
-						<%
-							}
-						%>
-						<%
-							}
-						%>
-						<!-- 다음 페이지 -->
-						<button
-							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=fCurrentPage + 1%>'"
-							id="afterBtn" class="btn btn-outline-success">다음</button>
-						<script>
-			         	if(<%=fCurrentPage%> >= <%=fMaxPage%>){
-			         		$("#afterBtn").prop("disabled",true);
-			         	}
-		         	</script>
-						<!-- 맨끝 으로 -->
-						<button
-							onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=fMaxPage%>'"
-							id="lastBtn" class="btn btn-outline-success">맨끝</button>
-						<script>
-			         	if(<%=fCurrentPage%> >= <%=fMaxPage%>){
-			         		$("#lastBtn").prop("disabled",true);
-			         	}
-		         	</script>
-					</div>
-					<!-- 페이징 끝 -->
-					<%
-						}
-					%>
+					<%if(!list.isEmpty()){ %>
+						<!-- 페이징 시작 -->
+						<div id="pageDiv">
+							<!-- 맨 처음으로 -->
+							<button onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=1'" class="btn btn-outline-success">맨처음</button>
+							<!-- 이전 페이지 -->
+							<button onclick="location.href='<%=request.getContextPath() %>/list.bo?fCurrentPage=<%=fCurrentPage - 1%>'" id="beforeBtn" class="btn btn-outline-success">이전</button>
+							<script>
+								if(<%=fCurrentPage%> <= 1){
+									$("#beforeBtn").prop("disabled",true);
+								};
+							</script>
+							<!-- 숫자 페이지 -->
+							<%for(int p = fStartPage; p <= fEndPage; p++){ %>
+								<%if(fCurrentPage == p){ %>
+									<button disabled><%=p %></button>
+								<%} else { %>
+									<button onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=p%>'" class="btn btn-outline-success"><%= p %></button>
+								<%} %>
+							<%} %>
+							<!-- 다음 페이지 -->
+							<button onclick="location.href='<%=request.getContextPath()%>/list.bo?fCurrentPage=<%=fCurrentPage + 1%>'"id="afterBtn" class="btn btn-outline-success">다음</button>
+							<script>
+					         	if(<%=fCurrentPage%> >= <%=fMaxPage%>){
+					         		$("#afterBtn").prop("disabled",true);
+					         	}
+				         	</script>
+							<!-- 맨끝 으로 -->
+							<button onclick="location.href='<%=request.getContextPath() %>/list.bo?fCurrentPage=<%=fMaxPage %>'" id="lastBtn" class="btn btn-outline-success">맨끝</button>
+							<script>
+					         	if(<%=fCurrentPage%> >= <%=fMaxPage%>){
+					         		$("#lastBtn").prop("disabled",true);
+					         	}
+				         	</script>
+						</div>
+						<!-- 페이징 끝 -->
+					<%} %>
 				</div>
 			</div>
 

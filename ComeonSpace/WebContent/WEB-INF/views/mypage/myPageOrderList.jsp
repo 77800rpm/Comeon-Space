@@ -174,7 +174,15 @@
 						        	<%if(cList.get(i).equals("1")){ %>
 						        						           						        	
 						        	이용 완료<br>
-						        	<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
+						        		<%for(int k = 0; k < rList.size(); k++){ %>
+								        	<%for(int h = 0; h < list.size(); h++){ %>
+								        		<%if(rList.get(k).getOrderNum() == list.get(h).getOrderNum()){ %>
+										        	<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
+								        		<%} else {%>
+								        			<button type="button" class="btn btn-success btn-sm review-Write" style="background-color: gray !important;" disabled>작성완료</button>
+								        		<%} %>
+								        	<%} %>
+						        		<%} %>
 						        	
 						        	<% } else { %>
 						        	
