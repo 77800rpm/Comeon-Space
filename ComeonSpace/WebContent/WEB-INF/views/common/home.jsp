@@ -415,7 +415,7 @@ https://templatemo.com/tm-559-zay-shop
 		</div>
 		
     <div class="col-md-7" id="mapid" style="width: 80%; height: 500px; margin: 0 auto;"></div>
-    <%@ include file="mainPage_map2.jsp" %>
+    <%@ include file="mainPage_map.jsp" %>
     
  		</div>
     </div>
