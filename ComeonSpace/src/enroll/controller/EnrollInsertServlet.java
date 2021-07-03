@@ -152,6 +152,10 @@ public class EnrollInsertServlet extends HttpServlet {
 				request.setAttribute("name", name);
 				request.getRequestDispatcher("WEB-INF/views/enroll/enrollSuccess.jsp").forward(request, response);
 			} else {
+				for(int i = 0; i < saveFiles.size(); i++) {
+					File fail = new File(savePath + saveFiles.get(i));
+					fail.delete();
+				}
 				request.setAttribute("msg", "공간 등록에 실패하였습니다.");
 				request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 			}

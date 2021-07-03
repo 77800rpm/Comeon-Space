@@ -45,23 +45,26 @@ public class MemberService {
 			
 			if(imgResult > 0 && result > 0) {
 				commit(conn);
+				close(conn);
 				return result;
 			} else {
 				rollback(conn);
+				close(conn);
 				return 0;
 			}
 		} else {
 			if(result > 0) {
 				commit(conn);
+				close(conn);
 				return result;
 			} else {
 				rollback(conn);
+				close(conn);
 				return 0;
 			}
 		}
-		
-		
 	}
+	
 	public Member loginMember(Member member) {
 		
 		Connection conn = getConnection();
