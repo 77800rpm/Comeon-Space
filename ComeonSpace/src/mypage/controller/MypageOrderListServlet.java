@@ -119,8 +119,6 @@ public class MypageOrderListServlet extends HttpServlet {
 		
 		System.out.println("1의 개수 : " + count1 + ", 0의 개수 : " + count2 + ", -1의 개수 : " + count3);
 
-		
-		
 
 //		System.out.println(compareList);
 		
@@ -128,10 +126,8 @@ public class MypageOrderListServlet extends HttpServlet {
 //		System.out.println(compareList.get(1));
 //		System.out.println(compareList.get(2));
 		
-		String page = null;
+		String page = "WEB-INF/views/mypage/myPageOrderList.jsp";
 		
-		if(list != null) {
-			page = "WEB-INF/views/mypage/myPageOrderList.jsp";
 			request.setAttribute("list", list);
 			request.setAttribute("rList", rList);
 			request.setAttribute("compareList", compareList);
@@ -139,10 +135,7 @@ public class MypageOrderListServlet extends HttpServlet {
 			request.setAttribute("before", before);
 			request.setAttribute("after", after);
 			request.setAttribute("pi", pi);
-		} else {
-			page = "WEB-INF/views/common/errorPage.jsp";
-			request.setAttribute("msg", "마이페이지 조회에 실패하였습니다.");
-		}
+		
 		
 		request.getRequestDispatcher(page).forward(request, response);
 	}

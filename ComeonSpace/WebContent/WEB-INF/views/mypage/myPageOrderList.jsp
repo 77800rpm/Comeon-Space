@@ -135,8 +135,8 @@
 						    <div class="row">
 						        <div class="intro-name col-sm-5"><span style="color:#0f6756; font-weight:bold; font-size:120%; "><%= loginUser.getUserNic() %></span><span class="intro-font1"> 님<br>안녕하세요!</span></div>
 						        <div class="intro-before col-sm-1"><span class="intro-font"></span><br><span class="intro-font intro-font-count"></span><span class="intro-font2"></span></div>
-						        <div class="intro-before col-sm-2"><span class="intro-font">이용 전</span><br><span class="intro-font intro-font-count"><%= before %></span><span class="intro-font2"> 개</span></div>
-						        <div class="intro-after col-sm-2"><span class="intro-font">이용 완료</span><br><span class="intro-font intro-font-count"><%= after %></span><span class="intro-font2"> 개</span></div>
+						        <div class="intro-before col-sm-2"><span class="intro-font">이용 전</span><br><span class="intro-font intro-font-count"><%= after %></span><span class="intro-font2"> 개</span></div>
+						        <div class="intro-after col-sm-2"><span class="intro-font">이용 완료</span><br><span class="intro-font intro-font-count"><%= before %></span><span class="intro-font2"> 개</span></div>
 						        
 						    </div>
 						<br><hr>
@@ -187,7 +187,7 @@
 						        		<%if(check[i] == 0){ %>
 								        	<button type="button" class="btn btn-success btn-sm review-Write">후기 쓰기</button>
 						        		<%} else { %>
-						        			<button type="button" class="btn btn-success btn-sm review-Write" style="background-color: gray !important;" disabled>작성완료</button>
+						        			<button type="button" class="btn btn-success btn-sm review-Write" disabled>작성완료</button>
 						        		<%} %>
 						        	
 						        	<% } else { %>
