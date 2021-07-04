@@ -43,6 +43,7 @@ public class CenterFormServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		Img profileImg = null;
+		
 		if(loginUser != null) {
 			int userNum = loginUser.getUserNum();
 
@@ -113,7 +114,7 @@ public class CenterFormServlet extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("fList", fList);
 		request.setAttribute("noList", noList);
-		request.setAttribute("prifileImg", profileImg);
+		request.setAttribute("profileImg", profileImg);
 		request.getRequestDispatcher("WEB-INF/views/center/centerMain.jsp").forward(request, response);
 		
 		
