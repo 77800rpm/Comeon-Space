@@ -225,7 +225,7 @@
 						$(this).parent().css({"background":"none"});
 					}).click(function(){
 						var num = $(this).parent().children().eq(0).text();
-						location.href="<%= request.getContextPath() %>/faqDetail.ce?fo=" + num;
+						location.href="<%= request.getContextPath() %>/faqDetail.ce?no=" + num;
 					})
 					
 					$(document).ready(function(){

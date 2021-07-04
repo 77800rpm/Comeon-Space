@@ -88,6 +88,7 @@ public class InsertMember extends HttpServlet {
 						list.add(img);
 				}
 			}
+			
 			SignUpWrapper su = new SignUpWrapper();
 			
 			String userEmail = multiparRequest.getParameter("userEmail");
@@ -104,6 +105,10 @@ public class InsertMember extends HttpServlet {
 			if(result > 0) {
 				response.sendRedirect(request.getContextPath());
 			} else {
+				for(int i = 0; i < saveFiles.size(); i++) {
+					File fail = new File(savePath + saveFiles.get(i));
+					fail.delete();
+				}
 				request.setAttribute("msg", "회원가입에 실패하였습니다.");
 				request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 			}

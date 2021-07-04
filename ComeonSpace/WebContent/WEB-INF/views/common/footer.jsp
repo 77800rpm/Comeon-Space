@@ -169,32 +169,32 @@ a, p, h1, h2, h3{font-family: 'jua', sans-serif; !important}
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <h6>About</h6>
-            <p class="text-justify">저희 6ixpace는 <i> 펜데믹으로 인해 높아진 공실률을 최소화, 공간의 사용성을 최대화하기 위해 </i><br>
+            <p class="text-justify">저희 6ixface는 <i> 펜데믹으로 인해 높아진 공실률을 최소화, 공간의 사용성을 최대화하기 위해 </i><br>
                         이용자와 중개자, 사회전체 모두에게 이익이 되는 윈윈 구조의 공유경제 모델을 채택하였습니다. 비어있는 혹은 버려져있는 공간을 각각의 니즈에 맞춰 공유공간으로 보다 손쉽게 활용할 수 있는  
                         비대면 예약 플랫폼을 구축하여 위축된 공동 경제에 활력을 불어넣고, 공유 공간 서비스의 경제성과 합리성을 살리고자 합니다.
-                        소유하고 있는 공간을 공유공간으로 활용하고 싶은 분이나, 침체된 공간을 색다른 아이디어로 탈바꿈 시킬 수 있는 분을 찾습니다. 언제든 6ixpace로 연락해주세요!</p>
+                        소유하고 있는 공간을 공유공간으로 활용하고 싶은 분이나, 침체된 공간을 색다른 아이디어로 탈바꿈 시킬 수 있는 분을 찾습니다. 언제든 6ixface로 연락해주세요!</p>
           </div>
 
           <div class="col-xs-6 col-md-3">
             <h6>Info</h6>
             <ul class="footer-links">
-              <li><a href="#">주소: 서울시 강남구 역삼동</a></li>
-              <li><a href="#">전화번호 : 010.1234.4321</a></li>
-              <li><a href="#">상담시간: 10:00 ~ 18:00</a></li>
-              <li><a href="#">사람을 찾습니다</a></li>
-              <li><a href="#">새벽에 사라져버린</a></li>
-              <li><a href="#">박모군🕵️‍♂️</a></li>
+              <li><a>주소: 서울시 강남구 역삼동</a></li>
+              <li><a>전화번호 : 010.1234.4321</a></li>
+              <li><a>상담시간: 10:00 ~ 18:00</a></li>
+              <li><a>사람을 찾습니다</a></li>
+              <li><a>새벽에 사라져버린</a></li>
+              <li><a>박모군🕵️‍♂️</a></li>
             </ul>
           </div>
 
           <div class="col-xs-6 col-md-3">
             <h6>Quick Links</h6>
             <ul class="footer-links">
-              <li><a href="#">6ixpace</a></li>
-              <li><a href="#">고객센터</a></li>
-              <li><a href="#">회원가입</a></li>
-              <li><a href="#">운영정책</a></li>
-              <li><a href="#">👩‍💻 👨‍💻</a></li>
+              <li><a href="https://driveandlisten.herokuapp.com/">6ixface</a></li>
+              <li><a href="<%= request.getContextPath()%>/centerView.ce">고객센터</a></li>
+              <li><a href="<%= request.getContextPath() %>/signUp.me">회원가입</a></li>
+              <li><a href="https://www.spacecloud.kr/policyOperate">운영정책</a></li>
+              <li><a href="https://driveandlisten.herokuapp.com/">👩‍💻 👨‍💻</a></li>
             </ul>
           </div>
         </div>
@@ -204,16 +204,16 @@ a, p, h1, h2, h3{font-family: 'jua', sans-serif; !important}
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
             <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by 
-         <a href="#">6ixpace</a>.
+         <a href="https://driveandlisten.herokuapp.com/">6ixface</a>.
             </p>
           </div>
 
           <div class="col-md-4 col-sm-6 col-xs-12">
             <ul class="social-icons">
-              <li><a class="facebook" href="#"><img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fstatic.xx.fbcdn.net%2Frsrc.php%2Fyz%2Fr%2FKFyVIAWzntM.ico&type=f30_30_png_expire24" style=width:100%;><i class="fa fa-facebook"></i></a></li>
-              <li><a class="twitter" href="#"><img src="https://w.namu.la/s/99255bafdd5168cbf7c383a29948ad9829aff378eb2955b7642fdf366a70ee61c9dbd2394249363bbe4027d0bb27a304ace0786812b903aeb6366e0a2b73249023a070ad232e1546b75e804da995ef27a63d0b619aeeba8433613c74fcab371f"style="width: 100%;"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="instagram" href="#"><img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fwww.instagram.com%2Fstatic%2Fimages%2Fico%2Ffavicon.ico%2F36b3ee2d91ed.ico&type=f30_30_png_expire24" style=width:100%;><i class="fa fa-instagram"></i></a></li>
-              <li><a class="linkedin" href="#"><img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fstatic-exp1.licdn.com%2Fsc%2Fh%2Fal2o9zrvru7aqj8e1x2rzsrca&type=f30_30_png_expire24" style=width:100%;><i class="fa fa-linkedin"></i></a></li>   
+              <li><a class="facebook" href="https://www.window-swap.com/artists"><img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fstatic.xx.fbcdn.net%2Frsrc.php%2Fyz%2Fr%2FKFyVIAWzntM.ico&type=f30_30_png_expire24" style=width:100%;><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="https://www.window-swap.com/artists"><img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fabs.twimg.com%2Ffavicons%2Ftwitter.ico&type=f30_30_png_expire24"style="width: 100%;"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="instagram" href="https://www.window-swap.com/artists"><img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fwww.instagram.com%2Fstatic%2Fimages%2Fico%2Ffavicon.ico%2F36b3ee2d91ed.ico&type=f30_30_png_expire24" style=width:100%;><i class="fa fa-instagram"></i></a></li>
+              <li><a class="linkedin" href="https://www.window-swap.com/artists"><img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fstatic-exp1.licdn.com%2Fsc%2Fh%2Fal2o9zrvru7aqj8e1x2rzsrca&type=f30_30_png_expire24" style=width:100%;><i class="fa fa-linkedin"></i></a></li>   
             </ul>
           </div>
         </div>

@@ -104,6 +104,7 @@ https://templatemo.com/tm-559-zay-shop
 	#FaqTable:hover{cursor: pointer; background: #E9EEF2;}
 	.errorNotice{text-align: center; }
 	.pageDiv{text-align:center;}
+	#profileImg{border-radius: 100px;}
 	
 </style>
 <head>
@@ -127,7 +128,7 @@ https://templatemo.com/tm-559-zay-shop
 	        <div class="row pb-3 profile-div">
 	        	<%if(pImg != null){ %>
 	        		<div class="center-profile">
-	        			<img src="<%= request.getContextPath()%>/img_upload/<%= pImg.getImgChange()%>" width="200px" height="150px">
+	        			<img id="profileImg"src="<%= request.getContextPath()%>/img_upload/<%= pImg.getImgChange()%>" width="200px" height="150px">
 	        		</div>
 	        	<%} else { %>
 	        		<div class="center-profile">

@@ -24,12 +24,14 @@ public class EnrollService {
 		
 		if(result > 0 && resultImg > 0) {
 			commit(conn);
+			close(conn);
+			return result;
 		} else {
 			rollback(conn);
+			close(conn);
+			return 0;
 		}
-		close(conn);
 		
-		return result;
 	}
 
 

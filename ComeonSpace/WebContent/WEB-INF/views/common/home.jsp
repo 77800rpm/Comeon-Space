@@ -143,7 +143,7 @@ https://templatemo.com/tm-559-zay-shop
                                 <h3 class="h2">호스트 컨퍼런스</h3>
                                 <p>
                                                                        호스트와 관리자가 컴온스페이스의 개선 사항과 발전 방향에 대해<br>
-                                                                       의논하는 호스트 컨퍼런스가 6월에는 줌이 아닌<br><a rel="sponsored" style="color: rgb(15, 103, 86)" href="https://gather.town/" target="_blank">개더타운Gather.Town</a>
+                                                                       의논하는 호스트 컨퍼런스가 7월에는 줌이 아닌<br><a rel="sponsored" style="color: rgb(15, 103, 86)" href="https://gather.town/" target="_blank">개더타운Gather.Town</a>
                                                                        으로 개최됩니다!<br>
                                                                        우리 모두 8비트 메타버스에서 만나요🙋‍♀️
                                 </p>
@@ -168,7 +168,7 @@ https://templatemo.com/tm-559-zay-shop
     <section class="container py-5" >
         <div class="row text-center pt-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1" id="hotSpace">5월, 가장 뜨거웠던 공간🏆</h1>
+                <h1 class="h1" id="hotSpace">7월, 가장 뜨거웠던 공간🏆</h1>
                 <p>
                    	<a href="">지난 한달 간 가장 인기 있었던 공간 10곳.zip</a> <!-- 인기 공간 10곳 경로 링크 적용... 필수 기능 아님 -->
                 </p>
@@ -415,7 +415,7 @@ https://templatemo.com/tm-559-zay-shop
 		</div>
 		
     <div class="col-md-7" id="mapid" style="width: 80%; height: 500px; margin: 0 auto;"></div>
-    <%@ include file="mainPage_map2.jsp" %>
+    <%@ include file="mainPage_map.jsp" %>
     
  		</div>
     </div>

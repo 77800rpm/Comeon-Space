@@ -119,7 +119,6 @@ public class MypageOrderListServlet extends HttpServlet {
 		
 		// System.out.println("1의 개수 : " + count1 + ", 0의 개수 : " + count2 + ", -1의 개수 : " + count3);
 
-	      		
 
 //		System.out.println(compareList);
 		
