@@ -832,6 +832,7 @@
             map.setCenter(coords);
         } 
     });  
+    
     //Q&A 등록하기
     $("#browser5").on("click",function(){
     	var hostNum = $("#hostQnaNum").val();

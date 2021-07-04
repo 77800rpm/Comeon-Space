@@ -45,17 +45,7 @@ public class ProductSearchCategoryServlet extends HttpServlet {
 			ALL_PRODUCT_LOCATION = PRODUCT_CATEGORY;
 			PRODUCT_LOCATION = " ";
 		}
-		
-		
-//		String ALL_PRODUCT_CATEGORY = "";
-//		if(PRODUCT_CATEGORY.equals("모든공간")) {
-//			ALL_PRODUCT_CATEGORY = PRODUCT_CATEGORY;
-//			PRODUCT_CATEGORY = "";
-//			System.out.println("PRODUCT_CATEGORY : " + PRODUCT_CATEGORY);
-//			System.out.println("ALL_PRODUCT_CATEGORY : " + ALL_PRODUCT_CATEGORY);
-//		}
-
-		
+				
 		ArrayList<Enroll> list = new ProductService().selectList(PRODUCT_LOCATION, PRODUCT_CATEGORY, PRODUCT_HOLIDAY);
 		ArrayList<Img> fList = new ProductService().selectFList();
 				

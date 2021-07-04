@@ -193,7 +193,8 @@
 						        	<% } else { %>
 						        	
 						        	&nbsp;이용 전<br>
-						        	<button type="button" class="btn btn-success btn-sm review-Write" style="background-color: gray !important;" disabled>후기 쓰기</button>
+						        	<button type="button" class="btn btn-success btn-sm review-Write"
+						        			style="background-color: gray !important;" disabled>후기 쓰기</button>
 						        	
 						        	<% } %>
 						        	

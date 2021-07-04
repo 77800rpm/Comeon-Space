@@ -104,7 +104,7 @@ public class MypageOrderListServlet extends HttpServlet {
 			
 			compare = Integer.toString(today.compareTo(list.get(i).getRevDate()));
 			
-			System.out.println(list.get(i).getRevDate() + "와 오늘을 비교한 반환값 : " + compare);
+			// System.out.println(list.get(i).getRevDate() + "와 오늘을 비교한 반환값 : " + compare);
 			
 			compareList.add(compare);
 		}		
@@ -117,7 +117,7 @@ public class MypageOrderListServlet extends HttpServlet {
 		String before = Integer.toString(count1);
 		String after = Integer.toString(count4);
 		
-		System.out.println("1의 개수 : " + count1 + ", 0의 개수 : " + count2 + ", -1의 개수 : " + count3);
+		// System.out.println("1의 개수 : " + count1 + ", 0의 개수 : " + count2 + ", -1의 개수 : " + count3);
 
 	      		
 
