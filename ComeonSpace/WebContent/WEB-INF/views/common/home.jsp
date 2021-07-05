@@ -438,7 +438,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="<%=request.getContextPath()%>/productDetail.no?no=23">
                             <img src="assets/img/recommend_prod_01.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
@@ -450,22 +450,21 @@ https://templatemo.com/tm-559-zay-shop
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right">70,000</li>
+                                <li class="text-muted text-right">43,000</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Framous(프레이머스)</a>
+                            <a href="<%=request.getContextPath()%>/productDetail.no?no=23" class="h2 text-decoration-none text-dark">레드 클로버</a>
                             <p class="card-text">
-                                '프레이머스'는 손님이 직접 셀프로 촬영하는 스튜디오입니다.
-
-								20분간 갤러리와 계단을<br> 배경으로 하여 자유롭게 셀프 촬영한 뒤 <br>
-								20분간 여유롭게 사진들을 선택하시면 됩니다.
+					                  레드클로버는 크지 않은 공간이예요.<br>
+							그래서 규모가 크고 화려한 파티 보다는<br>
+							우리만의 프라이빗한 시간을 보내기 좋은 곳 입니다
                             </p>
-                            <p class="text-muted">Reviews (124)</p>
+                            <p class="text-muted">Reviews <%= review.getCountReview() %></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="<%=request.getContextPath()%>/productDetail.no?no=17">
                             <img src="assets/img/recommend_prod_02.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
@@ -477,20 +476,20 @@ https://templatemo.com/tm-559-zay-shop
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right">40,000</li>
+                                <li class="text-muted text-right">55,000</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">PhotoWeekStudio</a>
+                            <a href="<%=request.getContextPath()%>/productDetail.no?no=17" class="h2 text-decoration-none text-dark">스튜디오 탁월 호리존</a>
                             <p class="card-text">
-                                                                포토위크 비비드컬러는 발랄한 컨셉의 다양한 컬러가 준비되어 있습니다.
+                                                                스튜디오 탁월 호리존은 발랄한 컨셉의 다양한 컬러가 준비되어 있습니다.
 								비비드컬러 전용<br>소품들도 준비가 되어 있으니 귀엽고,<br>사랑스러운 느낌의 셀프사진을 연출해보세요.
                             </p>
-                            <p class="text-muted">Reviews (48)</p>
+                            <p class="text-muted">Reviews <%= review.getCountReview() %></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="<%=request.getContextPath()%>/productDetail.no?no=22">
                             <img src="assets/img/recommend_prod_03.jpg" class="card-img-top" alt="..." height=400px;>
                         </a>
                         <div class="card-body">
@@ -502,15 +501,15 @@ https://templatemo.com/tm-559-zay-shop
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                 </li>
-                                <li class="text-muted text-right">40,000</li>
+                                <li class="text-muted text-right">70,000</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">page Of(페이지 오브)</a>
+                            <a href="<%=request.getContextPath()%>/productDetail.no?no=22" class="h2 text-decoration-none text-dark">자연광 호코네 스튜디오</a>
                             <p class="card-text">
-                                                               안국역에 위치한 셀프사진관입니다.<br>
+                                                              한남동에 위치한 셀프사진관입니다.<br>
 								20분간 프라이빗한 스튜디오 내에서 자유롭게 촬영이 가능합니다.
-								page of에서 나만의<br> 화보를 만들어보세요!
+								호코네 스튜디오에서 나만의<br> 화보를 만들어보세요!
                             </p>
-                            <p class="text-muted">Reviews (74)</p>
+                            <p class="text-muted">Reviews 3</p>
                         </div>
                     </div>
                 </div>

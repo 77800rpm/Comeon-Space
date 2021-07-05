@@ -267,7 +267,7 @@ public class ProductDAO {
 		return list;
 	}
 			
-	public ArrayList<Enroll> selectList(String PRODUCT_LOCATION, String PRODUCT_CATEGORY, String PRODUCT_HOLIDAY, Connection conn) {
+	public ArrayList<Enroll> selectList(String productLocation, String productCategory, String productHoliday, Connection conn) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -275,12 +275,12 @@ public class ProductDAO {
 		String query = null;
 
 		
-		if(PRODUCT_CATEGORY.equals("모든공간")) {
+		if(productCategory.equals("모든공간")) {
 			query = prop.getProperty("selectSearchCategoryAll");
 			try {
 				pstmt = conn.prepareStatement(query);
-		        pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
-		        pstmt.setString(2, "%"+PRODUCT_HOLIDAY+"%");
+		        pstmt.setString(1, "%"+productLocation+"%");
+		        pstmt.setString(2, "%"+productHoliday+"%");
 		        rset = pstmt.executeQuery();
 		         
 		         while(rset.next()) {
@@ -305,9 +305,9 @@ public class ProductDAO {
 			query = prop.getProperty("selectSearch");	
 			try {
 		         pstmt = conn.prepareStatement(query);
-		         pstmt.setString(1, "%"+PRODUCT_LOCATION+"%");
-		         pstmt.setString(2, "%"+PRODUCT_CATEGORY+"%");
-		         pstmt.setString(3, "%"+PRODUCT_HOLIDAY+"%");
+		         pstmt.setString(1, "%"+productLocation+"%");
+		         pstmt.setString(2, "%"+productCategory+"%");
+		         pstmt.setString(3, "%"+productHoliday+"%");
 		         rset = pstmt.executeQuery();
 		         
 		         while(rset.next()) {
